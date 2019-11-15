@@ -1,0 +1,10 @@
+# vim swap files
+
+.*.sw[op]
+
+# Build products
+
+stage/
+src/bgpython.html
+src/bgpython*.pdf
+

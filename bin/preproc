@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+
+"""
+Concatenates a number of input files into a single output file, while
+performing the following regex substitutions:
+
+[[pagebreak]]
+
+[nh[x]] \hyphenation{x}   # no hyphen, no underscores allowed
+[ix[x]] \index{x}         # index straight up
+[ixtt[x]] \index{x@\texttt{x}}         # index tt
+
+fl = footnote link
+flx = footnote link to example https://beej.us/guide/bgnet/examples/file
+flr = footnote link to redirect https://beej.us/guide/url/id
+
+[fl[link|url]] [link](url)^[url]
+[flx[link|file]] [link](https://beej.us/guide/bgnet/examples/file)^[https://beej.us/guide/bgnet/examples/file]
+[flr[link|id]] [link](https://beej.us/guide/url/id)^[https://beej.us/guide/url/id]
+[flrfc[link|num]] [link](https://tools.ietf.org/html/rfcnum)^[https://tools.ietf.org/html/rfcnum]
+
+Also puts a blank line between files.
+
+"""
+
+import sys
+import re
+
+if len(sys.argv) < 3:
+    print("usage: preproc infile [infile ... ] outputfile", file=sys.stdout)
+    sys.exit(1)
+
+infiles = sys.argv[1:-1]
+outfile = sys.argv[-1]
+
+fout = open(outfile, "w")
+
+for infile in infiles:
+    fin = open(infile)
+    filedata = fin.read()
+    fin.close()
+
+    filedata = re.sub(r'\[\[pagebreak\]\]', r'\\newpage', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[nh\[(.+?)\]\]', r'\\hyphenation{\1}', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[ix\[(.+?)\]\]', r'\\index{\1}', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[ixtt\[(.+?)\]\]', r'\\index{\1@\\texttt{\1}}', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[fl\[(.+?)\|(.+?)\]\]', r'[\1](\2)^[\2]', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[flx\[(.+?)\|(.+?)\]\]', r'[\1](https://beej.us/guide/bgnet/examples/\2)^[https://beej.us/guide/bgnet/examples/\2]', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[flr\[(.+?)\|(.+?)\]\]', r'[\1](https://beej.us/guide/url/\2)^[https://beej.us/guide/url/\2]', filedata, flags=re.DOTALL)
+    filedata = re.sub(r'\[flrfc\[(.+?)\|(.+?)\]\]', r'[\1](https://tools.ietf.org/html/rfc\2)^[https://tools.ietf.org/html/rfc\2]', filedata, flags=re.DOTALL)
+
+    fout.write(filedata)
+    fout.write("\n") # blank line keeps pandoc happy with MD headers
+
+fout.close()
+
