@@ -1,3 +1,7 @@
+<!--
+# vim: ts=4:sw=4:nosi:et:tw=72
+-->
+
 # What is Programming, Anyway?
 
 Let's say you're entirely new to this stuff. You have a computer, you
