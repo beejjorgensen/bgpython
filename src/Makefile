@@ -62,7 +62,8 @@ all: $(HTML) $(BOOKS)
 $(GUIDE_ID).html: $(GUIDE_MD) bg-css.html
 	$(PREPROC) $(GUIDE_MD) $(PREPROC_MD)
 	pandoc $(HTML_OPTS) -s $(PREPROC_MD) -o $(GUIDE_ID).html -H bg-css.html
-	sed -i 's/src="\(.*\)\.pdf"/src="\1.svg"/g' $(GUIDE_ID).html  # use svg images
+	sed 's/src="\(.*\)\.pdf"/src="\1.svg"/g' $(GUIDE_ID).html > $(GUIDE_ID)_temp.html # use svg images
+	mv $(GUIDE_ID)_temp.html $(GUIDE_ID).html
 	rm -f $(GUIDE_ID)_temp*
 
 $(GUIDE_ID)_usl_c_1.pdf: $(GUIDE_MD)
