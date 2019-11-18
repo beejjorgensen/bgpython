@@ -176,3 +176,22 @@ the answer will not be obvious. You're going to have to work hard and
 spend a lot of time to get through the first problem solving steps
 before you'll even be ready to start coding.
 
+## What is Python?
+
+Python is a _programming language_. This means it's vaguely readable by
+humans, and completely readable by a machine. (As long as you don't make
+the tiniest mistake!) This is a good combination, since people are bad
+at reading the actual `1011010100110` code that machines use. We use
+these _higher-level_ langauges to help us get by.
+
+In this case, another piece of software called the Python _interpreter_
+takes the code we write in the Python language and runs it, performing
+the operations we've requested.
+
+So before we begin, we need to install the Python interpreter. This is
+one of the most annoyingly painful parts of the whole book, but luckily
+it only has to be done once.
+
+Okay, gang! Let's get it... over with!
+
+...I really need to work on the end of that inspirational speech.
