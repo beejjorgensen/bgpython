@@ -56,7 +56,7 @@ cd bgpython
 ls -la
 ```
 
-These commands do three things:
+These commands do four amazing things:
 
 1. `cd` means _change directory_. (A directory is the same as a folder.)
    On a line by itself, it means "change to my _home directory_".
