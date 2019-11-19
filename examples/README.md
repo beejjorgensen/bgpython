@@ -1,4 +1,3 @@
-# Beej's Guide to Network Programming Examples
+# Beej's Guide to Python Programming Examples
 
-Type `make` to build.
-
+Various Python programs from the Guide.
