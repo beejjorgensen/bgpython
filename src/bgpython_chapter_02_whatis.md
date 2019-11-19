@@ -1,16 +1,16 @@
 <!--
-# vim: ts=4:sw=4:nosi:et:tw=72
+# vim: ts=4:sw=4:nosi:et:tw=72:spell
 -->
 
 # What is Programming, Anyway?
 
-**Objectives:**
+## Objectives
 
 * Be able to explain what a programmer does
 * Be able to explain what a program is
 * Be able to summarize the four big steps in solving problems
 
---------------------------------------------------------------------
+## More Terminology Than You Wanted
 
 Let's say you're entirely new to this stuff. You have a computer, you
 know how to use it, but you don't know how to make it do exactly what
@@ -204,9 +204,7 @@ Okay, gang! Let's get it... over with!
 
 ...I really need to work on the end of that inspirational speech.
 
---------------------------------------------------------------------
-
-**Summary:**
+## Summary
 
 * A programmer is a problem solver. They then write programs that
   implement a solution to that problem.
