@@ -120,9 +120,9 @@ As long as you can bring up a terminal and type on of the following and
 get it to report version 3.6 or higher, you're set:
 
 ```
-    python3 --version
-    python --version
-    py --version
+python3 --version
+python --version
+py --version
 ```
 
 If those aren't installed, or none of them report version 3.6 or higher,
@@ -149,7 +149,7 @@ Visit the Homebrew home page, and install it.
 Then run this in the bash shell:
 
 ```
-    brew install python
+brew install python
 ```
 
 After that, `python3 --version` should work.

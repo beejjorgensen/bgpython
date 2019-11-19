@@ -50,10 +50,10 @@ if you want, but I'll be talking bash here.
 At the `$` prompt, type the following commands, one per line:
 
 ```
-    cd
-    mkdir bgpython
-    cd bgpython
-    ls -la
+cd
+mkdir bgpython
+cd bgpython
+ls -la
 ```
 
 These commands do three things:
@@ -72,10 +72,10 @@ These commands do three things:
 At this point you should see something like this:
 
 ```
-    $ ls -la
-    total 0
-    drwxr-xr-x    2 beej  staff    64 Nov 18 23:14 .
-    drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
+$ ls -la
+total 0
+drwxr-xr-x    2 beej  staff    64 Nov 18 23:14 .
+drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
 ```
 
 This is showing you all the files you have. Namely there are two of
@@ -105,13 +105,13 @@ editor name directly followed by the filename on the command line.
 For example, to launch VS Code to edit the file `hello.py`:
 
 ```
-    code hello.py
+code hello.py
 ```
 
 or to launch Vim to do the same thing:
 
 ```
-    vim hello.py
+vim hello.py
 ```
 
 > _If you get in Vim and have no idea how to get out, hit the `ESC` key
@@ -141,11 +141,11 @@ Pop back into your terminal window and type `ls -la` to get a directory
 listing:
 
 ```
-    $ ls -la
-    total 8
-    drwxr-xr-x    3 beej  staff    96 Nov 18 23:27 .
-    drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
-    -rw-r--r--    1 beej  staff    87 Nov 18 23:27 hello.py
+$ ls -la
+total 8
+drwxr-xr-x    3 beej  staff    96 Nov 18 23:27 .
+drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
+-rw-r--r--    1 beej  staff    87 Nov 18 23:27 hello.py
 ```
 
 There it is! `hello.py` clocking in at 87 bytes (characters, roughly) in
@@ -158,15 +158,15 @@ Then type this to run it (if `python3` doesn't work, try `python` or
 `py` depending on your system):
 
 ```
-    python3 hello.py
+python3 hello.py
 ```
 
 and hit `RETURN`! _[Angelic Chorus!]_
 
 ```
-    $ python3 hello.py
-    Hello, world!
-    My name's Beej and this is (possibly) my first program!
+$ python3 hello.py
+Hello, world!
+My name's Beej and this is (possibly) my first program!
 ```
 
 You just wrote some instructions and the computer carried it out!
