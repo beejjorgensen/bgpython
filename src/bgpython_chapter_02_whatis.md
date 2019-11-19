@@ -208,10 +208,8 @@ Okay, gang! Let's get it... over with!
 
 * A programmer is a problem solver. They then write programs that
   implement a solution to that problem.
-
 * A program is a series of instructions that can be carried out by a
-    computer to solve the problem.
-
+  computer to solve the problem.
 * The main problem-solving steps are: Understand, Plan, Code,
-    Post-mortem.
+  Post-mortem.
 
