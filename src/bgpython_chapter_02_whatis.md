@@ -4,6 +4,14 @@
 
 # What is Programming, Anyway?
 
+**Objectives:**
+
+* Be able to explain what a programmer does
+* Be able to explain what a program is
+* Be able to summarize the four big steps in solving problems
+
+--------------------------------------------------------------------
+
 Let's say you're entirely new to this stuff. You have a computer, you
 know how to use it, but you don't know how to make it do exactly what
 you want it to.
@@ -195,3 +203,17 @@ it only has to be done once.
 Okay, gang! Let's get it... over with!
 
 ...I really need to work on the end of that inspirational speech.
+
+--------------------------------------------------------------------
+
+**Summary:**
+
+* A programmer is a problem solver. They then write programs that
+  implement a solution to that problem.
+
+* A program is a series of instructions that can be carried out by a
+    computer to solve the problem.
+
+* The main problem-solving steps are: Understand, Plan, Code,
+    Post-mortem.
+
