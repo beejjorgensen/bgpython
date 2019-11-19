@@ -54,18 +54,18 @@ filedata = re.sub(r'\[flrfc\[(.+?)\|(.+?)\]\]', r'[\1](https://tools.ietf.org/ht
 fout = open(outfile, "w")
 in_fence = False
 this_line_fence = False
-untyped_fence = False
+number_lines = False
 
 # Go through a line at a time indenting if we're in unnumbered fenced code
 for line in filedata.splitlines(True):
 	if line.strip()[:3] == '```':
-		untyped_fence = line.strip() == "```"
+		number_lines = line.lower().find("numberlines") != -1
 		this_line_fence = True
 		in_fence = not in_fence
 	else:
 		this_line_fence = False
 
-	if in_fence and not this_line_fence and untyped_fence:
+	if in_fence and not this_line_fence and not number_lines:
 		fout.write("    ")   # indent
 
 	fout.write(line)
