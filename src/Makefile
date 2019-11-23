@@ -44,7 +44,8 @@ PDF_OPTS= \
 	$(COMMON_OPTS)
 
 HTML_OPTS=$(COMMON_OPTS) \
-	--metadata title:$(TITLE)
+	--metadata title:$(TITLE) \
+	--mathjax
 
 ONESIDE=--variable classoption:oneside
 TWOSIDE=--variable classoption:twoside

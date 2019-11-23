@@ -1,5 +1,5 @@
 <!--
-# vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell
 -->
 
 # How do I write a program?
