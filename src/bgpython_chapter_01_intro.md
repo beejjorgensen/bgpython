@@ -12,21 +12,34 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell
 
 # Intro
 
+_**This is an alpha-quality book. There are mistakes, oh yes. When you
+find them, please drop an issue in GitHub, or a pull request, or email
+me at [`beej@beej.us`](mailto:beej@beej.us). When the number of defects
+gets low enough, I'll offer a print version.**_
+
 Hey, everyone! Have you been thinking about learning to program? Have
 you also been thinking of how to do it in the easy-to-approach Python
 programming language?
 
-Yes? Then this is the book for you. W
+Yes? Then this is the book for you. We're going to start with the
+absolute basics and build up from there, building up to being an
+intermediate developer and problem-solver! Python is the language we'll
+be using to make this happen.
+
+But by the end of the book, you will have developed programming
+techniques that _transcend_ languages. After picking up Python, maybe
+try another language like JavaScript, Go, or Rust. They all have their
+own features to explore and learn.
 
 
 ## Audience
 
 Attitude Prerequisite: be inquisitive, curious, have an eye for puzzles
-and problem solving, and don't be daunted by difficult challenges.
+and problem solving, and be willing to take on difficult challenges.
 
 Technical Prerequisite: be a computer user. You know what files are, how
-to move them and delete them, what subdirectories (folders) are, and how
-to type.
+to move them and delete them, what subdirectories (folders) are, can
+install software, and how to type.
 
 Chapters 1-5: complete beginners who know nothing about software
 development. If you already know how to program the basics in Python,
@@ -36,7 +49,9 @@ Chapters 6 and on: intermediate Python programmers will gain more
 expertise in this area.
 
 Are you a seasoned developer looking to start with Python? I'm sorry but
-this is likely going to not be the book you're looking for.
+this is likely going to not be the book you're looking for. It will
+progress too slowly for your tastes. Just jump straight into [fl[the
+official Python documentation|https://docs.python.org/3/]].
 
 ## Platform and Tools
 
