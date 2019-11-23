@@ -6,6 +6,9 @@ performing the following regex substitutions:
 
 [[pagebreak]]
 
+[nobr[s]]   # Substitute spaces with `\ ` to mark as nonbreaking
+            # Doesn't work inside code markdown, alas
+
 [nh[x]] \hyphenation{x}   # no hyphen, no underscores allowed
 [ix[x]] \index{x}         # index straight up
 [ixtt[x]] \index{x@\texttt{x}}         # index tt
@@ -35,6 +38,9 @@ outfile = sys.argv[-1]
 
 filedata = []
 
+def nobr_replace(mo):
+    return re.sub(r'\s', r'\ ', mo.group(1))
+
 for infile in infiles:
     fin = open(infile)
     filedata.append(fin.read())
@@ -42,6 +48,7 @@ for infile in infiles:
 
 filedata = '\n'.join(filedata)
 
+filedata = re.sub(r'\[nobr\[(.+?)\]\]', nobr_replace, filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[\[pagebreak\]\]', r'\\newpage', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[nh\[(.+?)\]\]', r'\\hyphenation{\1}', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[ix\[(.+?)\]\]', r'\\index{\1}', filedata, flags=re.DOTALL)
