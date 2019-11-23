@@ -31,7 +31,7 @@ Let's use our problem-solving framework!
 3. **Code it up**: This is where we execute on our plan. We'll do that
    in the following sections.
 
-4. **Post-mortem**: We'll do this, below, as well. In future chapters,
+4. **Postmortem**: We'll do this, below, as well. In future chapters,
    we'll leave these last two off the number list and just do them in
    subsequent sections.
 
