@@ -82,7 +82,7 @@ This is showing you all the files you have. Namely there are two of
 them: `.` and `..`. These mean "this directory" and "parent directory",
 respectively. (You know how folders can be inside other folders? The
 outer folder is called the "parent" folder, which is what the parent
-dierctory is. If you want to get back to your home directory from here,
+directory is. If you want to get back to your home directory from here,
 you can type `cd ..`.)
 
 > _You should think of the shell as "being" in a certain directory at

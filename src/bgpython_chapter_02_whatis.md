@@ -74,7 +74,7 @@ tools I know?
 There's a [fl[great scene in the movie Apollo
 13|https://www.youtube.com/watch?v=ry55--J4_VQ]] [ix[Apollo 13]] that I
 love. The CO~2~ scrubbers on the command module are spent, and the team
-wants to use the scribbers from the lunar module to replace them. But
+wants to use the scrubbers from the lunar module to replace them. But
 the former are round, and the latter are square and won't fit. Of
 course, the spacecraft has limited resources to repair it---just
 miscellaneous stuff on board that was meant for the mission.
@@ -169,7 +169,7 @@ used within the problem solving framework!
 An example of a real-life problem might be "build a house". But that's
 made up of subproblems, like "build a foundation" and "frame the walls"
 and "add a roof". And those are made up of subproblems, like "grade the
-lot" and "pour concete".
+lot" and "pour concrete".
 
 In programming, we break down problems into smaller and smaller
 subproblems until we know how to solve them with the techniques we know.
@@ -190,7 +190,7 @@ Python is a _programming language_. This means it's vaguely readable by
 humans, and completely readable by a machine. (As long as you don't make
 the tiniest mistake!) This is a good combination, since people are bad
 at reading the actual `1011010100110` code that machines use. We use
-these _higher-level_ langauges to help us get by.
+these _higher-level_ languages to help us get by.
 
 In this case, another piece of software called the Python _interpreter_
 takes the code we write in the Python language and runs it, performing

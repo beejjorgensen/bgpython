@@ -193,7 +193,7 @@ two values from the user on the keyboard and prints the sum of those
 values.
 
 Python comes with a built in _function_ that allows us to get user
-input. It's called, uncoincidentally, `input()`.
+input. It's called, not coincidentally, `input()`.
 
 But wait---what is a function?
 
