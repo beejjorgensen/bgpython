@@ -1,6 +1,8 @@
 # Beej's Guide to Python Programming source markdown
 
 ## TODO
+* backport variable chapter structure to previous chapters
+
 * Variables
 * Data types
 * Conditionals
@@ -22,6 +24,14 @@
 ## Beej' extensions to markdown
 
 These are brought to life with the `bin/preproc` script.
+
+* `[nobr[s]]`
+
+  Don't break text of string `s`. Doesn't work inside code markdown,
+  sadly.
+
+  You can also just escape a space with backslash in markdown for the
+  same effect.
 
 * `[[pagebreak]]`
 
