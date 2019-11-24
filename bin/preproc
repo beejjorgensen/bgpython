@@ -28,6 +28,7 @@ Also puts a blank line between files.
 
 import sys
 import re
+import preproc_config
 
 if len(sys.argv) < 3:
     print("usage: preproc infile [infile ... ] outputfile", file=sys.stdout)
@@ -54,7 +55,7 @@ filedata = re.sub(r'\[nh\[(.+?)\]\]', r'\\hyphenation{\1}', filedata, flags=re.D
 filedata = re.sub(r'\[ix\[(.+?)\]\]', r'\\index{\1}', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[ixtt\[(.+?)\]\]', r'\\index{\1@\\texttt{\1}}', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[fl\[(.+?)\|(.+?)\]\]', r'[\1](\2)^[\2]', filedata, flags=re.DOTALL)
-filedata = re.sub(r'\[flx\[(.+?)\|(.+?)\]\]', r'[\1](https://beej.us/guide/bgnet/examples/\2)^[https://beej.us/guide/bgnet/examples/\2]', filedata, flags=re.DOTALL)
+filedata = re.sub(r'\[flx\[(.+?)\|(.+?)\]\]', r'[\1](' + preproc_config.EXAMPLE_URL + r'\2)^[' + preproc_config.EXAMPLE_URL + r'\2]', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[flr\[(.+?)\|(.+?)\]\]', r'[\1](https://beej.us/guide/url/\2)^[https://beej.us/guide/url/\2]', filedata, flags=re.DOTALL)
 filedata = re.sub(r'\[flrfc\[(.+?)\|(.+?)\]\]', r'[\1](https://tools.ietf.org/html/rfc\2)^[https://tools.ietf.org/html/rfc\2]', filedata, flags=re.DOTALL)
 
