@@ -82,8 +82,8 @@ miscellaneous stuff on board that was meant for the mission.
 On the ground, the team has all those items at hand, and they dump them
 on a table. A staff member holds up a square scrubber and a round
 scrubber and tells everyone, "We gotta find a way to make _this_ fit
-into the hole for _this_," he gestures toward the table, "using nothing
-but _that_."
+into the hole for _this_." He then gestures toward the table, adding,
+"Using nothing but _that_."
 
 And that's what programming is like, except, obviously and fortunately
 no lives are at stake. (Typically.)

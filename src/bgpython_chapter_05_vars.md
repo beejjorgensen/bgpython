@@ -21,7 +21,7 @@ from the keyboard and prints out the sum of the two numbers.**
 
 ## Data, Variables, and Math
 
-Problem solving step: **Understand**
+Problem solving step: **Understand**.
 
 _Data_ is the general term we use to describe information stored in the
 computer. In the case of programming, we're interested in values that we'll do
@@ -183,7 +183,7 @@ And you thought all that algebra wouldn't be useful... _pshaw!_
 
 ## User Input
 
-Problem solving step: **Understand**
+Problem solving step: **Understand**.
 
 We want to get input from the user and store it in a variable so that we
 can do things with it.
@@ -249,7 +249,7 @@ data.
 
 ## Data Types
 
-Problem solving step: **Understand**
+Problem solving step: **Understand**.
 
 We started with numbers, earlier. That was pretty straightforward. The
 variable was assigned a value and then we could do math on it.
@@ -315,13 +315,13 @@ string.
 
 Well, that's just great. The task for this chapter is to get two numbers
 from the keyboard and add them together, but the `input()` function only
-returns strings, and we can't add strings together!
+returns strings, and we can't add strings together numerically!
 
 How can we solve this problem?
 
 ## Converting Between Data Types
 
-Problem solving steps: **Understand**
+Problem solving step: **Understand**.
 
 If we can't add strings mathematically, can we convert the string
 `"3490"` into the integer `3490` and then do math on that?
@@ -360,7 +360,7 @@ problem: input two numbers from the keyboard and print the sum?
 
 ## Input Two Numbers and Print the Sum
 
-Problem solving step: **Make a Plan**
+Problem solving step: **Make a Plan**.
 
 We know:
 
@@ -403,7 +403,7 @@ print the sum of x + y
 If we're satisfied that our plan is solid, it's time to move to the next
 phase.
 
-Problem solving step: **Code It Up**
+Problem solving step: **Code It Up**.
 
 Now let's convert each of those lines to real Python. I'll throw in the
 pseudocode as comments so we can see how they compare. ([flx[Source
@@ -475,7 +475,7 @@ absolutely handle it. It's just a big sandbox for you to play in.
 
 ## Wrapping it Up
 
-Problem solving step: **Postmortem**
+Problem solving step: **Postmortem**.
 
 This grimly-named step is where we take a look at our code and decide if
 there was a better way to attack this problem. It's important to
@@ -503,21 +503,22 @@ What else could we do?
 >
 > _"Practice!"_
 
-You should absolutely do all of these. I know, I know. You get to the
-exercises part of a book and you just skip ahead. I mean, it's not like
-I'm _grading_ you or anything.
+Zeus says, "**This book assumes you complete all of the exercises!**"
+and when Zeus speaks, people really should listen.
+
+I know, I know. You get to the exercises part of a book and you just
+skip ahead. I mean, it's not like I'm _grading_ you or anything.
 
 But there's only one way to get to be a better dev: practice and
 repetition. Going through this book without doing the exercises is like
 training for a marathon by reading about how to run. It's simply not
 going to get you there on its own.
 
-Also, **resist the urge to look at the solution until you've solved
-it!** Give yourself a time limit. "If I haven't solved this in 20
-minutes, I can look at the solution." That 20 minutes isn't
-wasted---it's invaluable problem solving practice time. During that
-time, you're building a scaffold in your brain that can _hold_ the
-solution once you see it.
+**Resist the urge to look at the solution until you've solved it!** Give
+yourself a time limit. "If I haven't solved this in 20 minutes, I can
+look at the solution." That 20 minutes isn't wasted---it's invaluable
+problem solving practice time. During that time, you're building a
+scaffold in your brain that can _hold_ the solution once you see it.
 
 If you just skip straight to the solution, look at it, and say, "Yup,
 makes sense, I got it," you're missing out on all that benefit.
@@ -548,7 +549,7 @@ Here they are:
    formula|https://en.wikipedia.org/wiki/Quadratic_formula]] for those
    values.
 
-   A refresher: for equations of the form
+   A refresher: with equations of the form:
 
    $ax^2+bx+c=0$
 
@@ -556,13 +557,21 @@ Here they are:
 
    $x=\cfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
 
-   This looks terrifying! Can you feel your brain seizing up over it?
-   Deer in the headlights? _That's OK_. This is how developers feel when
-   confronted with a new problem.
+   This all looks terrifying! <!-- Especially if you're reading it in
+   Markdown. That's LaTeX math markup and isn't particularly fit for
+   human consumption. Do yourself a favor and look at the HTML or PDF
+   versions, you masochist. --> Can you feel your brain seizing up over
+   it? Deer in the headlights? _That's OK_. This is how developers feel
+   when confronted with a new problem. Really! All of us! But what we
+   know is that we have a problem solving framework we can use to attack
+   this problem regardless of how difficult it seems initially. 
 
-   Take a deep breath. Remember: Understand, Plan, then Code It Up.
+   Remember: Understand, Plan, then Code It Up.
+
+   Take a deep breath. Shake off the fear!
 
    You can absolutely do this. It's not any harder than anything so far!
+   Let's go!
 
    Your program should plug `a`, `b`, and `c` into the above formula and
    print out the result value in `x`.
