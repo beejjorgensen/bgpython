@@ -26,6 +26,7 @@ pristine: clean
 	$(MAKE) -C src $@
 	$(MAKE) -C examples $@
 	rm -rf $(BUILDDIR)
+	rm -rf bin/__pycache__
 
 .PHONY: clean
 clean:
