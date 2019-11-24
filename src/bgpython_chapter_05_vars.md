@@ -1,5 +1,5 @@
 <!--
-vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 # Data and Processing Data
@@ -53,7 +53,7 @@ mathematical equations. Similar, but different.
 Enter the following code in a new program in your editor, save it, and
 give it a run. (This is just like you did with the program in the
 earlier chapter. You can name this one anything you'd like. If you need
-inspiration, `vartest.py` seems good to me.)
+inspiration, [flx[`vartest.py`|vartest.py]] seems good to me.)
 
 ``` {.py .numberLines}
 x = 34      # Variable x is assigned value 34
@@ -82,20 +82,24 @@ So the output will be:
 90
 ```
 
+You can see how the variable `x` can be used and reused to store
+different values.
+
 > _We're using `x` and `y` for variable names, but they can be made up
 > of any letter or group of letters, or digits, and can also include
-> underscores (`_`). The only rule is they can't start with a digit!
+> underscores (`_`). The only rule is they can't start with a digit!_
 >
-> These are all valid variable names (and, of course, you can make up
-> any name you want!):
+> _These are all valid variable names (and, of course, you can make up
+> any name you want!):_
 >
-> `x`
-> `y`
-> `a1b2`
-> `foo`
-> `Bar`
-> `FOOBAZ12`
-> `Goats_Rock`
+> ``` {.py}
+> y
+> a1b2
+> foo
+> Bar
+> FOOBAZ12
+> Goats_Rock
+> ```
 
 You can also do basic math on numeric variables. Add to the code above:
 
@@ -209,7 +213,7 @@ something in. And it returns whatever the user typed in.
 What do we do with that return value? We can store it in a variable!
 Let's try!
 
-Here's another program, `inputtest.py`:
+Here's another program, [flx[`inputtest.py`|inputtest.py]]:
 
 ``` {.py .numberLines}
 # Take whatever `input()` returns and store it in `value`:
@@ -402,22 +406,23 @@ phase.
 Problem solving step: **Code It Up**
 
 Now let's convert each of those lines to real Python. I'll throw in the
-pseudocode as comments so we can see how they compare.
+pseudocode as comments so we can see how they compare. ([flx[Source
+code link|twosum.py]].)
 
 ``` {.py .numberLines}
-# read string from keyboard into variable x
+# Read string from keyboard into variable x
 x = input("Enter a number: ")
 
-# convert x to int and store it back in x again
+# Convert x to int and store it back in x again
 x = int(x)
 
-# read string from keyboard into variable y
+# Read string from keyboard into variable y
 y = input("Enter another number: ")
 
-# convert y to int and store it back in y again
+# Convert y to int and store it back in y again
 y = int(y)
 
-# print the sum of x + y
+# Print the sum of x + y
 print("The sum of the two numbers is:", x + y)
 ```
 
@@ -494,55 +499,146 @@ What else could we do?
 
 ## Exercises
 
-Some more things to try:
+> _"You know how to get to Carnegie Hall?"_
+>
+> _"Practice!"_
 
-* Have the program print out the sum and the difference between two
-  numbers.
+You should absolutely do all of these. I know, I know. You get to the
+exercises part of a book and you just skip ahead. I mean, it's not like
+I'm _grading_ you or anything.
 
-* Allow the user to enter 3 numbers and perform the math on those.
+But there's only one way to get to be a better dev: practice and
+repetition. Going through this book without doing the exercises is like
+training for a marathon by reading about how to run. It's simply not
+going to get you there on its own.
 
-* Write a program that allows the user to enter a value for $x$, and
-  then computes and prints $x^2$. Remember `**` is the exponentiation
-  operator in Python. `3**2` is `9`.
+Also, **resist the urge to look at the solution until you've solved
+it!** Give yourself a time limit. "If I haven't solved this in 20
+minutes, I can look at the solution." That 20 minutes isn't
+wasted---it's invaluable problem solving practice time. During that
+time, you're building a scaffold in your brain that can _hold_ the
+solution once you see it.
 
-* Write a program that allows the user to enter `a`, `b`, and `c`, and
-  the solves [fl[the quadratic
-  formula|https://en.wikipedia.org/wiki/Quadratic_formula]] for those
-  values.
+If you just skip straight to the solution, look at it, and say, "Yup,
+makes sense, I got it," you're missing out on all that benefit.
 
-  A refresher: for equations of the form
+Don't shortchange yourself! Do the exercises! The more you do, the
+better dev you'll be! I'm getting off my soapbox now!
 
-  $ax^2+bx+c=0$
+Here they are:
 
-  you can solve for $x$ with the quadratic formula:
+1. Make a version of the two number sum code that works with `float`s
+   instead of `int`s. Do the numbers always add correctly, or are they
+   sometimes just a little bit off? Lesson: _floating point math isn't
+   always exact_. Sometimes it's off by a tiny fraction.
+   ([flx[Solution|ex_twosumfloat.py]].)
 
-  $x=\cfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
+2. Have the program print out the sum and the difference between two
+   numbers. ([flx[Solution|ex_twosumdiff.py]].)
 
-  This looks terrifying! But you absolutely can do it! Your program
-  should plug `a`, `b`, and `c` into the above formula and print out the
-  result value in `x`.
+3. Allow the user to enter 3 numbers and perform the math on those.
+   ([flx[Solution|ex_threesumdiff.py]].)
 
-  What about that square root? Here's a demo program for computing the
-  square root of `2`:
+4. Write a program that allows the user to enter a value for $x$, and
+   then computes and prints $x^2$. Remember `**` is the exponentiation
+   operator in Python. `3**2` is `9`. ([flx[Solution|ex_xsquared.py]].)
 
-  ``` {.py .numberLines}
-  import math      # You need this for access to the sqrt() function
+5. Write a program that allows the user to enter `a`, `b`, and `c`, and
+   the solves [fl[the quadratic
+   formula|https://en.wikipedia.org/wiki/Quadratic_formula]] for those
+   values.
 
-  x = math.sqrt(2)
-  print(x)         # 1.4142135623730951
-  ```
+   A refresher: for equations of the form
 
-  Note that there are _two_ solutions to the quadratic formula due to
-  the plus-or-minus. Hint: compute it once with `+`, then again with
-  `-`. Print both answers.
+   $ax^2+bx+c=0$
 
-  * Followup: after computing `x`, go ahead and compute the value of
+   you can solve for $x$ with the quadratic formula:
 
-    $ax^2+bx+c$
+   $x=\cfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
 
-    and print it out. The result should be exactly `0`. Is it? Or is it
-    just something really close to zero? Lesson: _floating point math
-    isn't always exact_. Sometimes it's off by a tiny fraction.
+   This looks terrifying! Can you feel your brain seizing up over it?
+   Deer in the headlights? _That's OK_. This is how developers feel when
+   confronted with a new problem.
+
+   Take a deep breath. Remember: Understand, Plan, then Code It Up.
+
+   You can absolutely do this. It's not any harder than anything so far!
+
+   Your program should plug `a`, `b`, and `c` into the above formula and
+   print out the result value in `x`.
+
+   > Make sure $b^2\ge4ac$ or there won't be a solution and you'll get a
+   > "domain error" when you try to take the square root of a negative
+   > number. Some test values for $a$, $b$, and $c$ that work: `5`, `9`,
+   > `3`, or `20`, `140`, `60`.
+
+   What is that $\pm$ symbol after $-b$ in the equation? That's "plus or
+   minus". It means there are actually two equations, one with $+$ and
+   one with $-$:
+
+   $x_{plus}=\cfrac{-b+\sqrt{b^2-4ac}}{2a}$\ \ \ \ \ \ $x_{minus}=\cfrac{-b-\sqrt{b^2-4ac}}{2a}$
+
+   Solve them both and print out both answers for a given $a$, $b$, and
+   $c$.
+
+   What about that square root of $b^2-4ac$? How do you compute that?
+   Here's a demo program for computing the square root of `2`---use it
+   to learn how to use the `math.sqrt()` function, and then apply it to
+   this problem.
+
+   ``` {.py .numberLines}
+   import math      # You need this for access to the sqrt() function
+
+   x = math.sqrt(2) # Compute sqrt(2)
+   print(x)         # 1.4142135623730951
+   ```
+
+   Code that up and, hey! You've written a program that solves quadratic
+   equations! Take _that_, homework! ([flx[Solution|ex_quadratic.py]].)
+
+6. Followup to the previous question: after computing `x`, go ahead and
+   compute the value of
+
+   $ax^2+bx+c$
+
+   and print it out. (You can use either the plus solution or the minus
+   solution---doesn't matter since they're both solutions.) The result
+   should be exactly `0`. Is it? Or is it just something really close to
+   zero? Lesson: _floating point math isn't always exact_. Sometimes
+   it's off by a tiny fraction.
+
+   Sometimes you might get a number back that looks like this, with a
+   funky `e-16` at the end (or `e-`something):
+
+   `8.881784197001252e-16`
+
+   That's a floating point number, but in [fl[scientific
+   notation|https://en.wikipedia.org/wiki/Scientific_notation]]. That
+   `e-16` is the same as $\times10^{-16}$. So the math equivalent is:
+
+   $8.881784197001252\times10^{-16}$
+
+   Now, $10^{-16}$ is actually a really, really small number. So if you
+   see something like `e-15` or `e-18` at the end of a float, think
+   "that's a really small number, like close to zero."
+
+   ([flx[Solution|ex_quadratic2.py]].)
+
+And don't worry--we'll get away from the math examples soon enough.
+It's just, for now, that's about all we know. More soon!
 
 ## Summary
 
+This chapter we covered:
+
+* Data and variables
+* Storing and printing data in variables
+* Doing basic math
+* Getting keyboard input
+* Data types, and conversions between them
+  * String
+  * Integer
+  * Floating Point
+* Keeping the problem solving framework in mind the whole time!
+
+It's a great start, but there's plenty more to come!
