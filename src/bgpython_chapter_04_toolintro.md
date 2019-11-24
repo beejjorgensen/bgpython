@@ -1,5 +1,5 @@
 <!--
-vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 # How do I write a program?
@@ -91,7 +91,7 @@ you can type `cd ..`.)
 > It's like the folder you have open that has focus in a GUI._
 
 (The remaining information on each line tells you the permissions on the
-file, who owns it, how big it is, when it was modified, and so on.  We
+file, who owns it, how big it is, when it was modified, and so on. We
 can worry about that later.)
 
 Other than those there are no other files. We'll soon fix that! Let's
@@ -124,8 +124,8 @@ faced with a largely-blank window and a cursor.
 
 This is your canvas! This is where the magic happens!
 
-Type the following into your editor (the line numbers, below, are for
-reference only and shouldn't be typed in):
+Type [flx[the following|hello.py]] into your editor (the line numbers,
+below, are for reference only and shouldn't be typed in):
 
 ``` {.py .numberLines}
 print("Hello, world!")

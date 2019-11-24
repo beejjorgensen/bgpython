@@ -1,7 +1,7 @@
 <!-- 
 Beej's Guide to Python book source
 
-vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 <!--
@@ -195,7 +195,7 @@ Community.
 
 This book is written in Markdown using the vim editor on an Arch Linux
 box loaded with GNU tools. The cover "art" and diagrams are produced
-with Inkscape.  The Markdown is converted to HTML and LaTex/PDF by
+with Inkscape. The Markdown is converted to HTML and LaTex/PDF by
 Python, Pandoc and XeLaTeX, using Liberation fonts. The toolchain is
 composed of 100% Free and Open Source Software.
 

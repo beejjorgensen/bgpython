@@ -1,5 +1,5 @@
 <!--
-vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 # What is Programming, Anyway?
@@ -154,7 +154,7 @@ Here's an example of a standard problem-solving framework:
    didn't understand, or something the plan didn't account for. Drop
    back a step or two until it's resolved, then come back here.
 
-4. **Post-mortem**. Look back on the code you got working, and consider
+4. **Postmortem**. Look back on the code you got working, and consider
    what went right and what went wrong. What would you do differently
    next time? What techniques did you learn while writing the code? Was
    there any place you could have structured things better, or anyplace
@@ -211,5 +211,5 @@ Okay, gang! Let's get it... over with!
 * A program is a series of instructions that can be carried out by a
   computer to solve the problem.
 * The main problem-solving steps are: Understand, Plan, Code,
-  Post-mortem.
+  Postmortem.
 

@@ -1,5 +1,5 @@
 <!--
-vim: ts=4:sw=4:nosi:et:tw=72:spell
+vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 # What software will I need?
@@ -21,7 +21,7 @@ instructions (code) that the computer will run.
 
 The other is the _terminal_. This is a window that allows you to type
 computer commands in a program called a _shell_. The shell executes the
-commands you type on the _command line_ (i.e. where the cursor is).  The
+commands you type on the _command line_ (i.e. where the cursor is). The
 commands aren't Python, but are shell-specific commands.
 
 Developers use these tools to write code. A typical cycle is:
