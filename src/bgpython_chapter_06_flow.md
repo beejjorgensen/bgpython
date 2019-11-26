@@ -199,11 +199,11 @@ Answers:
 
 Sometimes developers (but more usually hardware folks) describe these
 operations in what are called _truth tables_. A truth table shows what
-the output of a Boolean expression will be for some given inputs.
+the result of a Boolean expression will be for some given inputs.
 
-Often these inputs and outputs use `1` to represent `True` and `0` to
-represent `False`^[Ooooo! `1`s and `0`s! Binary! For just a moment,
-here, we're getting a glimpse of the deep workings of the machine.].
+Often these tables use `1` to represent `True` and `0` to represent
+`False`^[Ooooo! `1`s and `0`s! Binary! For just a moment, here, we're
+getting a glimpse of the deep workings of the machine.].
 
 Here are some truth tables for the operations we've seen so far.
 
