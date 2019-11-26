@@ -197,6 +197,35 @@ Answers:
 * True AND False OR False = False OR False = False
 * True AND (False OR False) = True AND False = False
 
+Sometimes developers (but more usually hardware folks) describe these
+operations in what are called _truth tables_. A truth table shows what
+the output of a Boolean expression will be for some given inputs.
+
+Often these inputs and outputs use `1` to represent `True` and `0` to
+represent `False`^[Ooooo! `1`s and `0`s! Binary! For just a moment,
+here, we're getting a glimpse of the deep workings of the machine.].
+
+Here are some truth tables for the operations we've seen so far.
+
+|A|B|A AND B|
+|:-:|:-:|:-:|
+|`0`|`0`|`0`|
+|`0`|`1`|`0`|
+|`1`|`0`|`0`|
+|`1`|`1`|`1`|
+
+|A|B|A OR B|
+|:-:|:-:|:-:|
+|`0`|`0`|`0`|
+|`0`|`1`|`1`|
+|`1`|`0`|`1`|
+|`1`|`1`|`1`|
+
+|A|NOT A|
+|:-:|:-:|
+|`0`|`1`|
+|`1`|`0`|
+
 Now we're about ready to go. Let's learn how to do this in Python.
 
 ## Boolean Operations in Python
@@ -541,9 +570,11 @@ individually.
 By _breaking down the problem_, we make it more approachable. We can
 even break down step 1 into more:
 
-* While user input isn't valid:
-  * Ask user for input
-  * If input invalid, print an error message
+```
+While user input isn't valid:
+    Ask user for input
+    If input invalid, print an error message
+```
 
 Don't look now, but our "plan" is looking like really good pseudocode
 at this point.
@@ -581,17 +612,15 @@ How? We can do it in two lines.
 If the `if` condition is `True`, then we have good input. Otherwise we
 have bad input and should print a message... `if`... `else`! 
 
-``` {.py .numberLines}
-input_valid = False  # Assume it's invalid to start
+(_Note: the code below is a continuation of the program, above. Pay
+attention to the line numbers!_)
 
-while not input_valid:   # While input invalid
-    x = input("Enter a number, 5-50 inclusive: ")
-    x = int(x)
-
+``` {.py .numberLines startFrom="7"}
     if x >= 5 and x <= 50:
         input_valid = True   # We got a good number!
     else:
         print("The number must be between 5 and 50, inclusive!")
+ 
 ```
 
 If you haven't already, code that up and run it. No, it's not the
@@ -623,8 +652,10 @@ however many the user specified. Later we'll add the code for `*`.
 
 The plan for this simplified phase isn't that tough:
 
-* For however many numbers the user inputs:
-  * Print a `#`.
+```
+For however many numbers the user inputs:
+   Print a `#`.
+```
 
 Problem solving step: **Code It Up**.
 
@@ -632,18 +663,7 @@ Since we know how many `#`s we want to print (the user entered the
 number!) this would be a great place for a `for` loop. Let's print
 those:
 
-``` {.py .numberLines}
-input_valid = False  # Assume it's invalid to start
-
-while not input_valid:   # While input invalid
-    x = input("Enter a number, 5-50 inclusive: ")
-    x = int(x)
-
-    if x >= 5 and x <= 50:
-        input_valid = True   # We got a good number!
-    else:
-        print("The number must be between 5 and 50, inclusive!")
-
+``` {.py .numberLines startFrom="12"}
 # Print the line
 for i in range(x):
     print("#")
@@ -656,18 +676,7 @@ function puts a _newline_ at the end of the line. We need to override
 that behavior, and there's an easy way to do it.
 
 
-``` {.py .numberLines}
-input_valid = False  # Assume it's invalid to start
-
-while not input_valid:   # While input invalid
-    x = input("Enter a number, 5-50 inclusive: ")
-    x = int(x)
-
-    if x >= 5 and x <= 50:
-        input_valid = True   # We got a good number!
-    else:
-        print("The number must be between 5 and 50, inclusive!")
-
+``` {.py .numberLines startFrom="12"}
 # Print the line
 for i in range(x):
     print("#", end="")  # Set the end-of-line character to nothing
@@ -692,11 +701,13 @@ This is like the plan for printing the line from before, but we
 simplified that, remember? So we have to add some complexity in to mett
 the spec.
 
-* For however many numbers the user inputs:
-  * If we're at the 30th character or earlier:
-    * Print a `#`.
-  * Otherwise:
-    * Print a `*`.
+```
+For however many numbers the user inputs:
+    If we're at the 30th character or earlier:
+        Print a `#`.
+    Otherwise:
+        Print a `*`.
+```
 
 And that's looking like a good case for `if` _inside_ our `for` loop!
 
@@ -704,18 +715,7 @@ Problem solving step: **Code It Up**.
 
 Let's add that `if` logic to the `for` loop at the end:
 
-``` {.py .numberLines}
-input_valid = False  # Assume it's invalid to start
-
-while not input_valid:   # While input invalid
-    x = input("Enter a number, 5-50 inclusive: ")
-    x = int(x)
-
-    if x >= 5 and x <= 50:
-        input_valid = True   # We got a good number!
-    else:
-        print("The number must be between 5 and 50, inclusive!")
-
+``` {.py .numberLines startFrom="12"}
 # Print the line
 for i in range(x):
     if i < 30:
@@ -758,5 +758,60 @@ all devs use to great effect.
 And, while you're at it, test a bunch of other numbers to make sure it
 behaves like you'd expect.
 
+**Bonus Question:** Can you think of another way to draw the line of
+characters without using an `if` inside the loop? (There's a hint at
+this footnote^[Have two loops!].) _Coding is creative!_ There's more
+than one way to do these things. Try them and see which you like better.
+
 
 ## Exercises
+
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+1. Print out the sum of the numbers from `1` to (and including) `10000`.
+
+2. Print out values for `x` and `x**4` for all `x` between 0 and 99,
+   inclusive.
+
+3. Ask the user to input a number, or the word `quit`. If the user
+   enters a number, print out that number times 10. If the user enters
+   `quit`, the program should complete.
+
+4. Prompt the user for two numbers. Print out all the odd numbers
+   between and including those two numbers.
+
+5. Print out the numbers from `1` to `100`. Except if the number is
+   divisible by `3`^[A number `x` is divisible by `3` if `x % 3 == 0`.],
+   print `Fizz` instead. If the number is divisible by `5`, print `Buzz`
+   instead. And if the number is divisible by 3 and divisible by 5,
+   print `FizzBuzz`^[This is a famous interview problem for junior
+   devs.]. There are a lot of ways to solve this one.
+
+6. Make up two more exercises and code them up.
+
+
+## Summary
+
+We covered all kinds of super-important things this chapter.
+
+* Flow Control
+* Boolean algebra, conditional expressions, `True`, `False`
+* `if`-`else`
+* `while` loops and `for` loops
+* A bit about testing edge cases
+
+Guess what! You now know enough Python syntax to solve any computing
+problem! [fl[I'm not
+kidding|https://en.wikipedia.org/wiki/Turing_completeness]]!
+
+See, it's not knowing all the syntax that's important; it's the ability
+to figure out how to put it all together in the right way.
+
+That said, we haven't learned enough Python syntax to necessarily make
+solving every computing problem _easy_. In the upcoming chapters, we'll
+learn more tools that Python gives you to increase the size of your
+problem-solving toolkit.
+
+
