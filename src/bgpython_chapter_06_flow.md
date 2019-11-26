@@ -235,7 +235,7 @@ Problem solving step: **Understand**.
 The comparison operators in Python are:
 
 |Operator|Effect|
-|:-:|:-:|
+|:-:|:-|
 |`<`|Less than, e.g. `x < y`|
 |`>`|Greater than, e.g. `x > y`|
 |`==`|Equal to, e.g. `x == y`|
