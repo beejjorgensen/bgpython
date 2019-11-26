@@ -771,16 +771,19 @@ exercises.** After 20 minutes of being stuck on a problem, you're
 allowed to look at the solution.
 
 1. Print out the sum of the numbers from `1` to (and including) `10000`.
+   ([flx[Solution|ex_10ksum.py]].)
 
 2. Print out values for `x` and `x**4` for all `x` between 0 and 99,
-   inclusive.
+   inclusive. ([flx[Solution|ex_xfourth.py]].)
 
 3. Ask the user to input a number, or the word `quit`. If the user
    enters a number, print out that number times 10. If the user enters
    `quit`, the program should complete.
+   ([flx[Solution|ex_ntimes10.py]].)
 
 4. Prompt the user for two numbers. Print out all the odd numbers
    between and including those two numbers.
+   ([flx[Solution|ex_oddsbetween.py]].)
 
 5. Print out the numbers from `1` to `100`. Except if the number is
    divisible by `3`^[A number `x` is divisible by `3` if `x % 3 == 0`.],
@@ -788,6 +791,7 @@ allowed to look at the solution.
    instead. And if the number is divisible by 3 and divisible by 5,
    print `FizzBuzz`^[This is a famous interview problem for junior
    devs.]. There are a lot of ways to solve this one.
+   ([flx[Solution|ex_fizzbuzz.py]].)
 
 6. Make up two more exercises and code them up.
 
