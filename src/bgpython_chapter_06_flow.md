@@ -740,3 +740,23 @@ There's something here to note that's subtle and important:
   `i <= 29`.] and not `i < 31`.
 
 But there we have it!
+
+Be sure to test with the _edge cases_. These are inputs that are at the
+edges of conditions in your program.
+
+For example, we have conditions testing input against 5 and 50. So test
+with `4`, `5`, `50`, and `51`, both sides of those conditions.
+
+Where else do we have an edge case in the code? That right: the `if`
+when printing. The first 30 are supposed to be `#` with `*` after that.
+So test with `30` and make sure it's all `#`s, and then test with `31`
+and make sure there's a single `*`.
+
+_Testing the edge cases_ is an all-powerful programming technique that
+all devs use to great effect.
+
+And, while you're at it, test a bunch of other numbers to make sure it
+behaves like you'd expect.
+
+
+## Exercises
