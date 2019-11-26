@@ -13,7 +13,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Implement code that loops with a `while` loop
 * Implement code that loops with a `for` loop and `range` iterator
 
-## Chapter Project
+## Chapter Project Specification {#loop-proc-spec}
 
 For this chapter, we want to write a program that asks the user for a
 number between 5 and 50, inclusive. 
@@ -21,21 +21,21 @@ number between 5 and 50, inclusive.
 If a number outside that range is entered, an error message is printed
 and the user is asked again to enter a valid number.
 
-Once the number is obtained, the program will print out that many `*`
+Once the number is obtained, the program will print out that many `#`
 characters in a row. EXCEPT all characters at position 31 and above
-should print out an `x`. (Characters before that position will still be
-an `x`.)
+should print out a `*`. (Characters before that position will still be
+a `#`.)
 
 For example, an input of 10 would result in:
 
 ```
-**********
+##########
 ```
 
 whereas an input of 37 would result in:
 
 ```
-******************************xxxxxxx
+##############################*******
 ```
 
 Keep this program in mind as we learn the techniques to implement it.
@@ -82,6 +82,8 @@ But before that, we have to meet someone: George Boole.
 
 
 ## Boolean Algebra and Expressions
+
+Problem solving step: **Understand**.
 
 [fl[George Boole|https://en.wikipedia.org/wiki/George_Boole]] was quite
 and interesting character. From humble beginnings in the early 1800s, he
@@ -199,6 +201,8 @@ Now we're about ready to go. Let's learn how to do this in Python.
 
 ## Boolean Operations in Python
 
+Problem solving step: **Understand**.
+
 The comparison operators in Python are:
 
 |Operator|Effect|
@@ -268,6 +272,8 @@ Seems mundane, but we'll make good use of it in a minute.
 
 ## The Almighty `if` Statement
 
+Problem solving step: **Understand**.
+
 It's all well and good for Python to tell me that `1 < 5` is `True`, but
 how can we actually use that to make choices in a program?
 
@@ -320,4 +326,417 @@ If the condition is `False`, then the block under the `else` is
 evaluated instead. Basically we're saying, "If the condition is true,
 then do this, otherwise do this."
 
+There's one more construct we can use in the `if`-`else` family: `elif`.
+This is short for `else if` and is used if you need to check multiple
+conditions.
 
+``` {.py .numberLines}
+if x < 10:
+    print("x is less than 10")
+elif x < 20:
+    print("x is less than 20")
+elif x < 30:
+    print("x is less than 30")
+else:
+    print("x is greater than or equal to 30")
+```
+
+In that example, first we check if `x` is less than 10. If that's
+`False`, the next condition is tested, and so on. If none of them match,
+then we get to the `else` case.
+
+The `if` statement is the core of what allows us to use Boolean logic to
+control the flow of our program. It's how computers can make decisions
+based on input. Without `if`, there would be no computing--that's how
+important it is!
+
+And your job as a dev is to come up with that logic, those `if`
+statements and conditions, that cause your program to give the proper
+output for a given input.
+
+
+## And Now: `while` Loops!
+
+Problem solving step: **Understand**.
+
+We're going to divert ever-so-slightly, and talk about another important
+concept in programming: _loops_. A loop is what allows us to execute the
+same piece of code repeatedly without repeating ourselves.
+
+Here's a real-life example. Let's say you have to add some shingles to a
+roof. The steps to do so are to place a shingle, nail it in place, and
+then move to the next spot.
+
+Instructions for four shingles might be:
+
+* Place a shingle
+* Nail it on
+* Move to the next spot
+* Place a shingle
+* Nail it on
+* Move to the next spot
+* Place a shingle
+* Nail it on
+* Move to the next spot
+* Place a shingle
+* Nail it on
+* Move to the next spot
+
+But that's irksomely verbose. It would be nicer to do something like
+this:
+
+* While we haven't yet placed 4 shingles:
+  * Place a shingle
+  * Nail it on
+  * Move to the next spot
+
+That's us _looping_. We're running the same piece of code while a
+condition is `True`. At the very least, this can save us a lot of
+typing!
+
+Python has a number of looping statements, but for this section, we'll
+concentrate on what's called the `while`-loop. It does something while a
+condition is true.
+
+[flx[Here's an example|while.py]] that counts from 1200 to 1210:
+
+``` {.py .numberLines}
+x = 1200
+
+while x <= 1210:
+    print(x)
+    x += 1
+
+print("All done!")
+```
+
+It repeats the body of the loop (everything that's indented) as long as
+the condition `x <= 1210` is `True`.
+
+You see inside the body of the loop, we _increment_ (add one to) `x`
+every iteration so that it increases toward `1210`.
+
+What would happen if we didn't increment `x`? In that case, it would
+loop forever. We call this an _infinite loop_. If your program's running
+for a long time with no output (or repeating output), it might be in an
+infinite loop.
+
+How do you get out of your program if it's caught in an infinite loop?
+You hit `CTRL-C` (AKA "break"). That'll get you back to your shell
+prompt.
+
+Remember one of our goals for this chapter's program is to ask the user
+for a number between 5 and 50. And we need to ask them again if they
+enter a number outside that range. That is, we need to loop while the
+user has not given us valid input. Give that some thought now, and we'll
+come back to it later.
+
+
+## Looping: `for` Loops
+
+Problem solving step: **Understand**.
+
+In addition to `while` loops, we also have a beast called a `for` loop.
+These are actually quite powerful as we'll find out later, but for now I
+just want to talk about looping for a certain number of times. (As
+opposed to looping while a condition is true.)
+
+Here's an example of printing out the numbers from `0` to `9` using a
+`for` loop and a function called `range()`. (`range()` returns something
+called an _iterator_. More on iterators in upcoming chapters---for now,
+just look at how they can be used with `for` loops.)
+
+``` {.py}
+for i in range(10):  # loop from 0 to 9
+    print(i)
+```
+
+Notice a few things:
+
+* `i` is the classic variable name for a looping _index_.
+* If you have a _nested loop_ (a loop inside a loop---more on that
+  later) you can use `j`, then `k`, etc.
+* We loop until we get to one before the argument to `range()`. Up to
+  but not including.
+
+But wait, there's more! `range()` is multi-talented! Not only can it
+count up from zero to almost-a-number, but you could give it another
+starting point, as well:
+
+``` {.py}
+for i in range(5, 10):  # loop from 5 to 9
+    print(i)
+```
+
+_Now_ how much would you pay? It slices, it dices! But we're not done
+yet! You can also tell `range()` how far to skip each step!
+
+Let's print out only the even numbers between 4 and 18 (that is, print
+from 4 to 18, stepping by 2 each time):
+
+``` {.py}
+for i in range(4, 20, 2):  # loop from 5 to 9, skipping by 2 each time
+    print(i)
+```
+
+Question: let's say I wanted to count down from 10 to 1 using `range()`.
+How would I do that?
+
+``` {.py}
+for i in range(???, ???, ???):
+    print(i)
+```
+
+What do you think? Spoilers upcoming!
+
+You can give `range()` a negative "step" to make it walk backward:
+
+``` {.py}
+for i in range(10, 0, -1): # Step backward from 10 to 1
+    print(i)
+```
+
+Like before, the final value isn't included in the results.
+
+> _Python2 had an additional function called `xrange()`. Python3 doesn't
+> have that. If you're ever reading old Python2 code and see `xrange()`,
+> know that it's the same as `range()` in Python3._
+
+Now, `for` does a lot more than just looping for a range, but that's a
+story for another time.
+
+
+## When `while` and When `for`?
+
+Problem solving step: **Understand**.
+
+Which of these looping constructs should you use, and when?
+
+Generally speaking, whichever one is the easiest for the problem. Or
+makes the easiest-to-read code.
+
+Okay, I know that's not much to go on.
+
+If you want to loop a number of times that you know in advance, like 10
+times, or the number stored in `x` times, then use a `for` loop with
+`range()`.
+
+If you just want to loop until some condition is `True` or `False`, but
+you don't know when that'll be, use a `while` loop.
+
+
+## Chapter Project
+
+Let's jump into that project from the beginning of the chapter. [Revisit
+the project spec](#loop-proj-spec) if you need a refresher.
+
+Problem solving step: **Make a Plan**.
+
+Let's break this program into to two parts, and tackle them
+individually.
+
+1. We want to get some valid user input in the range 5-50, inclusive.
+2. We want to print out some `#` and `x`s based on the input.
+
+By _breaking down the problem_, we make it more approachable. We can
+even break down step 1 into more:
+
+* While user input isn't valid:
+  * Ask user for input
+  * If input invalid, print an error message
+
+Don't look now, but our "plan" is looking like really good pseudocode
+at this point.
+
+Let's go ahead and code up the user input portion. We'll do printing
+asterisks later.
+
+Problem solving step: **Code It Up**.
+
+Asking the user for input, we already know.
+
+But how do we ask them repeatedly until they enter something valid? We
+need to loop! How about looping while the input is invalid? Sure!
+
+``` {.py .numberLines}
+input_valid = False  # Assume it's invalid to start
+
+while not input_valid:   # While not input valid ("while input invalid")
+    x = input("Enter a number, 5-50 inclusive: ")
+    x = int(x)
+
+    if x >= 5 and x <= 50:
+        input_valid = True   # We got a good number!
+```
+
+Let's study that pattern, because it's a common use of `while`.
+
+We start by assuming that the success condition _isn't_ met. And then we
+check every iteration of the loop, with `if`, to see if it is met. And
+we loop while the success condition is `not` true.
+
+Now, we're also supposed to print an error if the input is out of range.
+How? We can do it in two lines.
+
+If the `if` condition is `True`, then we have good input. Otherwise we
+have bad input and should print a message... `if`... `else`! 
+
+``` {.py .numberLines}
+input_valid = False  # Assume it's invalid to start
+
+while not input_valid:   # While input invalid
+    x = input("Enter a number, 5-50 inclusive: ")
+    x = int(x)
+
+    if x >= 5 and x <= 50:
+        input_valid = True   # We got a good number!
+    else:
+        print("The number must be between 5 and 50, inclusive!")
+```
+
+If you haven't already, code that up and run it. No, it's not the
+complete progrm, but it's the complete first step of the program, and we
+can test it before moving on just to be confident that this part works.
+
+Run it and try it with some numbers. If you enter an invalid number, it
+should tell you so and ask again. If you enter a valid number,
+`input_valid` becomes `True` and the `while` loop exits (because the
+continuation condition is `not input_valid`).
+
+Once you're satified it's working correctly, let's move back to the
+spec and concentrate on printing out the asterisks.
+
+Problem solving step: **Make a Plan**.
+
+If the user enters `x`, we want to print out `x` count of charcters,
+total. The first 30 of these will be `#`, and any after that will be
+`*`.
+
+Before we start things out, let's use a different planning technique:
+_simplify the problem_.
+
+Let's forget about the `*` for now and just print out `#` characters,
+however many the user specified. Later we'll add the code for `*`.
+
+> _Simplifying the problem allows you to more easily tackle it, and
+> leads you to see ways to add the missing features later._
+
+The plan for this simplified phase isn't that tough:
+
+* For however many numbers the user inputs:
+  * Print a `#`.
+
+Problem solving step: **Code It Up**.
+
+Since we know how many `#`s we want to print (the user entered the
+number!) this would be a great place for a `for` loop. Let's print
+those:
+
+``` {.py .numberLines}
+input_valid = False  # Assume it's invalid to start
+
+while not input_valid:   # While input invalid
+    x = input("Enter a number, 5-50 inclusive: ")
+    x = int(x)
+
+    if x >= 5 and x <= 50:
+        input_valid = True   # We got a good number!
+    else:
+        print("The number must be between 5 and 50, inclusive!")
+
+# Print the line
+for i in range(x):
+    print("#")
+```
+
+Run it! How did it do?
+
+Hmmm. Looks like it's printing a hash on each line. The `print()`
+function puts a _newline_ at the end of the line. We need to override
+that behavior, and there's an easy way to do it.
+
+
+``` {.py .numberLines}
+input_valid = False  # Assume it's invalid to start
+
+while not input_valid:   # While input invalid
+    x = input("Enter a number, 5-50 inclusive: ")
+    x = int(x)
+
+    if x >= 5 and x <= 50:
+        input_valid = True   # We got a good number!
+    else:
+        print("The number must be between 5 and 50, inclusive!")
+
+# Print the line
+for i in range(x):
+    print("#", end="")  # Set the end-of-line character to nothing
+
+print()  # Add a newline to the end of the line
+```
+
+We did a bit of magic there. We passed another argument to `print()`
+that told it we wanted it to put nothing (an empty string, `""`) at the
+end of the line instead of the newline character it noramlly tacks on.
+
+You could go crazy and say `end="Beej"` and it would put the word "Beej"
+after every hashmark. Do it. Go crazy.
+
+Getting there! But we're not out of the woods yet. We need to make it so
+that for character more than 30 characters out, we print a `*` instead
+of a `#`.
+
+Problem solving step: **Make a Plan**.
+
+This is like the plan for printing the line from before, but we
+simplified that, remember? So we have to add some complexity in to mett
+the spec.
+
+* For however many numbers the user inputs:
+  * If we're at the 30th character or earlier:
+    * Print a `#`.
+  * Otherwise:
+    * Print a `*`.
+
+And that's looking like a good case for `if` _inside_ our `for` loop!
+
+Problem solving step: **Code It Up**.
+
+Let's add that `if` logic to the `for` loop at the end:
+
+``` {.py .numberLines}
+input_valid = False  # Assume it's invalid to start
+
+while not input_valid:   # While input invalid
+    x = input("Enter a number, 5-50 inclusive: ")
+    x = int(x)
+
+    if x >= 5 and x <= 50:
+        input_valid = True   # We got a good number!
+    else:
+        print("The number must be between 5 and 50, inclusive!")
+
+# Print the line
+for i in range(x):
+    if i < 30:
+        print("#", end="")  # Set the end-of-line character to nothing
+    else:
+        print("*", end="")
+
+print()  # Add a newline to the end of the line
+```
+
+There's something here to note that's subtle and important:
+
+* If the user enters `40`, the value of `i` runs from `0` to `39`,
+  because the body of the `for` loop does not execute when `i` reaches
+  its maximum value.
+* But `0` to `39` is still 40 iterations, right? Just like 0,1,2,3 is a
+  total of 4 iterations. So we're still getting all 40 characters even
+  though the counter is running from `0` to `39`.
+* However, since the counter is running from `0`, that means the
+  highest character that will be a `#` occurs when `i` is `29`, not when
+  `i` is `30`. This is why we test `i < 30`^[We could have also tested
+  `i <= 29`.] and not `i < 31`.
+
+But there we have it!
