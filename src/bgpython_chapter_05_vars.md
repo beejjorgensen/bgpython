@@ -181,6 +181,51 @@ apply|https://en.wikipedia.org/wiki/Order_of_operations]].
 
 And you thought all that algebra wouldn't be useful... _pshaw!_
 
+There's a common pattern in programming where you want to, say, add 5 to
+a variable. Whatever value it has now, we want to make it 5 more than
+that.
+
+We can do this like so:
+
+``` {.py}
+x = 10
+
+x = x + 5   # x = 10 + 5 = 15
+```
+
+This pattern is so common, there's a piece of shorthand^[We call
+shorthand like this _syntactic sugar_ because it makes things that much
+sweeter for the developers.] that we can use instead.
+
+These two lines are identical:
+
+``` {.py}
+x = x + 10
+x += 10
+```
+
+As are these:
+
+``` {.py}
+x = x / 5
+x /= 10
+```
+
+Here are few of the arithmetic assignment expressions available in
+Python:
+
+|Operator|Meaning|Usage|Longhand Equivalent|
+|:-:|:-|:-|
+|`+=`|Add and assign|`x += y`|`x = x + y`|
+|`-=`|Subtract and assign|`x -= y`|`x = x - y`|
+|`*=`|Multiply and assign|`x *= y`|`x = x * y`|
+|`/=`|Divide and assign|`x /= y`|`x = x / y`|
+|`%=`|Modulo and assign|`x %= y`|`x = x % y`|
+
+These are very frequently used by devs. If you have `x = x + 2`, use `x
++= 2`, intead!
+
+
 ## User Input
 
 Problem solving step: **Understand**.
