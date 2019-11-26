@@ -678,6 +678,8 @@ Here they are:
 
    ([flx[Solution|ex_quadratic2.py]].)
 
+7. Make up two more exercises and code them up.
+
 And don't worry--we'll get away from the math examples soon enough.
 It's just, for now, that's about all we know. More soon!
 
