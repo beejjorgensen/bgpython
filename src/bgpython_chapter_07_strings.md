@@ -222,9 +222,9 @@ _immutable_, it means you cannot.
 We've seen numbers are mutable:
 
 ``` {.py}
-a = 3490
-a += 1000
-print(a)  # we changed `a` to 4490, `a` is mutable
+x = 3490
+x += 1000
+print(x)  # we changed `x` to 4490, `x` is mutable
 ```
 
 but, get this: _strings are immutable_. You cannot change them. The only
