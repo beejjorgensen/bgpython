@@ -13,7 +13,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Implement code that loops with a `while` loop
 * Implement code that loops with a `for` loop and `range` iterator
 
-## Chapter Project Specification {#loop-proc-spec}
+## Chapter Project Specification {#loop-proj-spec}
 
 For this chapter, we want to write a program that asks the user for a
 number between 5 and 50, inclusive. 

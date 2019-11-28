@@ -7,9 +7,15 @@
 * Data types
 * Conditionals
 * Looping
-* Functions
 * More data types
+  * Strings
+  * Lists
+  * Dicts
+  * Sets
+  * Tuples
+* Functions
 * List Comprehensions
+* Try/except
 * OOP
 * Modules
 * Closures
