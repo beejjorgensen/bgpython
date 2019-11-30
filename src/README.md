@@ -3,12 +3,13 @@
 ## TODO
 * backport variable chapter structure to previous chapters
 
-* Variables
-* Data types
-* Conditionals
-* Looping
+* How to Google
+- Variables
+- Data types
+- Conditionals
+- Looping
 * More data types
-  * Strings
+  - Strings
   * Lists
   * Dicts
   * Sets
@@ -17,6 +18,7 @@
 * List Comprehensions
 * Try/except
 * OOP
+* Number Bases
 * Modules
 * Closures
 * Generators
