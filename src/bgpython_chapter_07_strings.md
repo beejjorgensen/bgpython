@@ -1002,15 +1002,52 @@ you have to solve these, not only what you learned in this chapter.
    s = "The quick brown fox jumps over the lazy dogs."
    ```
 
+   Hint: _think like a human_. If you had a physical set of blocks with
+   letters on them in front of you, what would be the process and steps
+   for building a new string with the required changes?
+
    ([flx[Solution|ex_uppervowel.py]].)
 
 4. Allow the user to input a string, and also a number. Print out the
-   character at that index number in the string.
+   character at that index number in the string. Don't allow the user to
+   enter a number that's out of range.
+
+   (After you solve this, check out the [flx[solution|ex_charat.py]] for
+   a twist on checking for valid input.)
 
 5. Allow the user to input a string, and also two numbers. Print out the
-   slice from those index number in the string.
+   slice from those index number in the string. Don't allow the user to
+   enter numbers that are out of range.
+
+   (In the [flx[solution|ex_sliceat.py]], there's duplicated code to
+   enter two numbers. Later, when we get to _functions_, we'll learn how
+   to remove this duplicated code.)
 
 6. Make up two more exercises and code them up.
 
 
 ## Summary
+
+* Get a firm grip on what a string is
+* Convert from other types to strings
+* Concatenate strings
+* Understand that strings are immutable
+* Get individual characters with strings
+* Slice a string
+* for loop through a string
+* Use basic string manipulation methods and functions
+* Print strings using formatted output
+
+In this chapter we did _all kinds_ of crazy things with strings.
+
+* Conversions from other types
+* How to concatenate strings with `+`
+* How to get characters and slices out of a string
+* How `for` loops process strings
+* Learned a bunch of string methods and functions
+* Formatted output with F-strings
+
+Coming up, we're going to learn even more built-in data types that we
+can use. After that, we'll talk about functions, and then you'll be
+dangerously close to being able to write _real programs_!
+
