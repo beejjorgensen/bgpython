@@ -541,18 +541,47 @@ have this different notation.
 
 Here are some common string methods:
 
-|Method|Example|Description|
-|:--------------|:-----------------------------------|:----------------------------------------------|
-|`.split()`     |`s.split(",")`                | Split a string into a `list`^[More on lists in upcoming chapters.] on the given string.
-|`.strip()`     |`s.strip()`                   | Strip whitespace^[Spaces, tabs, and newlines.] from both ends of the string.
-|`.upper()`     |`s.upper()`                   | Convert string to all uppercase.
-|`.lower()`     |`s.lower()`                   | Convert string to all lowercase.
-|`.replace()`   |`s.replace("sheep", "goats")` | Replace all occurrences of `sheep` with `goats` in the string.
-|`.find()`      |`s.find("goats")`             | Find the index of the substring in the string, or `-1` if it's not found.
-|`.count()`     |`s.count("goats")`            | Count the number of occurrences of the substring.
-|`.startswith()`|`s.startswith("Goats")`       | Return `True` if the string starts with the given string.
-|`.endswith()`  |`s.endswith("goats!")`        | Return `True` if the string ends with the given string.
-|`.capitalize()`|`s.capitalize()`              | Capitalize the first letter of each word in the string.
+|Method|Description|
+|:--------------|:----------------------------------------|
+|`.split()`     | Split a string into a `list`^[More on lists in upcoming chapters.] on the given string.
+|`.strip()`     | Strip whitespace^[Spaces, tabs, and newlines.] from both ends of the string.
+|`.upper()`     | Convert string to all uppercase.
+|`.lower()`     | Convert string to all lowercase.
+|`.replace()`   | Replace all occurrences of one word with another in the string.
+|`.find()`      | Find the index of the substring in the string, or `-1` if it's not found.
+|`.count()`     | Count the number of occurrences of the substring.
+|`.startswith()`| Return `True` if the string starts with the given string.
+|`.endswith()`  | Return `True` if the string ends with the given string.
+|`.capitalize()`| Capitalize the first letter of each word in the string.
+
+Here are some examples:
+
+``` {.py}
+s = "hello, goats! ";
+
+s.split(",") # [ "hello" "goats! " ]
+s.strip()    # "hello, goats!"
+s.upper()    # "HELLO, GOATS! "
+s.lower()    # "hello, goats! "
+
+s.find("goats")          # 8 (index of "goats" in the string)
+s.count("goats")         # 1
+s.startswith("Goats")    # False
+s.endswith("goats! ")    # True
+s.capitalize()           # "Hello, goats! "
+
+s.replace("goats", "world")  # "hello, world! "
+
+```
+
+You can also chain them together and they evaluate in turn, left to
+right:
+
+``` {.py}
+s = "   another EXAMPLE!    "
+
+s.strip().lower().capitalize()  # "Another example!"
+```
 
 There are a whole lot of [fl[string
 methods|https://docs.python.org/3/library/stdtypes.html#string-methods]]
@@ -921,6 +950,15 @@ Woot!
 
 Did you have another solution that worked? There are plenty others!
 
+Problem solving step: **Postmortem**.
+
+What are the corner cases that you should test? (Look for the `if`
+statements, and test on either side of those. `0` and `1` and `19` and
+`20`.)
+
+If you didn't come up with a different solution, try to do so now. What
+if you used `while` loops instead of `for` loops?
+
 
 ## Exercises
 
@@ -932,21 +970,45 @@ A lot of these can use `for` loops in the solution! Use any knowledge
 you have to solve these, not only what you learned in this chapter.
 
 
-Given the following varibles, write f strings that print out the
-following
+1. Given the following varibles:
 
-Write code to count the number of occurrences of substring
+   ``` {.py}
+   x = 3490
+   y = 3.14159
+   ```
 
-Go through a string and capitalize only the vowels
+   write code that prints out the following:
 
-Count the number of times the letter `B` (either uppercase or
-lowercase!) occurs in a string.
+   ``` {.py}
+   x is    3490.00
+   y is       3.14
+   x + y = 3493.14
+   ```
 
-Allow the user to input a string, and also a number. Print out the
-character at that index number in the string.
+   ([flx[Solution|ex_fstring.py]].)
 
-Allow the user to input a string, and also two numbers. Print out the
-slice from those index number in the string.
+2. Write code to count the number of occurrences `goat` in this string:
+
+   ``` {.py}
+   s = "How many goats could a goat goat goat if a goat could goat"
+   ```
+
+   ([flx[Solution|ex_goatcount.py]].)
+
+3. Using this string, create a copy of it where all the vowels are
+   uppercase and all the consonants are lowercase.
+
+   ``` {.py}
+   s = "The quick brown fox jumps over the lazy dogs."
+   ```
+
+   ([flx[Solution|ex_uppervowel.py]].)
+
+4. Allow the user to input a string, and also a number. Print out the
+   character at that index number in the string.
+
+5. Allow the user to input a string, and also two numbers. Print out the
+   slice from those index number in the string.
 
 6. Make up two more exercises and code them up.
 
