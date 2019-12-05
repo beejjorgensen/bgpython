@@ -1,6 +1,7 @@
 # Beej's Guide to Python Programming source markdown
 
 ## TODO
+* Get terminology right in list comps
 * backport variable chapter structure to previous chapters
 
 * How to Google

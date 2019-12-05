@@ -8,10 +8,10 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 * Understand whats lists are
 * Understand references versus values
-* Access individual elements in a list
+* Access individual elements and slices in a list
 * Iterate over lists with `for`
 * Use common lists built-in functions
-* Construct new empty lists of fixed value
+* Construct new empty lists of repeating fixed values
 * Construct new lists with list comprehensions
 * Construct and use lists of lists (2D lists)
 
@@ -100,6 +100,18 @@ print(x[-1])  # prints 9, the element at the end of the list
 ```
 
 Remember that indexes start at zero, again, just like with strings.
+
+Keeping with the "things you can also do with strings" theme, you can
+also slice an array, just like a string.
+
+``` {.py}
+
+a = [1, 2, 3, 4, 5]
+
+b = a[1:-1]   # Slice all but the first and last elements
+
+print(b)  # [2, 3, 4]
+```
 
 You can also _set_ individual elements, leaving the rest of the list
 unchanged:
@@ -714,4 +726,148 @@ You _must_ have a variable named in your `for` loop---no option not to.
 But using `_` for that name indicates to programmers that you are just
 using the loop to count, and you don't actuall care what the count is.
 
+## Building New Lists, Repeating and Empty
+
+Problem solving step: **Understand**.
+
+We've already seen how to initialize a list with a few elements in it:
+
+``` {.py}
+a = [11, 55, 33, 99]
+```
+
+You can multiply a list by a constant value to get a new list repeated
+that many times.
+
+What?
+
+Easier demonstrated:
+
+``` {.py}
+a = [11, 99]
+b = a * 3
+
+print(b) # [11, 99, 11, 99, 11, 99]
+```
+
+It just repeats the list that many times into a new list.
+
+A very common use of this is to create a new list of a certain number of
+elements, initialize to zero:
+
+``` {.py}
+a = [0] * 10
+print(a)   # [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 
+```
+
+While we're on about esoteric list declarations, you can declare a list
+of no elements like so"
+
+``` {.py}
+a = []
+```
+
+presumably to compute values for later.
+
+## List Comprehensions
+
+Problem solving step: **Understand**.
+
+This is a really neat language feature of Python. It allows you to
+construct a new list from an old one, modifying and filtering elements
+as you go.
+
+Before going into the syntax, we'll write something using what we know
+so far with `for` and `if` and see how that looks. Then we'll compare it
+to a list comprehension version.
+
+I'm going to write some code that takes a list and produces a new list
+from it, not including all the odd numbers, and replacing the even
+numbers with the even number times 4.
+
+``` {.py}
+a = [1, 2, 3, 4, 5, 6]
+new_list = []
+
+for v in a:
+    if v % 2 == 0:  # if v is even
+        new_list.append(v * 4)
+
+print(new_list)   # [8, 16, 24]
+```
+
+Study that until you're sure you have it down.
+
+Now, here's that same program as a list comprehension:
+
+``` {.py}
+a = [1, 2, 3, 4, 5, 6]
+new_list = [v * 4 for v in a if v % 2 == 0]
+
+print(new_list)   # [8, 16, 24]
+```
+
+Well, it's certainly more concise!
+
+But it's also, I'm suspecting you're finding, a lot harder to read.
+Yeah.
+
+It's _always_ like this when you try to pick up a new piece of weird
+syntax you've never seen before. At first, it's all weird, but the more
+you study it, the more used to it you get.
+
+What I _don't_ want is for you to look at it and think, "It's
+unreadable! Forget it!"
+
+All you have to do is take it a step at a time.
+
+What do we have in that line?
+
+``` {.py}
+           result    loop        filter
+#          |----| |--------| |-----------|
+new_list = [v * 4 for v in a if v % 2 == 0]
+```
+
+It's split into three parts.
+
+The "result": this is what values will be included in the output list.
+The variable named here is the one in the "loop" clause.
+
+The "loop": assigns elements from the list into a variable, repeatedly.
+
+The "filter" (optional): only elements for which the condition is true
+will be included in the output.
+
+If we wanted to include only the _odd_ numbers times 4, we could have
+done this:
+
+``` {.py}
+           result    loop        filter
+#          |----| |--------| |-----------|
+new_list = [v * 4 for v in a if v % 2 == 1]
+```
+
+Or the odd numbers divided by 3:
+
+``` {.py}
+           result    loop        filter
+#          |----| |--------| |-----------|
+new_list = [v / 3 for v in a if v % 2 == 1]
+```
+
+Leaving the filter off makes the list unconditionally. For example, all
+the numbers in the list times 4:
+
+``` {.py}
+           result    loop
+#          |----| |--------|
+new_list = [v * 4 for v in a]
+```
+
+When should I use them?
+
+Any time you're making a new list from an existing one and you want to
+optionally change or filter elements from the origional list, list
+comprehensions are a great tool to us.
 
