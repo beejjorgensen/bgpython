@@ -1028,16 +1028,6 @@ you have to solve these, not only what you learned in this chapter.
 
 ## Summary
 
-* Get a firm grip on what a string is
-* Convert from other types to strings
-* Concatenate strings
-* Understand that strings are immutable
-* Get individual characters with strings
-* Slice a string
-* for loop through a string
-* Use basic string manipulation methods and functions
-* Print strings using formatted output
-
 In this chapter we did _all kinds_ of crazy things with strings.
 
 * Conversions from other types

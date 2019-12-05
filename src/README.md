@@ -15,6 +15,7 @@
   * Sets
   * Tuples
 * Functions
+  * Reference Types
 * List Comprehensions
 * Try/except
 * OOP
