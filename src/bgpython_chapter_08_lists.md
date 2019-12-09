@@ -16,7 +16,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Construct and use lists of lists (2D lists)
 
 
-## Chapter Project Specification
+## Chapter Project Specification {lists-proj-spec}
 
 Game time!
 
@@ -871,3 +871,373 @@ Any time you're making a new list from an existing one and you want to
 optionally change or filter elements from the origional list, list
 comprehensions are a great tool to us.
 
+## Lists of Lists
+
+Problem solving step: **Understand**.
+
+You can have lists of just about anything in Python. Lists of numbers,
+lists of strings, lists of lists...
+
+That's right, folks. Lists containing other lists. How does that work?
+
+Here's one example where we'll make a bunch of lists, and then put them
+in another list.
+
+``` {.py}
+x = [1, 2, 3]
+y = [4, 5, 6]
+z = [x, y]
+```
+
+Rememeber that _lists are reference types_. So we have a list `x` and
+`y`, and both of these are _referred to_ in list `z`.
+
+In that example, how could we access elements of the lists-in-list?
+
+We're going to use square bracket notation again, but even moreso.
+
+``` {.py}
+x = [1, 2, 3]
+y = [4, 5, 6]
+z = [x, y]
+
+print(z[0]) # z[0] refers to x, so this prints [1, 2, 3]
+print(z[1]) # z[1] refers to y, so this prints [4. 5. 6]
+```
+
+So far so good?
+
+Here's the thing to notice: since `z[0]` and `z[1]` are lists, you can
+access the elements within those lists by using square bracket notation
+_again_.
+
+Let's try to get the number `6` out of that second list.
+
+``` {.py}
+print(z[1][2]) # prints 6
+```
+
+Take apart that line of code. What's happening there?
+
+First Python evaluates the first square backets it comes to. It knows
+`z` is a list, and so it evaluates `z[1]` to get the list `[4, 5, 6]`.
+Then it takes that list and evaluates it with `[2]`, getting the `6` out
+of it.
+
+Another way to think of it would be to imagine using parentheses:
+
+``` {.py}
+(z[1])[2] # first evaluate z[1], then evaluate [2] on the result
+
+z[1][2]   # this is equivalent to the previous line
+```
+
+(While Python doens't mind if you use parentheses like this, programmers
+don't do it since it makes the code look messy.)
+
+But what does this buy us? Lists of lists are exciting and all. (Right?)
+What are they useful for?
+
+Having a list of lists literally adds a second dimension to the data you
+can represent. With a single list, you can represent one "row" of data.
+With a list of lists, you can represent multiple rows or a _grid_ of
+data.
+
+What are some places in computing a grid or multiple rows of data are
+used?
+
+Spreadsheets! What else? See if any other ideas come to mind.
+
+For declaring lists of lists, it's really common to just declare them
+all at once, and not use intermediate variable to represent the
+sublists.
+
+For example, the previous list we were using, above, could be declared
+more simply like so:
+
+``` {.py}
+z = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+```
+
+or, if it looks better and your style guide allows it, you can put it on
+one line:
+
+``` {.py}
+z = [ [1, 2, 3], [4, 5, 6] ]
+
+print(z[0][1])  # Prints 2
+```
+
+Now let's see if we can put it all together for this chapter's project!
+
+
+## Chapter Project Implementation
+
+This is the big one. This project is going to draw on multiple things
+we've learned so far and put them all together into a working solution.
+
+That makes this project more difficult that the previous ones. We're
+going to break down the problem and decide what tools we know that we
+can bring to bear to solve it.
+
+And this is what being a software developer is all about.
+
+I'm not expecting the answer to be obvious. It's rare you'll see a
+problem that has an obvious solution, even as a seasoned developer. But
+we do have our problem solving framework to break down the problem into
+workable parts. So let's do it!
+
+Problem solving step: **Understand**.
+
+We want to do several things with this project:
+
+* Print a map on the screen
+* Get user input
+* Use the input to move a player indicator around the map
+* Make sure the player doesn't move through walls
+* Keep repeating until the player quits
+
+What's missing from [the spec](#lists-proj-spec) that we need to know?
+
+Remember your compass directions?
+
+```
+    N
+    |
+W --+-- E
+    |
+    S
+```
+
+Now's the time to get the answers to questions clarified. Much easier to
+do it now than after you've coded up the wrong thing!
+
+What if the user provides invalid input? What happens then is missing
+from the spec. For that, let's print an error message:
+
+```
+Unknown command: {x}
+```
+
+Where `x` is whatever the user entered.
+
+What if the player tries to move through a wall? Let's use this error
+message:
+
+```
+You can't go that way.
+```
+
+Anything else missing from the spec?
+
+Problem solving step: **Make A Plan**.
+
+We're going to make use of two important techniques as we make this
+plan: _simplify the problem_ and _breaking down subproblems_.
+
+Simplifying the problem means to take our eventual goal and remove
+requirements to make it easier to code. Sure, eventually we'll have to
+add those requirements back in, but simplifying the problem makes the
+initial coding easier.
+
+What are examples of things we can simplify about this project? Here are
+some ideas:
+
+* Don't bother putting the `@` on the map where the player is
+* Allow the player to move through walls
+* Keep repeating forever, ignoring `q`
+* Don't validate user input
+
+Again, we'll have to add this eventually, but removing them temporarily
+makes it much easier to reach an initial version.
+
+The other technique, breaking down subproblems, is a variant of what
+we've been doing already.
+
+Let's start with high-level pseudocode, and then break it down where
+required.
+
+```
+while not quit:
+    print map and player indicator
+    get input
+    make sure input is valid
+    make sure we're not moving through walls
+```
+
+How do we know that breaking down subproblems will be useful with this
+pseudocode? The first clue is that some of the steps are substantial,
+e.g. "print map and player indicator" immediately brings to mind the
+question, "How the heck can we do that?"
+
+If any steps are too complex or are unclear, it means you have to break
+them down farther. Let's do that for all the unclear sections:
+
+```
+while not quit:
+    print map and player indicator
+    for each row of the map:
+        for each column of the map:
+            if this is where the player is:
+                print @
+            else:
+                print the map character
+
+    get input
+    make sure input is valid
+
+    if input invalid:
+        print error message
+
+    elif input is "q":
+        quit
+
+    else:
+        figure out the new row and column of the player
+
+    if the map at the new player position is "#":
+        print "You can't go that way."
+    else:
+        set the current position to the new position
+```
+
+That's significantly better. It'll be a lot easier to translate to
+Python.
+
+Now... how are we going to store the data we need for this project? And
+what data do we need, anyway?
+
+* The map representation
+* The player's current position, row and column
+
+How are we going to store the map? In the spec, it's displayed as text,
+like so:
+
+```
+#####################
+#...#...............#
+#...#..........#....#
+#...#..........#....#
+#...#..........#....#
+#...#..........#....#
+#..............#....#
+#..............#....#
+#####################
+```
+
+where `#` is a wall and `.` is empty floor (that we can move through).
+
+We could store all that as a single string... but that might make our
+lives a little more difficult since we have to put an `@` in where
+the player is located.
+
+And, because of that, we're planning to print the map out a character at
+at a time so we can decide if we're going to draw an `@` or the map
+character.
+
+What would be a more sensible way to store the map rather than a single
+big string?
+
+Ponder that for a second.
+
+Spoiler alert!
+
+How about a list of strings? One string would be one row of the map.
+Then we could go through the single row a character at a time and decide
+what to print. (Remember we can use array bracket notation on a string
+to get single characters out!)
+
+Look at all the techniques we're using!
+
+* Variables to store player's current row and column on the map
+* A list of strings to store the map
+* Iterating through a list with `for`
+* Iterating through strings for `for`
+* Nested `for` loops
+* `if` conditions to decide what to do with user input
+* `if` conditions to determine if we can move that direction
+* Booleans and a `while` loop to run the game until the user quits
+
+Holy moly! That's a lot of stuff. But that's what we do as software
+developers: we take all we know and figure out how to put it together
+into the solution.
+
+And it's rarely an obvious one. We all have to work hard to come up with
+the answers.
+
+Problem solving step: **Code It Up**.
+
+Before we start this phase, I want you to notice how much time we've
+spend on the Understand and Plan phases without writing any code at all.
+It's very tempting, especially for junior devs, to want to jump into the
+code without spending sufficient time on Understanding and Planning.
+Unfortunately, this practice causes one to waste productivity
+unnecessarily.
+
+You're not done understanding the problem until you have no more
+questions about.
+
+You're not done making a plan until you know how to convert every step
+of the plan to code.
+
+If you spend enough time understanding an planning, coding almost
+becomes an afterthought.
+
+And here we are. Let's take our pseudocode and convert it into Python.
+
+Coming back to _simplify the problem_, let's start off by just storing
+and printing the map. No player, no input, no loop. Let's just get that
+working.
+
+First of all, we need to store the map data, so let's do that:
+
+``` {.py .numberLines}
+# The map
+
+map_data = [
+    "#####################",
+    "#...#...............#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#..............#....#",
+    "#..............#....#",
+    "#####################"
+]
+```
+
+We've split the map list onto multiple lines to make it easier to read.
+
+Now we need to print it out. In our pseudocode, we used a nested `for`
+loop with `if` conditions.
+
+
+``` {.py .numberLines}
+# The map
+
+map_data = [
+    "#####################",
+    "#...#...............#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#..............#....#",
+    "#..............#....#",
+    "#####################"
+]
+
+# Print map and player indicator
+
+for row_index, row in enumerate(map_data):  # for each row
+    for col_index, map_character in enumerate(row):  # for each col
+        if row_index == player_row and col_index == player_column:
+            print("@", end="")  # end="" no newline
+        else:
+            print(map_character, end="")
+    print()
+```
