@@ -163,7 +163,7 @@ $(GUIDE_ID)_amazon.md: $(GUIDE_MD)
 	$(PREPROC) $^ $@
 
 $(GUIDE_ID)_amazon.pdf: $(GUIDE_ID)_amazon.md
-	pandoc $(PDF_OPTS) $(TWOSIDE) $(SIZE_75x925_AMAZON) $(BLANKLAST) $(PREPROC_MD)
+	pandoc $(PDF_OPTS) $(TWOSIDE) $(SIZE_75x925_AMAZON) $(BLANKLAST) $(GUIDE_ID)_amazon.md
 	xelatex $(GUIDE_ID)_temp.tex
 	makeindex $(GUIDE_ID)_temp.idx
 	xelatex $(GUIDE_ID)_temp.tex
