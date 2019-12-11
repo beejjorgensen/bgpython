@@ -14,8 +14,8 @@ map_data = [
 
 # Player position
 
-player_row = 5
-player_column = 10
+player_row = 4
+player_column = 9
 
 quit = False
 

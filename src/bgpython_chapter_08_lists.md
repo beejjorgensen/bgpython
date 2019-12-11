@@ -1235,9 +1235,58 @@ map_data = [
 
 for row_index, row in enumerate(map_data):  # for each row
     for col_index, map_character in enumerate(row):  # for each col
+        print(map_character, end="")
+    print()
+```
+
+There are a couple things to note there, so make sure to digest the
+code. We're going through each row, and for each row, we're going
+through each column and printing the character.
+
+We want the characters to all print on the same line for a given row, so
+we use the `end=""` trick to keep Python from going to the next line.
+
+And at the end of each row we have an empty `print()` to get the cursor
+down to the next line for starting to print the next row.
+
+And when we run that, we get the map printed out!
+
+
+But we don't have the player position stored anywhere, and we're not
+showing it on the screen. Let's add that next.
+
+``` {.py .numberLines}
+# The map
+
+map_data = [
+    "#####################",
+    "#...#...............#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#..............#....#",
+    "#..............#....#",
+    "#####################"
+]
+
+# Player position
+
+player_row = 4
+player_column = 9
+
+# Print map and player indicator
+
+for row_index, row in enumerate(map_data):  # for each row
+    for col_index, map_character in enumerate(row):  # for each col
         if row_index == player_row and col_index == player_column:
             print("@", end="")  # end="" no newline
         else:
             print(map_character, end="")
     print()
+ 
 ```
+
+So there we've added a couple variables to store where the player is,
+and then in the map printing loop we check to see if this lo
+
