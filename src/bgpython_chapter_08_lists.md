@@ -1233,8 +1233,8 @@ map_data = [
 
 # Print map and player indicator
 
-for row_index, row in enumerate(map_data):  # for each row
-    for col_index, map_character in enumerate(row):  # for each col
+for row in map_data:  # for each row
+    for map_character in row:  # for each col
         print(map_character, end="")
     print()
 ```
@@ -1250,7 +1250,6 @@ And at the end of each row we have an empty `print()` to get the cursor
 down to the next line for starting to print the next row.
 
 And when we run that, we get the map printed out!
-
 
 But we don't have the player position stored anywhere, and we're not
 showing it on the screen. Let's add that next.
@@ -1272,11 +1271,12 @@ map_data = [
 
 # Player position
 
-player_row = 4
+player_row = 4          # <-- add player position
 player_column = 9
 
 # Print map and player indicator
 
+# Use enumerate() to get the row and column indexes for the if:
 for row_index, row in enumerate(map_data):  # for each row
     for col_index, map_character in enumerate(row):  # for each col
         if row_index == player_row and col_index == player_column:
@@ -1288,5 +1288,62 @@ for row_index, row in enumerate(map_data):  # for each row
 ```
 
 So there we've added a couple variables to store where the player is,
-and then in the map printing loop we check to see if this lo
+and then in the map printing loop we check to see if this location is
+where the player is. If it is, print an `@`, otherwise print the map
+character.
+
+For the next small thing to add, let's get user input and quit if the
+user enters "`q`". Otherwise, we'll print the map again in a loop.
+
+``` {.py .numberLines}
+# The map
+
+map_data = [
+    "#####################",
+    "#...#...............#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#..............#....#",
+    "#..............#....#",
+    "#####################"
+]
+
+# Player position
+
+player_row = 4
+player_column = 9
+
+quit = False
+
+while not quit:
+
+    # Print map and player indicator
+
+    for row_index, row in enumerate(map_data):  # for each row
+        for col_index, map_character in enumerate(row):  # for each col
+            if row_index == player_row and col_index == player_column:
+                print("@", end="")  # end="" no newline
+            else:
+                print(map_character, end="")
+        print()
+
+	# Get input
+
+	command = input("Enter a move (n,s,w,e,q): ")
+ 
+	if command == "q":
+		quit = True
+		continue  # jump right back to the top of the while
+	else:
+		print(f'Unknown command {command}')
+```
+
+Getting there!
+
+Something new to note! There's a `continue` statement on line 40. This
+causes program execution to jump back to the top of the `while` loop,
+ignoring the rest of the loop body. It means, "Don't do anything else in
+this block---just short circuit back to the `while` condition.
 
