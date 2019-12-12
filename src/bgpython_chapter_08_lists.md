@@ -1329,15 +1329,15 @@ while not quit:
                 print(map_character, end="")
         print()
 
-	# Get input
+    # Get input
 
-	command = input("Enter a move (n,s,w,e,q): ")
+    command = input("Enter a move (n,s,w,e,q): ")
  
-	if command == "q":
-		quit = True
-		continue  # jump right back to the top of the while
-	else:
-		print(f'Unknown command {command}')
+    if command == "q":
+        quit = True
+        continue  # jump right back to the top of the while
+    else:
+        print(f'Unknown command {command}')
 ```
 
 Getting there!
@@ -1345,5 +1345,147 @@ Getting there!
 Something new to note! There's a `continue` statement on line 40. This
 causes program execution to jump back to the top of the `while` loop,
 ignoring the rest of the loop body. It means, "Don't do anything else in
-this block---just short circuit back to the `while` condition.
+this block---just short circuit back to the `while` condition. (Which
+tests to false immediately and exits the loop.)
 
+So now we have the player position being printed, and we have the user
+inputting a command. However, we still need to handle the directional
+commands and actually move the player around.
+
+Our plan is to compute the new position for the player based on the
+current position and the user input. For example, if the user goes north
+(up) on the screen, the player's column stays the same, but the row
+number decreases by 1.
+
+
+``` {.py .numberLines}
+# The map
+
+map_data = [
+    "#####################",
+    "#...#...............#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#...#..........#....#",
+    "#..............#....#",
+    "#..............#....#",
+    "#####################"
+]
+
+# Player position
+
+player_row = 4
+player_column = 9
+
+quit = False
+
+while not quit:
+
+    # Print map and player indicator
+
+    for row_index, row in enumerate(map_data):  # for each row
+        for col_index, map_character in enumerate(row):  # for each col
+            if row_index == player_row and col_index == player_column:
+                print("@", end="")  # end="" no newline
+            else:
+                print(map_character, end="")
+        print()
+
+    # Get input
+
+    command = input("Enter a move (n,s,w,e,q): ")
+ 
+    # Figure out the new row and column of the player
+    # Make sure input is valid
+    if command == "n":
+        new_row = player_row - 1
+        new_column = player_column
+    elif command == "s":
+        new_row = player_row + 1
+        new_column = player_column
+    elif command == "w":
+        new_row = player_row
+        new_column = player_column - 1
+    elif command == "e":
+        new_row = player_row
+        new_column = player_column + 1
+    elif command == "q":
+        quit = True
+        continue  # jump right back to the top of the while
+    else:
+        print(f'Unknown command {command}')
+
+    # Set the current position to the new position
+    player_row = new_row
+    player_column = new_column
+```
+
+That's working great, but we can still walk through the walls. Let's
+change those last few lines of the program to verify that the new
+position is an empty room before we move the player in there.
+
+``` {.py .numberLines startFrom="58"}
+    if map_data[new_row][new_column] != ".":
+        print("You can't move that way!")
+    else:
+        # Set the current position to the new position
+        player_row = new_row
+        player_column = new_column
+```
+
+Woo! You've written your very own
+[fl[Roguelike|https://en.wikipedia.org/wiki/Roguelike]] game!
+
+Problem solving step: **Postmortem**.
+
+For next steps, consider adding some of the following:
+
+* Treasures
+* Monsters
+* Stats
+* Weapons
+* Whatever you desire! It's your game!
+
+Just back to "Understand the Problem" and implement some of those
+things.
+
+Also, the game looks neater if you clear the screen before printing the
+map, but unfortunately there's no easy way to do this in a
+cross-platform manner^[Well, not at this point in our learning,
+anyway.]. But there is a hacky thing we can do.
+
+If your terminal obeys [fl[ANSI escape
+codes|https://en.wikipedia.org/wiki/ANSI_escape_code]], which is likely,
+we can send special sequences of characters to it to clear the screen
+then home the cursor (move it to the top left).
+
+The magical incantation looks like this:
+
+``` {.py}
+print("\x1b[2J\x1b[H", end="")  # Clear the screen
+```
+
+Go ahead and tuck that up above where you start printing the map and
+you'll see the effect. If your terminal doesn't support ANSI sequences,
+you'll just see some weird characters.
+[fl[Bogus|https://www.youtube.com/watch?v=q3fx6TugN7g]].
+
+If you really want to get into character graphics, there's a library you
+should try: [fl[curses|https://docs.python.org/3/howto/curses.html]]. It
+allows you to clear the screen, position the cursor, get input without
+echoing it to the screen or waiting for `RETURN`, output in color, and
+more.
+
+Although we have enough knowledge to add monsters and treasure and so
+on, it will be easier to do so once we learn about dictionaries and
+objects in future chapters. We have more tools at our disposal!
+
+## Exercises
+
+Exercises
+
+
+## Summary
+
+Summary
