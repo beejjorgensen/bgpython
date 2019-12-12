@@ -464,7 +464,7 @@ entire list in one go. You can do that! `print()` prints out the string
 version of whatever you pass in. More on that in the future.
 
 
-## Build-in Functions for Lists
+## Built-in Functions for Lists
 
 There are a number of very useful built-in functions and
 methods^[Remember that a method is a function that you call on a
