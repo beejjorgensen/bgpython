@@ -824,7 +824,7 @@ All you have to do is take it a step at a time.
 What do we have in that line?
 
 ``` {.py}
-           result    loop        filter
+#          result    loop        filter
 #          |----| |--------| |-----------|
 new_list = [v * 4 for v in a if v % 2 == 0]
 ```
@@ -843,7 +843,7 @@ If we wanted to include only the _odd_ numbers times 4, we could have
 done this:
 
 ``` {.py}
-           result    loop        filter
+#          result    loop        filter
 #          |----| |--------| |-----------|
 new_list = [v * 4 for v in a if v % 2 == 1]
 ```
@@ -851,7 +851,7 @@ new_list = [v * 4 for v in a if v % 2 == 1]
 Or the odd numbers divided by 3:
 
 ``` {.py}
-           result    loop        filter
+#          result    loop        filter
 #          |----| |--------| |-----------|
 new_list = [v / 3 for v in a if v % 2 == 1]
 ```
@@ -860,7 +860,7 @@ Leaving the filter off makes the list unconditionally. For example, all
 the numbers in the list times 4:
 
 ``` {.py}
-           result    loop
+#          result    loop
 #          |----| |--------|
 new_list = [v * 4 for v in a]
 ```
@@ -1423,7 +1423,8 @@ while not quit:
 
 That's working great, but we can still walk through the walls. Let's
 change those last few lines of the program to verify that the new
-position is an empty room before we move the player in there.
+position is an empty room before we move the player in there. (Note the
+line numbers!)
 
 ``` {.py .numberLines startFrom="58"}
     if map_data[new_row][new_column] != ".":
