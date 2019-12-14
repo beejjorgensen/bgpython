@@ -156,7 +156,7 @@ so they both become `20`.
 
 But when we change `y` to `99`, `x` remains unchanged.
 
-It's like `y` got a _copy_ of `x`, so subsequence changes to `y` did
+It's like `y` got a _copy_ of `x`, so subsequent changes to `y` did
 _not_ affect `x`^[The under-the-hood details of how Python handles
 assignments like this are rather more complex, and I'm really being
 hand-wavy here. But, that said, you can still use this mental model
@@ -179,7 +179,7 @@ print(y)   # prints world!
 ```
 
 What we have in this case is what we'll call _value types_. They
-have certain charactistics:
+have certain characteristics:
 
 * When you assign from a value type variable to another variable, a
   _copy_ of that value gets made.
@@ -259,6 +259,16 @@ not the house itself, but it is a reference to it. Now, you can copy
 that Post-It note to another, but they still both refer to the same
 house. (And certainly the house itself hasn't been copied!)
 
+What if you _want_ a copy of a list, and not just a copy of the
+reference? You can force a list copy a number of ways, but these are
+three common ones:
+
+``` {.py}
+b = a.copy()  # Copy with .copy() method
+b = list(a)   # Copy with the list() function
+b = a[:]      # Copy by slicing the entire list
+```
+
 Even if you don't have it quite down yet, don't worry. We'll hit this
 topic a few more times as we progress.
 
@@ -267,7 +277,7 @@ topic a few more times as we progress.
 
 Problem solving step: **Understand**.
 
-Remeber our good friend the `for` loop? We used it with `range` to loop
+Remember our good friend the `for` loop? We used it with `range` to loop
 a number of times, and we used it with strings to loop over each
 character in the string.
 
@@ -614,7 +624,7 @@ always have at least two previous numbers to get the next one.
 
 What we want to do is write a program that builds and prints a list
 containing the first 100 Fibonacci numbers. We don't want to do any of
-the addtion ourselves---we want the code to compute it for us.
+the addition ourselves---we want the code to compute it for us.
 
 Problem solving step: **Make A Plan**.
 
@@ -868,7 +878,7 @@ new_list = [v * 4 for v in a]
 When should I use them?
 
 Any time you're making a new list from an existing one and you want to
-optionally change or filter elements from the origional list, list
+optionally change or filter elements from the original list, list
 comprehensions are a great tool to us.
 
 ## Lists of Lists
@@ -889,12 +899,12 @@ y = [4, 5, 6]
 z = [x, y]
 ```
 
-Rememeber that _lists are reference types_. So we have a list `x` and
+Remember that _lists are reference types_. So we have a list `x` and
 `y`, and both of these are _referred to_ in list `z`.
 
 In that example, how could we access elements of the lists-in-list?
 
-We're going to use square bracket notation again, but even moreso.
+We're going to use square bracket notation again, but even more-so.
 
 ``` {.py}
 x = [1, 2, 3]
@@ -919,7 +929,7 @@ print(z[1][2]) # prints 6
 
 Take apart that line of code. What's happening there?
 
-First Python evaluates the first square backets it comes to. It knows
+First Python evaluates the first square brackets it comes to. It knows
 `z` is a list, and so it evaluates `z[1]` to get the list `[4, 5, 6]`.
 Then it takes that list and evaluates it with `[2]`, getting the `6` out
 of it.
@@ -932,7 +942,7 @@ Another way to think of it would be to imagine using parentheses:
 z[1][2]   # this is equivalent to the previous line
 ```
 
-(While Python doens't mind if you use parentheses like this, programmers
+(While Python doesn't mind if you use parentheses like this, programmers
 don't do it since it makes the code look messy.)
 
 But what does this buy us? Lists of lists are exciting and all. (Right?)
@@ -1484,9 +1494,123 @@ objects in future chapters. We have more tools at our disposal!
 
 ## Exercises
 
-Exercises
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+Use any knowledge you have to solve these, not only what you learned in
+this chapter.
+
+1. The following code prints out `99`:
+
+   ``` {.py .numberLines}
+   a = [1, 2, 3]
+   b = a
+
+   b[0] = 99
+
+   print a[0]
+   ```
+
+   How can we change only line 2 so that `b` is a copy of `a`, causing
+   the program to print out `1` instead?
+
+   ([flx[Solution|ex_refval.py]].)
+
+2. Write a loop that prints out the total sum of the following list:
+
+   ``` {.py}
+   [14, 31, 44, 46, 54, 59, 45, 55, 21, 11, 8, 34, 66, 41]
+   ```
+
+   The sum is 529.
+
+   ([flx[Solution|ex_listsum.py]].)
+
+3. Take the following list:
+
+   ``` {.py}
+   [11, 22, 33]
+   ```
+
+   and write one line of Python that changes the list to:
+
+   ``` {.py}
+   [11, 22, 33, 99]
+   ```
+
+   Then write another line that changes _that_ list to:
+
+   ``` {.py}
+   [11, 33, 99]
+   ```
+
+   Then, finally, write another line that changes the list to:
+
+   ``` {.py}
+   [11, 33, 88, 99]
+   ```
+
+   This exercise should manipulate the same list, not create new lists.
+
+   ([flx[Solution|ex_listchange.py]].)
+
+4. Create the following list in under 20 characters of Python code:
+
+   ``` {.py}
+   [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+   ```
+
+   ([flx[Solution|ex_replist.py]].)
+
+5. Using a list comprehension, make a new list from the following that
+   only includes numbers that are multiples of 5:
+
+   ``` {.py}
+   [14, 31, 44, 46, 54, 59, 45, 55, 21, 11, 8, 34, 66, 41]
+   ```
+
+   ([flx[Solution|ex_listcompx5.py]].)
+
+6. Using a list comprehension, make a new list from the following that
+   only includes all-uppercase versions of all words that begin with a
+   consonant.
+
+   ``` {.py}
+   ["alice", "beej", "chris", "dave", "eve", "frank"]
+   ```
+
+   Sample output:
+
+   ```
+   ['BEEJ', 'CHRIS', 'DAVE', 'FRANK'] 
+   ```
+
+   ([flx[Solution|ex_listcompcap.py]].)
+
+7. Write a program that generates a list of lists (2D list) containing a
+   multiplication table up to $12\times12$.
+
+   You should be able to print the result of, say, $7\times5$ like so:
+
+   ``` {.py}
+   print(multtable[7][5])  # prints 35
+   ```
+
+   ([flx[Solution|ex_listmult.py]].)
 
 
 ## Summary
 
-Summary
+Look at all the stuff we've covered this chapter!
+
+* A brand new data structure to hold lists of information
+* Understanding _reference_ versus _value_ assignments
+* How to access and change items in a list
+* How to modify and copy the list
+* How to create new lists of repeating values
+* List comprehensions! Wow!
+* Lists of lists!
+
+Lists are a powerful tool to add to our arsenal. We're going to make
+heavy use of them as our programs get more complex.
