@@ -170,14 +170,14 @@ print(x)   # Beej!
 ```
 
 
-## Midterm Challange
+## Midterm Challenge
 
 Use what we've learned so far to concatenate a string `"Hello"` with the
 number `3490` (an integer, not a string).
 
 Problem solving step: **Make a Plan**.
 
-Ok, so let's use `+` to concatenate the number onto the end of the
+OK, so let's use `+` to concatenate the number onto the end of the
 string.
 
 Problem solving step: **Code it up**.
@@ -364,7 +364,7 @@ We need to:
 1. Input a string.
 2. Get a slice of the string not including the first and last
    characters.
-3. print the slice.
+3. Print the slice.
 
 Steps 1 and 3 are pretty straightforward. But what about that step 2?
 
