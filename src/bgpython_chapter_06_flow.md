@@ -72,7 +72,7 @@ blindly going to the next instruction?
 
 This is where you get your first taste of what it means to be a
 developer. You can ask the computer to make smart decisions based on
-critera you specify. Figuring out which criteria to specify is the job
+criteria you specify. Figuring out which criteria to specify is the job
 of a programmer and where most of the hard work comes in.
 
 Eventually we're going to code up things that say "If some condition is
@@ -277,7 +277,7 @@ It's important to note that `True` and `False` are not strings. They
 represent Boolean values.
 
 So now, for data types, we know about strings, ints, floats, and
-Booleans (sometimes called bools for short). Add that to the collewction
+Booleans (sometimes called bools for short). Add that to the collection
 of tools we have at our disposal.
 
 But what about our good friends AND and OR?
@@ -624,20 +624,21 @@ attention to the line numbers!_)
 ```
 
 If you haven't already, code that up and run it. No, it's not the
-complete progrm, but it's the complete first step of the program, and we
-can test it before moving on just to be confident that this part works.
+complete program, but it's the complete first step of the program, and
+we can test it before moving on just to be confident that this part
+works.
 
 Run it and try it with some numbers. If you enter an invalid number, it
 should tell you so and ask again. If you enter a valid number,
 `input_valid` becomes `True` and the `while` loop exits (because the
 continuation condition is `not input_valid`).
 
-Once you're satified it's working correctly, let's move back to the
+Once you're satisfied it's working correctly, let's move back to the
 spec and concentrate on printing out the asterisks.
 
 Problem solving step: **Make a Plan**.
 
-If the user enters `x`, we want to print out `x` count of charcters,
+If the user enters `x`, we want to print out `x` count of characters,
 total. The first 30 of these will be `#`, and any after that will be
 `*`.
 
