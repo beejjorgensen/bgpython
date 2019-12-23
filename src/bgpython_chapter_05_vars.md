@@ -304,7 +304,8 @@ whatever we typed in, including `Goats rock!` which is certainly not any
 number I've ever heard of.
 
 And, no, it's not a number, indeed. It's a sequence of characters, which
-we call a _string_.
+we call a _string_. A string is something like a word, or a sentence,
+for example.
 
 Wait... there's another type of data besides numbers? Yes! Lots of types
 of data! We call them _data types_.
@@ -350,8 +351,8 @@ if that's a string of numbers. Note that these things are **not** the
 same:
 
 ``` {.py}
-3490     # int
-"3490"   # string
+3490     # int, a numeric value we can do math with
+"3490"   # string, a sequence of characters
 ```
 
 Sure, they look kinda the same, but they aren't the same _because they
@@ -402,6 +403,7 @@ Here are some of the conversion functions available to you in Python:
 
 So... given all that we know so far, how can we solve this chapter's
 problem: input two numbers from the keyboard and print the sum?
+
 
 ## Input Two Numbers and Print the Sum
 

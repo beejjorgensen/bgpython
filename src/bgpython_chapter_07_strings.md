@@ -242,36 +242,6 @@ string of `"4490"`? What kinds of conversions and operations would you
 have to do?
 
 
-## Immutability of Strings
-
-Problem solving step: **Understand**.
-
-If some data is _mutable_, it means you can modify it. If it's
-_immutable_, it means you cannot.
-
-We've seen numbers are mutable:
-
-``` {.py}
-x = 3490
-x += 1000
-print(x)  # we changed `x` to 4490, `x` is mutable
-```
-
-but, get this: _strings are immutable_. You cannot change them. The only
-thing you can do is to make a new string.
-
-``` {.py}
-x = "Hello, "
-y = "world!"
-z = x + y      # z is a completely new string; x and y are unchanged
-```
-
-So remember: any time you think you are "changing" a string, you're
-actually making a completely new one. It's important to keep this model
-in mind because it will prevent all kinds of bugs and misunderstandings
-as we progress.
-
-
 ## Getting Individual Characters From Strings
 
 Problem solving step: **Understand**.
@@ -409,6 +379,80 @@ detect.
 
 In a bit, we'll also discuss the `len()` function that will give you the
 length of any string you pass in.
+
+
+## Strange Interlude: Mutable versus Immutable Types
+
+Problem solving step: **Understand**. 
+
+So far we've learned about three data types: integer, float, and string.
+All of these share a common characteristic: they're all _immutable_.
+(That is, you cannot change them. Note that you can always change the
+thing a variable refers to---that is, you can assign the variable to
+refer to something else---but you can't change the immutable thing,
+itself.)
+
+What this means is that _any time you do an operation on any of the
+types, you get a new entity back_. Maybe the old one is kept, or maybe it
+is forgotten depending on how your code works.
+
+In short, there's no way to add something to the end of a string. You
+can take a string and add something to it to make a completely new
+string with the new stuff on the end, but it's a new string. The
+original is never modified since it's immutable.
+
+``` {.py}
+x = "hello"
+y = x + " world"
+
+print(x)  # hello
+print(y)  # hello world
+```
+
+See in that example how the value of `x` is unchanged? We couldn't
+change it if we wanted to. Check this out:
+
+``` {.py}
+x = "hello"
+print(x[2])  # print character 2, namely "l"
+
+x[2] = "z"   # ERROR! Python won't allow you to change the string!
+```
+
+If you wanted to make a string where character number 2 is swapped out,
+you'll have to slice it up and build it yourself.
+
+``` {.py}
+x = "hello"
+y = x[:2] + "z" + x[3:]  # Make a new string
+
+print(y)  # hezlo
+```
+
+Or you could use _regular expressions_^[We'll talk about regular
+expressions, or _regexes_, later.] or some other string methods to
+replace the letter... but remember that these methods produce a new
+string---they have to since strings are immutable!
+
+It's the same story with numbers, although this is behavior that you
+might take for granted, it's so expected.
+
+``` {.py}
+x = 12
+y = x + 2  # This creates a new number--it doesn't change 12
+
+print(x)  # 12
+print(y)  # 14
+```
+
+Like I said, so far all the types we've learned about are immutable.
+But later, we'll talk about lists, dictionaries, and sets, which are the
+three mutable types in Python.
+
+So remember: any time you think you are "changing" a string, you're
+actually making a completely new one. It's important to keep this model
+in mind because it will prevent all kinds of bugs and misunderstandings
+as we progress.
 
 
 ## `for`-loops with Strings
