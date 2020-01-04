@@ -10,14 +10,15 @@
 - Conditionals
 - Looping
 * More data types
+  * Reference Types
   - Strings
   * Lists
+    * List Comprehensions
   * Dicts
   * Sets
   * Tuples
+* REPL
 * Functions
-  * Reference Types
-* List Comprehensions
 * Try/except
 * OOP
 * Number Bases
@@ -30,6 +31,14 @@
 * Recursion
 * Data Structures?
 * Big O?
+* Appendix: programmer math
+  * Order of operations
+  * Parens
+  * Power
+  * Factorial
+  * Math functions
+  * Expressions
+
 
 ## Beej' extensions to markdown
 
