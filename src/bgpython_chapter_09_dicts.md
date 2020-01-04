@@ -17,7 +17,8 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Chapter Project Specification {dicts-proj-spec}
 
-TODO
+TODO Employee records equivalent
+Multikey?
 
 
 ## What are Dictionaries?
@@ -250,5 +251,45 @@ You have a number of tools in your toolkit for working with dicts in Python:
 |.values()|Return a list-ish of the values in the dictionary|
 |.pop(key)||Return the value for the given key, and remove it from the dictionary|
 |.popitem()|Pop and return the most-recently-added `(key,value)` pair|
+
+We already saw a use of `.get()`, earlier, but it can also be modified
+to return a default value if the key doesn't exist in the dictionary.
+
+``` {.py}
+d = {
+    "c": 10,
+    "b": 20,
+    "a": 30
+}
+
+v = d.get("x", -99)  # Return -99 if key doesn't exist
+
+print(v)  # Prints -99, since key `x` doesn't exist
+```
+
+We've already seen a use of `.items()`, above. If you want to see just
+all the keys or values, you can get an iterable back with the `.keys()`
+and `.values()`:
+
+``` {.py}
+d = {
+    "c": 10,
+    "b": 20,
+    "a": 30
+}
+
+for k in d.keys():
+    print(k)   # Prints "c", "b", "a"
+
+for v in d.values():
+    print(v)   # Prints 10, 20, 30
+```
+
+## Dictionary Comprehensions
+
+Remember [list comprehensions](#list-comprehensions)? If you don't, pop
+over there for a quick refresher, because this is the same thing except
+for dictionaries.
+
 
 

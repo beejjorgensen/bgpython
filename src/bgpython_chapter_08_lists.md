@@ -779,7 +779,7 @@ a = []
 
 presumably to compute values for later.
 
-## List Comprehensions
+## List Comprehensions {list-comprehensions}
 
 Problem solving step: **Understand**.
 
