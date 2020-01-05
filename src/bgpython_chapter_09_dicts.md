@@ -242,15 +242,15 @@ Problem solving step: **Understand**.
 You have a number of tools in your toolkit for working with dicts in Python:
 
 |Method|Description|
-|----------|-------------------------------------------------------------------|
-|.clear()|Empty a dictionary, removing all keys/values|
-|.copy()|Return a copy of a dictionary|
-|.get(key)|Get a value from a dictionary, with a default if it doesn't exist|
-|.items()|Return a list-ish of the `(key,value)` pairs in the dictionary|
-|.keys()|Return a list-ish of the keys in the dictionary|
-|.values()|Return a list-ish of the values in the dictionary|
-|.pop(key)||Return the value for the given key, and remove it from the dictionary|
-|.popitem()|Pop and return the most-recently-added `(key,value)` pair|
+|----------|----------------------------------|
+|`.clear()`|Empty a dictionary, removing all keys/values|
+|`.copy()`|Return a copy of a dictionary|
+|`.get(key)`|Get a value from a dictionary, with a default if it doesn't exist|
+|`.items()`|Return a list-ish of the `(key,value)` pairs in the dictionary|
+|`.keys()`|Return a list-ish of the keys in the dictionary|
+|`.values()`|Return a list-ish of the values in the dictionary|
+|`.pop(key)`|Return the value for the given key, and remove it from the dictionary|
+|`.popitem()`|Pop and return the most-recently-added `(key,value)` pair|
 
 We already saw a use of `.get()`, earlier, but it can also be modified
 to return a default value if the key doesn't exist in the dictionary.
