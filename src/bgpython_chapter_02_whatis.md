@@ -131,30 +131,34 @@ There are a number of problem solving frameworks out there. These are
 blueprints for how to approach a programming problem and solve it, even
 if you have no idea how to solve it when you first see it.
 
-Here's an example of a standard problem-solving framework:
+One of my favorite problem-solving frameworks was popularized by
+mathematician George Pólya in 1945 in his book _How To Solve It_. It was
+originally written for solving math problems, but it's surprisingly
+effective at solving just about anything. The Four Main Steps are:
 
-1. **Understand the Problem**. Get clarity on all parts of the problem.
-   Break it down into subproblems, and break those subproblems down. If
-   you don't understand the problem, any solutions you come up with will
-   be solving the wrong problem! You know you understand the problem
-   when you can explain it to someone completely.
+1. **Understanding the Problem**. Get clarity on all parts of the
+   problem. Break it down into subproblems, and break those subproblems
+   down. If you don't understand the problem, any solutions you come up
+   with will be solving the wrong problem! You know you understand the
+   problem when you can explain it to someone completely.
 
-2. **Make a Plan**. How are you going to attack this with the tools you
-   have at your disposal and the techniques you know? You know you're
-   done making a plan when you're able to easily convert your plan into
-   code.
+2. **Devising a Plan**. How are you going to attack this with the tools
+   you have at your disposal and the techniques you know? You know
+   you're done making a plan when you're able to easily convert your
+   plan into code.
 
    Often when planning you realize there's something about the problem
    you don't fully understand. Just for a bit, pop back to Step 1 until
    it's clear, then come back to planning.
 
-3. **Code it up!** Convert your plan into code and get it working.
+3. **Carrying out the plan** Convert your plan into code and get it
+   working.
 
    Often in this phase, you find that there was either something you
    didn't understand, or something the plan didn't account for. Drop
    back a step or two until it's resolved, then come back here.
 
-4. **Postmortem**. Look back on the code you got working, and consider
+4. **Looking Back**. Look back on the code you got working, and consider
    what went right and what went wrong. What would you do differently
    next time? What techniques did you learn while writing the code? Was
    there any place you could have structured things better, or anyplace
