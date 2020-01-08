@@ -132,7 +132,7 @@ and then again later. This is a big source of confusion among new
 developers.
 
 
-## Reference Versus Value---Fight!
+## Reference Versus Value---Fight! {ref-val}
 
 Not really a fight. They're best friends! They wouldn't do that.
 

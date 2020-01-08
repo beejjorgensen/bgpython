@@ -13,13 +13,59 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Iterate over dictionaries with `for`
 * Use common dictionaries built-in functions
 * Construct new dictionaries with dictionary comprehensions
-* Dictionaries of Dictionaries
+* Build Dictionaries of Dictionaries
+* Understand that Dictionaries are Reference Types
 
 ## Chapter Project Specification {dicts-proj-spec}
 
-TODO Employee records equivalent
-Multikey?
+Let's store some genealogical^[This is all about family trees. Did you know I'm
+related to Queen Elizabeth II (by marriage)? I'm her mother’s sister’s husband’s
+father’s father’s sister’s daughter’s husband’s wife’s (_drama!_) sister’s
+husband’s father’s brother’s son’s son’s daughter’s son’s daughter’s son. For
+realsies! I'm willing to bet that you're related to Queen Elizabeth II, as
+well. That makes us cousins!] data!
 
+We'll have a number of data records associated with each person:
+
+```
+Beej Jorgensen:
+    Born: 1990 [yes, I'm 29, is my story I'm sticking to]
+    Mother: Mom Jorgensen
+    Father: Dad Jorgensen
+    Siblings: [Brother Jorgensen, Sister Jorgensen, Little Sister Jorgensen]
+
+Mom Jorgensen:
+    Born: 1970
+    Mother: Grandma Jorgensen
+    Father: Grandpa Jorgensen
+    Siblings: [Auntie Jorgensen]
+
+Dad Jorgensen:
+    Born: 1965
+    Mother: Granny Jorgensen
+    Father: Grandad Jorgensen
+    Siblings: [Uncle Jorgensen]
+```
+
+(Ok, I hear you saying, "Wait, your mom and dad were both Jorgensens? That's
+suspicious. I mean, I'm not saying, but I'm just saying." Hold your tongue! I
+can assure you they're not related^[Except via Queen Elizabeth II, like the rest
+of us.].)
+
+We want to write an app that will allow you to print out the birthdays of the
+parents of any given person.
+
+Example:
+
+```
+Enter a name: Beej Jorgensen
+Parents:
+    Mom Jorgensen (1970)
+    Dad Jorgensen (1965)
+```
+
+So we'll need some way to store that, and some way to look through the data to
+get information about other people who are referenced.
 
 ## What are Dictionaries?
 
@@ -287,9 +333,99 @@ for v in d.values():
 
 ## Dictionary Comprehensions
 
+Problem solving step: **Understand**.
+
 Remember [list comprehensions](#list-comprehensions)? If you don't, pop
 over there for a quick refresher, because this is the same thing except
 for dictionaries.
 
+You can create a dictionary from any iterable that you can go over in a `for`
+loop. This is a pretty powerful way of creating a dictionary if you have the
+data in another, iterable, form, like a list or an input stream of something.
 
+Let's go through a list and store the list value as the key, and the list value
+times 10 as the value in the dictionary. And let's ignore the number 20 in the
+list, just for fun.
 
+``` {.py}
+a = [10, 20, 30]
+d = { x: x*10 for x in l if x != 20 }
+
+print(d)  # {10: 100, 30: 300}
+```
+
+If you have a list of key/value pairs, you can read those into a dictionary
+pretty easily, too.
+
+``` {.py}
+a = [["alice", 20], ["beej", 30], ["chris", 40]]
+d = { k: v for k, v in a }
+
+print(d) # {'alice': 20, 'beej': 30, 'chris': 40}
+```
+
+## Dictionaries of Dictionaries
+
+Problem solving step: **Understand**.
+
+Here's the deal: the value that you store for a given key can be _anything_!
+
+Well, not like a whale, or Mars, but any data type. So you can store strings,
+ints, floats, lists, or even other dictionaries as the value for the dictionary
+key!
+
+Check out this _nested declaration_, and check out how we drill down through the
+dictionary layers to get to the data:
+
+``` {.py}
+d = {
+    "a": {
+        "b": "Mars! Ha!"
+    }
+}
+
+print(d)           # {'a': {'b': 'Mars! Ha!'}}
+print(d["a"])      # {'b': 'Mars! Ha!'}
+print(d["a"]["b"]) # Mars! Ha!
+```
+
+Nesting dictionaries like this can be a really powerful method of storing data.
+
+## Dictionaries are reference types
+
+Problem solving step: **Understand**.
+
+Remember how we were talking about [references versus values](#ref-val) with
+lists? Turns out that dicts are the same.
+
+When you make a copy of a dictionary, it's copying the _reference_ to the same
+dictionary, not making a new one.
+
+``` {.py}
+d = { "beej": 3490 }
+
+e = d  # both e and d refer to the same dict!
+
+e["beej"] = 3491  # modify it
+
+print(d["beej"])  # 3491
+```
+
+If you want to make a copy of a dictionary use one of the following:
+
+``` {.py}
+d = { "beej": 3490 }
+
+e = d.copy() # make a copy, the preferred way
+e = dict(d)  # make a copy
+```
+
+That first way is preferred because it's easier to read, and easy to read code
+is _Happy Code_™.
+
+## The Chapter Project
+
+Pop back up top and [refresh on the spec](#dicts-proj-spec) if you need to.
+Let's break it down!
+
+Problem solving step: **Understand**.
