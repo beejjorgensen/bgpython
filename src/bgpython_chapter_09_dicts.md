@@ -69,7 +69,7 @@ get information about other people who are referenced.
 
 ## What are Dictionaries?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember how with lists, we could key an index number into the list and
 get a value out, and how we could use that same index number to store
@@ -125,7 +125,7 @@ value can be any type.
 
 ## Initializing a Dictionary
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 As we saw above, you can initialize an empty dictionary like so:
 
@@ -160,7 +160,7 @@ dictionary is very similar in format, though not exactly the same.
 
 ## Speed Demon
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Like lists, dicts are really fast at looking up information. In fact, on
 average, it takes the same amount of time to get a value out of a dictionary,
@@ -172,7 +172,7 @@ can make use of this feature to keep your programs running quickly. _Vroom!_
 
 ## Does this `dict` have this key?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 If you have a dictionary, it's nice to be able to check to see if a key even
 exists.
@@ -213,7 +213,7 @@ for another time.
 
 ## Iterating over Dictionaries
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember how you could iterate over all the elements in a list with `for`? Well,
 we can do the same thing with dictionaries. Except in this case, we'll be
@@ -283,7 +283,7 @@ for k, v in d.items():
 
 ## Common Built-in Dictionary Functionality
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 You have a number of tools in your toolkit for working with dicts in Python:
 
@@ -333,7 +333,7 @@ for v in d.values():
 
 ## Dictionary Comprehensions
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember [list comprehensions](#list-comprehensions)? If you don't, pop
 over there for a quick refresher, because this is the same thing except
@@ -366,7 +366,7 @@ print(d) # {'alice': 20, 'beej': 30, 'chris': 40}
 
 ## Dictionaries of Dictionaries
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Here's the deal: the value that you store for a given key can be _anything_!
 
@@ -393,7 +393,7 @@ Nesting dictionaries like this can be a really powerful method of storing data.
 
 ## Dictionaries are reference types
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember how we were talking about [references versus values](#ref-val) with
 lists? Turns out that dicts are the same.
@@ -428,4 +428,4 @@ is _Happy Code_™.
 Pop back up top and [refresh on the spec](#dicts-proj-spec) if you need to.
 Let's break it down!
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.

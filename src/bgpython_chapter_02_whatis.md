@@ -214,6 +214,6 @@ Okay, gang! Let's get it... over with!
   implement a solution to that problem.
 * A program is a series of instructions that can be carried out by a
   computer to solve the problem.
-* The main problem-solving steps are: Understand, Plan, Code,
-  Postmortem.
+* The main problem-solving steps are: Understand the Problem, Devise a
+  Plan, Carry out the Plan, Look Back.
 

@@ -43,7 +43,7 @@ Keep this program in mind as we learn the techniques to implement it.
 
 ## What is Flow Control?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 What is _flow control_? To understand, let's look at a simple program:
 
@@ -83,7 +83,7 @@ But before that, we have to meet someone: George Boole.
 
 ## Boolean Algebra and Expressions
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 [fl[George Boole|https://en.wikipedia.org/wiki/George_Boole]] was quite
 and interesting character. From humble beginnings in the early 1800s, he
@@ -230,7 +230,7 @@ Now we're about ready to go. Let's learn how to do this in Python.
 
 ## Boolean Operations in Python
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 The comparison operators in Python are:
 
@@ -301,7 +301,7 @@ Seems mundane, but we'll make good use of it in a minute.
 
 ## The Almighty `if` Statement
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 It's all well and good for Python to tell me that `1 < 5` is `True`, but
 how can we actually use that to make choices in a program?
@@ -386,7 +386,7 @@ output for a given input.
 
 ## And Now: `while` Loops!
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We're going to divert ever-so-slightly, and talk about another important
 concept in programming: _loops_. A loop is what allows us to execute the
@@ -463,7 +463,7 @@ come back to it later.
 
 ## Looping: `for` Loops
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 In addition to `while` loops, we also have a beast called a `for` loop.
 These are actually quite powerful as we'll find out later, but for now I
@@ -537,7 +537,7 @@ story for another time.
 
 ## When `while` and When `for`?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Which of these looping constructs should you use, and when?
 
@@ -559,7 +559,7 @@ you don't know when that'll be, use a `while` loop.
 Let's jump into that project from the beginning of the chapter. [Revisit
 the project spec](#loop-proj-spec) if you need a refresher.
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 Let's break this program into to two parts, and tackle them
 individually.
@@ -582,7 +582,7 @@ at this point.
 Let's go ahead and code up the user input portion. We'll do printing
 asterisks later.
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Asking the user for input, we already know.
 
@@ -636,7 +636,7 @@ continuation condition is `not input_valid`).
 Once you're satisfied it's working correctly, let's move back to the
 spec and concentrate on printing out the asterisks.
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 If the user enters `x`, we want to print out `x` count of characters,
 total. The first 30 of these will be `#`, and any after that will be
@@ -658,7 +658,7 @@ For however many numbers the user inputs:
    Print a `#`.
 ```
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Since we know how many `#`s we want to print (the user entered the
 number!) this would be a great place for a `for` loop. Let's print
@@ -696,7 +696,7 @@ Getting there! But we're not out of the woods yet. We need to make it so
 that for character more than 30 characters out, we print a `*` instead
 of a `#`.
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 This is like the plan for printing the line from before, but we
 simplified that, remember? So we have to add some complexity in to mett
@@ -712,7 +712,7 @@ For however many numbers the user inputs:
 
 And that's looking like a good case for `if` _inside_ our `for` loop!
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Let's add that `if` logic to the `for` loop at the end:
 

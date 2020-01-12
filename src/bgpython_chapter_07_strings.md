@@ -38,7 +38,7 @@ need in the largest product.
 
 ## What is a String?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 A string in Python is a sequence of characters (letters, punctuation,
 numbers, foreign characters, etc.). You enclose it in either single
@@ -79,7 +79,7 @@ Strings are commonly used when:
 
 ## Creating Strings
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Strings are generally created one of two ways:
 
@@ -110,7 +110,7 @@ strings and other data types. But for now, we'll stick to some basics.
 
 ## Converting Other Types To Strings and Vice Versa
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We've already mentioned this in a previous chapter, but it's worth
 covering again as a review.
@@ -140,7 +140,7 @@ it to a numeric value so that you can perform math on it.
 
 ## String Concatenation with `+`
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 You're used to using `+` to add two numbers, but did you know you could
 also "add" strings? It doesn't do it arithmetically, but it will glue
@@ -175,12 +175,12 @@ print(x)   # Beej!
 Use what we've learned so far to concatenate a string `"Hello"` with the
 number `3490` (an integer, not a string).
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 OK, so let's use `+` to concatenate the number onto the end of the
 string.
 
-Problem solving step: **Code it up**.
+Problem solving step: **Carrying out the Plan**.
 
 ``` {.py}
 x = "Hello"
@@ -207,14 +207,14 @@ TypeError: can only concatenate str (not "int") to str
 `y` is an `int`, but `x` is a `str`. This error is telling us that we
 can't concatenate an `int` onto a `str`. What to do now?
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 Since we can't concatenate an `int` to a `str`, can we turn the `int`
 into a `str`? Sure! New plan: convert the `int` to a `str` with the
 `str()` function, and then concatenate it onto the first string with
 `+`.
 
-Problem solving step: **Code it up**.
+Problem solving step: **Carrying out the Plan**.
 
 ``` {.py}
 x = "Hello"
@@ -224,7 +224,7 @@ print(x + y)    # Hello3490
 
 Success!
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 Any other ways to solve this? We could have done the `str()` call later:
 
@@ -244,7 +244,7 @@ have to do?
 
 ## Getting Individual Characters From Strings
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 What if we want to extract a single character from a string?
 
@@ -298,7 +298,7 @@ We're going to use these next when we talk about slices.
 
 ## Slices
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 A _slice_ is part of a string. You specify them by knowing the
 _starting index_ and _ending index_ into a string, and separating them
@@ -318,7 +318,7 @@ In this way, you can pull out any _substring_ from a string.
 
 ## Midterm Challenge
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Write a program that will allow the user to input a string, then will
 print out the entire string _except_ the first and last characters. You
@@ -327,7 +327,7 @@ can assume the string will be at least 3 characters long.
 So if the user enters `Beej!`, we want to print out `eej`. If they enter
 `Python`, we want to print out `ytho`.
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 We need to:
 
@@ -347,7 +347,7 @@ Fortunately, we know how to index to the second from the end: index
 including, the second index! So we need to end the slice at index `-1`
 to cause it to not include the last character.
 
-Problem solving step: **Code it Up**.
+Problem solving step: **Carrying out the Plan**.
 
 ``` {.py .numberLines}
 x = input("Enter a string of at least 3 characters: ")
@@ -357,7 +357,7 @@ print(y)
 
 Easy peasy!
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 What could we have done better?
 
@@ -383,7 +383,7 @@ length of any string you pass in.
 
 ## Strange Interlude: Mutable versus Immutable Types
 
-Problem solving step: **Understand**. 
+Problem solving step: **Understanding the Problem**. 
 
 So far we've learned about three data types: integer, float, and string.
 All of these share a common characteristic: they're all _immutable_.
@@ -457,7 +457,7 @@ as we progress.
 
 ## `for`-loops with Strings
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember how we used `for` with `range()` earlier to count up to a
 certain number? Turns out `for` is far more capable than just doing
@@ -517,7 +517,7 @@ the `enumerate()` function later.
 
 ## String Functions and Methods
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Python has a lot of built-in functions to help you manipulate and use
 strings.
@@ -635,7 +635,7 @@ them just so you have an idea of what you have at your disposal.
 
 ## Formatted Output with F-Strings
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 So far we've just been using `print()` like so:
 
@@ -781,7 +781,7 @@ We're going to print a times table. This will use knowledge from this
 chapter, as well as from previous chapters. Use any means you know to
 solve the problem.
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Let's take another look at the sample output when the user enters `4`:
 
@@ -858,7 +858,7 @@ But of course, we don't just want to print rows three times... the end
 result is going to have the number of rows that the user input. We need
 to loop to make it happen. A loop of loops! A _nested loop_!
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 Before we jump into this, I'd like you to take the time to think about
 this. Set a timer and work on it for 3 minutes.
@@ -940,7 +940,7 @@ we'll print is `361` ($19\times19$) so we'll need a space between
 columns and three spaces for the number. We can use an F-string with a
 field width of `4` to make this happen.
 
-Problem solving step: **Code it Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Let's start by entering a number and make sure this works:
 
@@ -994,7 +994,7 @@ Woot!
 
 Did you have another solution that worked? There are plenty others!
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 What are the corner cases that you should test? (Look for the `if`
 statements, and test on either side of those. `0` and `1` and `19` and

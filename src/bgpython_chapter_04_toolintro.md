@@ -14,13 +14,13 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 Let's use our problem-solving framework!
 
-1. **Understand**: We want to write a program that prints a neat little
-   message to the screen.
+1. **Understand the Problem**: We want to write a program that prints a
+   neat little message to the screen.
 
    In the process, we want to get used to using the command line and our
    code editor.
 
-2. **Make a plan**
+2. **Devise a plan**
 
    1. Open a terminal
    2. Make a directory and change to it
@@ -28,10 +28,10 @@ Let's use our problem-solving framework!
    4. Write code and save it to that file
    5. Run your program from the command line
 
-3. **Code it up**: This is where we execute on our plan. We'll do that
-   in the following sections.
+3. **Carry out the Plane**: This is where we execute on our plan. We'll
+   do that in the following sections.
 
-4. **Postmortem**: We'll do this, below, as well. In future chapters,
+4. **Look Back**: We'll do this, below, as well. In future chapters,
    we'll leave these last two off the number list and just do them in
    subsequent sections.
 

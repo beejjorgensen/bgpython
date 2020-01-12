@@ -21,7 +21,7 @@ from the keyboard and prints out the sum of the two numbers.**
 
 ## Data, Variables, and Math
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 _Data_ is the general term we use to describe information stored in the
 computer. In the case of programming, we're interested in values that we'll do
@@ -228,7 +228,7 @@ These are very frequently used by devs. If you have `x = x + 2`, use `x
 
 ## User Input
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We want to get input from the user and store it in a variable so that we
 can do things with it.
@@ -294,7 +294,7 @@ data.
 
 ## Data Types
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We started with numbers, earlier. That was pretty straightforward. The
 variable was assigned a value and then we could do math on it.
@@ -367,7 +367,7 @@ How can we solve this problem?
 
 ## Converting Between Data Types
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 If we can't add strings mathematically, can we convert the string
 `"3490"` into the integer `3490` and then do math on that?
@@ -407,7 +407,7 @@ problem: input two numbers from the keyboard and print the sum?
 
 ## Input Two Numbers and Print the Sum
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 We know:
 
@@ -419,10 +419,10 @@ We know:
 Now---how do we put all that together to write a program that inputs two
 numbers from the keyboard and prints their sum?
 
-This is the _Make a Plan_ portion of problem solving. We're not going to
-write code to make this happen. We're just going to write an outline of
-the individual steps the program must describe in a language called
-_pseudocode_ (which is English that looks kinda like code).
+This is the _Devising a Plan_ portion of problem solving. We're not
+going to write code to make this happen. We're just going to write an
+outline of the individual steps the program must describe in a language
+called _pseudocode_ (which is English that looks kinda like code).
 
 Then when we're satisfied it'll work, we can code it up for realsies.
 
@@ -450,7 +450,7 @@ print the sum of x + y
 If we're satisfied that our plan is solid, it's time to move to the next
 phase.
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Now let's convert each of those lines to real Python. I'll throw in the
 pseudocode as comments so we can see how they compare. ([flx[Source
@@ -522,7 +522,7 @@ absolutely handle it. It's just a big sandbox for you to play in.
 
 ## Wrapping it Up
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 This grimly-named step is where we take a look at our code and decide if
 there was a better way to attack this problem. It's important to

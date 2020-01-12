@@ -47,7 +47,7 @@ Keep this project in mind as you read through the chapter.
 
 ## What Are Lists?
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember how regular variables hold one thing? Well, _lists_ are
 variables that can hold a lot of things.
@@ -275,7 +275,7 @@ topic a few more times as we progress.
 
 ## `for` and Lists---Powerful Stuff
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Remember our good friend the `for` loop? We used it with `range` to loop
 a number of times, and we used it with strings to loop over each
@@ -345,7 +345,7 @@ And now that works for lists of any length---much better!
 
 ## `for` and `enumerate()`
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 In the examples above, we used `for` with the elements in the list
 themselves, and also with `range()` over the indexes of the elements in
@@ -376,7 +376,7 @@ The element at index 3 has value 99
 
 ## Midterm: Doubling The Values
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 Let's write some code that takes a list and goes through all the
 elements in that list. If an element is _even_, we should multiply the
@@ -394,7 +394,7 @@ after processing and doubling all the even values, it will be:
 [1, 4, 3, 8, 5, 12]
 ```
 
-Problem solving step: **Make a Plan**.
+Problem solving step: **Devising a Plan**.
 
 We know we need to iterate over the list, so that sounds like a job for
 a `for`-loop. And we need to test if a number is even or odd, which
@@ -427,7 +427,7 @@ for each element in the list:
 
 Then maybe print it out at the end, just for fun.
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Here's each line of the plan's pseudocode [flx[converted to
 Python|listdouble.py]]:
@@ -457,7 +457,7 @@ And the output:
 
 _Voila!_ There it is!
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 Anything you could make better about this?
 
@@ -597,7 +597,7 @@ as we go.
 
 ## Midterm Challenge
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 More math! _[Groan!]_ Let's compute the Fibonacci Sequence! _[Yay!]_
 
@@ -657,7 +657,7 @@ print the list
 
 Time to code it up!
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 [flx[`fiblist.py`|fiblist.py]]:
 
@@ -703,7 +703,7 @@ the output here---yours might not be so pretty):
 83621143489848422977, 135301852344706746049, 218922995834555169026]
 ```
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 Notice how the list grows bigger and bigger each step of the loop. If
 we were to print out the list every iteration of the loop, we'd see
@@ -738,7 +738,7 @@ using the loop to count, and you don't actuall care what the count is.
 
 ## Building New Lists, Repeating and Empty
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We've already seen how to initialize a list with a few elements in it:
 
@@ -781,7 +781,7 @@ presumably to compute values for later.
 
 ## List Comprehensions {list-comprehensions}
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 This is a really neat language feature of Python. It allows you to
 construct a new list from an old one, modifying and filtering elements
@@ -883,7 +883,7 @@ comprehensions are a great tool to us.
 
 ## Lists of Lists
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 You can have lists of just about anything in Python. Lists of numbers,
 lists of strings, lists of lists...
@@ -1000,7 +1000,7 @@ problem that has an obvious solution, even as a seasoned developer. But
 we do have our problem solving framework to break down the problem into
 workable parts. So let's do it!
 
-Problem solving step: **Understand**.
+Problem solving step: **Understanding the Problem**.
 
 We want to do several things with this project:
 
@@ -1178,7 +1178,7 @@ into the solution.
 And it's rarely an obvious one. We all have to work hard to come up with
 the answers.
 
-Problem solving step: **Code It Up**.
+Problem solving step: **Carrying out the Plan**.
 
 Before we start this phase, I want you to notice how much time we've
 spend on the Understand and Plan phases without writing any code at all.
@@ -1448,7 +1448,7 @@ line numbers!)
 Woo! You've written your very own
 [fl[Roguelike|https://en.wikipedia.org/wiki/Roguelike]] game!
 
-Problem solving step: **Postmortem**.
+Problem solving step: **Looking Back**.
 
 For next steps, consider adding some of the following:
 
