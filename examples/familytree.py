@@ -60,7 +60,7 @@ while not done:
 
     record = tree.get(name)
 
-    if record == None:
+    if record is None:
         print(f'No record for "{name}"')
         continue
 
