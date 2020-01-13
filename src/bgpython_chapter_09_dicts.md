@@ -18,12 +18,13 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Chapter Project Specification {dicts-proj-spec}
 
-Let's store some genealogical^[This is all about family trees. Did you know I'm
-related to Queen Elizabeth II (by marriage)? I'm her mother’s sister’s husband’s
-father’s father’s sister’s daughter’s husband’s wife’s (_drama!_) sister’s
-husband’s father’s brother’s son’s son’s daughter’s son’s daughter’s son. For
-realsies! I'm willing to bet that you're related to Queen Elizabeth II, as
-well. That makes us cousins!] data!
+Let's store some genealogical^[This is all about family trees. Did you
+know I'm related to Queen Elizabeth II (by marriage)? I'm her mother’s
+sister’s husband’s father’s father’s sister’s daughter’s husband’s
+wife’s (_drama!_) sister’s husband’s father’s brother’s son’s son’s
+daughter’s son’s daughter’s son. For realsies! I'm willing to bet that
+you're related to Queen Elizabeth II, as well. That makes us cousins!]
+data!
 
 We'll have a number of data records associated with each person:
 
@@ -47,25 +48,31 @@ Dad Jorgensen:
     Siblings: [Uncle Jorgensen]
 ```
 
-(Ok, I hear you saying, "Wait, your mom and dad were both Jorgensens? That's
-suspicious. I mean, I'm not saying, but I'm just saying." Hold your tongue! I
-can assure you they're not related^[Except via Queen Elizabeth II, like the rest
-of us.].)
+(Ok, I hear you saying, "Wait, your mom and dad were both Jorgensens?
+That's suspicious. I mean, I'm not saying, but I'm just saying." Hold
+your tongue! I can assure you they're not related^[Except via Queen
+Elizabeth II, like the rest of us.].)
 
-We want to write an app that will allow you to print out the birthdays of the
-parents of any given person.
+We want to write an app that will allow you to print out the birthdays
+of the parents of any given person.
 
 Example:
 
 ```
-Enter a name: Beej Jorgensen
+Enter a name (or q to quit): Beej Jorgensen
 Parents:
     Mom Jorgensen (1970)
     Dad Jorgensen (1965)
 ```
 
-So we'll need some way to store that, and some way to look through the data to
-get information about other people who are referenced.
+So we'll need some way to store that, and some way to look through the
+data to get information about other people who are referenced.
+
+Yes, we could use lists of people and just search through, but there's a
+less clunky way we might go about doing this.
+
+This chapter is all about how we might store such data.
+
 
 ## What are Dictionaries?
 
@@ -163,22 +170,24 @@ dictionary is very similar in format, though not exactly the same.
 Problem solving step: **Understanding the Problem**.
 
 Like lists, dicts are really fast at looking up information. In fact, on
-average, it takes the same amount of time to get a value out of a dictionary,
-_regardless of how many items are in the dictionary_^[Time complexity
-enthusiasts will recognize this as $O(1)$, or _constant_ time.].
+average, it takes the same amount of time to get a value out of a
+dictionary, _regardless of how many items are in the dictionary_^[Time
+complexity enthusiasts will recognize this as $O(1)$, or _constant_
+time.].
 
-Keep this fact in mind going forward. We'll get into more complex problems that
-can make use of this feature to keep your programs running quickly. _Vroom!_
+Keep this fact in mind going forward. We'll get into more complex
+problems that can make use of this feature to keep your programs running
+quickly. _Vroom!_
 
 ## Does this `dict` have this key?
 
 Problem solving step: **Understanding the Problem**.
 
-If you have a dictionary, it's nice to be able to check to see if a key even
-exists.
+If you have a dictionary, it's nice to be able to check to see if a key
+even exists.
 
-The secret to doing this is the `in` statement that will return a Boolean
-indicating if a key is in a dict.
+The secret to doing this is the `in` statement that will return a
+Boolean indicating if a key is in a dict.
 
 ``` {.py}
 d = {
@@ -193,11 +202,11 @@ if "x" not in d:
     print('There is no key "x" in "d"')
 ```
 
-There is also a way to get an item out of a dictionary using the `.get()`
-method. This method returns a default value of `None`^[If you haven't seen it
-before or need a refresher, this is a value that represents "no value". It's a
-placeholder (what we call a _sentinel value_) to indicate a no-value condition.]
-if the key doesn't exist.
+There is also a way to get an item out of a dictionary using the
+`.get()` method. This method returns a default value of `None`^[If you
+haven't seen it before or need a refresher, this is a value that
+represents "no value". It's a placeholder (what we call a _sentinel
+value_) to indicate a no-value condition.] if the key doesn't exist.
 
 ``` {.py}
 val = d.get("x")
@@ -215,9 +224,10 @@ for another time.
 
 Problem solving step: **Understanding the Problem**.
 
-Remember how you could iterate over all the elements in a list with `for`? Well,
-we can do the same thing with dictionaries. Except in this case, we'll be
-looping over the _keys_ in the dictionary, not the values.
+Remember how you could iterate over all the elements in a list with
+`for`? Well, we can do the same thing with dictionaries. Except in this
+case, we'll be looping over the _keys_ in the dictionary, not the
+values.
 
 Let's try it!
 
@@ -240,8 +250,8 @@ key b has value 20
 key a has value 30
 ```
 
-Note that in the latest version of Python, the keys come out in the same order
-they've been added to the dictionary.
+Note that in the latest version of Python, the keys come out in the same
+order they've been added to the dictionary.
 
 If you want them in another order, there are options:
 
@@ -256,10 +266,10 @@ for k in sorted(d):  # <--- Add the call to sorted()
     print(f"key {k} has value {d[k]}")
 ```
 
-And now we have this, where the keys have been sorted alphabetically^[Or what we
-call _lexicographically sorted_. It's like alphabetical, but on steroids so that
-it can handle letters, numbers, punctuation and so on, all of which are all
-numbers deep down.].
+And now we have this, where the keys have been sorted alphabetically^[Or
+what we call _lexicographically sorted_. It's like alphabetical, but on
+steroids so that it can handle letters, numbers, punctuation and so on,
+all of which are all numbers deep down.].
 
 ```
 key a has value 30
@@ -267,8 +277,8 @@ key b has value 20
 key c has value 10
 ```
 
-Also, similar to how lists work, you can use the `.items()` method to get
-all keys and values out at the same time in a `for` loop, like this:
+Also, similar to how lists work, you can use the `.items()` method to
+get all keys and values out at the same time in a `for` loop, like this:
 
 ``` {.py}
 d = {
@@ -285,7 +295,8 @@ for k, v in d.items():
 
 Problem solving step: **Understanding the Problem**.
 
-You have a number of tools in your toolkit for working with dicts in Python:
+You have a number of tools in your toolkit for working with dicts in
+Python:
 
 |Method|Description|
 |----------|----------------------------------|
@@ -339,13 +350,14 @@ Remember [list comprehensions](#list-comprehensions)? If you don't, pop
 over there for a quick refresher, because this is the same thing except
 for dictionaries.
 
-You can create a dictionary from any iterable that you can go over in a `for`
-loop. This is a pretty powerful way of creating a dictionary if you have the
-data in another, iterable, form, like a list or an input stream of something.
+You can create a dictionary from any iterable that you can go over in a
+`for` loop. This is a pretty powerful way of creating a dictionary if
+you have the data in another, iterable, form, like a list or an input
+stream of something.
 
-Let's go through a list and store the list value as the key, and the list value
-times 10 as the value in the dictionary. And let's ignore the number 20 in the
-list, just for fun.
+Let's go through a list and store the list value as the key, and the
+list value times 10 as the value in the dictionary. And let's ignore the
+number 20 in the list, just for fun.
 
 ``` {.py}
 a = [10, 20, 30]
@@ -354,8 +366,8 @@ d = { x: x*10 for x in l if x != 20 }
 print(d)  # {10: 100, 30: 300}
 ```
 
-If you have a list of key/value pairs, you can read those into a dictionary
-pretty easily, too.
+If you have a list of key/value pairs, you can read those into a
+dictionary pretty easily, too.
 
 ``` {.py}
 a = [["alice", 20], ["beej", 30], ["chris", 40]]
@@ -368,14 +380,15 @@ print(d) # {'alice': 20, 'beej': 30, 'chris': 40}
 
 Problem solving step: **Understanding the Problem**.
 
-Here's the deal: the value that you store for a given key can be _anything_!
+Here's the deal: the value that you store for a given key can be
+_anything_!
 
-Well, not like a whale, or Mars, but any data type. So you can store strings,
-ints, floats, lists, or even other dictionaries as the value for the dictionary
-key!
+Well, not like a whale, or Mars, but any data type. So you can store
+strings, ints, floats, lists, or even other dictionaries as the value
+for the dictionary key!
 
-Check out this _nested declaration_, and check out how we drill down through the
-dictionary layers to get to the data:
+Check out this _nested declaration_, and check out how we drill down
+through the dictionary layers to get to the data:
 
 ``` {.py}
 d = {
@@ -389,17 +402,18 @@ print(d["a"])      # {'b': 'Mars! Ha!'}
 print(d["a"]["b"]) # Mars! Ha!
 ```
 
-Nesting dictionaries like this can be a really powerful method of storing data.
+Nesting dictionaries like this can be a really powerful method of
+storing data.
 
 ## Dictionaries are reference types
 
 Problem solving step: **Understanding the Problem**.
 
-Remember how we were talking about [references versus values](#ref-val) with
-lists? Turns out that dicts are the same.
+Remember how we were talking about [references versus values](#ref-val)
+with lists? Turns out that dicts are the same.
 
-When you make a copy of a dictionary, it's copying the _reference_ to the same
-dictionary, not making a new one.
+When you make a copy of a dictionary, it's copying the _reference_ to
+the same dictionary, not making a new one.
 
 ``` {.py}
 d = { "beej": 3490 }
@@ -420,12 +434,242 @@ e = d.copy() # make a copy, the preferred way
 e = dict(d)  # make a copy
 ```
 
-That first way is preferred because it's easier to read, and easy to read code
-is _Happy Code_™.
+That first way is preferred because it's easier to read, and easy to
+read code is _Happy Code_™.
 
 ## The Chapter Project
 
-Pop back up top and [refresh on the spec](#dicts-proj-spec) if you need to.
-Let's break it down!
+Pop back up top and [refresh on the spec](#dicts-proj-spec) if you need
+to. Let's break it down!
 
 Problem solving step: **Understanding the Problem**.
+
+The goal of the project is to, for a given person, print out their
+parents' names as well as their year of birth.
+
+Pretty straightforward, but the devil's in the details!
+
+Problem solving step: **Devising a Plan**.
+
+If we look at a sample record, we can see that a dict lends itself quite
+well to the data, with keys `born`, `mother`, `siblings`, etc.
+
+```
+Beej Jorgensen:
+    Born: 1990 [yes, I'm 29, is my story I'm sticking to]
+    Mother: Mom Jorgensen
+    Father: Dad Jorgensen
+    Siblings: [Brother Jorgensen, Sister Jorgensen, Little Sister Jorgensen]
+```
+
+Not only that, but we can store all of _those_ dicts in another
+container dict which uses the person's name as the key!
+
+``` {.py}
+tree = { # Outer dict holds records for all the people
+    "Beej Jorgensen: {  # Inner dict holds details for each person
+        "born": 1990,
+        "mother": "Mom Jorgensen",
+        "father": "Dad Jorgensen",
+        "siblings": [
+            "Brother Jorgensen",
+            "Sister Jorgensen",
+            "Little Sister Jorgensen"
+        ]
+    }
+}
+```
+
+So that looks like a reasonable approach to storing data. We can just
+add the other people to the dictionary at that outermost layer.
+
+Not only that, but we now have part of the problem solved. If the user
+enters "Beej Jorgensen", all we have to do is look that directly up in
+the outer dict, and then we can print out my parents' names!
+
+Of course, we're still missing out on printing their birth years, but
+let's tackle the smaller problem first, and _then_ figure out how to
+extract that missing data.
+
+We'll come back to the "Understanding the Problem" step in a while to
+revisit that.
+
+Problem solving step: **Carrying out the Plan**
+
+We'll start with a simple tree of just a single person. Let's keep it as
+simple as possible, and then go from there.
+
+``` {.py .numberLines}
+tree = {
+    "Beej Jorgensen": {
+        "born": 1990,
+        "mother": "Mom Jorgensen",
+        "father": "Dad Jorgensen",
+        "siblings": [
+            "Brother Jorgensen", 
+            "Sister Jorgensen",
+            "Little Sister Jorgensen"
+        ]
+    }
+}
+ 
+```
+
+And now let's add some code to get the person's name, or quit if they
+enter "`q`":
+
+``` {.py .numberLines startFrom=14}
+done = False
+
+while not done:
+    name = input("Enter a name (or q to quit): ")
+
+    if name == "q":
+        done = True
+        continue  # Jump back to the top of the loop
+ 
+```
+
+And, finally, let's print out the person's name and their parents' names:
+
+``` {.py .numberLines startFrom=23}
+    record = tree[name]  # Look up the record in the outer dict
+
+    mother_name = record["mother"]  # Extract parent names from inner dict
+    father_name = record["father"]
+
+    print("Parents:")
+    print(f'    {mother_name}')
+    print(f'    {father_name}')
+```
+
+Giving this a run, we get some good output!
+
+```
+$ python3 familytree.py
+Enter a name (or q to quit): Beej Jorgensen
+Parents:
+    Mom Jorgensen
+    Dad Jorgensen
+Enter a name (or q to quit): q
+```
+    
+We're still missing the parents' birth years, but, like I said, we'll
+tackle that later.
+
+What happens if we run it with an unknown name? Remember that when
+you're testing your code, you should think like a villian and enter the
+most unexpected things you can.
+
+Let's try it with someone it doesn't know.
+
+```
+$ python3 familytree.py
+Enter a name (or q to quit): Arch Stanton
+Traceback (most recent call last):
+  File "familytree.py", line 23, in <module>
+    record = tree[name]  # Look up the record in the outer dict
+KeyError: 'Arch Stanton'
+```
+
+Well, that's ugly. It would be much nicer to print out some kind of
+error message.
+
+What does the spec say we should do?
+
+...nothing! It says nothing about this case! That's not useful! The spec
+is missing information!
+
+True, it is.
+
+Turns out, this is a really common thing when programming. Your boss
+asks you to implement a thing, but doesn't fully define what that thing
+is. It's not that your boss is bad at this; it's just that writing down
+the exact spec and not leaving anything out is _hard_.
+
+I promise you that if I asked you to write out the rules to
+Tic-Tac-Toe^[That's Noughts and Crosses, to some of you.], I'd find
+something you left out. ("You never said my 'X' could only take up one
+grid square!")
+
+The right thing to do at this point is go back to the creator of the
+specification and ask exactly what should happen in this case.
+
+Problem solving step: **Understanding the Problem** (again)
+
+"Hey, specification writer! What do we do if the person doesn't exist in
+the data?"
+
+Answer: print out an error message like this:
+
+```
+No record for "Arch Stanton"
+```
+
+All right!
+
+Problem solving step: **Devising a Plan** (again)
+
+We're using this code to get a person's record:
+
+``` {.py}
+record = tree[name]  # Look up the record in the outer dict
+```
+
+but as we see, that throws an exception if `name` isn't a valid key in
+the dict.
+
+How can we handle that? There are a couple ways. One of them involves
+_catching_ the exception, but we'll talk more about that in a later
+chapter.
+
+Something we can do that we discussed earlier in this chapter is to use
+the `.get()` method on the dict. This will return the record, or `None`
+if the key doesn't exist in the dict. Then we can test for that and
+print out some error messages.
+
+Problem solving step: **Carrying out the Plan** (again)
+
+``` {.py .numberLines startFrom=23}
+    record = tree.get(name)  # Look up the record in the outer dict
+
+    if record is None:  # Use "is" when comparing against "None"
+        print(f'No record for "{name}"')
+        continue
+
+    mother_name = record["mother"]  # Extract parent names from inner dict
+    father_name = record["father"]
+
+    print("Parents:")
+    print(f'    {mother_name}')
+    print(f'    {father_name}')
+```
+
+Now we're getting pretty close. But we still are missing one big piece:
+the birth years of the parents.
+
+Getting their names was cake: it was right there in the record for the
+person we're looking up. But their birth years aren't in there.
+
+How do we get them?
+
+Problem solving step: **Devising a Plan** (again)
+
+We have the names for the parents. That's it.
+
+How do we go from a name to a birth year?
+
+Looks like "Beej Jorgensen" has a birth year listed in his record...
+
+We should add records for "Mom Jorgensen" and "Dad Jorgensen" and then
+they can have their own birth years.
+
+But the question still remains: how can we go from the user-entered
+"Beej Jorgensen" to the birth years for his parents?
+
+What we're doing here is trying to tie one piece of data ("Beej
+Jorgensen") to other pieces of data (1965 and 1970, his parents' birth
+years.)
+
+This is _super_ common in programming. "How do I get from x to y?" We
+need to find the path.
