@@ -39,6 +39,8 @@
   * Math functions
   * Expressions
 
+* debugging exercises throughout
+
 
 ## Beej' extensions to markdown
 
