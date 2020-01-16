@@ -71,7 +71,7 @@ So what they invented is another way of saying "3490 7s multiplied by
 each other" that didn't involve an endless line of $7$s and $\times$s.
 And it looks like this:
 
-$7^3490$ (read "7 to the 3490th power")
+$7^{3490}$ (read "7 to the 3490th power")
 
 That means 3490 $7$s multiplied together. We call this _raising to a
 power_ or _exponentiation_.
@@ -138,11 +138,11 @@ power for a result of $27$.
 
 You could also do this:
 
-$2^(3+4)$
+$2^{(3+4)}$
 
 Remember: parentheses first! $3+4=7$, so we want to compute $2^7$ which
 is $128$. (Good software developers have all the powers of $2$
-memorized up through $2^16$. Well, hardcore ones do, anyway.)
+memorized up through $2^{16}$. Well, crazy ones do, anyway.)
 
 Python uses parentheses, as well. The above expression could be written
 in Python like this:
@@ -160,5 +160,7 @@ Factorial
 Shifting
 
 Scientific notation
+
+Logs
 
 Trig?
