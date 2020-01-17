@@ -1,4 +1,4 @@
-# Basic Math for Programmers
+# Appendix A: Basic Math for Programmers
 
 I know what you're thinking: _screw this_.
 
@@ -41,10 +41,45 @@ one operator over another. Which happens first, $+$ or $\times$?
 For arithmetic, here is the rule: do all the multiplications and
 divisions _before_ any additions and subtractions.
 
+So: $1+2\times3=7$
+
 We'll revisit order of operations as we continue on.
 
 In Python, we can just use the operators `+`, `-`, `*`, and `/` for
 addition, subtraction, multiplication, and division, respectively.
+
+## Negative numbers
+
+I'm not going to talk much about these here, but negative numbers are
+numbers less than 0, and they're indicated by a minus sign in front of
+the number. $-7$ means "$7$ less than zero".
+
+And I _know_ that's a crazy concept. Like how can you have $-12$ apples
+on the table? It doesn't seem particularly rooted in reality.
+
+But a closer to home example might be me saying, "I owe you $-35!" which
+means, in effect, _you_ owe _me_ $35!
+
+Remember some simple rules:
+
+If you multiply a negative number by a negative number, the result is
+positive.
+
+$-3\times-7=21$
+
+If you multiply a negative number by a positive number, the result is
+negative.
+
+$-3\times7=-21$
+
+If you add a negative number to a positive number, it's just like
+subtracting the negative number from the positive number:
+
+$-7+100=93$
+
+or, equivalently:
+
+$100+(-7)=100-7=93$
 
 ## The Power of Exponents
 
@@ -93,10 +128,11 @@ print(7**8)  # prints 5764801
 
 The exponent must be non-negative, so zero or larger.
 
-But wait---zero? How do you multiple a number by itself zero times? It's
+But wait---zero? How do you multiply a number by itself zero times? It's
 a valid question, and one that has baffled philosophers for time
-immemorial. But not mathematicians! They said, "We made this up, and we
-declare that _anything_ to the zeroth power is $1$. End of story!"
+immemorial. But not mathematicians! Like power-crazed numerical
+dictators, they cried, "We made this up, and we declare that _anything_
+to the zeroth power is $1$. End of story!"
 
 So there we have it.  $n^0=1$ for all $n$.
 
@@ -153,14 +189,136 @@ in Python like this:
 
 Easy peasy.
 
+One final note: if an exponent is a long expression without parentheses,
+it turns out the parentheses are _implied_. The following equation is
+true:
+
+$2^{(3+4)}=2^{3+4}$
+
 ## Square root
 
-Factorial
+Square root is a funny one. It's the opposite of _squaring_, which if
+you remember from the earlier section means _raising to a power of 2_.
+But, again, _square root_ is the opposite of that.
 
-Shifting
+It's asking the question, "For a given number, which number do I have to
+multiply by itself to get that number?"
 
-Scientific notation
+Let's examplify!
 
-Logs
+But before we do, the weird lightning bolt line thing is the
+mathematical symbol for the square root of a number.
 
-Trig?
+Let's ask for the square root of 9:
+
+$\sqrt9=?$
+
+That's asking, what number multiplied by itself makes $9$? Or, in other
+words, what number raised to the 2nd power makes $9$? Or, in other
+words, what number squared makes $9$?
+
+Hopefully by now you've determined that:
+
+$3\times3=9$
+
+and, equivalently:
+
+$3^2=9$
+
+so therefore:
+
+$\sqrt9=3$
+
+What about some other ones?
+
+$\sqrt{16}=?$
+$\sqrt{25}=?$
+$\sqrt{36}=?$
+$\sqrt{12180100}=?$
+
+Note that all of those have integer answers. If the square root of
+number is an integer, we call that number a _perfect square_. 16, 25,
+36... these are all perfect squares.
+
+But you can take the square root of any number.
+
+$\sqrt{17}=4.123105625617661$ approximately.
+
+17 is _not_ a perfect square, since it doesn't have an integer result.
+
+Now, you might be imagining what would happen if you tried to take the
+square root of a negative number:
+
+$\sqrt{-100}=?$
+
+After a bit of thought, you might realize that no number multiplied by
+itself can ever result in $-100$ so... what can you do?
+
+You might think, "We're doomed," but not mathematicians! They simply
+defined:
+
+$\sqrt{-1}=i$
+
+and invented an entire mathematical system around what they called
+[fl[_imaginary numbers_|https://en.wikipedia.org/wiki/Imaginary_number]]
+that actually have some amazing applications. But that's something you
+can look up on your own.
+
+In addition to square roots, there are also cube roots. This is asking,
+"What number cubed results in this number?" This is indicated by a small
+$3$ above the root symbol:
+
+$\sqrt[3]{27}=x$
+
+which is the inverse of the equation:
+
+$x^3=27$
+
+Can you figure out what $x$ is?
+
+What about how to do this in Python?
+
+For square roots, the preferred way is to use the `sqrt()` function in
+the `math` module that you `import`:
+
+``` {.py}
+import math
+
+print(math.sqrt(12180100))  # prints 3490.0
+```
+
+What about cube roots? Well, for that, we're going to jump back to
+exponents and learn a little secret. You can raise numbers to _fractional_
+powers. Now, there are a lot of rules around this, but the short of it
+is that these equations are true:
+
+$\sqrt{x}=x^\frac{1}{2}$\ \ \ \ $\sqrt[3]{x}=x^\frac{1}{3}$\ \ \ \ $\sqrt[4]{x}=x^\frac{1}{4}$
+
+and so on. Raising a number to the $\frac{1}{3}$ power is the same as
+taking the cube root!
+
+Like if we wanted to compute the cube root of $4913$, we could compute:
+
+$\sqrt[3]{4913}=4913^\frac{1}{3}=17$
+
+And you can do that in Python with the regular exponent operator `**`:
+
+``` {.py}
+print(4913**(1/3))  # prints 16.999999999999996
+```
+
+Hey--wait a second, that's not $17$! What gives?
+
+Well, turns out that floating point numbers in computers aren't exact.
+They're close, but not exact. It's something developers need to be aware
+of and either live with or work around.
+
+Lastly, because square root, cube root, and all the other roots are just
+exponents in disguise, they have the same precedence as exponents: they
+happen _before_ arithmetic.
+
+## Factorial
+
+## Scientific notation
+
+## Logs
