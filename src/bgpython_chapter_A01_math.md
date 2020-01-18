@@ -307,7 +307,7 @@ And you can do that in Python with the regular exponent operator `**`:
 print(4913**(1/3))  # prints 16.999999999999996
 ```
 
-Hey--wait a second, that's not $17$! What gives?
+Hey---wait a second, that's not $17$! What gives?
 
 Well, turns out that floating point numbers in computers aren't exact.
 They're close, but not exact. It's something developers need to be aware
