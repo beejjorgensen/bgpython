@@ -136,6 +136,21 @@ to the zeroth power is $1$. End of story!"
 
 So there we have it.  $n^0=1$ for all $n$.
 
+But their unquenchable thirst for power didn't end there. Mathematicians
+also decided that there was such a thing as _negative exponents_.
+
+If you have a negative exponent, you need to invert the fraction before
+applying the exponent. The following is true:
+
+$4^{-3}=(\cfrac{1}{4})^3$
+
+$(\cfrac{3}{4})^{-8}=(\cfrac{4}{3})^8$
+
+And in case you're wondering how to raise a fraction to an exponent, you
+just apply the exponent to the numerator and denominator:
+
+$(\cfrac{4}{3})^8=\cfrac{4^8}{3^8}=\cfrac{65536}{6561}$
+
 We also have some shorthand names for certain exponents.
 
 $n^2$ we say "$n$ squared". Anything raised to the power of $2$ is that
@@ -319,6 +334,99 @@ happen _before_ arithmetic.
 
 ## Factorial
 
+Factorial is a fun function.
+
+Basically if I ask for something like "5 factorial", that means that I
+want to know the answer when we multiply 5 by all integers less than 5,
+down to 1.
+
+So I'd want to know:
+
+$5\times4\times3\times2\times1$
+
+the answer to which is $120$.
+
+But writing "factorial" is kind of clunky, so we have special notation
+for it: the exclamation point: $!$. "5 factorial" is written $5!$.
+
+Another example:
+
+$6!=6\times5\times4\times3\times2\times1=720$
+
+As you can imagine, factorial grows very quickly.
+
+$40!=815915283247897734345611269596115894272000000000$
+
+In Python, you can compute factorial by using the `factorial()` function
+in the `math` module.
+
+``` {.py}
+import math
+
+print(math.factorial(10))  # prints 3628800
+```
+
+Factorial, being multiplication in disguise, has the same precedence as
+multiplication. You do it before addition and subtraction.
+
+## Large Numbers
+
+Python is really good with large integer numbers. In fact, it has what
+we call _arbitrary precision integer math_. That means we can hold
+numbers as big as memory can handle, which is large.
+
+So if you ask Python to compute $100000!$, it will do it. The result,
+incidentally, is 465,575 digits long. No problem.
+
+But the same is _not_ true for floating point numbers (numbers with a
+decimal point). Python generally uses 64 bits to represent floating
+point numbers, which means there's a limit to the amount of precision.
+That is, the number of different numbers you can represent is finite.
+
+Floating point is brilliant because it can represent really huge and
+really small numbers, but the number of digits you have at your
+disposal is limited.
+
 ## Scientific notation
+
+For really large floating point numbers, you might see things like this
+appear:
+
+``` {.py}
+print(2.7**100)  # 1.3689147905858927e+43
+```
+
+What's that `e+43` at the end?
+
+This is what we call _scientific notation_. It's a shorthand way of
+writing really large (or small) numbers.
+
+The number above, `1.3689147905858927e+43`, is saying this,
+mathematically:
+
+$1.3689147905858927\times10^{43}$
+
+Now, $10^{43}$ is a _big_ number. So multiplying $1.3689$ etc. by it
+results in a very large number, indeed.
+
+But that's not all. We can use it to represent very small numbers, too.
+
+``` {.py}
+print(3.6/5000000000000000000)   # 7.2e-19 
+```
+
+`7.2e-19` means:
+
+$7.2\times10^{-19}$
+
+And $10^{-19}$ is a very small number (very close to 0), so multiplying
+$7.2$ by it results in a very small number as well.
+
+Remember this:
+
+* If you see `e-something` at the end, it's a very small number (close
+  to 0).
+* If you see `e+something` at the end, it's a very large number (far
+  from 0).
 
 ## Logs
