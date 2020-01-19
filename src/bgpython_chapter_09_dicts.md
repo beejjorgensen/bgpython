@@ -673,3 +673,128 @@ years.)
 
 This is _super_ common in programming. "How do I get from x to y?" We
 need to find the path.
+
+So let's see... we have Beej Jorgensen there, with his parents' names
+listed.
+
+That's a start. But given his parents' names, how do you get his
+parents' birthdays?
+
+Yes! You just take their names and look them up in the dictionary!
+
+Except we haven't added them yet. Let's do that now. (Note that program
+line numbers, below, are reset at this point.)
+
+``` {.py .numberLines}
+tree = {
+    "Beej Jorgensen": {
+        "born": 1990,
+        "mother": "Mom Jorgensen",
+        "father": "Dad Jorgensen",
+        "siblings": [
+            "Brother Jorgensen", 
+            "Sister Jorgensen",
+            "Little Sister Jorgensen"
+        ]
+    },
+    "Mom Jorgensen": {
+        "born": 1970,
+        "mother": "Grandma Jorgensen",
+        "father": "Grandpa Jorgensen",
+        "siblings": ["Auntie Jorgensen"]
+    },
+    "Dad Jorgensen": {
+        "born": 1965,
+        "mother": "Granny Jorgensen",
+        "father": "Grandad Jorgensen",
+        "siblings": ["Uncle Jorgensen"]
+    }
+}
+ 
+```
+
+And then the main loop logic (unchanged from before):
+
+``` {.py .numberLines startFrom=26}
+done = False
+
+while not done:
+    name = input("Enter a name (or q to quit): ")
+
+    if name == "q":
+        done = True
+        continue  # Jump back to the top of the loop
+ 
+    record = tree.get(name)  # Look up the record in the outer dict
+
+    if record is None:  # Use "is" when comparing against "None"
+        print(f'No record for "{name}"')
+        continue
+
+    mother_name = record["mother"]  # Extract parent names from inner dict
+    father_name = record["father"]
+ 
+```
+
+Except now, when we print out the parents, we have to look up the
+mother's and father's record.
+
+``` {.py .numberLines startFrom=44}
+    # Get the parent records
+    mother_record = tree.get(mother_name)
+    father_record = tree.get(father_name)
+
+    # Get the birth year of the mother; note if missing
+    if mother_record is not None:
+        mother_born_date = mother_record["born"]
+    else:
+        mother_born_date = "missing record"
+
+    # Get the birth year of the father; note if missing
+    if father_record is not None:
+        father_born_date = father_record["born"]
+    else:
+        father_born_date = "missing record"
+
+    print("Parents:")
+    print(f'    {mother_name} ({mother_born_date})')
+    print(f'    {father_name} ({father_born_date})')
+```
+
+That's it!
+
+Problem-solving step: **Looking Back**
+
+What could we do better? What are the shortcomings of this app?
+
+Look at the dictionary structure we used to store the data. How could
+that be better? Think of all the cases that exist in family trees. Sure,
+we covered the common case, but what about kids who were adopted? How do
+we model that? Divorces? Second marriages? It turns out that modelling a
+family tree is far more complex that you might originally anticipate.
+
+What if two people have the same name? In a real family tree, it's
+entirely likely there could be multiple Tom Jones^[It's not unusual.] in
+the family tree. But since we're using the name as the key in the dict,
+and keys have to be unique, we're in trouble. Ergo, the name can't be
+the key---something unique must be.
+
+One option there is to use a
+[fl[UUID|https://en.wikipedia.org/wiki/Universally_unique_identifier]]
+as the key, and map that UUID to names somehow. Maybe you have _another_
+dict that, for a given name, stores a list of UUIDs that represent
+people who have that name. Then we could ask the user, "Did you mean the
+Beej Jorgensen who was born in 1971, 1982, 1997, or 2003?" if there were
+multiple Beej Jorgensens.
+
+Lots of options for improvement, here!
+
+## Exercises
+
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+Use any knowledge you have to solve these, not only what you learned in
+this chapter.
+
