@@ -142,14 +142,14 @@ also decided that there was such a thing as _negative exponents_.
 If you have a negative exponent, you need to invert the fraction before
 applying the exponent. The following is true:
 
-$4^{-3}=(\cfrac{1}{4})^3$
+$4^{-3}=\left(\cfrac{1}{4}\right)^3$
 
-$(\cfrac{3}{4})^{-8}=(\cfrac{4}{3})^8$
+$\left(\cfrac{3}{4}\right)^{-8}=\left(\cfrac{4}{3}\right)^8$
 
 And in case you're wondering how to raise a fraction to an exponent, you
 just apply the exponent to the numerator and denominator:
 
-$(\cfrac{4}{3})^8=\cfrac{4^8}{3^8}=\cfrac{65536}{6561}$
+$\left(\cfrac{4}{3}\right)^8=\cfrac{4^8}{3^8}=\cfrac{65536}{6561}$
 
 We also have some shorthand names for certain exponents.
 
@@ -369,24 +369,6 @@ print(math.factorial(10))  # prints 3628800
 Factorial, being multiplication in disguise, has the same precedence as
 multiplication. You do it before addition and subtraction.
 
-## Large Numbers
-
-Python is really good with large integer numbers. In fact, it has what
-we call _arbitrary precision integer math_. That means we can hold
-numbers as big as memory can handle, which is large.
-
-So if you ask Python to compute $100000!$, it will do it. The result,
-incidentally, is 465,575 digits long. No problem.
-
-But the same is _not_ true for floating point numbers (numbers with a
-decimal point). Python generally uses 64 bits to represent floating
-point numbers, which means there's a limit to the amount of precision.
-That is, the number of different numbers you can represent is finite.
-
-Floating point is brilliant because it can represent really huge and
-really small numbers, but the number of digits you have at your
-disposal is limited.
-
 ## Scientific notation
 
 For really large floating point numbers, you might see things like this
@@ -419,8 +401,9 @@ print(3.6/5000000000000000000)   # 7.2e-19
 
 $7.2\times10^{-19}$
 
-And $10^{-19}$ is a very small number (very close to 0), so multiplying
-$7.2$ by it results in a very small number as well.
+And $10^{-19}$ is a very small number (very close to 0---remember that
+$10^{-19}=\frac{1}{10^{19}}$), so multiplying $7.2$ by it results in a
+very small number as well.
 
 Remember this:
 
@@ -429,4 +412,83 @@ Remember this:
 * If you see `e+something` at the end, it's a very large number (far
   from 0).
 
-## Logs
+## Logarithms
+
+Hang on, because things are about to get weird.
+
+Well, not _too_ weird, but pretty weird.
+
+Logarithms, or _logs_ for short, are kind of the opposite of exponents.
+
+But not opposite in the same way square roots are opposite.
+
+That's convenient, right?
+
+With logs, we say "log base x of y". For example, "log base 2 of 32",
+which is written like this:
+
+$\log_2{32}$
+
+What that is asking is "2 to the what power is 32?" Or, in math:
+
+These are both true:
+
+$x=\log_2{32}$
+
+$2^x=32$
+
+So what's the answer? Some trial and error might lead you to realize
+that $2^5=32$, so therefore:
+
+$x=\log_2{32}=5$
+
+There are three common bases that you see for logs, though the base can
+be any number: 2, 10, and $e$.
+
+Base 2 is super common in programming.
+
+$e$ is the base of the [fl[_natural
+logarithm_|https://en.wikipedia.org/wiki/Natural_logarithm]], common in
+math, and uncommon in computing.
+
+So what are they good for?
+
+The main place you see logarithms in programming is when using Big-O
+notation to indicate [fl[computational
+complexity|https://en.wikipedia.org/wiki/Big_O_notation]].
+
+The big thing to remember there is that a number gets large, the log of
+the number remains small. Here are some examples:
+
+|_x_|log~2~_x_|
+|-------:|-------------------------------:|
+|1|0.0000|
+|10|3.3219|
+|100|6.6439|
+|1000|9.9658|
+|10000|13.2877|
+|100000|16.6096|
+|1000000|19.9316|
+|10000000|23.2535|
+
+The log-base-2 of a big number tends to be a much smaller number.
+
+## Large Numbers
+
+Python is really good with large integer numbers. In fact, it has what
+we call _arbitrary precision integer math_. That means we can hold
+numbers as big as memory can handle, which is large.
+
+So if you ask Python to compute $100000!$, it will do it. The result,
+incidentally, is 465,575 digits long. No problem.
+
+But the same is _not_ true for floating point numbers (numbers with a
+decimal point). Python generally uses 64 bits to represent floating
+point numbers, which means there's a limit to the amount of
+precision---you can only have 16 digits in your number, though you can
+raise that number to huge positive or negative powers to get very large
+or very small numbers.
+
+Floating point is brilliant because it can represent really huge and
+really small numbers, but the number of digits you have at your
+disposal is limited.
