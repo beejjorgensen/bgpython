@@ -798,3 +798,25 @@ allowed to look at the solution.
 Use any knowledge you have to solve these, not only what you learned in
 this chapter.
 
+
+1. For the following dictionary, print out all the keys of the
+   dictionary:
+
+   ``` {.py}
+   d = {
+       "key1": "value1",
+       "key2": "value1",
+       "key3": "value1",
+       "key4": "value1",
+   }
+   ```
+
+   ([flx[Solution|ex_printkeys.py]].)
+
+* Access individual elements in a dictionary
+* Check to see if a key is in a dictionary
+* Iterate over dictionaries with `for`
+* Use common dictionaries built-in functions
+* Construct new dictionaries with dictionary comprehensions
+* Build Dictionaries of Dictionaries
+* Understand that Dictionaries are Reference Types
