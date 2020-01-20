@@ -852,7 +852,7 @@ this chapter.
 
    ([flx[Solution|ex_list2dictsort.py]].)
 
-# Summary
+## Summary
 
 That was a heckuva chapter, wasn't it?
 
