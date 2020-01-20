@@ -785,7 +785,8 @@ as the key, and map that UUID to names somehow. Maybe you have _another_
 dict that, for a given name, stores a list of UUIDs that represent
 people who have that name. Then we could ask the user, "Did you mean the
 Beej Jorgensen who was born in 1971, 1982, 1997, or 2003?" if there were
-multiple Beej Jorgensens.
+multiple Beej Jorgensens. (You can create a random UUID by importing the
+`uuid` package and running `uuid.uuid4()`.)
 
 Lots of options for improvement, here!
 
@@ -813,10 +814,64 @@ this chapter.
 
    ([flx[Solution|ex_printkeys.py]].)
 
-* Access individual elements in a dictionary
-* Check to see if a key is in a dictionary
-* Iterate over dictionaries with `for`
-* Use common dictionaries built-in functions
-* Construct new dictionaries with dictionary comprehensions
-* Build Dictionaries of Dictionaries
-* Understand that Dictionaries are Reference Types
+2. For the dictionary in problem 1, print out all the keys and values.
+
+   ([flx[Solution|ex_printkeysvals.py]].)
+
+3. Given a list of names, write code that converts that list of names
+   into a dictionary that groups names by their first letter. In the
+   dict, the key should be the first letter of the names, and the value
+   should be a list of names that start with that letter.
+
+   For example, the list:
+
+   ``` {.py}
+   ["Chris", "Annie", "Beej", "Aaron", "Charlie"]
+   ```
+
+   should build into the dictionary (key order doesn't matter):
+
+   ``` {.py}
+   {
+       "C": ["Chris", "Charlie"],
+       "A": ["Annie", "Aaron"],
+       "B": ["Beej"]
+   }
+   ```
+
+   I don't want you to manually convert the list to a dictionary; I want
+   you to write code that does it for _any_ list of names.
+
+   After you construct the dictionary, print out the keys and values in
+   any order.
+
+   ([flx[Solution|ex_list2dict.py]].)
+
+4. Change step 5 to print out the keys in sorted order. And the lists in
+   sorted order after that.
+
+   ([flx[Solution|ex_list2dictsort.py]].)
+
+# Summary
+
+That was a heckuva chapter, wasn't it?
+
+When we learned about lists, we learned that you could index data by
+number. But now with dicts, we can index data by any constant data type
+at all, including numbers and strings.
+
+This gives us more flexibility in how we store data and how we look it
+up.
+
+We learned about accessing and setting elements in a dictionary, how to
+determine if a key is in a dictionary, and how to iterate over
+dictionaries with `for`.
+
+Not only that, but dicts have a bunch of built-in functionality you can
+reference to manipulate and access the data stored within in them.
+
+Finally, we saw that since dictionary values can be any type of data,
+you can have dictionaries of dictionaries, even! The only limit is your
+imagination.
+
+What other kinds of data can you store in dictionaries?
