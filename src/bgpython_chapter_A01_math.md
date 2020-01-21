@@ -1,5 +1,7 @@
 # Appendix A: Basic Math for Programmers
 
+TODO: abs mod sum, product, difference, quotient, remainder
+
 I know what you're thinking: _screw this_.
 
 Or maybe your language is even more blue.
