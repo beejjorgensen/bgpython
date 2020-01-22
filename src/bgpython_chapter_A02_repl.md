@@ -120,7 +120,8 @@ class str(object)
 
 _Et cetera_. The `:` prompt at the bottom is the prompt for the _pager_.
 You can hit `RETURN` to go to the next line, or `SPACE` to go to the
-next page. Up and Down arrow keys also work.
+next page. Up and Down arrow keys also work. Type `q` to get out of the
+pager and return to normal.
 
 The first thing you might notice are a bunch of functions that have
 double underscores around them, like this:
