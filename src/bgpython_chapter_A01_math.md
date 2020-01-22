@@ -1,6 +1,6 @@
 # Appendix A: Basic Math for Programmers
 
-TODO: abs mod sum, product, difference, quotient, remainder
+TODO: rounding
 
 I know what you're thinking: _screw this_.
 
@@ -14,13 +14,25 @@ This section isn't so much about application of these functions, but is
 more about their definition. It'll be up to you to use them as you see
 fit.
 
+It's a short one---just plow through it.
+
+**Fun Math Fact**: Math is cool.
+
 ## Arithmetic
 
 Addition, subtraction, multiplication, and---don't fall asleep on me
 already---division. The _Big Four_ of grade school math.
 
-I'm not going to talk about what they do, and will presume you remember
-that from however-many years ago.
+And, as a quick terminology summary:
+
+* The addition of two numbers produces a _sum_.
+* The subtraction of two numbers produces a _difference_.
+* The multiplication of two numbers produces a _product_.
+* The division of two numbers produces a _quotient_ (and potentially a
+  _remainder_.)
+
+I'm not going to talk about what the operators do, and will presume you
+remember that from however-many years ago.
 
 But I do want to talk about which comes first, because you might have
 forgotten.
@@ -49,6 +61,110 @@ We'll revisit order of operations as we continue on.
 
 In Python, we can just use the operators `+`, `-`, `*`, and `/` for
 addition, subtraction, multiplication, and division, respectively.
+
+## Division in Python
+
+Hey---didn't we just talk about this?
+
+Yes, kinda. There are a few _details_ that are of interest.
+
+Let's divide!
+
+``` {.py}
+print(3 / 2)   # 1.5, as expected
+```
+
+What we've done there is a floating point division. That is, it produces
+a floating point result with a decimal point. Indeed, even this does the
+same:
+
+``` {.py}
+print(2 / 1)  # 2.0
+```
+
+So that's the "normal" way of division, right? No big surprises there.
+
+But what if I told you [fl[_there is no
+spoon_|https://www.youtube.com/watch?v=XO0pcWxcROI]]?
+
+Okay, that's a bit much. Never mind that analogy.
+
+But there is another kind of division, one that produces an integer
+result only. _Integer division_ uses the `//` operator (two slashes
+instead of just one). It returns an integer result in all cases, even if
+normally there would be a fraction.
+
+It does this by simply dropping the part after the decimal point like a
+hot potato.
+
+```  {.py}
+print(9 / 5)   # 1.8
+print(9 // 5)  # 1
+```
+
+When you want an integer quotient, this is the fast way to do it.
+
+## Modulo, AKA Remainder
+
+So when you do an integer division, it just cuts off the fractional part
+after the decimal point. What happens to it? Where does it go? If a tree
+falls in the forest and no one is around to hear it...?
+
+Well, it's gone forever, but there's a way to see what it _would_ have
+been in the form of a _remainder_.
+
+The remainder tells us how much is "left over" after the integer
+division has taken place.
+
+In the following examples, we'll use $\div$ to represent integer
+division.
+
+For example, if we take 40 and divide it into 4 parts, $40\div4$, we get
+a result of $10$, exactly. Because it's exact, there are no leftovers.
+So the remainder is zero.
+
+But if we take 42 and divide it into 4 parts... well, $42\div4=10$
+still. But it's not exact. If we do the inverse and multiply
+$10\times4$, we only get $40$, not $42$. There are $2$ left over. The
+remainder is $2$!
+
+We do this with the _modulo_ operator, or _mod_ for short.
+
+$42\div4=10$
+
+$42\bmod4=2$  The remainder!
+
+And in Python, the `%` operator is the modulo operator.
+
+``` {.py}
+print(42 // 4)  # 10
+print(42 % 4)   # 2
+```
+
+Mod has the neat property of rolling numbers over "odometer style"
+because the result of the mod can never be larger than the divisor.
+
+As an example:
+
+``` {.py}
+for i in range(10):
+    print(i % 4)   # i modulo 4
+```
+
+outputs:
+
+```
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+```
 
 ## Negative numbers
 
@@ -82,6 +198,50 @@ $-7+100=93$
 or, equivalently:
 
 $100+(-7)=100-7=93$
+
+## Absolute Value
+
+Think of this as how far from zero on the number line any number is.
+
+10 is 10 away from zero. The absolute value of 10 is 10.
+
+2.8 is 2.8 away from zero. The absolute value of 2.8 is 2.8.
+
+Well, that seems a bit bland. Why bother?
+
+Here's why:
+
+-17 is 17 away from zero. The absolute value of -17 is 17.
+
+The rules are:
+
+* The absolute value of a positive number is itself.
+* The absolute value of a negative number is its negation, the positive
+  version of itself.
+
+In summary, if it's negative, the absolute value makes it positive.
+
+In mathematical notation, we represent the absolute value with vertical
+bars:
+
+$x = -17$ If $x$ is $-17$...
+
+$|x| = 17$ ...the absolute value of $x$ is $17$.
+
+$|12| = 12$ The absolute value of $12$ is $12$.
+
+$|-13.8| = 13.8$ The absolute value of $-13.8$ is $13.8$.
+
+In Python we compute absolute value with the `abs()` built-in function:
+
+``` {.py}
+print(abs(-17))  # 17
+print(abs(28.2)) # 28.2
+```
+
+In terms of precedence, you can think of absolute value kind of like
+parentheses. Do the stuff inside the absolute value first, then take the
+absolute value of the result.
 
 ## The Power of Exponents
 
