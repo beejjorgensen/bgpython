@@ -381,7 +381,7 @@ In a bit, we'll also discuss the `len()` function that will give you the
 length of any string you pass in.
 
 
-## Strange Interlude: Mutable versus Immutable Types
+## Interlude: Mutable versus Immutable Types
 
 Problem solving step: **Understanding the Problem**. 
 
