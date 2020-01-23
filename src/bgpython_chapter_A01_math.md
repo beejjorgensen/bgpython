@@ -1,7 +1,5 @@
 # Appendix A: Basic Math for Programmers
 
-TODO: rounding
-
 I know what you're thinking: _screw this_.
 
 Or maybe your language is even more blue.
@@ -617,7 +615,7 @@ math, and uncommon in computing.
 
 So what are they good for?
 
-The main place you see logarithms in programming is when using Big-O
+A common place you see logarithms in programming is when using Big-O
 notation to indicate [fl[computational
 complexity|https://en.wikipedia.org/wiki/Big_O_notation]].
 
@@ -650,6 +648,145 @@ of the number remains small. Here are some examples:
 |10000000|23.2535|
 
 The log-base-2 of a big number tends to be a much smaller number.
+
+## Rounding
+
+When we round a number, we are looking for the _nearest number_ of a
+certain number of decimal places, dropping all the decimal places
+smaller than that.
+
+By default, we mean zero decimal places, i.e. we want to round to the
+nearest whole number.
+
+So if I said, "Round 2.3 to the nearest whole number," you'd answer "2",
+because that's the closest whole number to 2.3.
+
+And if I said, "Round 2.8 to the nearest whole number," you'd answer
+"3", because that's the closest whole number to 2.8.
+
+When we round to a higher number, we call that _rounding up_.
+
+The other direction is _rounding down_.
+
+But what if I said "Round 2.5 to the nearest whole number?" It's
+perfectly between 2 and 3! In those cases, conventionally, we round up.
+So the answer would be 3.
+
+We can also force a number to round a certain direction by declaring
+which way to round.
+
+"Divide _x_ by 3, then round up."
+
+In Python, we have a few options for rounding.
+
+We can use the built-in `round()` function.
+
+But it behaves a little bit differently than we might be used to.
+Notably, numbers like 1.5, 2.5, and 3.5 that are equally close to two
+whole numbers _always round to the nearest even number_. Which is,
+ironically, an odd thing to do.
+
+``` {.py}
+round(2.8)  # 3
+round(-2.2) # -2
+round(-2.8) # -3
+
+round(1.5)  # 2
+round(2.5)  # 2
+round(3.5)  # 4
+```
+
+You can also tell `round()` how many decimal places you want to round
+to:
+
+``` {.py}
+round(3.1415926, 4)  # 3.1416
+```
+
+Note that Python has [fl[additional weird rounding
+behavior|https://docs.python.org/3/tutorial/floatingpoint.html#tut-fp-issues]]
+due to the limited precision of floating pointer numbers.
+
+For always rounding up or down, use the functions `ceil()` and `floor()`
+from the `math` module.
+
+`ceil()` returns the next integer greater than this number, and
+`floor()` returns the previous integer smaller than this number.
+
+This makes perfect sense for positive numbers:
+
+``` {.py}
+import math
+
+math.ceil(2.1)  # 3
+math.ceil(2.9)  # 3
+math.ceil(3.0)  # 3
+math.ceil(3.1)  # 4
+
+math.floor(2.1)  # 2
+math.floor(2.9)  # 2
+math.floor(3.0)  # 3
+math.floor(3.1)  # 3
+```
+
+But with negative numbers, it behaves differently than you might expect:
+
+``` {.py}
+import math
+
+round(2.3)        # 2
+math.floor(2.3)   # 2
+
+round(-2.3)       # -2
+math.floor(-2.3)  # -3 (!!)
+
+round(2.8)        # 3
+math.ceil(2.8)    # 3
+
+round(-2.8)       # -3
+math.ceil(-2.8)   # -2 (!!)
+```
+
+While `round()` heads to the nearest integer, `floor()` goes to the
+_next smallest_ integer. With negative numbers, that's the next one
+farther away from zero. And the reverse is true for `ceil()`.
+
+If you want a round up function that works on positive and negative
+numbers, you could write a helper function like this:
+
+``` {.py}
+import math
+
+def round_up(x):
+    return math.ceil(x) if x >=0 else math.floor(x)
+
+round_up(2.0)   # 2
+round_up(2.1)   # 3
+round_up(2.8)   # 3
+
+round_up(-2.0)   # -2
+round_up(-2.1)   # -3
+round_up(-2.8)   # -3
+```
+
+I'll leave `round_down()` as an exercise. `:)`
+
+If you want to round to a whole number, and you want to avoid Python's
+strange "round to the nearest even number" thing, you can use this
+trick: add 0.5 to the number and then convert it to an `int()`. (If the
+number is negative, subtract 0.5 from it.)
+
+``` {.py}
+int(0.5 + 0.5)  # 1
+int(1.5 + 0.5)  # 2
+int(2.5 + 0.5)  # 3
+
+int(2.8 + 0.5)  # 3
+int(2.2 + 0.5)  # 2
+
+int(-2.2 - 0.5) # -2
+int(-2.8 - 0.5) # -3
+```
 
 ## Large Numbers
 
