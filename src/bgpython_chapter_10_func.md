@@ -136,7 +136,7 @@ These are all available for use at any time in your program.
 >
 > "No it isn't."
 >
-> ---Excerpt from Monty Python's Argument Clinic sketch
+> ---_Excerpt from Monty Python's Argument Clinic sketch_
 
 Problem solving step: **Understanding the Problem**.
 
@@ -165,8 +165,8 @@ above with `print()`, they can take variable numbers of arguments, too.
 >
 > "The power."
 >
-> ---A good friend of mine trolling a reporter at [fl[DEFCON
-> 2|https://www.defcon.org/html/defcon-2/defcon-2.html]].
+> ---_A good friend of mine trolling a reporter at [fl[DEFCON
+> 2|https://www.defcon.org/html/defcon-2/defcon-2.html]]_
 
 The power. This is where we fly. Writing your own functions. This is
 where we get to DRY our code, organize it better, and make it more
@@ -253,7 +253,7 @@ where all the work gets done.
 
 There's a lot of stuff to unpack here, so let's take it nice and slow.
 
-### Line 1: defining the function
+### Line 1: defining the function {.unlisted .unnumbered}
 
 When we say `def do_the_math`, we're telling Python, "Hey, I'm making a
 brand new function from scratch called `do_the_math`.
@@ -275,7 +275,7 @@ Remember: _you pass in arguments that get copied into parameters_.
 A parameter is a special type of _local variable_. We'll get into their
 story on line 2.
 
-### Line 2: Compute the result
+### Line 2: Compute the result {.unlisted .unnumbered}
 
 You can see on line 2 that we take the parameter `x` and feed it into
 the equation our boss tasked us with. (They told us to change it to
@@ -297,7 +297,7 @@ And as I mentioned above, the parameters are also local variables. They
 just have the added property that they are assigned the values of the
 arguments automatically.
 
-### Line 4: Return the result
+### Line 4: Return the result {.unlisted .unnumbered}
 
 A function can optionally return a value. You know how arguments are a
 way to pass data _into_ a function? The return value is a way to pass
@@ -307,7 +307,7 @@ Back where the function is called, you can think of the function call as
 _having_ the return value. Then you can do things like assign it into a
 variable.
 
-### Line 6: Capture the returned result in a variable
+### Line 6: Capture the returned result in a variable {.unlisted .unnumbered}
 
 We call our function, and we take the _return value_ from that function
 and assign it into the variable `answer`. Then we can do things with it,
