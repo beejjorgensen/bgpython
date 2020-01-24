@@ -98,10 +98,11 @@ Here are some common ones, though this is not an exhaustive list:
 |Built-in Function|Description|
 |-|-|
 |`abs()`|Return the absolute value of a number.|
-|`bin()`|Return a string representing the number in binarys.|
+|`bin()`|Return a string representing the number in binary.|
 |`chr()`|Return a character for the Unicode (and ASCII) value passed in.|
 |`dir()`|Return a list of methods on this object.|
-|`enumerate()`|Return an iterator over a list of (index, value) pairs.| |`filter()`|Repeatedly run a function on items of a list filtering some out.|
+|`enumerate()`|Return an iterator over a list of (index, value) pairs.|
+|`filter()`|Repeatedly run a function on items of a list filtering some out.|
 |`float()`|Convert a number or string to a floating point value.|
 |`help()`|Get help on a data type.|
 |`hex()`|Return the hexadecimal representation of a number.|
