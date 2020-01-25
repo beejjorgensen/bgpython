@@ -16,7 +16,33 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Chapter Project Specification {func-proj-spec}
 
-TODO
+Allow the user to enter the locations of several starships in 3D space.
+
+These should be entered as _x_,_y_,_z_ triplets when prompted. When the
+user enters "done", stop entering ship locations.
+
+```
+Enter ship location x,y,z (or "done"): 10,20,30
+Enter ship location x,y,z (or "done"): -17,16,50
+Enter ship location x,y,z (or "done"): 0,13,30
+Enter ship location x,y,z (or "done"): 5,20,-40
+Enter ship location x,y,z (or "done"): done
+```
+
+Then print out a grid of the distances between them. The grid's top row
+and left column should indicate the ship number (starting with 0).
+
+Crossing a column with a row should give you the distance between the
+ships.
+
+Distances should be printed to 2 decimal places in fields of width 8.
+
+Example output:
+
+```
+```
+
+Keep this project in mind as we go through the chapter.
 
 ## What Are Functions?
 
@@ -496,5 +522,26 @@ this chapter.
    G = 6.67430e-11
    ```
 
+   That should be enough to go on. Write the function and call it with a
+   variety of different values. Here are some sample values so you can
+   see if your code is working:
+
+   |m1|m2|r|result|
+   |-|-|-|
+   |10|20|30|1.4831777777777777e-11|
+   |10|40|30|2.9663555555555555e-11|
+   |100|5|10|3.3371499999999997e-10|
+
+   ([flx[Solution|ex_grav.py]].)
+
+2. Write a program to input numbers repeatedly until the user types
+   "done". Keep track of all the numbers in a list.
+
+   Print out the maximum value the user entered using built-in
+   functions.
+
+   ([flx[Solution|ex_max.py]].)
+
+3. 
 
 ## Summary
