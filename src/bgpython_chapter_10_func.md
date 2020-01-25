@@ -14,7 +14,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Understand the difference between positional arguments and keyword arguments
 
 
-## Chapter Project Specification {dicts-proj-spec}
+## Chapter Project Specification {func-proj-spec}
 
 TODO
 
@@ -331,6 +331,170 @@ print(do_the_math(30))
 Compare the two until you are convinced they are equivalent.
 
 
- If the function operates on
-> an object with a dot `.` before the function name, we call that
-> function a _method_.
+## Multiple Return Values
+
+You can always return a list or a dict or anything from a function, but
+you can also return two values and assign them to different variables.
+
+``` {.py}
+# Function that returns the argument times 10, and divided by 10
+
+def timesdiv10(x):
+    return x * 10, x / 10
+
+a, b = timesdiv10(100)
+
+print(a, b)   # 1000 10
+```
+
+Or you can assign the result to a single variable. The result will be a
+_tuple_, which is a read-only list that you can access with square
+bracket notation:
+
+``` {.py}
+a = timesdiv10(100)
+
+print(a[0], a[1])   # 1000 10
+```
+
+Magic!
+
+
+## What Makes a Good Function
+
+The biggest rule is "do one thing and do it well".
+
+It's more of a guideline than a rule, because you're the boss when it
+comes to programming.
+
+But it's a great guideline that should be followed when you can.
+
+The biggest things you'll use functions for are:
+
+* Mathematical equations
+* Anything that happens repeatedly
+* Breaking up code into smaller, self-contained sections
+
+Let's talk about that last item more, since it's less obvious.
+
+Very frequently---almost always---you'll start with a series of steps
+you need to perform to solve the problem, like this:
+
+``` {.py}
+# While we still have data to process
+    # Process the data
+    # Output the data
+```
+
+And then you go in and fill in all the code for processing the data and
+outputting the data.
+
+But that could make for a bulky, hard-to-read `while` loop. It might be
+better to code it up like this:
+
+``` {.py}
+while d in data:
+    d = process(d)
+    output(d)
+```
+
+and the write the functions `process()` and `output()` to operate on the
+data that is passed into them.
+
+This makes the logic of the loop _really_ easy to read. And being
+easy-to-read is _king_ (or _queen_, if you prefer).
+
+If you find you have some large amounts of code that are getting
+deeply-nested, it might be time to break them out into functions, even
+if you only call those functions from that single place.
+
+## Positional Arguments versus Keyword Arguments
+
+We'll talk more about this in detail later, but function arguments can
+be split into these two broad classes in Python: _positional_ and
+_keyword_.
+
+Positional arguments are the arguments that have to occur at certain
+positions in a function call.
+
+For instance, if we want to compute $14^{12}$, we need to pass those two
+arguments in a specific order to the `math.pow()` function, which
+expects the base to be first and the exponent to be second:
+
+``` {.py}
+math.pow(14, 12)   # 56693912375296.0
+```
+
+If you put the 12 first, you get a different answer. These are
+positional arguments.
+
+But for some functions, after the positional arguments, you can specify
+additional keyword arguments. These are arguments that are identified by
+a certain name.
+
+For example, normally `print()` puts a newline at the end of the string.
+But you can override this behavior with the `end` keyword argument by
+telling `print()` to put nothing (an empty string) at the end of the line:
+
+``` {.py}
+# Together, prints "Beej" on a single line
+
+print("Be", end="")
+print("ej")
+```
+
+Notice how we had to identify the keyword argument by name.
+
+For now, it's enough to know that these exist and how to call them.
+Later on, we'll talk about how to write our own.
+
+
+## The Chapter Project
+
+
+## Exercises
+
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+Use any knowledge you have to solve these, not only what you learned in
+this chapter.
+
+1. Write a function that accepts the mass of two planets and the
+   distance between them (for a total of 3 arguments) and returns the
+   force between them.
+
+   Use Newton's Universal Law of Gravitation to calculate the force $F$:
+
+   $F=G\cfrac{m_1 m_2}{r^2}$
+
+   In mathematical notation, to variables next to each other like $m_1
+   m_2$, above, indicate multiplication.
+
+   And for $r^2$, a simple equivalent is $r\times{r}$.
+
+   So we can convert that whole equation to:
+
+   ``` {.py}
+   F = G * (m1 * m2) / (r * r)
+   ```
+
+   where `m1` is the mass of one planet, `m2` is the mass of the other
+   planet, and `r` is the distance between them.
+
+   So far so good.
+
+   But what's `G`? It's the _gravitational constant_:
+
+   $G=6.67430\times10^{-11}$ 
+
+   That's written in scientific notation, but we can do the same thing
+   in Python:
+
+   ``` {.py}
+   G = 6.67430e-11
+   ```
+
+
+## Summary
