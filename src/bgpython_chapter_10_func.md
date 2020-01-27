@@ -37,10 +37,33 @@ ships.
 
 Distances should be printed to 2 decimal places in fields of width 8.
 
+We'll use a variant of the Pythagorean Theorem to find the distance
+between two 3D points.
+
+$d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+z_0-z_1)^2}$
+
+For both 3D points, we take the difference in the X coordinates squared,
+plus the difference in the Y coordinates squared plus the difference in
+the Z coordinates squared, and then we take the square root of that
+whole thing. And that's the distance between the two points.
+
 Example output:
 
 ```
+Enter ship location x,y,z (or "done"): 10,20,30
+Enter ship location x,y,z (or "done"): -17,16,50
+Enter ship location x,y,z (or "done"): 0,13,30
+Enter ship location x,y,z (or "done"): 5,20,-40
+Enter ship location x,y,z (or "done"): done
+               0       1       2       3
+       0    0.00   33.84   12.21   70.18
+       1   33.84    0.00   26.42   92.74
+       2   12.21   26.42    0.00   70.53
+       3   70.18   92.74   70.53    0.00
 ```
+
+So we can see ship #2 (along the top) is distance 26.42 from ship #1
+(along the left).
 
 Keep this project in mind as we go through the chapter.
 
@@ -434,6 +457,8 @@ If you find you have some large amounts of code that are getting
 deeply-nested, it might be time to break them out into functions, even
 if you only call those functions from that single place.
 
+KnowingZZ
+
 ## Positional Arguments versus Keyword Arguments
 
 We'll talk more about this in detail later, but function arguments can
@@ -542,6 +567,22 @@ this chapter.
 
    ([flx[Solution|ex_max.py]].)
 
-3. 
+3. Write a function that takes an integer between 0 and 9 as an
+   argument. It should return a string that corresponds to the English
+   word for that number. For example, if the argument is `3`, the
+   function should return `"three"`.
+
+   ([flx[Solution|ex_ennum.py]].)
+
+4.
 
 ## Summary
+
+Functions are a super-important part of programming and a highly
+valuable 
+* Understand what functions are and how they're useful
+* Be able to use built-in functions
+* Understand what function arguments are
+* Be able to write your own functions
+* Be able to write good functions
+* Understand the difference between positional arguments and keyword arguments
