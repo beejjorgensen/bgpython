@@ -153,8 +153,7 @@ the time that code executed, and `y` is set to `130` until we assign
 into it again. Changing `x` to `1000` did **not** magically change `y`
 to `1040`.
 
-> _**Fun Tax Fact**: The
-> [fl[1040|https://en.wikipedia.org/wiki/Form_1040]] is nearly my
+> _**Fun Tax Fact**: The [flw[1040|Form_1040]] is nearly my
 > least-favorite tax form._
 
 For more math fun, you have the following operators at your disposal
@@ -170,9 +169,8 @@ For more math fun, you have the following operators at your disposal
 |Exponent|`**`|
 
 You can also use parentheses similar to how you do in algebra to force
-part of an expression to evaluate first. [fl[Normal mathematical order
-of operations rules
-apply|https://en.wikipedia.org/wiki/Order_of_operations]].
+part of an expression to evaluate first. [flw[Normal mathematical order
+of operations rules apply|Order_of_operations]].
 
 ``` {.py}
  8 + 4  / 2   #  8 + 4  / 2 ==  8 + 2 == 10
@@ -592,8 +590,7 @@ Here they are:
    operator in Python. `3**2` is `9`. ([flx[Solution|ex_xsquared.py]].)
 
 5. Write a program that allows the user to enter `a`, `b`, and `c`, and
-   the solves [fl[the quadratic
-   formula|https://en.wikipedia.org/wiki/Quadratic_formula]] for those
+   the solves [flw[the quadratic formula|Quadratic_formula]] for those
    values.
 
    A refresher: with equations of the form:
@@ -668,9 +665,9 @@ Here they are:
 
    `8.881784197001252e-16`
 
-   That's a floating point number, but in [fl[scientific
-   notation|https://en.wikipedia.org/wiki/Scientific_notation]]. That
-   `e-16` is the same as $\times10^{-16}$. So the math equivalent is:
+   That's a floating point number, but in [flw[scientific
+   notation|Scientific_notation]]. That `e-16` is the same as
+   $\times10^{-16}$. So the math equivalent is:
 
    $8.881784197001252\times10^{-16}$
 

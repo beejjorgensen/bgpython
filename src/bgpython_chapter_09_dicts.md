@@ -162,8 +162,8 @@ d["age"] = 29  # ish
 ```
 
 If you come from a web background, you might have come across
-[fl[JSON|https://en.wikipedia.org/wiki/JSON]]-format data. The Python
-dictionary is very similar in format, though not exactly the same.
+[flw[JSON|JSON]]-format data. The Python dictionary is very similar in
+format, though not exactly the same.
 
 ## Speed Demon
 
@@ -779,8 +779,7 @@ the family tree. But since we're using the name as the key in the dict,
 and keys have to be unique, we're in trouble. Ergo, the name can't be
 the key---something unique must be.
 
-One option there is to use a
-[fl[UUID|https://en.wikipedia.org/wiki/Universally_unique_identifier]]
+One option there is to use a [flw[UUID|Universally_unique_identifier]]
 as the key, and map that UUID to names somehow. Maybe you have _another_
 dict that, for a given name, stores a list of UUIDs that represent
 people who have that name. Then we could ask the user, "Did you mean the

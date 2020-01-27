@@ -85,10 +85,10 @@ But before that, we have to meet someone: George Boole.
 
 Problem solving step: **Understanding the Problem**.
 
-[fl[George Boole|https://en.wikipedia.org/wiki/George_Boole]] was quite
-and interesting character. From humble beginnings in the early 1800s, he
-went on to develop the mathematics that became, in many ways, the
-foundation of modern computation. Pretty awesome.
+[flw[George Boole|George_Boole]] was quite and interesting character.
+From humble beginnings in the early 1800s, he went on to develop the
+mathematics that became, in many ways, the foundation of modern
+computation. Pretty awesome.
 
 What he developed is what we call today _Boolean Algebra_.
 
@@ -808,8 +808,7 @@ We covered all kinds of super-important things this chapter.
 * A bit about testing edge cases
 
 Guess what! You now know enough Python syntax to solve any computing
-problem! [fl[I'm not
-kidding|https://en.wikipedia.org/wiki/Turing_completeness]]!
+problem! [flw[I'm not kidding|Turing_completeness]]!
 
 See, it's not knowing all the syntax that's important; it's the ability
 to figure out how to put it all together in the right way.

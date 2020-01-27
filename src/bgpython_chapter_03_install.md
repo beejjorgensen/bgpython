@@ -44,9 +44,8 @@ When you bring up a terminal window on a Mac or Unix-like or Windows
 WSL, it's a bash shell you'll find running in it.
 
 > Bash _stands for_ Bourne Again SHell _which is a bit of a pun around
-> the original [fl[Bourne
-> Shell|https://en.wikipedia.org/wiki/Bourne_shell]] from back in the
-> day. Bash improves on it a bit.
+> the original [flw[Bourne Shell|Bourne_shell]] from back in the day.
+> Bash improves on it a bit.
 
 TODO: Windows Terminal, Windows bash,
 https://itsfoss.com/install-bash-on-windows/

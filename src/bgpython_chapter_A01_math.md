@@ -435,9 +435,8 @@ defined:
 $\sqrt{-1}=i$
 
 and invented an entire mathematical system around what they called
-[fl[_imaginary numbers_|https://en.wikipedia.org/wiki/Imaginary_number]]
-that actually have some amazing applications. But that's something you
-can look up on your own.
+[flw[_imaginary numbers_|Imaginary_number]] that actually have some
+amazing applications. But that's something you can look up on your own.
 
 In addition to square roots, there are also cube roots. This is asking,
 "What number cubed results in this number?" This is indicated by a small
@@ -609,15 +608,13 @@ Base 2 is super common in programming. In fact, it's so common that if
 you ever see someone write $\log{n}$ in a computing context, you should
 assume they mean $\log_2{n}$.
 
-$e$ is the base of the [fl[_natural
-logarithm_|https://en.wikipedia.org/wiki/Natural_logarithm]], common in
-math, and uncommon in computing.
+$e$ is the base of the [flw[_natural logarithm_|Natural_logarithm]],
+common in math, and uncommon in computing.
 
 So what are they good for?
 
 A common place you see logarithms in programming is when using Big-O
-notation to indicate [fl[computational
-complexity|https://en.wikipedia.org/wiki/Big_O_notation]].
+notation to indicate [flw[computational complexity|Big_O_notation]].
 
 To compute the log of a number in Python, use the `log()` function in
 the `math` module. You specify the base as the second argument. (If

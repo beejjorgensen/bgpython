@@ -37,9 +37,9 @@ ships.
 
 Distances should be printed to 2 decimal places in fields of width 8.
 
-We'll use a variant of the [fl[Pythagorean
-Theorem|https://en.wikipedia.org/wiki/Pythagorean_theorem#Euclidean_distance]]
-to find the distance between two 3D points.
+We'll use a variant of the [flw[Pythagorean
+Theorem|Pythagorean_theorem#Euclidean_distance]] to find the distance
+between two 3D points.
 
 $d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+(z_0-z_1)^2}$
 
@@ -116,11 +116,10 @@ the `print()` function once, and then use it over and over again by
 calling it.
 
 We have an important principle in computer programming called the
-[fl[DRY
-principle|https://en.wikipedia.org/wiki/Don%27t_repeat_yourself]]
-(_Don't Repeat Yourself_). If you can remove as much repetitive code as
-you can and move it to a function, that makes your code easier to read
-and maintain. DRY code is happy code.
+[flw[DRY principle|Don%27t_repeat_yourself]] (_Don't Repeat Yourself_).
+If you can remove as much repetitive code as you can and move it to a
+function, that makes your code easier to read and maintain. DRY code is
+happy code.
 
 Not only can we use functions to make DRY code, we can also use them to
 organize our code into logical sections, even if a function is called

@@ -1445,8 +1445,7 @@ line numbers!)
         player_column = new_column
 ```
 
-Woo! You've written your very own
-[fl[Roguelike|https://en.wikipedia.org/wiki/Roguelike]] game!
+Woo! You've written your very own [flw[Roguelike|Roguelike]] game!
 
 Problem solving step: **Looking Back**.
 
@@ -1466,10 +1465,9 @@ map, but unfortunately there's no easy way to do this in a
 cross-platform manner^[Well, not at this point in our learning,
 anyway.]. But there is a hacky thing we can do.
 
-If your terminal obeys [fl[ANSI escape
-codes|https://en.wikipedia.org/wiki/ANSI_escape_code]], which is likely,
-we can send special sequences of characters to it to clear the screen
-then home the cursor (move it to the top left).
+If your terminal obeys [flw[ANSI escape codes|ANSI_escape_code]], which
+is likely, we can send special sequences of characters to it to clear
+the screen then home the cursor (move it to the top left).
 
 The magical incantation looks like this:
 

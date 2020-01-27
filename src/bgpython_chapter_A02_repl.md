@@ -236,8 +236,8 @@ Oh, sure, Beej, put this section at the end of the chapter. Well, I just
 wanted to make sure you read the middle bit. `:)`
 
 Since the REPL is reading from the keyboard as a "file", you should send
-an EOF ([fl[End Of File|https://en.wikipedia.org/wiki/End-of-file]])
-character to indicate that it should be done.
+an EOF ([flw[End Of File|End-of-file]]) character to indicate that it
+should be done.
 
 On Mac and Linux and BSD and Ultrix and MINIX and SunOS and IRIX and
 HP-UX and Solaris and GNU Hurd and Plan 9 From Bell Labs and any Unix
