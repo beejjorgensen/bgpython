@@ -48,14 +48,9 @@ plus the difference in the Y coordinates squared plus the difference in
 the Z coordinates squared, and then we take the square root of that
 whole thing. And that's the distance between the two points.
 
-Example output:
+Example output (corresponding to the example input, above):
 
 ```
-Enter ship location x,y,z (or "done"): 10,20,30
-Enter ship location x,y,z (or "done"): -17,16,50
-Enter ship location x,y,z (or "done"): 0,13,30
-Enter ship location x,y,z (or "done"): 5,20,-40
-Enter ship location x,y,z (or "done"): done
                0       1       2       3
        0    0.00   33.84   12.21   70.18
        1   33.84    0.00   26.42   92.74
@@ -555,10 +550,10 @@ this chapter.
    see if your code is working:
 
    |m1|m2|r|result|
-   |-|-|-|
-   |10|20|30|1.4831777777777777e-11|
-   |10|40|30|2.9663555555555555e-11|
-   |100|5|10|3.3371499999999997e-10|
+   |-:|-:|-:|-:|
+   |`10`|`20`|`30`|`1.4831777777777777e-11`|
+   |`10`|`40`|`30`|`2.9663555555555555e-11`|
+   |`100`|`5`|`10`|`3.3371499999999997e-10`|
 
    ([flx[Solution|ex_grav.py]].)
 
