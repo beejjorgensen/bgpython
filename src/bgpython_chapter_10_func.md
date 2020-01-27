@@ -37,10 +37,11 @@ ships.
 
 Distances should be printed to 2 decimal places in fields of width 8.
 
-We'll use a variant of the Pythagorean Theorem to find the distance
-between two 3D points.
+We'll use a variant of the [fl[Pythagorean
+Theorem|https://en.wikipedia.org/wiki/Pythagorean_theorem#Euclidean_distance]]
+to find the distance between two 3D points.
 
-$d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+z_0-z_1)^2}$
+$d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+(z_0-z_1)^2}$
 
 For both 3D points, we take the difference in the X coordinates squared,
 plus the difference in the Y coordinates squared plus the difference in
@@ -457,7 +458,10 @@ If you find you have some large amounts of code that are getting
 deeply-nested, it might be time to break them out into functions, even
 if you only call those functions from that single place.
 
-KnowingZZ
+Knowing _when_ to break up code into functions is more of an art than a
+science. If you start feeling like your code is remotely unwieldy,
+consider what it might look like split into different functions. If you
+like it more, do it!
 
 ## Positional Arguments versus Keyword Arguments
 
