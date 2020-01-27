@@ -669,8 +669,8 @@ When we round to a higher number, we call that _rounding up_.
 The other direction is _rounding down_.
 
 But what if I said "Round 2.5 to the nearest whole number?" It's
-perfectly between 2 and 3! In those cases, conventionally, we round up.
-So the answer would be 3.
+perfectly between 2 and 3! In those cases, conventionally, lots of us
+learned to round up. So the answer would be 3.
 
 We can also force a number to round a certain direction by declaring
 which way to round.
@@ -683,8 +683,8 @@ We can use the built-in `round()` function.
 
 But it behaves a little bit differently than we might be used to.
 Notably, numbers like 1.5, 2.5, and 3.5 that are equally close to two
-whole numbers _always round to the nearest even number_. Which is,
-ironically, an odd thing to do.
+whole numbers _always round to the nearest even number_. This is
+commonly known as _round half to even_ or _banker's rounding_.
 
 ``` {.py}
 round(2.8)  # 3
@@ -771,10 +771,10 @@ round_up(-2.8)   # -3
 
 I'll leave `round_down()` as an exercise. `:)`
 
-If you want to round to a whole number, and you want to avoid Python's
-strange "round to the nearest even number" thing, you can use this
-trick: add 0.5 to the number and then convert it to an `int()`. (If the
-number is negative, subtract 0.5 from it.)
+If you want to always round up to the next whole number instead of doing
+banker's rounding, you can use this trick: add 0.5 to the number and
+then convert it to an `int()`. (If the number is negative, subtract 0.5
+from it.)
 
 ``` {.py}
 int(0.5 + 0.5)  # 1
