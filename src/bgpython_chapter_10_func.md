@@ -43,10 +43,11 @@ between two 3D points.
 
 $d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+(z_0-z_1)^2}$
 
-For both 3D points, we take the difference in the X coordinates squared,
-plus the difference in the Y coordinates squared plus the difference in
-the Z coordinates squared, and then we take the square root of that
-whole thing. And that's the distance between the two points.
+For each pair of 3D points, we take the difference in the X coordinates
+squared, plus the difference in the Y coordinates squared plus the
+difference in the Z coordinates squared, and then we take the square
+root of that whole thing. And that's the distance between the two
+points.
 
 Example output (corresponding to the example input, above):
 
@@ -59,7 +60,8 @@ Example output (corresponding to the example input, above):
 ```
 
 So we can see ship #2 (along the top) is distance 26.42 from ship #1
-(along the left).
+(along the left). And notice the diagonal is all `0.00`, which makes
+sense because every ship is zero distance from itself.
 
 Keep this project in mind as we go through the chapter.
 
@@ -377,6 +379,8 @@ Compare the two until you are convinced they are equivalent.
 
 ## Multiple Return Values
 
+Problem solving step: **Understanding the Problem**.
+
 You can always return a list or a dict or anything from a function, but
 you can also return two values and assign them to different variables.
 
@@ -405,6 +409,8 @@ Magic!
 
 
 ## What Makes a Good Function
+
+Problem solving step: **Understanding the Problem**.
 
 The biggest rule is "do one thing and do it well".
 
@@ -459,6 +465,8 @@ like it more, do it!
 
 ## Positional Arguments versus Keyword Arguments
 
+Problem solving step: **Understanding the Problem**.
+
 We'll talk more about this in detail later, but function arguments can
 be split into these two broad classes in Python: _positional_ and
 _keyword_.
@@ -499,6 +507,174 @@ Later on, we'll talk about how to write our own.
 
 
 ## The Chapter Project
+
+Problem solving step: **Understanding the Problem**
+
+It's that time! If you need a refresher, [pop back up to the top and
+check out the spec](#func-proj-spec).
+
+So we want to do a couple things:
+
+1. Read in a list of starship positions.
+2. Print out a grid of distances between each ship.
+
+The positions are entered as X,Y,Z coordinates (until the user enters
+"done").
+
+The distances are computed with the distance formula variation of the
+Pythagorean Theorem.
+
+A grid of distances is printed. There should be ship numbers along the
+axes.
+
+Problem solving step: **Devising a Plan**
+
+We already have a bit of a plan, don't we? We listed it right up there.
+
+1. Read in a list of starship positions.
+2. Print out a grid of distances between each ship.
+
+Don't look now, but these would make a great couple of functions. Sure,
+we _could_ stick them all in one big main routine, but it's way more
+logical and easier to read if we make them their own functions.
+
+We could have one function read the list of positions and return it.
+
+And we could take that returned list and pass it into another function
+to print the grid.
+
+``` {.py}
+locations = get_ship_locations()
+print_grid(locations)
+```
+
+We're taking a _top down_ approach, here. Starting with the big pieces
+of logic and then implementing them as we go down.
+
+In fact, let's simplify the problem, and just start like this:
+
+``` {.py}
+locations = get_ship_locations()
+print(locations)
+#print_grid(locations)
+```
+
+That way we can just do one bit and make sure it's working.
+
+> **Fun Motto Fact**: Get something working as quickly as possible, no
+> matter how much a piece of the project it is.
+
+Problem solving step: **Understanding the Problem**
+
+For getting the ship locations, looks like we want to have the user
+enter an X,Y,Z coordinate. Then we want to split that into a list of
+numbers. And we need to make sure they are int type---remember that
+`input()` returns a string, so we'll have to convert them to int.
+
+And we repeat that until the user enters "done".
+
+Problem solving step: **Devising a Plan**
+
+Looping until the user enters "done" is a solved problem. We've done
+that a few times now. Just make a variable for the `while()` condition,
+and then set it when the user enters "done".
+
+Otherwise we have to split the string up into a list of 3 numbers,
+splitting on the comma. Remember how to do that?
+
+Yes, that's right (or no, not right, if you don't remember), it's the
+`split()` string method. Example:
+
+``` {.py}
+"1,2,3".split(',')  # produces list ["1","2","3"]
+```
+
+But that's not enough. Like we noted, we need to convert that list from
+a list of strings to a list of numbers. Remember how to convert a string
+to a number? Yes, with the built-in `int()` function!
+
+``` {.py}
+int("2") == 2  # True!
+```
+
+So we can loop through our list of strings and convert them to ints.
+
+And then we'll have a list of 3 ints, representing the X,Y,Z coordinates
+of a single ship. Of course, the user is going to enter any number of
+ships, and we'll have to keep all those lists of coordinates
+somewhere... where?
+
+It's almost like we'll need a list for all those lists. A list of lists!
+Why not? We made some of those in the lists chapter, right?
+
+So we add the new X,Y,Z list to the end of a master list that holds all
+the coordinates.
+
+Then we can return that master list to be used later when we print the
+grid.
+
+Let's code!
+
+Wait---you're right---we haven't finished the _entire_ plan for the
+whole project. True. But that's okay. We completed enough devising of a
+plan to do the first part of the project.
+
+And this is one of the beautiful things about functions. We've split the
+problem up so nicely that we can implement different parts of it
+_completely independently_! In fact, if you have a programming pal, you
+could get them to write the `print_grid()` function at the same time you
+were writing the `get_ship_locations()` function!
+
+Problem solving step: **Carrying Out the Plan**
+
+Let's get coding!
+
+``` {.py}
+def get_ship_locations():
+    """
+    Ask the user to enter a number of X,Y,Z ships coordinates.
+    Returns a list of all the coordinates.
+    """
+
+    done = False     # True when the user asks to be done
+    locations = []   # Master list of all ship positions
+
+    while not done:
+        xyz = input('Enter ship location x,y,z (or "done"): ')
+
+        if xyz == "done":
+            done = True
+        else:
+            # Get a list of the x,y,z coordinates
+            xyz_list = xyz.split(',')
+
+            # Convert to integers
+            for i, v in enumerate(xyz_list):
+                xyz_list[i] = int(v)
+
+            # Build the master list
+            locations.append(xyz_list)
+
+    return locations
+
+locations = get_ship_locations()
+print(locations)
+#print_grid(locations)
+```
+
+If we give that a run, we see something like this:
+
+```
+Enter ship location x,y,z (or "done"): 1,2,3
+Enter ship location x,y,z (or "done"): 4,5,6
+Enter ship location x,y,z (or "done"): done
+[[1, 2, 3], [4, 5, 6]]
+```
+
+There's our list of lists holding the ships' coordinates! It's ready to
+feed into the `print_grid()` function. But first we'd better think abou
+that for a bit.
+
 
 
 ## Exercises
