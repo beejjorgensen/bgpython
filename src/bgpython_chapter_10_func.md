@@ -14,7 +14,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Understand the difference between positional arguments and keyword arguments
 
 
-## Chapter Project Specification {func-proj-spec}
+## Chapter Project Specification {#func-proj-spec}
 
 Allow the user to enter the locations of several starships in 3D space.
 

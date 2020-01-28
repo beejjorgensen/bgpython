@@ -16,7 +16,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Construct and use lists of lists (2D lists)
 
 
-## Chapter Project Specification {lists-proj-spec}
+## Chapter Project Specification {#lists-proj-spec}
 
 Game time!
 

@@ -1,4 +1,4 @@
-# Appendix B: The REPL {repl}
+# Appendix B: The REPL {#repl}
 
 ## What is the REPL?
 

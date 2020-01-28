@@ -16,7 +16,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Build Dictionaries of Dictionaries
 * Understand that Dictionaries are Reference Types
 
-## Chapter Project Specification {dicts-proj-spec}
+## Chapter Project Specification {#dicts-proj-spec}
 
 Let's store some genealogical^[This is all about family trees. Did you
 know I'm related to Queen Elizabeth II (by marriage)? I'm her mother’s
