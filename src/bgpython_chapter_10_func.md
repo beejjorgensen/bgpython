@@ -672,10 +672,164 @@ Enter ship location x,y,z (or "done"): done
 ```
 
 There's our list of lists holding the ships' coordinates! It's ready to
-feed into the `print_grid()` function. But first we'd better think abou
+feed into the `print_grid()` function. But first we'd better think about
 that for a bit.
 
+One more thing: if you were looking closely, you saw the big multiline
+string at the beginning of the function describing what the function
+does. This is called a _doc string_ and it's a comment that gives
+overall information about the function. Automatic documentation
+generators can extract these and build documentation for you, just like
+you can get with the `help()` function in the [REPL](#repl).
 
+Problem solving step: **Understanding the Problem**
+
+All righty. What do we need to do for this second part of printing out
+the grid of distances between the ships?
+
+There are sort of three big pieces here.
+
+* We need to print out a grid.
+* We need the first row and first column to list out ship numbers so we
+  can cross-reference.
+* We need to actually compute the distance and print that.
+
+Problem solving step: **Devising a Plan**
+
+Let's simplify a bit first. Instead of worrying about computing the
+distance, let's just concentrate on the grid. We'll just put the bogus
+number of `99.99` in for all the inter-ship distances.
+
+> **Protip**: When putting in bogus data, make sure it's _obviously_
+> bogus so that obviously people obviously know they must obviously
+> replace this with real data before the product ships.
+
+And to simplify even further, let's forget about the ship numbers in the
+first row and first column. We can add those in later. Remember: it's
+good to identify the minimum independent piece you can implement next
+and test that it's working.
+
+We know how many ships we have---it's the length of the master list of
+ship coordinates.
+
+If we have _n_ ships, we'll need and _n_ by _n_ grid to be displayed to
+show all the distances between all of them. But how? Think back to the
+loops chapter...
+
+You can do it with a _nested loop_. The outer one goes for _n_ rows, and
+the inner one goes for _n_ columns.
+
+For printing the number with 2 decimal places in a field of width 8, you
+can use a f-string with some special formatting specifiers, for example:
+
+``` {.py}
+distance = 99.99
+print(f'{distance:8.2f})   # prints "   99.99"
+```
+
+All righty! Let's print some stuff!
+
+``` {.py}
+def print_grid(locations):
+    """Print a grid of ship-to-ship distances."""
+
+    num_ships = len(locations)
+    
+    for i in range(num_ships):
+        for j in range(num_ships):
+            dist = 99.99
+            print(f'{dist:8.2f}', end="")
+        print()
+
+locations = get_ship_locations()
+print_grid(locations)
+```
+
+Running that gives:
+
+```
+Enter ship location x,y,z (or "done"): 1,2,3
+Enter ship location x,y,z (or "done"): 4,5,6
+Enter ship location x,y,z (or "done"): 7,8,9
+Enter ship location x,y,z (or "done"): done
+   99.99   99.99   99.99
+   99.99   99.99   99.99
+   99.99   99.99   99.99
+```
+
+Hey, a nice 3x3 grid for our 3 ships!
+
+Next, let's put the ship row number just to the left of each row. Just
+editing the `for`-loop here:
+
+``` {.py}
+    for i in range(num_ships):
+        print(f'{i:8}', end="")   # <-- add this
+        for j in range(num_ships):
+            dist = 99.99
+            print(f'{dist:8.2f}', end="")
+        print()
+```
+
+We printed it in field width 8 just for consistency with the distance
+numbers. Output is now:
+
+```
+       0   99.99   99.99   99.99
+       1   99.99   99.99   99.99
+       2   99.99   99.99   99.99
+```
+
+Which is good! Now we just need a row on the top. How about another loop
+before everything else to print out that row?
+
+``` {.py}
+    # Add this loop:
+    for i in range(num_ships):
+        print(f'{i:8}', end="")
+    print()
+
+    for i in range(num_ships):
+        print(f'{i:8}', end="")
+        for j in range(num_ships):
+            dist = 99.99
+            print(f'{dist:8.2f}', end="")
+        print()
+```
+
+And we get this:
+
+```
+       0       1       2
+       0   99.99   99.99   99.99
+       1   99.99   99.99   99.99
+       2   99.99   99.99   99.99
+```
+
+Er, well, that's _almost_ right. The top row is shifted one column left.
+We need to stick 8 blank spaces in before it to scooch it over. So let's
+just do it, using string multiplication to make us 8 spaces:
+
+``` {.py}
+    print(" " * 8, end="")   # <-- Add this
+
+    for i in range(num_ships):
+        print(f'{i:8}', end="")
+    print()
+```
+
+And now we have this:
+
+```
+               0       1       2
+       0   99.99   99.99   99.99
+       1   99.99   99.99   99.99
+       2   99.99   99.99   99.99
+```
+
+which is looking _right on_. Except that all the distances are listed as
+`99.99`. Let's get that out of there and replace it with the real
+distance between the ships.
 
 ## Exercises
 

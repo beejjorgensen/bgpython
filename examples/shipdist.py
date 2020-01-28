@@ -41,6 +41,7 @@ def dist3d(p0, p1):
     return math.sqrt(dx*dx + dy*dy + dz*dz)
 
 def print_grid(locations):
+    """Print a grid of ship-to-ship distances."""
 
     num_ships = len(locations)
     
