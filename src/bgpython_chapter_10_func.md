@@ -729,6 +729,8 @@ print(f'{distance:8.2f})   # prints "   99.99"
 
 All righty! Let's print some stuff!
 
+Problem solving step: **Carrying Out the Plan**
+
 ``` {.py}
 def print_grid(locations):
     """Print a grid of ship-to-ship distances."""
@@ -831,6 +833,86 @@ which is looking _right on_. Except that all the distances are listed as
 `99.99`. Let's get that out of there and replace it with the real
 distance between the ships.
 
+Problem solving step: **Devising a Plan**
+
+Distance! We see the distance formula up there at the top, repeated here:
+
+$d=\sqrt{(x_0-x_1)^2+(y_0-y_1)^2+(z_0-z_1)^2}$
+
+How do we turn that into code?
+
+We could use `math.sqrt()` to get the square root, and `math.pow()` to
+square the numbers.
+
+Another option is to compute, say, the difference in the X coordinates
+and then multiply that result by itself to square it (since
+$x\times{x}=$x^2$).
+
+Let's code them both and then use the one you like best.
+
+Problem solving step: **Carrying Out the Plan**
+
+Here's computing the distance between points `p0` and `p1` (both of
+which are lists of X,Y,Z triples) using `math.pow()`:
+
+``` {.py}
+d = math.sqrt(
+    math.pow(p0[0] - p1[0], 2) +  # difference in Xs
+    math.pow(p0[1] - p1[1], 2) +  # difference in Ys
+    math.pow(p0[2] - p1[2], 2)    # difference in Zs
+)
+```
+
+And here's option two:
+
+``` {.py}
+dx = p0[0] - p1[0]   # difference in the Xs
+dy = p0[1] - p1[1]   # difference in the Ys
+dz = p0[2] - p1[2]   # difference in the Zs
+
+d = math.sqrt(dx*dx + dy*dy + dz*dz)
+```
+
+Which do you prefer? Both should give equivalent answers.
+
+Now, sure, we could just throw that equation in the middle of our code,
+but this is actually ripe to be made into its own function! If we do
+that, we can reuse it easily later, should we ever want to. Let's wrap
+it up and add it to our file:
+
+``` .{py}
+def dist3d(p0, p1):
+    """Return the Euclidean distance between 2 3D points."""
+
+    # Compute the difference in the Xs, Ys, and Zs
+    dx = p0[0] - p1[0]
+    dy = p0[1] - p1[1]
+    dz = p0[2] - p1[2]
+
+    # Compute the distance. (Remember that multiplying a number by
+    # itself is the same as squaring the number.)
+    return math.sqrt(dx*dx + dy*dy + dz*dz)
+```
+
+And then we can mod our code where we hardcoded that `99.99` and have it
+call the distance formula instead! We just need to pass in the two
+ships' locations---one is represented by the column number, and the
+other by the row number:
+
+``` {.py}
+    for i in range(num_ships):
+        print(f'{i:8}', end="")
+        for j in range(num_ships):
+            dist = dist3d(locations[i], locations[j]])  # <-- Mod here
+            print(f'{dist:8.2f}', end="")
+        print()
+```
+
+And there we have it!
+
+([flx[Solution|shipdist.py]].)
+
+
 ## Exercises
 
 **Remember: to get your value out of this book, you have to do these
@@ -840,7 +922,22 @@ allowed to look at the solution.
 Use any knowledge you have to solve these, not only what you learned in
 this chapter.
 
-1. Write a function that accepts the mass of two planets and the
+1. Write a program to input numbers repeatedly until the user types
+   "done". Keep track of all the numbers in a list.
+
+   Print out the maximum value the user entered using built-in
+   functions.
+
+   ([flx[Solution|ex_max.py]].)
+
+2. Write a function that takes an integer between 0 and 9 as an
+   argument. It should return a string that corresponds to the English
+   word for that number. For example, if the argument is `3`, the
+   function should return `"three"`.
+
+   ([flx[Solution|ex_ennum.py]].)
+
+3. Write a function that accepts the mass of two planets and the
    distance between them (for a total of 3 arguments) and returns the
    force between them.
 
@@ -887,30 +984,20 @@ this chapter.
 
    ([flx[Solution|ex_grav.py]].)
 
-2. Write a program to input numbers repeatedly until the user types
-   "done". Keep track of all the numbers in a list.
-
-   Print out the maximum value the user entered using built-in
-   functions.
-
-   ([flx[Solution|ex_max.py]].)
-
-3. Write a function that takes an integer between 0 and 9 as an
-   argument. It should return a string that corresponds to the English
-   word for that number. For example, if the argument is `3`, the
-   function should return `"three"`.
-
-   ([flx[Solution|ex_ennum.py]].)
-
-4.
-
 ## Summary
 
 Functions are a super-important part of programming and a highly
-valuable 
-* Understand what functions are and how they're useful
-* Be able to use built-in functions
-* Understand what function arguments are
-* Be able to write your own functions
-* Be able to write good functions
-* Understand the difference between positional arguments and keyword arguments
+valuable tool to have at your disposal.
+
+You can use them to break up code into smaller, more manageable
+pieces. You can also use them to create standalone, reusable pieces
+of code.
+
+Python comes with a pile of built-in functions, and it pays to know
+what they are (so you don't reinvent them yourself!)
+
+Finally, you also learned that function arguments come in two
+flavors: positional and keyword. We'll revisit more of that topic
+later.
+
+But now: well-deserved break time!
