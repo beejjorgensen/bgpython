@@ -1003,6 +1003,7 @@ statements, and test on either side of those. `0` and `1` and `19` and
 If you didn't come up with a different solution, try to do so now. What
 if you used `while` loops instead of `for` loops?
 
+([flx[Solution|multtable.py]].)
 
 ## Exercises
 

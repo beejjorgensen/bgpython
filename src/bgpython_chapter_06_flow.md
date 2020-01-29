@@ -764,6 +764,7 @@ characters without using an `if` inside the loop? (There's a hint at
 this footnote^[Have two loops!].) _Coding is creative!_ There's more
 than one way to do these things. Try them and see which you like better.
 
+([flx[Solution|hashast.py]].)
 
 ## Exercises
 

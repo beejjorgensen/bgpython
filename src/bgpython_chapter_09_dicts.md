@@ -789,6 +789,8 @@ multiple Beej Jorgensens. (You can create a random UUID by importing the
 
 Lots of options for improvement, here!
 
+([flx[Solution|familytree.py]].)
+
 ## Exercises
 
 **Remember: to get your value out of this book, you have to do these

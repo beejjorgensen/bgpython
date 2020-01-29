@@ -1490,6 +1490,9 @@ Although we have enough knowledge to add monsters and treasure and so
 on, it will be easier to do so once we learn about dictionaries and
 objects in future chapters. We have more tools at our disposal!
 
+([flx[Solution|adv1.py]].)
+
+
 ## Exercises
 
 **Remember: to get your value out of this book, you have to do these
