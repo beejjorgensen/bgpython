@@ -391,24 +391,24 @@ s0.set_location(10, 20, 30)
 print(s0.location)  # [10, 20, 30]
 ```
 
-On line 5, we define our new method, `set_location()`. Importantly,
+On line 6, we define our new method, `set_location()`. Importantly,
 notice the first parameter is `self`, which will be initialized to
 represent the object we're setting the location of. (That is, when we
 call `s0.set_location()`, `self` will be set to refer to `s0` inside
 `set_location()`.)
 
-> ** Fun Debugging Fact**: If you get an error about incorrect number of
+> **Fun Debugging Fact**: If you get an error about incorrect number of
 > arguments to your method, make sure you have `self` as the first
 > parameter!
 
-Then on line 16, when we call `set_location()` on `s0`, `self` gets set
+Then on line 17, when we call `set_location()` on `s0`, `self` gets set
 to `s0`, and `x`, `y`, and `z` get set to `10`, `20`, and `30`,
 respectively.
 
 Then we use `x`, `y`, `z`, and `self` inside the method to change the
 values in this ship's location.
 
-This way, when we print it out on line 18, we see the new values there.
+This way, when we print it out on line 19, we see the new values there.
 
 Attributes!
 
