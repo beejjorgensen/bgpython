@@ -94,6 +94,13 @@ And then we'd have a list of those objects---just one list to maintain!
 
 ## What are Classes and Objects?
 
+Problem-solving step: **Understanding the Problem**.
+
+What we're starting to delve into here is the world of _Object-Oriented
+Programming_. To discuss _everything_ about it would definitely be
+information overload, so we're just going to start with the basics here,
+and revisit some of the concepts later.
+
 A bit of terminology here, following up on the starship example from
 above.
 
@@ -331,8 +338,8 @@ using the dot operator on `s0`!
 ``` {.py}
 s0 = StarShip("MCRN Tachi")
 
-print(s0.name)   # MCRN Tachi
-print(s0.name)   # [0, 0, 0]
+print(s0.name)       # MCRN Tachi
+print(s0.location)   # [0, 0, 0]
 ```
 
 But wait! There's more! That's not all!
@@ -413,3 +420,48 @@ This way, when we print it out on line 19, we see the new values there.
 Attributes!
 
 ## Pretty Printing
+
+Right now when we print one of our starship objects, Python prints
+something like this on the screen:
+
+```
+<__main__.StarShip object at 0x7fa11828c8e0>
+```
+
+Not particularly useful. Let's _override_ that functionality and have it
+print something nicer.
+
+Go ahead and add this method to the `StarShip` class:
+
+``` {.py}
+    def __str__(self):
+        """Return string representation of this object."""
+        return f'{self.name}: {self.location}'
+```
+
+The `__str__()` method returns a string to use any time an object is
+printed.
+
+Now if we build three new ships and print them all:
+
+``` {.py}
+s0 = StarShip("Rocinante")
+s1 = StarShip("Red Dwarf")
+s2 = StarShip("USCSS Nostromo")
+
+s0.set_location(10, 20, 30)
+s1.set_location(40, 50, 60)
+s2.set_location(70, 80, 90)
+
+print(s0)
+print(s1)
+print(s2)
+```
+
+We get some nice output, like this:
+
+```
+Rocinante: [10, 20, 30]
+Red Dwarf: [40, 50, 60]
+USCSS Nostromo: [70, 80, 90]
+```
