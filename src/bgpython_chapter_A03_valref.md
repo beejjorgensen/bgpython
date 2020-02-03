@@ -333,6 +333,7 @@ They are:
 
 * Integers between -5 and 256 inclusive.
 * Strings that contain only letters, numbers, or underscores.
+* The `None` object.
 
 This is why `"Beej!"` isn't interned (because it contains punctuation),
 and why `"Alice"` _is_ interned.
