@@ -46,6 +46,7 @@ def nobr_replace(mo):
 for infile in infiles:
     fin = open(infile)
     filedata.append(fin.read())
+    filedata.append("\n")  # Put a blank in there in case there's no trailing newline
     fin.close()
 
 try:
