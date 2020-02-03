@@ -18,10 +18,50 @@ Problem-solving step: **Looking Back**.
 * Be able to declare a class
 * Be able to use that class to instantiate objects
 * Understand that objects are reference types
+* Understand the relationship between objects and `None`
 
 ## Chapter Project Specification {#class-proj-spec}
 
-TODO
+As you go through the chapter, remember this specification and think
+about how we might use the new ideas in this chapter to implement it.
+This can absolutely be implemented without using the material in this
+chapter, but the goal is to implement it using the info
+
+We want to store data for a number of theaters and the movies that are
+being shown at those theaters.
+
+Each movie has:
+
+* A title (string)
+* A duration (integer, minutes)
+* A genre (string)
+
+Each theater has:
+
+* A name (string)
+* A list of movies that are showing at the theater (list of movies)
+
+The output should look similar to this, depending on your theater names
+and movies:
+
+```
+McMenamin's Old St. Francis Theater is showing:
+    Star Wars (scifi, 125 minutes)
+    Shawn of the Dead (romzomcom, 100 minutes)
+Tin Pan Theater is showing:
+    Shawn of the Dead (romzomcom, 100 minutes)
+    The World's Fastest Indian (drama, 127 minutes)
+Tower Theater is showing:
+    Star Wars (scifi, 125 minutes)
+    Shawn of the Dead (romzomcom, 100 minutes)
+    The World's Fastest Indian (drama, 127 minutes)
+```
+
+Note that multiple theaters might be showing the same movie title. Avoid
+duplicating the movie data as much as possible. (Remember: Don't Repeat Yourself!)
+
+Stretch goal: also store the per-theater show times for each movie at
+that theater.
 
 ## What Problem Are We Even Trying To Solve?
 
@@ -464,4 +504,96 @@ We get some nice output, like this:
 Rocinante: [10, 20, 30]
 Red Dwarf: [40, 50, 60]
 USCSS Nostromo: [70, 80, 90]
+```
+
+Perfect!
+
+## Objects are Mutable Reference Types
+
+When you assign one object to another, you don't get a second object.
+You get another reference to the first object. Just like happens with
+lists and dictionaries.
+
+Or, another way, doing an assignment with an object does _not_ result in
+a new object. Both variables are names for the same object. ([Check out
+Appendix C for details](#valref).)
+
+``` {.py}
+class Forest:
+    pass
+
+x = Forest()  # Construct a new object
+y = x
+
+x.antelopes = 4
+
+print(y.antelopes)  # 4, since y and x refer to the same object
+```
+
+This means you can pass objects to functions as arguments, and the
+function can change the values in the object's attributes.
+
+``` {.py}
+def set_antelopes_to_10(o):
+    o.antelopes = 10
+
+class Forest:
+    pass
+
+x = Forest()
+x.antelopes = 4
+
+set_antelopes_to_10(x)
+
+print(x.antelopes)  # 10!
+```
+
+## Objects and `None`
+
+We've already seen that variables can point to the value `None` to
+indicate nothing.
+
+This gets commonly used with objects to indicate some "not found" or
+error condition.
+
+For example, let's have a list of objects and a function to search them
+by name. The function should return the object that has a `name`
+attribute that matches the `name` parameter to the function.
+
+But a question should naturally arise! What if there is no object by
+that name in the list? What should the function return? `None` is a
+prime candidate here.
+
+``` {.py .numberLines}
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def __str__(self):
+        return self.name
+
+def get_person_by_name(person_list, name):
+    """Return a person object with this name, or None if not found"""
+    for p in person_list:
+        if p.name == name: 
+            # If we found them, return the object
+            return p
+
+    # If we got here, we didn't find anyone by that name
+    return None
+
+person_list = [
+    Person("Annie"),
+    Person("Beej"),
+    Person("Chris"),
+    Person("Dave")   # "Dave's not here"
+]
+
+p = get_person_by_name(person_list, "Chris")
+
+print(p)  # "Chris"
+
+p = get_person_by_name(person_list, "Rolo Tomassi")
+
+print(p)  # None
 ```

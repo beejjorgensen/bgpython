@@ -157,10 +157,13 @@ so they both become `20`.
 But when we change `y` to `99`, `x` remains unchanged.
 
 It's like `y` got a _copy_ of `x`, so subsequent changes to `y` did
-_not_ affect `x`^[The under-the-hood details of how Python handles
-assignments like this are rather more complex, and I'm really being
-hand-wavy here. But, that said, you can still use this mental model
-about making copies and have it work perfectly well.].
+_not_ affect `x`.
+
+> The under-the-hood details of how Python handles assignments like this
+> are rather more complex, and I'm really being hand-wavy here. But,
+> that said, you can still use this mental model about making copies and
+> have it work perfectly well. [See Appendix C for all the
+> details](#valref).
 
 And with strings, since they're immutable, we end up with the same
 situation, more or less.
