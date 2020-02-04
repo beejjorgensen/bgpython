@@ -19,6 +19,7 @@ Problem-solving step: **Looking Back**.
 * Be able to use that class to instantiate objects
 * Understand that objects are reference types
 * Understand the relationship between objects and `None`
+* How to test to see if an object has an attribute or not
 
 ## Chapter Project Specification {#class-proj-spec}
 
@@ -321,9 +322,9 @@ Objects have variables attached to them, and we call these
 _attributes_^[Technically, even the methods are attributes, but we'll
 get into the pedantic details another time.].
 
-Attributes are qualities that an object possesses. For example, a
-starship would possess a name. In other words, a starship would have a
-name attribute.
+Attributes are qualities that an object possesses---what things it
+_has_. For example, a starship would possess a name. In other words, a
+starship would have a name attribute.
 
 And we refer to these attribute by using the dot operator (`.`).
 
@@ -412,9 +413,13 @@ We've successfully bundled all the information about a single ship into
 this single object. Nice and consolidated.
 
 
-## More Methods
+## More on Methods
 
 Problem-solving step: **Understanding the Problem**.
+
+Remember that methods are functions that are connected to the object.
+Just like you could think of attributes as things the object _has_, you
+can think of methods like things the object _does_.
 
 Let's add another method to set the ship location.
 
@@ -599,6 +604,47 @@ p = get_person_by_name(person_list, "Dave")
 if p is None:
     print("Dave's not here.")
 ```
+
+## Testing for Attributes
+
+Sometimes at runtime you want to see if an object has an attribute or
+not. Or maybe you have the attribute name as a string and you want to
+get or set that attribute on an object.
+
+Three built-in functions help make this happen:
+
+* `hasattr()` tests to see if an attribute exists on an object.
+* `getattr()` returns the value of an attribute, optionally returning a
+  default value if the attribute doesn't exist.
+* `setattr()` sets the value of an attribute, creating it if it doesn't
+  exist.
+
+This gives you more flexibility in writing your objects, because
+then you can have _optional_ attributes on them.
+
+Let's demo!
+
+``` {.py}
+class Foo:
+    pass
+
+f = Foo()
+f.bar = 12
+
+print(hasattr(f, "bar"))    # True
+print(hasattr(f, "frotz"))  # False
+
+print(getattr(f, "bar"))           # 12
+print(getattr(f, "frotz", None))   # None, since attr frotz doesn't exist
+
+setattr(f, "frotz", 99)  # Just like saying "f.frotz = 99"
+
+print(f.frotz)  # 99
+```
+
+I wouldn't say that these functions get a lot of day-to-day use, but
+they're a powerful thing to add to your toolkit.
+
 
 ## Chapter Project
 
@@ -965,11 +1011,106 @@ allowed to look at the solution.
 Use any knowledge you have to solve these, not only what you learned in
 this chapter.
 
+1. Write a class that describes a car. What are the attributes the class
+   would have? What methods? (There's no one right answer here---thing
+   freely.)
+
+   ([flx[Potential Solution|ex_car.py]].)
+
+2. Write a class called `SubwayCar` that represents a single train car
+   on a subway train. What attributes would it have? What methods?
+
+   Add a `name` attribute to the class so you can name the cars.
+
+   Add a `next` attribute to the class that points to the next
+   `SubwayCar` in the train. This should refer to the next `SubwayCar`
+   instance, or to `None` if it's the last car.
+
+   Have a variable, `head`, that points at the first subway car.
+
+   This way you can "hook together" a train, like this (pseudocode):
+
+   ``` {.py}
+   head = SubwayCar("Engine")
+   car1 = SubwayCar("Passenger car 1")
+   car2 = SubwayCar("Passenger car 2")
+   car3 = SubwayCar("Passenger car 3")
+
+   head.next = car1
+   car1.next = car2
+   car2.next = car3
+   car3.next = None   # End of the train
+   ```
+
+   Now have a variable, `location`, that is your current location in the
+   train. Start it at the `head`:
+
+   ``` {.py}
+   location = head
+   ```
+
+   Then write a loop to "walk" the `location` variable down the train
+   (by following the `next` pointers), printing out the name of each car
+   as it goes, until it reaches the end.
+
+   This famous data structure is actually called a _linked list_. But I
+   disguised it as a subway train so as to be less intimidating.
+
+   ([flx[Solution|ex_subway.py]].)
+
+3. Make a `Room` class that has a `name` attribute.
+
+   Also give it `n_to`, `s_to`, `w_to`, and `e_to` attributes. These
+   will refer to the room that are north, south, west, and east of a
+   particular room. `None` in one of these attributes means there's no
+   exit that direction.
+
+   For example, two rooms that are hooked up west to east (and vice
+   versa) could be constructed like this:
+
+   ``` {.py}
+   room0 = Room("Cobble Crawl")
+   room1 = Room("Debris Room")
+
+   room0.e_to = room1  # east from Cobble Crawl to Debris Room
+   room1.w_to = room0  # west from Debris Room to Cobble Crawl
+   ```
+
+   Make 5-6 rooms and hook them up in various directions.
+
+   Now have a variable, `location`, that is the current player location
+   in the world. Start it pointing to the starting room, e.g.:
+
+   ``` {.py}
+   location = room0
+   ```
+
+   Next, get player input of either `n`, `s`, `w`, or `e`, and change
+   location to the room in the specified direction.
+
+   If there's no room there, print the string `"You can't go that
+   way."`.
+
+   If the user enters `q`, quit the game.
+
+   ([flx[Solution|ex_adv2.py]].)
+
+
 ## Summary
 
-* Learn what classes and objects are useful for
-* Understand the relationship between classes and objects
-* Be able to declare a class
-* Be able to use that class to instantiate objects
-* Understand that objects are reference types
-* Understand the relationship between objects and `None`
+All kinds of goodies in this chapter! We dipped our toes in the magical
+world of classes and objects, which is the beginning of learning
+the world-famous Object-Oriented Programming (OOP).
+
+We saw how we could concisely bundle data and functionality into a
+single convenient class, and the make objects from the class, using the
+class as a blueprint.
+
+And, importantly, we learned that multiple variables can refer to the
+same object---that objects are _not_ copied when you make an assignment.
+
+Finally, we touched on the idea that `None` could be used to indicate
+"absence of an object".
+
+Though objects and classes form the basis for OOP, we really haven't
+touched on what that means yet. But that's a story for another chapter.
