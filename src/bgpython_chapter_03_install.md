@@ -57,8 +57,9 @@ installed already.
 
 * **CMD**: classic shell with origins way back in the MS-DOS days.
 * **PowerShell**: a new, more powerful shell.
-* **bash via git**: the famous git software package has a bash shell.
-* **bash via WSL**: if you install WSL (below), it uses bash, as well.
+* **Bash via Git**: the famous [fl[Git|https://git-scm.com/]] software
+  package has a bash shell called, appropriately, "gitbash".
+* **Bash via WSL**: if you install WSL (below), it uses bash, as well.
 
 Unless you're going with one of the bash options, you should use
 PowerShell because it's newer, better, and maintained.
@@ -80,9 +81,6 @@ system_. And it's great. Tons of people use it. You should install it.
 When you install it, it installs a bash shell called gitbash that you
 can use.
 
-
-
-
 ### Windows Shell App (optional)
 
 If you have Windows 10, there's a great new app for running multiple
@@ -97,12 +95,77 @@ When you run it, there will be options to bring up different kinds of
 shells. This works with CMD, PowerShell, and any WSL shells (if you
 install WSL), and gitbash shells (if you install git).
 
+If you install gitbash, you'll want to add it to the settings for
+Terminal. (If you don't do this, you'll only be able to launch gitbash
+from outside the Terminal app, which isn't the end of the world.)
+
+This is a rather unfriendly editing of a [flw[JSON|JSON]] file
+(which might be easier after you install VS Code).
+
+If you do it, carefully add this block to the JSON config before the
+other blocks in the obvious section:
+
+``` {.json}
+{
+    "guid": "{8cbf8e47-b0bd-4956-8c76-ae5d6250fe67}",
+    "icon" : "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
+    "name" : "Git Bash",
+    "commandline" : "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+    "cursorShape" : "filledBox",
+    "startingDirectory" : "%USERPROFILE%"
+},
+```
+
+I know that if you're a beginner, this looks like voodoo. Trust your
+instincts. Where does it _look_ like this block needs to go? What
+patterns do you see in the config file?
+
+(Note the `cursorShape`---you can add that line to the other shells,
+too, if you prefer it.)
+
 ### Windows WSL (optional)
+
+**Windows 10 or later required!**
 
 The Windows Subsystem for Linux is a really awesome piece of kit. It
 unobtrusively puts a little Linux install on your Windows machine. And
 then you can use the Linux command line.
 
+To install:
+
+1. Update Windows to the latest version.
+2. [fl[Follow the WSL setup
+   instructions|https://docs.microsoft.com/en-us/windows/wsl/install-win10]]
+3. Head to the Microsoft Store and grab Ubuntu (not the LTS version).
+4. Once installed, run Ubuntu and you'll see a bash prompt.
+5. Make a new username and password when prompted. This is for WSL and
+   is completely separate from your Windows username and password.
+   Though you can make them the same if you want---easier to remember
+   that way.
+6. Upgrade Ubuntu by running these two commands:
+   ```
+   sudo apt-get update
+   sudo apt-get upgrade 
+   ```
+7. At this point, you should be able to run Python:
+   ```
+   python3 --version
+   ```
+8. Type `exit` and then run the shell again to finalize the install.
+
+When running VS Code, you can just run it from the bash prompt:
+
+```
+code
+```
+
+You can also open a file Explorer window with:
+
+```
+iexplore.exe .
+```
+
+(Yes, that's a period after a space at the end.)
 
 ### Mac
 
@@ -137,13 +200,14 @@ When you install:
 * Check "Register Code as an editor for supported file types"
 * Recommended: Check "Add 'Open with Code' option"
 
-When you launch code in PowerShell or bash for the first time with
+When you launch code in PowerShell or gitbash or WSL for the first time
+with
 
 ```
 code
 ```
 
-Click the icon on the left bar of VS Code to manage extensions.
+click the icon on the left bar of VS Code to manage extensions.
 
 * Install Python extension
 * Install Pylint extension
