@@ -47,17 +47,62 @@ WSL, it's a bash shell you'll find running in it.
 > the original [flw[Bourne Shell|Bourne_shell]] from back in the day.
 > Bash improves on it a bit.
 
-TODO: Windows Terminal, Windows bash,
-https://itsfoss.com/install-bash-on-windows/
-
-
-### Windows WSL
-
-TODO
+Now Bash isn't the only shell, by any means. But it is the only one I'll
+be talking about for Mac, Linux, and WSL.
 
 ### Windows
 
-TODO
+For Windows, there are plenty of options, some of which you have
+installed already.
+
+* **CMD**: classic shell with origins way back in the MS-DOS days.
+* **PowerShell**: a new, more powerful shell.
+* **bash via git**: the famous git software package has a bash shell.
+* **bash via WSL**: if you install WSL (below), it uses bash, as well.
+
+Unless you're going with one of the bash options, you should use
+PowerShell because it's newer, better, and maintained.
+
+Almost all of the bash commands we use in this guide also work in
+PowerShell and CMD.
+
+Hitting the Windows key and running `cmd` will bring up the CMD prompt.
+(Type `exit` to get out.)
+
+Hitting the Windows key and running `PowerShell` will bring up the
+PowerShell prompt. (Type `exit` to get out.)
+
+### Windows gitbash (optional)
+
+[fl[Git|https://git-scm.com/downloads]] is a _source code control
+system_. And it's great. Tons of people use it. You should install it.
+
+When you install it, it installs a bash shell called gitbash that you
+can use.
+
+
+
+
+### Windows Shell App (optional)
+
+If you have Windows 10, there's a great new app for running multiple
+shells at once in tabs: Terminal. You don't _need_ this, but it allows
+you to run different terminal types in different tabs, if you want to do
+that.
+
+1. Update Windows 10 to the latest version
+2. Drop into the Microsoft store and grab Terminal.
+
+When you run it, there will be options to bring up different kinds of
+shells. This works with CMD, PowerShell, and any WSL shells (if you
+install WSL), and gitbash shells (if you install git).
+
+### Windows WSL (optional)
+
+The Windows Subsystem for Linux is a really awesome piece of kit. It
+unobtrusively puts a little Linux install on your Windows machine. And
+then you can use the Linux command line.
+
 
 ### Mac
 
