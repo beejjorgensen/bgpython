@@ -115,8 +115,8 @@ if you happen to cruelly find yourself in a Python2 environment.
 
 There are a number of different ways on different platforms.
 
-As long as you can bring up a terminal and type on of the following and
-get it to report version 3.6 or higher, you're set:
+As long as you can bring up a terminal and type on of the following on
+your terminal and get it to report version 3.6 or higher, you're set:
 
 ```
 python3 --version
@@ -128,13 +128,39 @@ If those aren't installed, or none of them report version 3.6 or higher,
 then read on for an install. (Or google for instructions to upgrade.)
 
 
-### Windows WSL (recommended)
-
-TODO
-
 ### Windows native
 
-TODO -- is there a way to streamline this with Windows WSL?
+There are two ways to do this:
+
+* Install from the Microsoft Store
+* Install from the official website
+
+I can't see any disadvantage to installing it from the store. Just
+remember to install Python 3 (not Python 2).
+
+If you install it from the [fl[official
+website|https://www.python.org/downloads/]], you need to remember to
+check the "Add to PATH" box during the install procedure!
+
+Once this is installed, you should be able to bring up PowerShell and
+run
+
+```
+py --version
+```
+
+and see that it's in place.
+
+### Windows WSL
+
+If you've followed the instructions for installing WSL, above, you
+should just be able to go to WSL bash and run
+
+```
+python3 --version
+```
+
+straightaway.
 
 ### Mac
 
