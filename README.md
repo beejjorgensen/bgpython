@@ -14,7 +14,7 @@ can easily clone it.
 
 * [Gnu make](https://www.gnu.org/software/make/) (XCode make works, too)
 * [Python 3+](https://www.python.org/)
-* [Pandoc 2.7.3+](https://pandoc.org/)
+* [Pandoc 2.8+](https://pandoc.org/)
 * XeLaTeX (can be found in [TeX Live](https://www.tug.org/texlive/))
 * [Liberation fonts](https://en.wikipedia.org/wiki/Liberation_fonts) (sans, serif, mono)
 
