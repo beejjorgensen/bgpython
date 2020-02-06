@@ -84,9 +84,38 @@ tutorial|https://www.openvim.com/]].)
 Visit the [fl[Visual Studio Code|https://code.visualstudio.com/]]
 website for downloads.
 
-(Linux and Unix-like users can use their package manager to install VS
+### Windows VS Code
+
+When you install:
+
+* Make sure "Add Path" is checked
+* Check "Register Code as an editor for supported file types"
+* Recommended: Check "Add 'Open with Code' option"
+
+When you launch code in PowerShell or bash for the first time with
+
+```
+code
+```
+
+Click the icon on the left bar of VS Code to manage extensions.
+
+* Install Python extension
+* Install Pylint extension
+
+If running WSL, or you might run WSL:
+
+* Install Remote WSL extension
+
+### Mac
+
+Just install it. No special instructions.
+
+### Linux and other Unix-likes
+
+Linux and Unix-like users can use their package manager to install VS
 Code. Google for `ubuntu vscode install`, substituting the name of your
-distro for `ubuntu`.)
+distro for `ubuntu`.
 
 If you already have a code editor you prefer using (Vim, Emacs, Sublime,
 Atom, PyCharm, etc.) feel free to use that, no problem!
