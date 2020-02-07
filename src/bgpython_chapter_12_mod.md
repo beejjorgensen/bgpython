@@ -183,6 +183,298 @@ Friday or a Saturday? I don't know!"
 Luckily, we don't have to know! There's a module, `calendar`, that we
 can use to do all the dirty work for us.
 
+If you pop to [fl[the
+instructions|https://docs.python.org/3/library/calendar.html]], you'll
+see pages and pages of material. It's intimidatingly impenetrable.
+
+Reading docs is one of the things you'll get better at with practice. At
+first, it's a bit of a slog, but you'll improve.
+
+First of all, start skimming down and looking for anything that has to
+do with text calendars. If it doesn't seem to have anything to do with
+that, keep skimming.
+
+I'll wait. Go for it.
+
+Spoilers coming! Really go scan them and find it yourself! Practice
+makes perfect!
+
+Problem-solving step: **Devising a Plan**
+
+OK---so hopefully you got about halfway down the page and found the
+`TextCalendar` class. It says:
+
+> This class can be used to generate plain text calendars.
+
+That sounds promising. In fact, just below that, it mentions there's a
+`prmonth()` method on the class that you can use to to print a calendar
+for a given month and year.
+
+Perfect!
+
+Problem-solving step: **Carrying Out the Plan**
+
+We can code it up like this:
+
+``` {.py}
+import calendar
+
+tc = calendar.TextCalendar()   # Make a new TextCalendar object
+
+tc.prmonth(1970, 1)  # Print January 1970
+```
+
+and this will present us with a nice text calendar that looks like this:
+
+```
+    January 1970
+Mo Tu We Th Fr Sa Su
+          1  2  3  4
+ 5  6  7  8  9 10 11
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+```
+
+Problem-solving step: **Looking Back**.
+
+We found what we wanted halfway down the documentation, so we're good
+right?
+
+Well, it might be worth skimming the rest of the documentation just to
+see what else the calendar module can do.
+
+And, in fact, if we look down farther, the docs say:
+
+> For simple text calendars this module provides the following
+> functions.
+
+And one of those functions is `prmonth()`. We can just call it directly
+without making an intermediate object!
+
+``` {.py}
+import calendar
+
+calendar.prmonth(1970, 1)
+```
+
+gets us the same output as before---and it's simpler!
+
+Problem-solving step: **Understanding the Problem**.
+
+Let's mod this. Right now, it's hardcoded to print out a January, 1970
+calendar. Let's change it so that you could run it from the command line
+and pass in the arguments you need, like this:
+
+```
+python cal.py 1970 1
+```
+
+or
+
+```
+python cal.py 1955 11
+```
+
+to print out the January, 1970 or November, 1955 calendars, respectively.
+
+That makes it more flexible---we get all kinds of new behavior without
+changing the code. Much more usable.
+
+Problem-solving step: **Devising a Plan**
+
+We saw in this section how to print a calendar, and we saw in the
+previous section how to get command line arguments into a list.
+
+Let's get the year and month from `sys.argv` and pass them into
+`calendar.prmonth()`.
+
+Problem-solving step: **Carrying Out the Plan**
+
+Let's do exactly that:
+
+``` {.py}
+import sys
+import calendar
+
+year = sys.argv[1]
+month = sys.argv[2]
+
+calendar.prmonth(year, month)
+```
+
+When we run it with:
+
+```
+python cal.py 1970 1
+```
+
+though, something bad happens:
+
+```
+Traceback (most recent call last):
+  File "cal.py", line 7, in <module>
+    calendar.prmonth(year, month)
+  File "/usr/lib/python3.8/calendar.py", line 350, in prmonth
+    print(self.formatmonth(theyear, themonth, w, l), end='')
+  File "/usr/lib/python3.8/calendar.py", line 358, in formatmonth
+    s = self.formatmonthname(theyear, themonth, 7 * (w + 1) - 1)
+  File "/usr/lib/python3.8/calendar.py", line 341, in formatmonthname
+    s = month_name[themonth]
+  File "/usr/lib/python3.8/calendar.py", line 59, in __getitem__
+    funcs = self._months[i]
+TypeError: list indices must be integers or slices, not str
+```
+
+Yikes!
+
+Let's take this error apart and see if we can tell what's up. It's not
+really being that forthcoming, is it?
+
+Start at the top. It tells you what file the error is in on the first
+line: `cal.py` on line 7. And it shows us the line below that... it's
+where we're calling `calendar.prmonth()`.
+
+But that looks fine, right?
+
+Going farther down, it's showing us the _call stack_, that is, the path
+of function calls that culminated in the error. And those are in the
+`calendar.py` file, which is the `calendar` module.
+
+We didn't even write that code! How dare there be an error in it!
+
+Well, it's not an error---it's the module telling us, in a roundabout
+way, we're not using it right.
+
+Finally, at the bottom, we see the error itself: `TypeError`. And the
+description:
+
+```
+TypeError: list indices must be integers or slices, not str
+```
+
+We don't have any lists in our code, so what's it even talking about
+lists for? Well, who knows how the stuff is implemented in the library,
+but scan that error message and see if there's anything in there that
+hints toward what we have to do.
+
+It says "must be integers or slices, not str". Hmmm.
+
+When we called it with
+
+``` {.py}
+calendar.prmonth(1970, 1)
+```
+
+it was fine, but now it's not? Wait---when we called it that way, we
+passed integers in... but now we're passing in `sys.argv[1]`. Is that an
+integer?
+
+There's a built-in function called `type()` we can use. Let's add this
+code:
+
+``` {.py}
+import sys
+import calendar
+
+year = sys.argv[1]
+month = sys.argv[2]
+
+print(type(year))    # <-- Add this
+print(type(month))   # <-- Add this
+
+calendar.prmonth(year, month)
+```
+
+Running it again, we get the same error, but before that we see some
+output:
+
+```
+<class 'str'>
+<class 'str'>
+```
+
+That's telling us `sys.argv[1]` and `sys.argv[2]` are strings! And we
+were passing ints before. Let's convert those to ints before we pass
+them in. The error message did say we needed ints, not strings.
+
+``` {.py}
+import sys
+import calendar
+
+year = int(sys.argv[1])
+month = int(sys.argv[2])
+
+calendar.prmonth(year, month)
+```
+
+And now when we run it:
+
+```
+$ python cal.py 2038 1
+    January 2038
+Mo Tu We Th Fr Sa Su
+             1  2  3
+ 4  5  6  7  8  9 10
+11 12 13 14 15 16 17
+18 19 20 21 22 23 24
+25 26 27 28 29 30 31
+```
+
+Whee!
+
+Problem-solving step: **Looking Back**.
+
+Not too shabby. What else can we make better?
+
+It's time to think like a villain. What can you do to this program as a
+user to break it?
+
+How about passing in a negative year? (Hey, that works!)
+
+What about a negative month?
+
+That crashes with a big ugly stack trace.
+
+We could fix that by checking the values of `month` and making sure the
+user specified 1-12, or print an error otherwise. Something like this:
+
+``` {.py}
+if month < 1 or month > 12:
+    print("Month must be 1-12!")
+    sys.exit()  # call this to stop running the program here!
+```
+
+What if the user specifies a year, but no month? Another crash.
+
+We could check the length of `sys.argv` and make sure it was the right
+value (namely 3, since it includes the name of the program along with
+the year and month). If it wasn't, we could print an error message and
+exit.
+
+Here's the complete code with error checking:
+
+``` {.py}
+import sys
+import calendar
+
+if len(sys.argv) != 3:
+    print("usage: cal.py year month")
+    sys.exit()  # stop running
+
+year = int(sys.argv[1])
+month = int(sys.argv[2])
+
+if month < 1 or month > 12:
+    print("Month must be 1-12!")
+    sys.exit()  # stop running
+
+calendar.prmonth(year, month)   
+```
+
+Ship it!
+
+
 ## Importing Your Own Files
 
 ### .pyc
