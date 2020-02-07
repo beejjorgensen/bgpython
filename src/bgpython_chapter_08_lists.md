@@ -132,7 +132,7 @@ and then again later. This is a big source of confusion among new
 developers.
 
 
-## Reference Versus Value---Fight! {ref-val}
+## Reference Versus Value---Fight! {#ref-val}
 
 Not really a fight. They're best friends! They wouldn't do that.
 
@@ -782,7 +782,7 @@ a = []
 
 presumably to compute values for later.
 
-## List Comprehensions {list-comprehensions}
+## List Comprehensions {#list-comprehensions}
 
 Problem solving step: **Understanding the Problem**.
 
