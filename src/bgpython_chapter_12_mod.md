@@ -18,7 +18,6 @@ Problem-solving step: **Looking Back**.
 * Learn what a module is
 * How to find modules to use
 * How to import modules
-* Build 
 * Splitting projects: Importing your own files
 
 ## Chapter Project Specification {#mod-proj-spec}
@@ -74,11 +73,21 @@ But first, some syntax.
 
 When using a function or variable inside a module, you use the dot
 operator to get the variable, similar to how you get attributes from
-objects. Deep down, it's very similar, indeed, but how we get there is a
-little bit different.
+objects. In fact, very similar. When you `import` a module, Python gives
+you an object by that name with functions and data attached to it as
+attributes.
 
 Step one is to `import` the module. Then you can access the members of
 that module.
+
+For example, if we:
+
+``` {.py}
+import sys
+```
+
+we'll end up with an object called `sys` with attributes that you can
+access!
 
 Problem-solving step: **Devising a Plan**
 
@@ -474,6 +483,79 @@ calendar.prmonth(year, month)
 
 Ship it!
 
+## Importing Specific Attributes
+
+There's an alternate syntax for `import` that you can use to bring
+attributes from a module directly into the global namespace.
+
+What do I mean by that?
+
+Well, the upshot is that if you're tired of typing the module name
+followed by a dot to access a particular function or piece of data, you
+can bring that in to use directly, instead.
+
+Let's do an example.
+
+The `time` modules has a function called `ctime()` that prints the time
+out in a classic format.
+
+``` {.py}
+import time
+
+print(time.ctime())  # "Sun Feb  9 13:37:00 2020"
+```
+
+But if you're going to call it repeatedly, it might make the code look
+worse to have "`time.`" all over the place.
+
+We can do this, instead:
+
+``` {.py}
+# Bring in ctime() explicitly:
+
+from time import ctime
+
+print(ctime())  # Look, ma! No "time."!
+```
+
+If a module has multiple things you want to import, you can bring them
+in with a comma list:
+
+``` {.py}
+# import all three!
+
+from time import ctime, localtime, monotonic
+```
+
+Or, if you're feeling bold, you can import it all!
+
+``` {.py}
+from time import *
+```
+
+But I generally recommend against that. It takes time for Python to do
+it, and if you only need a few things, pick them explicitly.
+
+Furthermore, a lot of devs rely on the module name being a visual cue
+that we're talking about a function in a module, here. If we come across
+some code that says:
+
+``` {.py}
+print(ctime())
+```
+
+Is that a function that the programmer defined, or is it something that
+we `from import`ed from somewhere? By putting the name of the module
+first, it helps mitigate that ambiguity:
+
+``` {.py}
+print(time.ctime())
+```
+
+So in general, I don't use `import from` unless it makes the code
+decidedly more readable to do so.
+
+Remember: readable code is high-value code!
 
 ## Importing Your Own Files
 
