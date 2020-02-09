@@ -18,11 +18,14 @@
   * Sets
   * Tuples
 * REPL
+* File I/O
+* Debugger
 * Functions
 * Try/except
 * OOP
 * Number Bases
 * Modules
+* Making your own modules
 * Closures
 * Generators
 * Iterators
