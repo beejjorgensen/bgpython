@@ -224,6 +224,55 @@ These are very frequently used by devs. If you have `x = x + 2`, use `x
 += 2`, intead!
 
 
+## Your Mental Model of Computation
+
+Problem solving step: **Understanding the Problem**.
+
+This is a biggie, so listen up for it.
+
+When you're programming, it's important to keep a mental model of what
+_should_ happen when this program runs.
+
+Let's take our example from before. Step through it in your head, one
+line at a time. Keep track of the _state_ of the system as you go:
+
+``` {.py .numberLines}
+x = 34      # Variable x is assigned value 34
+print(x)
+x = 90      # Variable x is assigned value 90
+print(x)
+```
+
+Before we begin, `x` has no value. So represent that in your head as "x
+has no value; it's invalid".
+
+Then the first line runs.
+
+`x` is now 34.
+
+Then the second line runs.
+
+`x` is still 34, and we print it out. (So 34 is printed.)
+
+Then the third line runs.
+
+`x` is no longer 34. It is now 90. 34 is gone.
+
+Then the fourth line runs.
+
+`x` is still 90, and 90 gets printed out.
+
+Then we're out of code, so the program exits. And we have "34" and "90"
+on the screen from when they were printed.
+
+_That's_ keeping a mental model of computation.
+
+This is _the key_ to being able to debug. When your mental computing
+model shows different results than the actual program run, you have a
+bug somewhere. You have to dig through your code to find the _first_
+place your mental model and the actual program run diverge. That's where
+your bug is.
+
 ## User Input
 
 Problem solving step: **Understanding the Problem**.
