@@ -22,7 +22,24 @@ Problem-solving step: **Looking Back**.
 
 ## Chapter Project Specification {#mod-proj-spec}
 
-TODO
+Open a ZIP archive and print out a directory of the files that are in
+there, their size in bytes, and the time they were last modified.
+
+An [flx[example ZIP file can be found in the examples
+directory|example.zip]].
+
+Output should be:
+
+```
+File Name                         Modified             Size
+hello.txt                  2020-02-09 15:12:20            6
+world.txt                  2020-02-09 15:12:24            7
+```
+
+(Spacing in the above example was changed to fit the margins---you don't
+have to match spacing exactly.)
+
+Keep this project in mind as we go through this chapter's material.
 
 ## What and Why of Modules
 
@@ -557,6 +574,58 @@ decidedly more readable to do so.
 
 Remember: readable code is high-value code!
 
-## Importing Your Own Files
+## Learning All The Modules
 
-### .pyc
+If you check out [fl[the list of
+modules|https://docs.python.org/3/library/index.html]] you get with
+Python, it looks pretty intimidating. I mean, there's a _lot_ there.
+
+How do you deal with it?
+
+This is one of the toughest parts of learning a new language: learning
+the _standard library_ (the bundled modules) that comes with it. Each
+language has its own way of doing things, and those ways are legion.
+
+Step one: give up now. You're not going to memorize all this.
+
+The best thing to do is skim it at the contents level. Just try to
+remember that this exists a module for dealing with times. And a module
+for dealing with calendars. And for dealing with network communication.
+And so on.
+
+Don't worry about the details. You can always look them up later. But if
+you don't know that there even _is_ a module that handles reading and
+writing of [flw[CSV|Comma-separated_values]] files, then you won't know
+to look it up when you need it.
+
+All devs, even experienced ones, look things up. All the time.
+
+## Chapter Project
+
+If you need to, [review the specification at the top of the
+chapter](#mod-proj-spec).
+
+You might be thinking, "This is kind of a big jump, don't you think,
+Beej? I mean, we haven't even talked about how to open a file, and here
+you want me to somehow gaze magically inside a ZIP file and extract the
+contents?"
+
+Well... yes. By "magically", though, I mean something in particular. As
+you might have guess, there's a [fl[module for opening ZIP
+files|https://docs.python.org/3/library/zipfile.html]]. We can import
+this and make it do the heavy lifting for us!
+
+Easy, right?
+
+Well, not so fast. If you follow the link to the docs, above, you'll
+find pages and pages and pages of material with no clear indication of
+where to start.
+
+It's nice that the module is there for us to use, but we have to sift
+through all this to use it?
+
+Pretty much.
+
+There is a shortcut that you can take. You can Google for "python print
+zip archive example", and you'll get some hits. This can be super
+powerful, but for this project try _not_ doing this.
