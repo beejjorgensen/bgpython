@@ -502,6 +502,21 @@ print("ej")
 
 Notice how we had to identify the keyword argument by name.
 
+If you're looking through documentation, you might find something that
+looks like this (the documentation for `print()`):
+
+``` {.py}
+print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+```
+
+Ignoring the `*objects` for now, look at all those keyword arguments...
+in the docs, they have `=` followed by some value. This indicates the
+_default_ value if you don't specify one otherwise.  In other words,
+they're optional keyword arguments.
+
+You can see that `print()` ends each line with a newline `\n` unless we
+tell it to end the line with some other string.
+
 For now, it's enough to know that these exist and how to call them.
 Later on, we'll talk about how to write our own.
 
