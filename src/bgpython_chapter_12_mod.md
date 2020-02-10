@@ -828,3 +828,33 @@ world.txt                  2020-02-09 15:12:24            7
 ```
 
 Yes!
+
+Problem-solving step: **Looking Back**.
+
+What else can we do with this to improve it?
+
+One easy thing to do would be to use `sys.argv` to get the name of the
+archive to print out the listing for.
+
+Another thing that you might have noticed in the docs is there is all
+kinds of additional info about members of the archive. In addition to
+name, time, and size, there's also comments, compression type,
+compressed size, [flw[CRC|Cyclic_redundancy_check]], and other things to
+print.
+
+By adding up all the uncompressed sizes, the compressed sizes, and then
+dividing one by the other, you can get the _compression ratio_---how
+much smaller the files got by putting them in the archive.
+
+
+## Exercises
+
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+Use any knowledge you have to solve these, not only what you learned in
+this chapter.
+
+
+## Summary
