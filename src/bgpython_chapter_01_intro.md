@@ -4,12 +4,6 @@ Beej's Guide to Python book source
 vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
-<!--
-	History:
-
-	0.0.1:		the beginning
--->
-
 # Intro
 
 _**This is an alpha-quality book. There are mistakes, oh yes. When you
@@ -31,8 +25,10 @@ techniques that _transcend_ languages. After picking up Python, maybe
 try another language like JavaScript, Go, or Rust. They all have their
 own features to explore and learn.
 
-
 ## Audience
+
+Beginning programmers. If you have limited experience, or no experience,
+this book is targeted at you!
 
 Attitude Prerequisite: be inquisitive, curious, have an eye for puzzles
 and problem solving, and be willing to take on difficult challenges.
@@ -41,17 +37,10 @@ Technical Prerequisite: be a computer user. You know what files are, how
 to move them and delete them, what subdirectories (folders) are, can
 install software, and how to type.
 
-Chapters 1-5: complete beginners who know nothing about software
-development. If you already know how to program the basics in Python,
-this will all be review.
-
-Chapters 6 and on: intermediate Python programmers will gain more
-expertise in this area.
-
 Are you a seasoned developer looking to start with Python? I'm sorry but
-this is likely going to not be the book you're looking for. It will
-progress too slowly for your tastes. Just jump straight into [fl[the
-official Python documentation|https://docs.python.org/3/]].
+this is not likely to be the book you're looking for. It will progress
+too slowly for your tastes. Just jump straight into [fl[the official
+Python documentation|https://docs.python.org/3/]].
 
 ## Platform and Tools
 
