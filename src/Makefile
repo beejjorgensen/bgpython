@@ -1,7 +1,7 @@
 TITLE="Beej's Guide to Python Programming"
 SUBTITLE="For Beginners"
 AUTHOR='Brian “Beej Jorgensen” Hall'
-VERSION_DATE="v0.0.2, Copyright © February 6, 2020"
+VERSION_DATE="v0.0.3, Copyright © February 9, 2020"
 
 GUIDE_ID=bgpython
 
