@@ -10,18 +10,21 @@
 - Conditionals
 - Looping
 * More data types
-  * Reference Types
+  - Reference Types
   - Strings
-  * Lists
-    * List Comprehensions
-  * Dicts
+  - Lists
+    - List Comprehensions
+  - Dicts
   * Sets
   * Tuples
-* REPL
+- REPL
 * File I/O
 * Debugger
-* Functions
+- Functions
 * Try/except
+* Unicode, character encoding
+* Bytes and binary data
+  * marshalling
 * OOP
 * Number Bases
 * Modules
@@ -34,13 +37,7 @@
 * Recursion
 * Data Structures?
 * Big O?
-* Appendix: programmer math
-  * Order of operations
-  * Parens
-  * Power
-  * Factorial
-  * Math functions
-  * Expressions
+- Appendix: programmer math
 
 * debugging exercises throughout
 
