@@ -25,6 +25,12 @@ Problem-solving step: **Looking Back**.
 Open a ZIP archive and print out a directory of the files that are in
 there, their size in bytes, and the time they were last modified.
 
+> If you're unfamiliar with the ZIP format, it's a way to take multiple
+> files and compress them into a single file, called a _ZIP archive_.
+> The _table of contents_ shows what files exist within the ZIP file.
+> They can be recovered later by _extracting_ them, but we're not going
+> to do that for this project.
+
 An [flx[example ZIP file can be found in the examples
 directory|example.zip]].
 
@@ -619,7 +625,8 @@ Easy, right?
 
 Well, not so fast. If you follow the link to the docs, above, you'll
 find pages and pages and pages of material with no clear indication of
-where to start.
+where to start. (Bring up that URL now, because we're about to go
+through it.)
 
 It's nice that the module is there for us to use, but we have to sift
 through all this to use it?
@@ -628,4 +635,196 @@ Pretty much.
 
 There is a shortcut that you can take. You can Google for "python print
 zip archive example", and you'll get some hits. This can be super
-powerful, but for this project try _not_ doing this.
+powerful, and we do this kind of thing _all the time_ in development,
+but for this project try _not_ doing this.
+
+Let's just look at the docs and try to make sense of them, because this
+is a skill in itself, and is worth practicing.
+
+
+Problem-solving step: **Understanding the Problem**.
+
+This one's pretty straightforward. We have a ZIP file from the examples,
+and we want to print out the files that are compressed within it.
+
+In fact, this can be done in three lines of Python. Just... what three
+lines?
+
+We just have to plan it out.
+
+
+Problem-solving step: **Devising a Plan**
+
+Here's where we start digging. Start skimming the docs, and take note of
+anything that sounds remotely like what you want to do. Ignore anything
+you don't understand. We want to get information about the contents of
+the ZIP file.
+
+Keep your eyes peeled for example code.
+
+Let's skim!
+
+I want you to come up with a list of functions or data in the docs that
+sound promising. As we learned earlier in this chapter, it can pay to
+skim the entire document so you don't miss anything.
+
+Go for it.
+
+I'll wait.
+
+I'm about to share my list of candidates, now, so run get yours to see
+how it compares.
+
+Spoiler alert!
+
+Here are things that I thought sounded like they might get me my table
+of contents for the ZIP file.
+
+Here are the first few I found. As I go, I'm keeping track in my head
+about which one sounds the most promising:
+
+``` {.py}
+ZipInfo            # Class containing info about a ZIP file member
+ZipFile.getinfo()  # Return a ZipInfo object for a file member
+ZipFile.infolist() # Return ZipInfo objects for all file members
+ZipFile.namelist() # Return list of file members by name
+```
+
+Let's keep looking.
+
+``` {.py}
+ZipFile.open()     # Access member of the archive
+ZipFile.printdir() # Print a table of contents to sys.stdout (!!!!)
+```
+
+Now _that_ sounds promising.
+
+> `sys.stdout` is a _file stream_ that represents what we call _standard
+> output_. For now, when you hear `stdout` or _standard output_, replace
+> it with "the screen".
+
+So `printdir()` prints the table of contents to the screen, which sounds
+exactly like what we're after.
+
+But let's keep looking, just to be sure.
+
+``` {.py}
+ZipFile.read()     # Read bytes from a member of the archive
+ZipFile.filename   # Name of the ZIP file
+
+ZipInfo.filename   # Name of an archive member
+ZipInfo.date_time  # Modification time of an archive member
+ZipInfo.file_size  # File size of an archive member
+```
+
+And that's the end of my skim. How did it compare with your list?
+
+Now... Those last three look interesting. If we could get the `ZipInfo`
+object for each item in the archive, we could use those attributes to
+print out our directory listing.
+
+But that sounds like it's just going to get us what the `printdir()`
+function would do, and `printdir()` looks easier to use.
+
+Maybe we're wrong, but let's pursue `printdir()`, and if it doesn't pan
+out, we can go to Plan B and try the `ZipInfo` fields.
+
+So... How do we use it? Let's read the docs again.
+
+> ``` {.py}
+> ZipFile.printdir()
+> ```
+> 
+> Print a table of contents for the archive to `sys.stdout`.
+
+So we need a `ZipFile` object that represents the ZIP file
+`example.zip`.
+
+That is, we know the ZIP is named `example.zip`, and we need to go from
+that to a `ZipFile` object. Once we have the `ZipFile` object for
+`example.zip`, we can call `printdir()`.
+
+OK. So how do we do that? Time to get back to skimming docs! How do I
+create a `ZipFile` object?
+
+Skim now!
+
+We saw earlier this was the class:
+
+``` {.py}
+zipfile.ZipFile
+```
+
+And a bit farther down, we have:
+
+> ``` {.py}
+> class zipfile.ZipFile(file, mode='r', compression=ZIP_STORED,
+>                      allowZip64=True, compresslevel=None, *,
+>                      strict_timestamps=True)
+> ```
+> Open a ZIP file, where `file` can be a path to a file (a string), a
+> file-like object or a path-like object.
+
+Recognize that? It's a _constructor_!! That's what we want! We want to
+construct a `ZipFile` object from the string `example.zip`, and that's
+exactly what this does for us.
+
+Continuing down, I'm not seeing anything else that helps us make a
+`ZipFile` object, so let's pursue this plan.
+
+1. Import the ZIP file functionality.
+2. Create a `ZipFile` object from `example.zip`.
+3. Print the table of contents with `printdir()` on that `ZipFile`
+   object.
+
+Let's go!
+
+Problem-solving step: **Carrying Out the Plan**
+
+``` {.py .numberLines}
+import zipfile
+ 
+```
+
+Check.
+
+Okay---now we need to do something with that `ZipFile` constructor.
+Recall that since it's in the `zipfile` module, we have to refer to it
+as `zipfile.ZipFile` when we use it.
+
+But, man, the docs are thick for the constructor. What is all that
+stuff?
+
+Remember that any keyword argument with something after an equal sign is
+optional. We don't have to pass arguments for `mode`, `compression`, or
+any of those.
+
+What we _do_ have to pass in in the `file`, which is the filename to
+read. Let's do that, and we'll save the newly-constructed object in the
+variable `zf`:
+
+``` {.py .numberLines startFrom="3"}
+# Important: make sure example.zip is in the same directory
+# as this program!
+
+zf = zipfile.ZipFile('example.zip')
+ 
+```
+
+Great!
+
+And now that we have that object, let's print its directory:
+
+``` {.py .numberLines startFrom="8"}
+zf.printdir()
+```
+
+And that gives us this output:
+
+```
+File Name                         Modified             Size
+hello.txt                  2020-02-09 15:12:20            6
+world.txt                  2020-02-09 15:12:24            7
+```
+
+Yes!
