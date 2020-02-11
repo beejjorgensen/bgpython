@@ -11,14 +11,11 @@ Problem-solving step: **Looking Back**.
 
 # Importing Modules
 
-**WIP**
-
 ## Objective
 
 * Learn what a module is
 * How to find modules to use
 * How to import modules
-* Splitting projects: Importing your own files
 
 ## Chapter Project Specification {#mod-proj-spec}
 
@@ -846,6 +843,8 @@ By adding up all the uncompressed sizes, the compressed sizes, and then
 dividing one by the other, you can get the _compression ratio_---how
 much smaller the files got by putting them in the archive.
 
+([flx[Solution|zipdir.py]], [flx[example zipfile|example.zip]].)
+
 
 ## Exercises
 
@@ -856,5 +855,190 @@ allowed to look at the solution.
 Use any knowledge you have to solve these, not only what you learned in
 this chapter.
 
+1. Every process running on your system is represented by a numeric
+   _process ID_. When you run a program, it gets a unique process ID
+   (PID) that exists until the process exits.
+
+   Write a program to print out its current process ID. Check out the
+   [fl[docs for the `os`
+   module|https://docs.python.org/3/library/os.html]] for hints. You
+   might want to search that page for anything to do with "current
+   process ID"... `:)`
+
+   Don't forget to import the module!
+
+   When you run it, run it multiple times to see that the PID changes
+   from run to run.
+
+   ([flx[Solution|ex_printpid.py]].)
+
+2. Write a program to generate random UUIDs. A UUID (pronounced
+   "YOU-id") is a random string of letters and digits that looks like
+   this:
+
+   ```
+   54c3bfab-fd9f-4f4a-96db-8f9fccff88cd
+   ```
+
+   (Well, yours will be different because it's very, very, _very_
+   unlikely that you'll ever generate the same random one twice.)
+
+   It's short for _Universally Unique ID_. That means it's unique in the
+   universe, forever. Very, _very_ probably.
+
+   Using the [fl[UUID
+   module|https://docs.python.org/3/library/uuid.html]], generate a
+   random UUID.
+
+   Actually, generate several. Have the user enter a number on the
+   command line. Generate that many UUIDs.
+
+   For example:
+
+   ```
+   $ python ex_uuidgen.py 5
+   8a8128fb-941a-4a2f-8982-75273d7c0048
+   5fd7d64e-8491-4b61-82b0-f9438e7195dc
+   4012f3ed-f6d7-40b5-9031-961ee06a30ad
+   86c71566-014f-4e36-a55b-b18d677624b2
+   2c1e5b3f-f0de-4186-80c5-767628c437b3
+   ```
+
+   Eagle-eyed readers might notice that the 13th digit is always `4`.
+   That's because there are different types of UUIDs, and this digit
+   indicates the type. (This case it's type 4, meaning random. Except
+   for the 4.)
+
+   You might also have noticed that, in addition to the numerals, only
+   the letters "a" through "f" make an appearance. Surprise! UUIDs,
+   except for the hyphens, are actually numbers! They're written in a
+   base-16 numbering system called _hexadecimal_. More on that in
+   another chapter.
+
+   UUIDs are good any time you want to create an ID that you can be
+   confident isn't already used by anyone, anywhere.
+
+   You might wonder how you can be sure? I mean, there's a chance
+   someone else will choose that number, right?
+
+   Yes, there is a chance. It's:
+
+   1 in 21,267,647,932,558,653,966,460,912,964,485,513,216.
+
+   For comparison, the odds of winning the Mega Millions lottery jackpot
+   are:
+
+   1 in 258,900,000.
+
+   So unless you're worried about winning the lottery jackpot
+   82,146,187,456,773,479,978,605,303,068 times, you shouldn't be
+   worried about someone choosing a duplicate UUID.
+
+   And I wouldn't say I'm _worried_ I'd win the lottery that many times.
+   More like _disappointed_. 
+
+   ([flx[Solution|ex_uuidgen.py]].)
+
+3. You're given the following string in Python---go ahead and paste it
+   into a new source file:
+
+   ``` {.py}
+   matrix = """The Matrix is everywhere. It is all around us. Even
+   now, in this very room. You can see it when you look out your window,
+   or when you turn on your television. You can feel it when you go to
+   work, when you go to church, when you pay your taxes."""
+   ```
+
+   That's a big multi-line string.
+
+   I want you to print it out, but reformat it so that it's only 40
+   columns wide, maximum:
+
+   ```
+   The Matrix is everywhere. It is all
+   around us. Even now, in this very room.
+   You can see it when you look out your
+   window, or when you turn on your
+   television. You can feel it when you go
+   to work, when you go to church, when you
+   pay your taxes.
+   ```
+
+   There's a handy module called
+   [fl[`textwrap`|https://docs.python.org/3/library/textwrap.html#textwrap.TextWrapper]]
+   that has some functionality that you can use to make your life
+   easier.
+   
+   ([flx[Solution|ex_wrap.py]].)
+
+4. Print a random integer between 0 and 1000, inclusive.
+
+   It should print a different number every run, for example:
+
+   ```
+   $ python ex_rand1000.py 
+   601
+   $ python ex_rand1000.py 
+   374
+   $ python ex_rand1000.py 
+   824
+   ```
+
+   See the [fl[`random`
+   module|https://docs.python.org/3/library/random.html]] for help.
+
+   ([flx[Solution|ex_rand1000.py]].)
+
+
+5. Print out the current date in the form:
+
+   ```
+   Mon Feb 10
+   ```
+
+   See the [fl[`time`
+   module|https://docs.python.org/3/library/time.html]] for help.
+
+   In case it happens to come up, _locale_ refers to the human language
+   spoken in the physical location where the program is running, e.g.
+   English or French or Chinese or Esperanto, etc.
+
+   ([flx[Solution|ex_curdate.py]].)
+
+
+6. Write a program called `zipextract.py` that extracts files from a ZIP
+   archive.
+
+   The command line should accept the name of the ZIP file as the first
+   argument, and, optionally, the name of the file in the archive to
+   extract.
+
+   If the second argument is left off, extract all the files.
+
+   To extract all files:
+
+   ```
+   python zipextract.py example.zip
+   ```
+
+   To extract a specific file, run:
+
+   ```
+   python zipextract.py example.zip hello.txt
+   ```
+
+   ([flx[Solution|ex_zipextract.py]].)
+
 
 ## Summary
+
+Modules make the world go around... a lot more easily than it would have
+if you had to write all that stuff yourself.
+
+In this chapter, we learned what modules were and how to find them in
+the offical Python docs.
+
+Also, we learned how to import entire modules, and individual components
+from within modules.
+
+Later we'll learn to write and import our own modules.
