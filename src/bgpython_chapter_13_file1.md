@@ -180,8 +180,145 @@ we'll get the output in uppercase. (But the original file is still
 lowercase, of course!) It's our copy of the data to do with as we
 please!
 
-## TODO
+## Opening Files with `with`
 
-* with
-* reading a line at a time
-* writing
+Now there is a more _canonical_^[Meaning, the One Right-_ish_ Way to do
+something.] approach to reading files using the `with` statement in
+Python.
+
+Earlier, we read a file
+
+``` {.py}
+f = open("wargames.txt")
+data = f.read()
+f.close()
+print(data)
+```
+
+The equivalent using the `with` statement looks like this:
+
+``` {.py}
+with open("wargames.txt") as f:
+    data = f.read()
+    print(data)
+```
+
+If you're looking closely, you'll notice that the `f.close()` is
+missing. That's because when you use `with` to open the file, that gets
+handled automatically for you! Not only that, but even if some error
+occurs, the file will be properly closed.
+
+Although the pattern of open-read-close is really common in other
+languages, and Python supports it, the preferred way of doing things is
+with the fantastic `with` statement.
+
+## Reading Data a Line at a Time
+
+Check this out: in our previous examples, we read the entire file into
+memory at once. That's what the `.read()` method does.
+
+For small files, that's no problem.
+
+But what if you have a file that's 200 GB of data? You (probably, as of
+this writing in 2020) don't have that much memory. How can you deal with
+big files like this?
+
+The answer is to read them a little bit at a time.
+
+With text files like this, a common thing to do is to read them a _line_
+at a time. Then you process that line, and then move on to the next one.
+This way you only need to have a single line from the file in memory at
+once, instead of the whole 200 GB worth.
+
+Let's use the `with` statement to open a file, and then read a line at a
+time.
+
+``` {.py}
+line_num = 1
+with open("wargames.txt") as f:
+    for line in f:
+        print(f'{line_num}: {line}')
+        line_num += 1
+```
+
+And we get this output:
+
+```
+1: What he did was great! He designed his computer so that it could learn
+
+2: from its own mistakes. So, they'd be better the next time they played.
+
+3: The system actually learned how to learn. It could teach itself!
+ 
+```
+
+Pretty neat, eh? We just get to use a `for` loop on the opened file to
+read one line at a time.
+
+But wait! Why is there an extra newline being printed out? What are
+those blank lines between the lines?
+
+This is a common beginner mistake. The reason is that there is a newline
+at the end of every line of the file already (because that's where the
+line breaks are). And, in addition, `print()` adds its own newline! So
+we get both of them printed.
+
+The easiest workaround is to use the `end` keyword argument on
+`print()` to stop it from adding a newline of its own:
+
+``` {.py}
+print(f'{line_num}: {line}', end='')
+```
+
+Another option is to use `.rstrip()` on the string to strip newlines
+from the end.
+
+``` {.py}
+line = line.rstrip('\r\n')
+```
+
+That'll strip carriage returns or newlines from the right side of the
+string. We have to specify both since some OSes use different characters
+to represent the end of the line, somewhat irksomely.
+
+An even-more-portable way to write this is to first:
+
+``` {.py}
+import os
+```
+
+then
+
+``` {.py}
+line = line.rstrip(os.linesep)
+```
+
+and Python will automatically use the proper end-of-line character no
+matter what system you're running the program on.
+
+## Writing files
+
+So far we've been dealing with getting data out of files, but now let's
+talk about creating new file and writing data to them.
+
+This is a how programs permanently save data that they need to use
+later. If you don't save the data to disk, then it all vanishes once the
+program exits.
+
+The process is similar to reading, except when we open the file, we need
+to specify that we want to _write_. (If we don't tell `open()`
+otherwise, it assumes we're opening for reading.)
+
+> **WARNING**: if you open an existing file for writing, the contents of
+> that file are instantly lost!
+
+Let's open a file and write some data to it.
+
+``` {.py}
+with open("newfile.txt", "w") as f:
+    f.write("Hello, world!\n")
+```
+
+There we go! If you run this, then have a look, you'll see a file called
+`newfile.txt` that has the magic words in it.
+
