@@ -21,7 +21,86 @@ Problem-solving step: **Looking Back**.
 
 ## Project
 
-TODO
+Write a _line editor_.
+
+Back in the day, before terminals were very capable and before we had
+nice editors and IDEs like we do today, people used line editors. These
+were bare-bones file editors that used simple commands to edit files.
+
+For example:
+
+```
+$ python lineedit.py foo.txt
+> l
+1: This is some text that was already in the file.
+> a
+This is some text that I'm appending to the file.
+And some more.
+.
+> l 1
+1: This is some text that was already in the file.
+2: This is some text that I'm appending to the file.
+3: And some more.
+> e 3
+And really some more.
+> l 1
+1: This is some text that was already in the file.
+2: This is some text that I'm appending to the file.
+3: And really some more.
+> d 2
+> l 1
+1: This is some text that was already in the file.
+2: And really some more.
+> w
+> q
+```
+
+In the example, everything following a `>` prompt is a line editor
+command.
+
+In order:
+
+1. `l`ist the file starting from the current line (which defaults to 1).
+2. `a`ppend some text on the end of the file (until the user types `.`
+   on its own line).
+3. `l`ist the file from line 1.
+4. `e`dit line 3.
+5. `l`ist the file from line 1.
+6. `d`elete line 2.
+7. `l`ist the file from line 1.
+8. `w`rite the file (the name was specified on the command line).
+9. `q`uit
+
+The commands are:
+
+* `l`ist: If the user specifies a line number, listing should start from
+  that line. If the user specifies a second line number, the listing
+  should end there. If the user doesn't specify a starting number,
+  listing starts at the last line edited (or 1 if no line has been
+  edited so far). If the user doesn't specify an ending number, the
+  listing stops at the start plus 10 lines. In all cases, the listing
+  ends at the end of the file, even if the user requests more.
+
+* `a`ppend: If the user doesn't specify a line to append after,
+  appending happens at the end of the file. If the user specifies line
+  `0`, the lines are inserted at the top of the file. If the user
+  specifies a line past the end of the file, the lines are appended to
+  the end of the file.
+
+* `d`elete: Works like `l`ist, except deletes the lines.
+
+* `e`dit: Edits a single line, replacing it. If the line is out of
+  range, an error message should be printed.
+
+* `w`rite: Saves the file to disk. If the filename wasn't specified on
+  the command line, the user must specify a filename after the `w`.
+
+* `q`uit: exit the editor without saving the file.
+
+From the user standpoint, lines are numbered starting from 1.
+
+Keep this project in mind while you read through this chapter.
+
 
 ## What are Files, Anyway?
 
@@ -312,7 +391,7 @@ otherwise, it assumes we're opening for reading.)
 > **WARNING**: if you open an existing file for writing, the contents of
 > that file are instantly lost!
 
-Let's open a file and write some data to it.
+Let's open a file and write some data to it using the `write()` method.
 
 ``` {.py}
 with open("newfile.txt", "w") as f:
@@ -321,4 +400,6 @@ with open("newfile.txt", "w") as f:
 
 There we go! If you run this, then have a look, you'll see a file called
 `newfile.txt` that has the magic words in it.
+
+Now you have the power to save data to disk and read it back again!
 
