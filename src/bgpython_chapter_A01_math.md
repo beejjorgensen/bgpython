@@ -702,7 +702,7 @@ round(3.1415926, 4)  # 3.1416
 
 Note that Python has [fl[additional weird rounding
 behavior|https://docs.python.org/3/tutorial/floatingpoint.html#tut-fp-issues]]
-due to the limited precision of floating pointer numbers.
+due to the limited precision of floating point numbers.
 
 For always rounding up or down, use the functions `ceil()` and `floor()`
 from the `math` module.
