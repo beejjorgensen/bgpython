@@ -877,8 +877,21 @@ We need to do some math.
   (1-based) index, we _add_ one from the number. 0 becomes 1.
 
 Since we're using `start` and `end` to index the list, I feel a bit
-better having them 0-based because the list is 0-based. (But you could
-have them 1-based and do the math elsewhere. It's a judgment call.)
+better having them 0-based because the list is 0-based.
+
+There's a general rule of thumb at play here:
+
+* When a user enters a 1-based number, convert it to 0-based as soon as
+  you can for internal use in the program.
+* When you have to display a 1-based number, keep it 0-based for as long
+  as you can, and only convert it at the last second when you output it.
+
+Keeping these conversions to a minimum and doing them only on input and
+output can save you a lot of headaches.
+
+What **not** to do: don't just jump in and start adding `+1`s and `-1`s
+all over the place and hoping for the best. That way lies madness,
+assuredly. Stop, understand, and plan. And then carry it out.
 
 Problem-solving step: **Carrying Out the Plan**
 
@@ -894,8 +907,8 @@ def one_to_zero(n):
     return n - 1
 ```
 
-And now we can make use of that. Let's make `start` zero based and try
-it out.
+And now we can make use of that. Let's make `start` 0-based and try it
+out.
 
 ``` {.py}
         start = one_to_zero(int(args[0]))
