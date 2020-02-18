@@ -1,5 +1,4 @@
 import sys
-import os
 
 
 def read_file(filename):
@@ -8,7 +7,7 @@ def read_file(filename):
 
     with open(filename) as f:
         for line in f:
-            lines.append(line.rstrip(os.linesep))
+            lines.append(line)
 
     return lines
 
@@ -17,31 +16,33 @@ def write_file(lines, filename):
     """Write a file to disk"""
     with open(filename, "w") as f:
         for line in lines:
-            f.write(line + '\n')
+            f.write(line)
 
 
-def normalize_start_end(start, end, lines):
-    """Make sure start and end values are sane"""
-    if end < start:
-        end = start
-
-    if start < 1:
-        start = 1
-
-    if end > len(lines) + 1:
-        end = len(lines) + 1
-
-    return start, end
+def zero_to_one(n):
+    """Convert a number from a 0-based index to a 1-based index."""
+    return n + 1
 
 
-def command_write(command, lines, filename):
+def one_to_zero(n):
+    """Convert a number from a 1-based index to a 0-based index."""
+    return n - 1
+
+
+def get_num_arg(arg):
+    """Helper function to get a numeric argument from a command."""
+    v = int(arg)
+    v = one_to_zero(v)
+
+    return v
+
+
+def handle_write(args, lines, filename):
     """Handle the write command"""
 
-    command = command.split(' ')
-
-    if len(command) == 2:
-        filename = command[1]
-    elif len(command) != 1:
+    if len(args) == 1:
+        filename = args[0]
+    else:
         print("usage: w [filename]")
 
     if filename is None:
@@ -51,106 +52,102 @@ def command_write(command, lines, filename):
     write_file(lines, filename)
 
 
-def command_list(command, cur_line, lines):
+def handle_list(args, lines):
     """List lines from the file."""
 
-    command = command.split(' ')
-
-    if len(command) == 1:
-        start = cur_line
-        end = cur_line + 10
-
-    elif len(command) == 2:
-        start = int(command[1])
+    if len(args) == 1:
+        # Compute start and end lines
+        start = get_num_arg(args[0])
         end = start + 10
 
-    elif len(command) == 3:
-        start = int(command[1])
-        end = int(command[2])
-
     else:
-        print("usage: l [start [end]]")
+        print("usage: l line_num")
         return
 
-    start, end = normalize_start_end(start, end, lines)
+    # Make sure start isn't before the beginning of the list
+    if start < 0:
+        start = 0
 
+    # Make sure end isn't past the end of the list
+    if end > len(lines):
+        end = len(lines)
+
+    # Print all the lines
     for i in range(start, end):
-        print(f'{i}: {lines[i-1]}')
+        # end="" to suppress newlines (since lines already have them)
+        print(f'{zero_to_one(i)}: {lines[i]}', end="")
 
-    return end
 
-
-def command_edit(command, cur_line, lines):
+def handle_edit(args, lines):
     """Edit a line in the file."""
 
-    command = command.split(' ')
+    if len(args) == 1:
+        # Get the line number to edit
+        start = get_num_arg(args[0])
+    else:
+        print("usage: e line_num")
 
-    if len(command) == 2:
-        cur_line = int(command[1])
-    elif len(command) != 1:
-        print("usage: e [line_num]")
-        return
+    # Make sure we're in range
+    if start < 0 or start >= len(lines):
+        print("No such line number")
 
-    lines[cur_line - 1] = input()
-
-    return cur_line + 1
+    # Edit the line, adding a newline to the end (since input() strips
+    # it off).
+    lines[start] = input() + '\n'
 
 
-def command_delete(command, cur_line, lines):
-    """Delete lines in the file."""
+def handle_delete(args, lines):
+    """Delete a line in the file."""
 
-    command = command.split(' ')
-
-    if len(command) == 1:
-        start = cur_line
-        end = start
-
-    elif len(command) == 2:
-        start = int(command[1])
-        end = start
-
-    elif len(command) == 3:
-        start = int(command[1])
-        end = int(command[2])
+    if len(args) == 1:
+        # Get the line number to delete
+        start = get_num_arg(args[0])
 
     else:
-        print("usage: d [start [end]]")
+        print("usage: d line_num]")
         return
 
-    start, end = normalize_start_end(start, end, lines)
+    # Make sure we're in range
+    if start < 0 or start >= len(lines):
+        print("no such line")
+        return
 
-    for i in range(end, start - 1, -1):
-        lines.pop(i)
-
-    return start
+    # Delete the line
+    lines.pop(start)
 
 
-def command_append(command, cur_line, lines):
+def handle_append(args, lines):
     """Append a line in the file."""
 
-    command = command.split(' ')
+    if len(args) == 1:
+        # Get the line number to append at. +1 because we want to start
+        # adding lines one _after_ the specified line.
+        start = get_num_arg(args[0]) + 1
 
-    if len(command) == 2:
-        cur_line = int(command[1])
-
-    elif len(command) != 1:
-        print("usage: a [line_num]")
+    else:
+        print("usage: a line_num")
         return
 
     done = False
 
+    # We're going to loop until the user enters a single `.` on a line
     while not done:
-        line = input().rstrip(os.linesep)
 
+        # Read a line of input
+        line = input()
+
+        # Check if we're done
         if line == '.':
             done = True
-            continue
+            continue  # Jump back to the `while`
 
-        lines.insert(cur_line, line)
+        # Otherwise, insert the line, adding a newline to the end (since
+        # input() strips it off).
+        lines.insert(start, line + '\n')
 
-        cur_line += 1
+        # And now on to the next line
+        start += 1
 
-    return cur_line
 
 # Main
 
@@ -159,21 +156,22 @@ def command_append(command, cur_line, lines):
 
 if len(sys.argv) == 2:
     filename = sys.argv[1]
+
 elif len(sys.argv) == 1:
+    # We'll use this as a sentinel value later if we need to prompt for
+    # a filename when writing the file.
     filename = None
+
 else:
     print("usage: lineedit.py [filename]", file=sys.stderr)
     sys.exit(1)
 
 
 # Read the file (if specified); set up the lines list
-
 if filename is not None:
     lines = read_file(filename)
 else:
     lines = []
-
-cur_line = 0
 
 done = False
 
@@ -182,20 +180,36 @@ done = False
 while not done:
     command = input("> ").strip()
 
+    # If the user entered a blank line, just give them another prompt
+    if command == '':
+        continue
+
+    # Grab the arguments after the command
+    args = command.split(" ")[1:]
+
+    # Quit
     if command == 'q':
         done = True
 
+    # Write (save) the file
     elif command[0] == 'w':
-        command_write(command, lines, filename)
+        handle_write(args, lines, filename)
 
+    # List lines
     elif command[0] == 'l':
-        cur_line = command_list(command, cur_line, lines)
+        handle_list(args, lines)
 
+    # Edit a line
     elif command[0] == 'e':
-        cur_line = command_edit(command, cur_line, lines)
+        handle_edit(args, lines)
 
+    # Delete a line
     elif command[0] == 'd':
-        cur_line = command_delete(command, cur_line, lines)
+        handle_delete(args, lines)
 
+    # Append lines
     elif command[0] == 'a':
-        cur_line = command_append(command, cur_line, lines)
+        handle_append(args, lines)
+
+    else:
+        print("unknown command")
