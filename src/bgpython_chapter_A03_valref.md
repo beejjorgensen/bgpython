@@ -52,11 +52,11 @@ The truth is this: _all variables are reference types in Python_.
 
 Whaaaaaaa... `:mind-blown:`
 
-The real different is all about this: is the type of the data _mutable_
-or _immutable_. Let's explore this a bit.
+The real difference all about this: is the type of the data _mutable_ or
+_immutable_. Let's explore this a bit.
 
-If a data type is mutable, you can change it after it has been
-created. If immutable, you can't.
+If a data type is mutable, you can change it after it has been created.
+If immutable, you can't.
 
 Now, by "change it", I want to be clear that this refers to changing the
 value of a specific piece of data. It does _not_ refer to changing
