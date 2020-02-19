@@ -3,10 +3,10 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
 
 <!--
-Problem-solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**
 Problem-solving step: **Devising a Plan**
 Problem-solving step: **Carrying Out the Plan**
-Problem-solving step: **Looking Back**.
+Problem-solving step: **Looking Back**
 -->
 
 # Reading Files
@@ -411,6 +411,11 @@ entire editor is kinda biting off a lot, isn't it?
 Sure! Yeah, it's a lot. But we can do it using the problem solving
 framework just like always.
 
+Something else a little different here is that I'm not going to include
+line numbers in the listings. You'll have to work out the proper place
+to put the code based on my descriptions and what makes sense. With
+practice, it should get clearer how things piece together.
+
 Let's start!
 
 Problem-solving step: **Understanding the Problem**.
@@ -675,7 +680,7 @@ OK! Now if we run it, we should be able to handle blank lines, unknown
 commands, and `q` for quit.
 
 ```
-$ python foo.py lines.txt 
+$ python lineedit.py lines.txt 
 > x
 unknown command
 >                       [ user hit RETURN a few times here ]
@@ -769,7 +774,7 @@ def handle_list(args, lines):
 Running, we get this:
 
 ```
-$ python foo.py lines.txt
+$ python lineedit.py lines.txt
 > l
 Handle list: [], ['This is line 1\n', 'This is line 2\n',
 'This is line 3\n', 'This is line 4\n', 'This is line 5\n']
@@ -822,9 +827,9 @@ $ python lineedit.py lines.txt
 3: This is line 4
 4: This is line 5
 Traceback (most recent call last):
-  File "foo.py", line 71, in <module>
+  File "lineedit.py", line 71, in <module>
     handle_list(args, lines)
-  File "foo.py", line 43, in handle_list
+  File "lineedit.py", line 43, in handle_list
     print(f'{i}: {lines[i]}', end="")
 IndexError: list index out of range
 ```
@@ -917,7 +922,7 @@ out.
 Now running it gives:
 
 ```
-$ python foo.py lines.txt
+$ python lineedit.py lines.txt
 > l 1 
 0: This is line 1
 1: This is line 2
@@ -925,9 +930,9 @@ $ python foo.py lines.txt
 3: This is line 4
 4: This is line 5
 Traceback (most recent call last):
-  File "foo.py", line 76, in <module>
+  File "lineedit.py", line 76, in <module>
     handle_list(args, lines)
-  File "foo.py", line 48, in handle_list
+  File "lineedit.py", line 48, in handle_list
     print(f'{i}: {lines[i]}', end="")
 IndexError: list index out of range
 ```
@@ -952,7 +957,7 @@ And then let's call that in our print output line:
 Now a run gives:
 
 ```
-$ python foo.py lines.txt
+$ python lineedit.py lines.txt
 > l 1
 1: This is line 1
 2: This is line 2
@@ -960,9 +965,9 @@ $ python foo.py lines.txt
 4: This is line 4
 5: This is line 5
 Traceback (most recent call last):
-  File "foo.py", line 80, in <module>
+  File "lineedit.py", line 80, in <module>
     handle_list(args, lines)
-  File "foo.py", line 52, in handle_list
+  File "lineedit.py", line 52, in handle_list
     print(f'{zero_to_one(i)}: {lines[i]}', end="")
 IndexError: list index out of range
 ```
@@ -990,7 +995,7 @@ Before our `for`-loop, let's just add some code that makes sure the
 And then you can run the `for`-loop after that with impunity!
 
 ```
-$ python foo.py lines.txt
+$ python lineedit.py lines.txt
 > l 1
 1: This is line 1
 2: This is line 2
@@ -1014,3 +1019,205 @@ implementation is the worst, but now we just have variants on a theme:
 3. Build out the handler function
 4. Repeat
 
+What's the next simplest thing to work on? How about "delete a line"?
+
+Problem-solving step: **Understanding the Problem**.
+
+So we want to delete a single line. This is as easy as removing an
+element from the list containing all the lines.
+
+We just need to know the element number to remove.
+
+Of course, the user enters it after the `d` command, so we can grab it
+from there.
+
+But remember: what the user enters is 1-based! We have to convert it to
+0-based before we use the number to delete a line... otherwise we'll
+delete the wrong line.
+
+Problem-solving step: **Devising a Plan**
+
+So we should be able to:
+
+* Add a handler to the main input loop
+* In the delete handler, get the line to delete
+* Convert it to 0-based
+* Delete that line from the list of lines
+
+A little digging in the help reveals that the `pop()` method removes an
+element from a list at a given index:
+
+``` {.py}
+pop(self, index=-1, /)
+
+    Remove and return item at index (default last).
+```
+
+Problem-solving step: **Carrying Out the Plan**
+
+To our main input loop, let's go ahead and add a call to the handler if
+the user requests a deletion:
+
+``` {.py}
+    # Delete a line
+    elif command[0] == 'd':
+        handle_delete(args, lines)
+```
+
+And now let's write the delete handler. This is going to be similar to
+the line listing handler at first: we have to get the line number the
+user entered, and convert it to 0-based.
+
+And then make sure it's in range.
+
+And then delete that line with the `pop()` method.
+
+``` {.py}
+def handle_delete(args, lines):
+    """Delete a line in the file."""
+
+    if len(args) == 1:
+        # Get the line number to delete
+        line_num = one_to_zero(int(args[0]))
+
+    else:
+        print("usage: d line_num]")
+        return
+
+    # Make sure we're in range
+    if line_num < 0 or line_num >= len(lines):
+        print("no such line")
+        return
+
+    # Delete the line
+    lines.pop(line_num)
+```
+
+And that's all there is to it. Let's try it:
+
+```
+> l 1
+1: This is line 1
+2: This is line 2
+3: This is line 3
+4: This is line 4
+5: This is line 5
+> d 3
+> l 1
+1: This is line 1
+2: This is line 2
+3: This is line 4
+4: This is line 5
+> d 0
+no such line
+> d 5
+no such line
+```
+
+Looks good!
+
+What's next easiest? Probably the "edit" functionality.
+
+Problem-solving step: **Understanding the Problem**
+
+When we edit a single line, we want to replace the element in the lines
+list completely with a new element that we input from the keyboard.
+
+The only line is thrown away.
+
+For this, the user enters `e` for "edit", followed by a line number.
+
+Problem-solving step: **Devising a Plan**
+
+Let's do the same as with delete, except that instead of using `pop()`
+to remove a line, we'll just use `input()` to get another one, and store
+it directly in the list.
+
+Problem-solving step: **Carrying Out the Plan**
+
+Firstly, let's add that command handler to the main loop:
+
+``` {.py}
+    # Edit a line
+    elif command[0] == 'e':
+        handle_edit(args, lines)
+```
+
+Secondly, let's implement the edit handler. Same code and rationale
+until the last line:
+
+``` {.py}
+def handle_edit(args, lines):
+    """Edit a line in the file."""
+
+    if len(args) == 1:
+        # Get the line number to edit
+        line_num = one_to_zero(int(args[0]))
+    else:
+        print("usage: e line_num")
+        return
+
+    # Make sure we're in range
+    if line_num < 0 or line_num >= len(lines):
+        print("no such line")
+        return
+
+    # Edit the line
+    lines[line_num] = input()
+```
+
+Notice how we just replace the named line in the list with whatever line
+is returned by `input()`.
+
+Let's try it!
+
+```
+> l 1
+1: This is line 1
+2: This is line 2
+3: This is line 3
+4: This is line 4
+5: This is line 5
+> e 2
+NEW LINE 2!
+> l 1
+1: This is line 1
+2: NEW LINE 2!3: This is line 3
+4: This is line 4
+5: This is line 5
+> 
+```
+
+Wait a second! Lines 2 and 3 are all bunched up after I edited it! That
+can't be right.
+
+Problem-solving step: **Understanding the Problem**
+
+This all ties back to the newlines we keep at the end of lines in the
+list.
+
+Remember that we're storing each line with the newline attached to the
+end.
+
+_But `input()` strips the newline off!_ Not what we were after.
+
+Problem-solving step: **Devising a Plan**
+
+So we have to add the newline to the end of the, er, new line that we
+just entered. We'll just tack it on with the `+` string concatenation
+operator.
+
+Problem-solving step: **Carrying Out the Plan**
+
+Modify the last line of the `handle_edit()` function to add the newline:
+
+``` {.py}
+    # Edit the line, adding a newline to the end (since input() strips
+    # it off).
+    lines[line_num] = input()# + '\n'
+```
+
+And done with that one!
+
+What's the next easiest thing to code up? Well, looks like there's only
+one more: the "append" command.
