@@ -83,17 +83,19 @@ def handle_edit(args, lines):
 
     if len(args) == 1:
         # Get the line number to edit
-        start = get_num_arg(args[0])
+        line_num = get_num_arg(args[0])
     else:
         print("usage: e line_num")
+        return
 
     # Make sure we're in range
-    if start < 0 or start >= len(lines):
-        print("No such line number")
+    if line_num < 0 or line_num >= len(lines):
+        print("no such line")
+        return
 
     # Edit the line, adding a newline to the end (since input() strips
     # it off).
-    lines[start] = input() + '\n'
+    lines[line_num] = input() + '\n'
 
 
 def handle_delete(args, lines):
@@ -101,19 +103,19 @@ def handle_delete(args, lines):
 
     if len(args) == 1:
         # Get the line number to delete
-        start = get_num_arg(args[0])
+        line_num = get_num_arg(args[0])
 
     else:
-        print("usage: d line_num]")
+        print("usage: d line_num")
         return
 
     # Make sure we're in range
-    if start < 0 or start >= len(lines):
+    if line_num < 0 or line_num >= len(lines):
         print("no such line")
         return
 
     # Delete the line
-    lines.pop(start)
+    lines.pop(line_num)
 
 
 def handle_append(args, lines):
