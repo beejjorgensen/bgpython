@@ -556,7 +556,7 @@ it](#file1-line-at-a-time).
 But how to keep all those lines?
 
 Think about all the data structures we've talked about so far... lists,
-dicts, objects... What is the file the most line?
+dicts, objects... What is the file the most like?
 
 Go ahead and give it some thought before I spoil it in the next couple
 sentences.
@@ -1220,4 +1220,238 @@ Modify the last line of the `handle_edit()` function to add the newline:
 And done with that one!
 
 What's the next easiest thing to code up? Well, looks like there's only
-one more: the "append" command.
+one more editing command: "append".
+
+Problem-solving step: **Understanding the Problem**
+
+This one's a little different. It looks like we go ahead and read the
+line to append just like with any other command. But then we go into a
+weird mode where we repeatedly enter lines until the user enters a
+single period on a line by itself.
+
+And each of those lines are appended in turn.
+
+If the user says to append after line 0, the lines should be inserted at
+the top of the file.
+
+Problem-solving step: **Devising a Plan**
+
+So let's go ahead and do the usual command line parsing to see which
+line we want to insert after.
+
+And then let's loop until the user enters a single period.
+
+Inside the loop we'll read a line and append it into the list in the
+right place.
+
+Looking at the documentation, there is an `append()` method for lists,
+but it only appends onto the end of the list.
+
+We want ours to be able to do that, but also to be able to put those
+lines in the middle, or at the top.
+
+Let's keep looking down the documentation.
+
+There's `insert()` to put an object _before_ an index. This seems to
+work for the beginning and the middle, but what about appending to the
+end? Do we have to use the `append()` method in that special case?
+
+The docs aren't entirely clear on the matter. Let's bring up the
+[REPL](#repl) and try some tests.
+
+I'll make a list and then try to `insert()` values in various places.
+
+First, let's try inserting before element 0, which should insert at the
+beginning:
+
+``` {.py}
+>>> a = [11, 22, 33]
+>>> a.insert(0, 99)
+>>> a
+[99, 11, 22, 33]
+```
+
+Great! The 99 went in first, just like I wanted.
+
+Let's insert another number before index 2:
+
+``` {.py}
+>>> a.insert(2, 999)
+>>> a
+[99, 11, 999, 22, 33]
+```
+
+That worked, too.
+
+Now, the list only has up to element index 4... but let's go out on a
+limb and try inserting before index 5 (which doesn't exist) and see if
+that appends on the end:
+
+``` {.py}
+>>> a.insert(5, 9999)
+>>> a
+[99, 11, 999, 22, 33, 9999]
+```
+
+Yes! It worked! We don't have to special case a call to `append()`.
+
+It is a little weird, but if you put _any_ index past the last one in
+for append, it'll put the value at the end of the list.
+
+If we make a small list and try to insert the value 3490 at index 99, it
+just puts it at the end:
+
+``` {.py}
+>>> a = [1, 2, 3]
+>>> a.insert(99, 3490)
+>>> a
+[1, 2, 3, 3490]
+```
+
+This kind of experimentation to see what works and what doesn't is
+really common, and is a great way to explore and learn how the system
+works.
+
+Ok, so we:
+
+* Get the line number to append after. Remember that we want this to be
+  zero-based, so we'll subtract 1 from whatever they enter. If they
+  enter "2", that means that we want to insert _after_ index 1.
+* But since the `insert()` method inserts _before_ a line, not after,
+  we'd better add one to the line index so that we append after that
+  line.
+* Then we loop until the user enters a period, inputting a line and
+  inserting it into the list in the right place.
+
+Now, you might wonder why bother subtracting one just so we could add
+one right after?
+
+And you're right---it does nothing. We don't have to do that.
+
+But there's an argument to be made that it's clearer to a future reader
+of the code. We clearly subtract one to get to a 0-based indexing method
+as soon as possible. And we add one to get `insert()` to insert after a
+line instead of before it. Two different reasons to do the arithmetic,
+clearly spelled out. If we were to just leave them both off, that
+information wouldn't be obvious to the next developer reading the code.
+
+Problem-solving step: **Carrying Out the Plan**
+
+First, let's do our standard parsing of the command argument:
+
+``` {.py}
+def handle_append(args, lines):
+    """Append a line in the file."""
+
+    if len(args) == 1:
+        # Get the line number to append at. +1 because we want to line_num
+        # adding lines one _after_ the specified line.
+        line_num = one_to_zero(int(args[0]))
+
+    else:
+        print("usage: a line_num")
+        return
+```
+
+Then, continuing down the function, do our adding one:
+
+``` {.py}
+    # +1 because we want to line_num adding lines one _after_ the
+    # specified line.
+    line_num += 1
+```
+
+Then, continuing again, let's put in our loop to read lines until the
+user enters a period, and insert them into the correct location in the
+list.
+
+``` {.py}
+    done = False
+
+    # We're going to loop until the user enters a single `.` on a line
+    while not done:
+
+        # Read a line of input
+        line = input()
+
+        # Check if we're done
+        if line == '.':
+            done = True
+            continue  # Jump back to the `while`
+
+        # Otherwise, insert the line, adding a newline to the end (since
+        # input() strips it off).
+        lines.insert(line_num, line + '\n')
+
+        # And now on to the next line
+        line_num += 1
+```
+
+All right, let's test it. Let's insert lines at the beginning:
+
+```
+> l 1
+1: This is line 1
+2: This is line 2
+3: This is line 3
+4: This is line 4
+5: This is line 5
+> a 0
+NEW line 1
+NEW line 2
+.
+> l 1
+1: NEW line 1
+2: NEW line 2
+3: This is line 1
+4: This is line 2
+5: This is line 3
+6: This is line 4
+7: This is line 5
+```
+
+Works!
+
+Let's insert lines in the middle:
+
+```
+> a 4 
+NEW line in the middle
+.
+> l 1
+1: NEW line 1
+2: NEW line 2
+3: This is line 1
+4: This is line 2
+5: NEW line in the middle
+6: This is line 3
+7: This is line 4
+8: This is line 5
+```
+
+Works!
+
+Let's insert some lines at the end:
+
+```
+> a 8
+NEW end line 1
+NEW end line 2
+.
+> l 1
+1: NEW line 1
+2: NEW line 2
+3: This is line 1
+4: This is line 2
+5: NEW line in the middle
+6: This is line 3
+7: This is line 4
+8: This is line 5
+9: NEW end line 1
+10: NEW end line 2
+```
+
+Also works! _Woot!_
+
+Now there's but one thing remaining: saving the file to disk with the
+"w" (write) command.

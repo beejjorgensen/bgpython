@@ -122,13 +122,16 @@ def handle_append(args, lines):
     """Append a line in the file."""
 
     if len(args) == 1:
-        # Get the line number to append at. +1 because we want to start
-        # adding lines one _after_ the specified line.
-        start = get_num_arg(args[0]) + 1
+        # Get the line number to append at.
+        line_num = get_num_arg(args[0])
 
     else:
         print("usage: a line_num")
         return
+
+    # +1 because we want to line_num adding lines one _after_ the
+    # specified line.
+    line_num += 1
 
     done = False
 
@@ -145,10 +148,10 @@ def handle_append(args, lines):
 
         # Otherwise, insert the line, adding a newline to the end (since
         # input() strips it off).
-        lines.insert(start, line + '\n')
+        lines.insert(line_num, line + '\n')
 
         # And now on to the next line
-        start += 1
+        line_num += 1
 
 
 # Main
