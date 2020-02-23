@@ -9,3 +9,8 @@ src/bgpython.html
 src/bgpython*.pdf
 
 __pycache__
+
+# Temp files
+
+foo.*
+bar.*
