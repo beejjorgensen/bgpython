@@ -1453,5 +1453,114 @@ NEW end line 2
 
 Also works! _Woot!_
 
+Although it's not automated, this is good _test coverage_. We looked
+at the common case (insert in the middle), but we also looked at the
+_edge cases_ (insert at the beginning and end) just to make sure those
+worked properly. When testing, always think about which cases _aren't_
+common and test those explicitly.
+
 Now there's but one thing remaining: saving the file to disk with the
 "w" (write) command.
+
+Problem-solving step: **Understanding the Problem**
+
+We already wrote some code back in the day to read a file a line at a
+time and store the results in a list.
+
+This time, we want to do the opposite. Go through our list and write the
+file a line at a time until we're done.
+
+Problem-solving step: **Devising a Plan**
+
+Compared to the append command, this is cake.
+
+* Open the file for writing
+* Loop through all the lines
+* Write each line to the file
+
+Also:
+
+* Hook up the "w" command in the main input loop.
+
+And:
+
+* Parse the argument from the "w" command to get the filename
+
+Since "write a bunch of lines to disk" is a good self-contained
+operation, I plan to write function that does just that and nothing
+more. I'll write a different function to get called when a write is
+requested which will make sure the args are correct and so on. Keep it
+modular!
+
+Problem-solving step: **Carrying Out the Plan**
+
+First, let's add a function to write the file to disk. As arguments,
+it'll take the list of lines to write and a filename to write it to.
+
+When we open the file, we'll pass the `"w"` argument to it to indicate
+that we're writing this file.
+
+Note that as soon as you open a file for writing, it erases that file if
+it exists. But this should be OK in this case since we're about to write
+it again.
+
+And since every line already has a newline at the end, we don't have to
+add one when we write it to disk.
+
+``` {.py}
+def write_file(lines, filename):
+    """Write a file to disk"""
+    with open(filename, "w") as f:
+        for line in lines:
+            f.write(line)
+```
+
+Now let's write the handler for the command. This will check if the arg
+was specified and print an error if not. And then write the file.
+
+``` {.py}
+def handle_write(args, lines):
+    """Handle the write command"""
+
+    if len(args) == 1:
+        filename = args[0]
+    else:
+        print("usage: w filename")
+        return
+
+    write_file(lines, filename)
+```
+
+Lastly, we need to add a handler to the main command loop so that when
+we type "w", it saves the file:
+
+``` {.py}
+    # Write (save) the file
+    elif command[0] == 'w':
+        handle_write(args, lines, filename)
+```
+
+And that's that!
+
+Problem-solving step: **Looking Back**
+
+What's crazy is that you can use this to write Python programs.
+
+```
+$ python lineedit.py
+> a 0
+print("Hello, world!")
+print("I wrote this with my own editor!")
+.
+> l 1
+1: print("Hello, world!")
+2: print("I wrote this with my own editor!")
+> w my_hello.py
+> q
+$ python3 my_hello.py 
+Hello, world!
+I wrote this with my own editor!
+$ 
+```
+
+([flx[Solution|lineedit.py]].)

@@ -37,16 +37,13 @@ def get_num_arg(arg):
     return v
 
 
-def handle_write(args, lines, filename):
+def handle_write(args, lines):
     """Handle the write command"""
 
     if len(args) == 1:
         filename = args[0]
     else:
-        print("usage: w [filename]")
-
-    if filename is None:
-        print("** You must specify a filename")
+        print("usage: w filename")
         return
 
     write_file(lines, filename)
@@ -198,7 +195,7 @@ while not done:
 
     # Write (save) the file
     elif command[0] == 'w':
-        handle_write(args, lines, filename)
+        handle_write(args, lines)
 
     # List lines
     elif command[0] == 'l':
