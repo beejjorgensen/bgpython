@@ -1544,7 +1544,8 @@ And that's that!
 
 Problem-solving step: **Looking Back**
 
-What's crazy is that you can use this to write Python programs.
+What's crazy is that you can use this to write Python programs. Let's do
+one!
 
 ```
 $ python lineedit.py
@@ -1563,4 +1564,58 @@ I wrote this with my own editor!
 $ 
 ```
 
+Well, you can probably tell that's not quite as easy as using VS Code
+(or any other editor, for that matter). But, believe it or not, line
+editors were _the_ way to enter programs for a long time.
+
+Be thankful for standing on the shoulders of giants!
+
 ([flx[Solution|lineedit.py]].)
+
+
+## Exercises
+
+**Remember: to get your value out of this book, you have to do these
+exercises.** After 20 minutes of being stuck on a problem, you're
+allowed to look at the solution.
+
+Use any knowledge you have to solve these, not only what you learned in
+this chapter.
+
+1. You've been misbehaving in class and the teacher sentences you to
+   write 500 lines as punishment. Shrewdly, you ask if you can type the
+   lines, and the teacher agrees^[True story. This was back when I was
+   in the 7th grade and computers were a bit of a novelty. We had a
+   daisywheel printer at home which was fairly indistinguishable from a
+   typewriter. In real life, though, I didn't write a program to
+   generate the lines. I told dad about the task, and he rolled his eyes
+   and showed me how to copy and paste in WordStar.].
+
+   The program should accept command line arguments of the filename to
+   output to and the number of lines. All command line arguments after
+   that are the punishment line itself that should be repeated that many
+   times in the output file.
+
+   For example:
+
+   ```
+   python writelines.py outfile.txt 500 I will not talk in class.
+   ```
+
+   would generate a file `outfile.txt` with the line
+   
+   ```
+   I will not talk in class.
+   ```
+
+   repeated 500 times.
+
+   **WARNING**: Apostrophes and quotes (and other punctuation) often
+   have special meaning to the shell. Avoid any characters other than
+   periods or you might get strange results. If weird things happen, hit
+   `CTRL-c` to get out of it.
+
+* CSV reader
+* Modify your multiplication table generator to save the table to disk
+* Write a program to count the number of words in a file
+* Write a program that sorts each line of a file in alphabetical order
