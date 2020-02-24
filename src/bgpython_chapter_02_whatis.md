@@ -92,7 +92,7 @@ You have a limited set of programming techniques at your disposal, and
 you have the goal that you want to achieve. How can you get to that goal
 using only those tools? It's a puzzle!
 
-## So How To Solve It?
+## So How To Solve It? {#problem-solving}
 
 > _**Fun Programming Fact:** Most devs have no idea how to solve a
 > problem when they're first presented with it. They have to

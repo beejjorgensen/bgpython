@@ -620,6 +620,10 @@ makes sense, I got it," you're missing out on all that benefit.
 Don't shortchange yourself! Do the exercises! The more you do, the
 better dev you'll be! I'm getting off my soapbox now!
 
+Remember to use the [four problem-solving steps](#problem-solving) to
+solve these problems: understand the problem, devise a plan, carry it
+out, look back to see what you could have done better.
+
 Here they are:
 
 1. Make a version of the two number sum code that works with `float`s

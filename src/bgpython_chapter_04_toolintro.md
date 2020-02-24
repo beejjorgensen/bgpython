@@ -179,6 +179,10 @@ first step into a larger world."
 
 ## Exercises
 
+Remember to use the [four problem-solving steps](#problem-solving) to
+solve these problems: understand the problem, devise a plan, carry it
+out, look back to see what you could have done better.
+
 1. Make another program called `dijkstra.py` that prints out your three
    favorite [fl[Edsger Dijkstra
    quotes|https://en.wikiquote.org/wiki/Edsger_W._Dijkstra]].

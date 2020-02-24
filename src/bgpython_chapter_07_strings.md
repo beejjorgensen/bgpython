@@ -1014,6 +1014,10 @@ allowed to look at the solution.
 A lot of these can use `for` loops in the solution! Use any knowledge
 you have to solve these, not only what you learned in this chapter.
 
+**Always** use the [four problem-solving steps](#problem-solving) to
+solve these problems: understand the problem, devise a plan, carry it
+out, look back to see what you could have done better.
+
 
 1. Given the following varibles:
 

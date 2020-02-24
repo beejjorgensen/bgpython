@@ -772,6 +772,11 @@ than one way to do these things. Try them and see which you like better.
 exercises.** After 20 minutes of being stuck on a problem, you're
 allowed to look at the solution.
 
+**Always** use the [four problem-solving steps](#problem-solving) to
+solve these problems: understand the problem, devise a plan, carry it
+out, look back to see what you could have done better.
+
+
 1. Print out the sum of the numbers from `1` to (and including) `10000`.
    ([flx[Solution|ex_10ksum.py]].)
 
