@@ -22,6 +22,7 @@
 * Debugger
 - Functions
 * Try/except
+* Sorting
 * Unicode, character encoding
 * Bytes and binary data
   * marshalling
