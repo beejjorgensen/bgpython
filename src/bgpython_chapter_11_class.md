@@ -1011,6 +1011,11 @@ allowed to look at the solution.
 Use any knowledge you have to solve these, not only what you learned in
 this chapter.
 
+**Always** use the [four problem-solving steps](#problem-solving) to
+solve these problems: understand the problem, devise a plan, carry it
+out, look back to see what you could have done better.
+
+
 1. Write a class that describes a car. What are the attributes the class
    would have? What methods? (There's no one right answer here---thing
    freely.)
