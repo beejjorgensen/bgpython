@@ -1544,6 +1544,20 @@ And that's that!
 
 Problem-solving step: **Looking Back**
 
+There are a lot of things we can do to improve the code here.
+
+* Add the option for the delete command to specify and ending as well as
+  a starting line to erase a block of lines at once.
+
+* Make it so that if the user specifies a filename on the command line
+  and does _not_ specify one after the write command, it writes to the
+  same file specified on the command line.
+
+* Add an insert command that works like append, except it puts the new
+  material _before_ the line specified. How can you do this with a
+  minimal addition of code? After all, append and insert are _very_
+  similar.
+
 What's crazy is that you can use this to write Python programs. Let's do
 one!
 
@@ -1615,7 +1629,68 @@ this chapter.
    periods or you might get strange results. If weird things happen, hit
    `CTRL-c` to get out of it.
 
-* CSV reader
+   ([flx[Solution|ex_writelines.py]].)
+
+
+2. Write a program to read comma-separated values (CSV) files.
+
+   A CSV file is one that has a bunch of values separated by commas, one
+   record per row.
+
+   Here's [flx[the file we want to read|games.csv]]. Look through it and
+   see how all the information for a particular record is in each row:
+
+   ``` {.csv}
+   Title,Release Year,Studio,Publisher
+   Minecraft,2011,Mojang,Microsoft Studios
+   M.U.L.E.,1983,Ozark Softscape,Activision
+   X-Men The Official Game,2006,Z-AXIS,Activision
+   Populous,1989,Bullfrog Productions,Electronic Arts
+   DOOM,1993,id Software,id Software
+   Lemmings,1991,DMA Design,Psygnosis
+   ```
+
+   Your goal is to read the file and store each record in an object.
+   (Make a class that defines the same fields you have in the CSV file
+   to instantiate the objects from.)
+
+   Then print out the data, like so:
+
+   ```
+   M.U.L.E.                  1983   Ozark Softscape        Activision            
+   Populous                  1989   Bullfrog Productions   Electronic Arts       
+   Lemmings                  1991   DMA Design             Psygnosis             
+   DOOM                      1993   id Software            id Software           
+   X-Men The Official Game   2006   Z-AXIS                 Activision            
+   Minecraft                 2011   Mojang                 Microsoft Studios
+   ```
+
+   The printout, above, is shown in sorted-by-year order. That's a
+   stretch goal if you want to take it on. (Hint: check out the `key`
+   keyword argument to the `.sort()` method. Also, the solution code
+   talks about it in detail.)
+
+   Also, incidentally, [flw[M.U.L.E.|M.U.L.E.]] is one of the greatest
+   games ever written. Despite it being over 25 years old, _PC World_
+   magazine rated it the 5th-greatest game of all time in 2009. If you
+   haven't played it, grab an Atari 800 emulator, four gamepads, and
+   four friends, and have some fun. (Or play solo against the computer.)
+
+   > Now, a quick word of warning: this exercise assumes you're going to
+   > implement the logic for parsing this file yourself. But in real
+   > life, in Python, you'd never do this. Python has built-in
+   > functionality to parse CSV files, and it's far more robust and
+   > correct than what we're doing here. We're just reinventing the
+   > wheel in this case as a programming exercise.
+
+   Notice that the first line of the CSV file is a _header_. It
+   describes what the columns are, but isn't actual data. You'll have to
+   skip this line when you're reading the file. (Hint: call the `next()`
+   function on the file iterator returned by `open()` to get the next
+   line one time at the beginning.)
+
+   ([flx[Solution|ex_simplecsv.py]].)
+
 * Modify your multiplication table generator to save the table to disk
 * Write a program to count the number of words in a file
 * Write a program that sorts each line of a file in alphabetical order
