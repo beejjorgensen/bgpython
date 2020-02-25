@@ -1696,6 +1696,18 @@ out, look back to see what you could have done better.
 
    ([flx[Solution|ex_simplecsv.py]].)
 
-* Modify your multiplication table generator to save the table to disk
+3. Modify your [multiplication table generator](#strings-proj-spec) from
+   the chapter on strings to save the table to disk instead of printing
+   it to the screen.
+
+   The program should accept both the dimension of the table and the
+   output filename on the command line, e.g.:
+
+   ```
+   python multtablefile.py 12 table12x12.txt
+   ```
+
+   ([flx[Solution|ex_multtablefile.py]].)
+
 * Write a program to count the number of words in a file
 * Write a program that sorts each line of a file in alphabetical order
