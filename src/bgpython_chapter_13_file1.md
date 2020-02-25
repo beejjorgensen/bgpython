@@ -1728,8 +1728,10 @@ out, look back to see what you could have done better.
 
    ([flx[Solution|ex_wc.py]].)
 
-5. Write a program that sorts each line of a file in alphabetical order
-   and prints the result on the screen.
+5. Write a program that sorts lines of a file in alphabetical order
+   and prints the result on the screen. Note that you don't need to
+   alphabetize every word in each line---just treat the line as one big
+   word to be alphabetized.
 
    This is a simplified version of the Unix `sort` command.
 
@@ -1749,3 +1751,20 @@ out, look back to see what you could have done better.
 
    (And so on. The `rocks.txt` file has more lines in it than I've shown
    here.)
+
+   ([flx[Solution|ex_sort.py]].)
+
+
+## Summary
+
+What a chapter! That was like 50% project, eh?
+
+But look at what we learned!
+
+We covered how to open and read and write text files. We talked about
+how to read and write a line at a time, as well.
+
+And we wrote a simple line-based text editor! Most developers go their
+entire careers without doing that.
+
+More Python goodness in the next chapter---see you there!
