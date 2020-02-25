@@ -18,7 +18,8 @@
   * Sets
   * Tuples
 - REPL
-* File I/O
+- File I/O
+* CSV
 * Debugger
 - Functions
 * Try/except
@@ -28,7 +29,7 @@
   * marshalling
 * OOP
 * Number Bases
-* Modules
+- Modules
 * Making your own modules
 * Closures
 * Generators
@@ -40,7 +41,7 @@
 * Big O?
 - Appendix: programmer math
 
-* debugging exercises throughout
+* debugging exercises throughout (Remember those PC lint challenges?)
 
 
 ## Beej' extensions to markdown
