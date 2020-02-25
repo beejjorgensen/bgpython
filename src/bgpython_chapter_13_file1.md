@@ -1709,5 +1709,43 @@ out, look back to see what you could have done better.
 
    ([flx[Solution|ex_multtablefile.py]].)
 
-* Write a program to count the number of words in a file
-* Write a program that sorts each line of a file in alphabetical order
+4. Write a program to count the number of words in a file specified on
+   the command line. The number of words should be printed out.
+   
+   This is a simplified clone of the Unix `wc` (word count) command.
+
+   For this one, we'll define a word as something separated by
+   whitespace. (Hint: [fl[the `.split()` string
+   method|https://docs.python.org/3/library/stdtypes.html#str.split]].)
+
+   Example ([flx[`wargames.txt` is in the examples
+   directory|wargames.txt]]):
+
+   ```
+   $ python ex_wc.py wargames.txt 
+   38
+   ```
+
+   ([flx[Solution|ex_wc.py]].)
+
+5. Write a program that sorts each line of a file in alphabetical order
+   and prints the result on the screen.
+
+   This is a simplified version of the Unix `sort` command.
+
+   Example run:
+
+   ```
+   $ python ex_sort.py rocks.txt
+   amphibolite
+   andesite
+   argillite
+   basalt
+   breccia
+   chalk
+   chert
+   claystone
+   ```
+
+   (And so on. The `rocks.txt` file has more lines in it than I've shown
+   here.)
