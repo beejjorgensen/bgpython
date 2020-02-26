@@ -11,8 +11,6 @@ Problem-solving step: **Looking Back**
 
 # Reading Files
 
-**WIP**
-
 ## Objective
 
 * Understand what a file is
