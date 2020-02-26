@@ -20,7 +20,7 @@
 - REPL
 - File I/O
 * CSV
-* Debugger
+* Debugger, Debugging
 - Functions
 * Try/except
 * Sorting
@@ -29,22 +29,25 @@
   * marshalling
 * OOP
 * Number Bases
+* Unit testing, testing in general
 - Modules
 * Making your own modules
 * Closures
 * Generators
 * Iterators
 * Decorators
-* Exceptions
+
 * Recursion
 * Data Structures?
 * Big O?
+
 - Appendix: programmer math
+* Appendix: compiled vs interpreted
 
 * debugging exercises throughout (Remember those PC lint challenges?)
 
 
-## Beej' extensions to markdown
+## Beej's extensions to markdown
 
 These are brought to life with the `bin/preproc` script.
 
