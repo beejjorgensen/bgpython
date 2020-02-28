@@ -85,7 +85,7 @@ But before that, we have to meet someone: George Boole.
 
 Problem solving step: **Understanding the Problem**.
 
-[flw[George Boole|George_Boole]] was quite and interesting character.
+[flw[George Boole|George_Boole]] was quite an interesting character.
 From humble beginnings in the early 1800s, he went on to develop the
 mathematics that became, in many ways, the foundation of modern
 computation. Pretty awesome.
