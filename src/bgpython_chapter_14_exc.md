@@ -353,8 +353,92 @@ as you want in their own `except` clauses after the `try`.
 
 ## Getting More Exception Information
 
-* Learn about different ways of handling errors
+Each exception is actually an instance of a class. And the class name is
+the name you use in your `except` clauses.
+
+Because it's an instance, it has some additional information attached to
+it we can grab, but first we have to bind it (assign it) to a variable
+name. We can do that with the `as` statement.
+
+``` {.py}
+try:
+    1 / 0
+except ZeroDivisionError as e:  # e is a reference to the exception
+    print(e)
+    print(repr(e))   # Print its representation
+```
+
+results in:
+
+```
+division by zero
+ZeroDivisionError('division by zero')
+```
+
+That could be useful for getting more detailed information. In our
+example in the previous chapter, we catch `ValueError`, but we saw three
+different circumstances that could lead to it. We could use this
+technique to give the user more detailed information about the nature of
+the exception, should we choose.
 
 
 ## Catching All Exceptions
 
+A `catch` statement that doesn't specify a particular exception will
+catch _all_ previously uncaught exceptions.
+
+For this reason, a blank `catch` should definitely be last, after all
+the other catches. Python will stop at the first `catch` that matches,
+even if it's a "catch all".
+
+When you're in any `catch`, you can look at the results from the
+built-in function `sys.exc_info()`. This function returns a tuple (think
+"list" for now, if you're not familiar with tuples) with three pieces of
+information: the type of the exception, a reference to the exception
+itself, and a traceback^[A traceback, also known as a _stack trace_, is
+a list of all the function calls that have taken place to get to this
+point. It's really useful information for debugging.]
+
+Let's mod our division program to catch all exceptions and print out the
+exception info:
+
+``` {.py}
+import sys
+
+try:
+    x, y = input('Enter two numbers separated by a space: ').split()
+
+    x = int(x)
+    y = int(y)
+
+    print(f'{x} / {y} == {x / y}')
+
+except:
+    print(sys.exc_info())
+```
+
+Here are some sample runs:
+
+```
+Enter two numbers separated by a space: 1
+(<class 'ValueError'>, ValueError('not enough values to unpack (expected
+2, got 1)'), <traceback object at 0x7f7899794f80>)
+```
+
+```
+Enter two numbers separated by a space: a b
+(<class 'ValueError'>, ValueError("invalid literal for int() with base
+10: 'a'"), <traceback object at 0x7f6d0c9732c0>)
+```
+
+```
+Enter two numbers separated by a space: 1 0 (<class
+'ZeroDivisionError'>, ZeroDivisionError('division by zero'), <traceback
+object at 0x7fe2ea373040>)
+```
+
+This is rarer, to catch and examine exceptions in this way. But it is
+another tool in your toolbox.
+
+Be careful with catch-alls. They might hide exceptions that you weren't
+expecting and should have let through. They're rare in practice.
