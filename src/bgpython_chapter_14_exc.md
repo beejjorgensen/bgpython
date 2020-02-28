@@ -34,8 +34,9 @@ minute.
 Normally, a program produces data in the way you've asked for it. Unless
 something goes wrong. In which case, it produces "bad" data.
 
-Now, computers don't really have much of sense of right and wrong. So
-how can we differentiate between good and bad data?
+Now, computers don't really have much of sense of right and wrong, as
+you've seen in the documentary _The Terminator_. So how can we
+differentiate between good and bad data?
 
 How can we tell that something's gone wrong?
 
@@ -99,6 +100,8 @@ But now let's learn another way.
 
 ## Exceptions
 
+Problem-solving step: **Understanding the Problem**
+
 Exceptions are another way of indicating that something's gone wrong.
 
 We've already seen some of these. For example, if we run code that does
@@ -156,6 +159,8 @@ Now---how do we detect that and do something with it?
 
 ## Catching Exceptions
 
+Problem-solving step: **Understanding the Problem**
+
 Bear with me, because this code is a little different in how it gets
 executed.
 
@@ -210,4 +215,146 @@ error converting "beans" to integer
 See how it transferred control right into the `except` block?
 
 That's how we handle exceptions!
+
+## Catching Multiple Exceptions
+
+Problem-solving step: **Understanding the Problem**
+
+What if your `try` block throws multiple exceptions?
+
+Turns out you can catch multiple exceptions just by having multiple
+`except` clauses.
+
+Let's try a program that divides a number by another:
+
+```
+x, y = input('Enter two numbers separated by a space: ').split()
+
+x = int(x)
+y = int(y)
+
+print(f'{x} / {y} == {x / y}')
+```
+
+What are the exceptions that can be thrown?
+
+Good question. Although there is a [fl[list of built-in
+exceptions|https://docs.python.org/3/library/exceptions.html]], it's not
+immediately obvious which one gets raised when.
+
+The easy thing to do is try it in the [REPL](#repl). But try what?
+
+_Think like a villain._ What are the things that can go wrong? What
+kinds of bad input can you pass this program?
+
+Give it some thought. I count four things that can go wrong with bad
+user input. Can you see them?
+
+Well, we're taking input, running it through `.split()`, and then
+assigning the results into two variables. So the `split()` better
+return a list of length `2`, or something bad is going to happen.
+
+I'm going to put that line of code into the REPL and see what it says if
+I enter something that's not two numbers separated by a space.
+
+``` {.py}
+>>> x, y = input("Enter 2 numbers: ").split()
+Enter 2 numbers: 1
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: not enough values to unpack (expected 2, got 1)
+```
+
+Check it out! I entered a single number, and it raised `ValueError`
+exception (with a message saying there weren't enough values).
+
+Let's try too many values:
+
+``` {.py}
+>>> x, y = input("Enter 2 numbers: ").split()
+Enter 2 numbers: 1 2 3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: too many values to unpack (expected 2)
+```
+
+`ValueError` again! That means we can do something like this to catch
+it:
+
+``` {.py}
+try:
+    x, y = input('Enter two numbers separated by a space: ').split()
+
+    x = int(x)
+    y = int(y)
+
+    print(f'{x} / {y} == {x / y}')
+
+except ValueError:
+    print("That's not two numbers separated by a space!")
+```
+
+And that will catch it. Here's a run:
+
+```
+Enter two numbers separated by a space: 1 2 3
+That's not two numbers separated by a space!
+```
+
+Whee!
+
+What's the next place we can mess things up?
+
+Well, we're converting to `int()`... what does that function do if we
+pass in something awful, like the word `manfrengensenton`?
+
+Again in the REPL:
+
+``` {.py}
+>>> int("manfrengensenton")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'manfrengensenton'
+```
+
+Hey, it's `ValueError` again! Conveniently, we're already catching that
+with an appropriate error message. Totally handled.
+
+That takes care of three of the four cases I saw where we could get
+exceptions. What's the fourth?
+
+_Mathematics hat on_. Do you see it?
+
+That's right, we're doing a division in there... and you can't divide by
+zero. What happens when we do?
+
+We already saw, above, that we get a `ZeroDivisionError`. So let's add
+that to the end of our code:
+
+``` {.py}
+try:
+    x, y = input('Enter two numbers separated by a space: ').split()
+
+    x = int(x)
+    y = int(y)
+
+    print(f'{x} / {y} == {x / y}')
+
+except ValueError:
+    print("That's not two numbers separated by a space!")
+
+except ZeroDivisionError:
+    print("Can't divide by zero!")
+```
+
+So as you can see, you can handle as many different types of exceptions
+as you want in their own `except` clauses after the `try`.
+
+
+## Getting More Exception Information
+
+* Learn about different ways of handling errors
+
+
+## Catching All Exceptions
 
