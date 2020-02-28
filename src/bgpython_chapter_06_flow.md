@@ -115,7 +115,7 @@ of age" is false. Though I am over 190 cm tall, am I not under 30 years,
 so the entire expression is false.
 
 By comparison, "I like dogs AND I like motorcycles" _is_ true, because
-both of those subexpressions is true.
+both of those subexpressions are true.
 
 And if neither of them are true, the result is also false.
 
