@@ -22,7 +22,7 @@ Problem-solving step: **Looking Back**
 
 ## Project {#exc-proj-spec}
 
-TODO
+TODO head clone, catching all exceptions
 
 ## Errors in Programs
 
@@ -98,7 +98,7 @@ There! We successfully handled an error the classic way.
 But now let's learn another way.
 
 
-## Exceptions
+## Error Handling with Exceptions
 
 Problem-solving step: **Understanding the Problem**
 
@@ -142,7 +142,7 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-Those first condensed words on the third line of the exception you see
+Those first condensed words on the last line of the exception you see
 there? That's the name of the exception that occurred.
 
 ```
@@ -351,7 +351,7 @@ So as you can see, you can handle as many different types of exceptions
 as you want in their own `except` clauses after the `try`.
 
 
-## Getting More Exception Information
+## Getting More Exception Information {#exc-more-info}
 
 Each exception is actually an instance of a class. And the class name is
 the name you use in your `except` clauses.
@@ -437,8 +437,297 @@ Enter two numbers separated by a space: 1 0 (<class
 object at 0x7fe2ea373040>)
 ```
 
-This is rarer, to catch and examine exceptions in this way. But it is
-another tool in your toolbox.
+This isn't as common, to catch and examine exceptions in this way. But
+it is another tool in your toolbox.
 
 Be careful with catch-alls. They might hide exceptions that you weren't
 expecting and should have let through. They're rare in practice.
+
+
+## Finally `finally`
+
+Problem-solving step: **Understanding the Problem**
+
+There's a greater structure to be found here. We've already talked about
+`try` and `catch`, but there's a way to add code that runs after the
+`try` no matter what, regardless of whether or not an exception
+occurred.
+
+It's the `finally` clause, and it comes after the `except` clause(s).
+
+Again, this block of code will run no matter what.
+
+``` {.py}
+try:
+    print(1/1)
+except ZeroDivisionError:
+    print("Divide by zero!")
+finally:
+    print("All done!")
+```
+
+The above code will print:
+
+```
+1
+All done!
+```
+
+If we modified that first line to `print(1/0)`, we'd get a divide by
+zero exception, and the output would be:
+
+```
+Divide by zero!
+All done!
+```
+
+In all cases, the `finally` block will run.
+
+You can use this block to execute finalization or cleanup code, if you
+need to.
+
+`try`-`except` is really common. `finally` is less so, but not entirely
+uncommon.
+
+
+## What Else? `else`!
+
+Problem-solving step: **Understanding the Problem**
+
+Just when you thought `try`-`except`-`finally` was all she wrote, turns
+out we can add an `else` in there for `try`-`except`-`else`-`finally`.
+
+It's entirely possible that you won't ever see this, but I wanted to
+quickly touch on it here. Just give it a glance:
+
+``` {.py}
+try:
+    print("This is what we're trying to do")
+    print("and where exceptions might occur.")
+
+except:
+    print("Caught an exception!")
+
+else:
+    print("This only runs if there was no exception.")
+
+finally:
+    print("This runs no matter what.")
+```
+
+Using `else` can give you more control over the flow of your program
+when exceptions occur.
+
+
+## Exception Objects
+
+Problem-solving step: **Understanding the Problem**
+
+At this point, we've covered catching exceptions, and this is all you
+need to know 99% of the time you're using Python.
+
+But that doesn't mean we should stop there. Part of being a good dev is
+having a good mental model of _how_ these things work, not just to
+memorize some patterns to use. Having deeper understanding will serve
+you well.
+
+So let's talk about how exceptions in Python are represented by objects.
+
+We've already [hinted at this, above](#exc-more-info), where we talk
+about getting more information from exceptions.
+
+We found there is a class named `ZeroDivisionError` and another named
+`ValueError`. Indeed, we can just make new ones of these if we want:
+
+``` {.py}
+e = ValueError()   # Construct a new ValueError object
+```
+
+There's a [fl[whole list of exceptions that are ready to
+use|https://docs.python.org/3/library/exceptions.html]], but if none of
+those seem to fit, you can just make a new `Exception` with some
+information passed to it:
+
+``` {.py}
+e = Exception('Something went horribly awry')
+```
+
+Lastly, you can make your own new exception classes if you'd like. You
+don't have to---you can use `Exception` or any of the other preexisting
+ones.
+
+But if you do make your own, the only catch is that these **must**
+_inherit_ from the `Exception` base class.
+
+Whooooaa, there, Beej. What are you even talking about?
+
+Okay, you got me. I stepped into some Object-Oriented Programming
+terminology, there. Now, we'll talk about what that all means in a later
+chapter, but for now, take my word that you need to declare your new
+exception, you have to use similar syntax to this:
+
+``` {.py}
+class MyAwesomeException(Exception):  # <-- Note "(Exception)"
+    pass
+```
+
+This is telling Python, "I'm making a new class called
+`MyAwesomeException`, but, here's the thing, `MyAwesomeException` _is_
+an `Exception`."
+
+Also, if you have a constructor, make sure you do this:
+
+``` {.py}
+class MyAwesomeException(Exception):  # <-- Note "(Exception)"
+
+    def __init__(self, *args):        # <-- Get all positional args
+        print("In my constructor")
+        print("Doing whatever it is I have to do here")
+
+        # The following line makes sure the constructor for the underlying
+        # Exception object gets called with the arguments specified:
+
+        super().__init__(*args)       # <-- Add this
+```
+
+Because `MyAwesomeException` is an `Exception`, suddenly we have two
+constructors: one for `Exception` and one for `MyAwesomeException`.
+
+The one in `MyAwesomeException` _overrides_ the one in `Exception`. In
+order to make sure both are called, we add that `super()` line in there.
+
+Don't worry about the details of how it works for now. We'll cover that
+in detail in another chapter.
+
+One final note: if you ever `catch Exception:` in your code, make sure
+that `catch` is **after** all the more specific exceptions, like
+`ValueException`. Python will use the first one it finds that matches,
+and `Exception` matches most everything.
+
+But in the meantime, we can construct exceptions. But so what? What can
+we do with them?
+
+
+## Raising Exceptions
+
+Problem-solving step: **Understanding the Problem**
+
+Let's say you've written some code and you want to use exceptions to
+notify the caller when some error condition has occurred.
+
+The process is going to be:
+
+1. Construct a new exception of some kind.
+2. Raise it with the `raise` statement.
+
+Often these happen in the same line.
+
+As an example, let's write a function that reads a number between 0 and
+9 from the keyboard. If the number read is out of range, let's raise a
+new `ValueError` with the message `"out of range"` as the argument.
+
+``` {.py}
+def getnum():
+    n = input("Enter a number 0-9: ")
+
+    n = int(n)   # Convert to int
+
+    if n < 0 or n > 9:
+        # If out of range, raise a ValueError:
+        raise ValueError("out of range")
+
+    return n
+```
+
+And then add some code to call it and catch any exceptions:
+
+``` {.py}
+try:
+    n = getnum()
+    print(f'{n} * 15 == {n * 15}')
+
+except ValueError as v:
+    print(f'Exception: {v}')
+```
+
+If we give it a run with a valid value:
+
+```
+Enter a number 0-9: 4
+4 * 15 == 60
+```
+
+But if we specify something out of range, we get:
+
+```
+Enter a number 0-9: -1
+Exception: out of range
+```
+
+What if we enter the letter `a`? That'll bomb out on the call to
+`int()`... but it'll do it with a `ValueError`, like we saw earlier in
+the chapter.
+
+And, hey! Coincidentally, we're already catching `ValueError` in our
+code, above.
+
+Let's try it:
+
+```
+Enter a number 0-9: a
+Exception: invalid literal for int() with base 10: 'a'
+```
+
+Caught it! Note that the error message is different than the "out of
+range" exception, so we can differentiate.
+
+So, hey! We now know how to:
+
+* Catch exceptions
+* Create new exceptions
+* Raise exceptions
+
+That's not bad so far!
+
+
+## Re-raising Exceptions
+
+Sometimes you might be interested in seeing that an exception occurred,
+but don't want to stop it. You want it to continue to propagate so that
+the caller can also see it.
+
+We can do this pretty simply with a lone `raise` inside the `catch`.
+
+The following function notes a `ValueError` if it occurs, but then
+re-raises it so that it can get caught by the `try` block in the main
+code:
+
+``` {.py}
+def makeint(x):
+    try:
+        return int(x)
+
+    except ValueError:
+        print("Hey, I saw an exception!")
+        print("But I'll let someone else handle it.")
+
+        raise    # Re-raise the exception
+
+try:
+    x = makeint("beej")
+
+except ValueError as v:
+    print(f'Exception: {v}')
+```
+
+This outputs:
+
+```
+Hey, I saw an exception!
+But I'll let someone else handle it.
+Exception: invalid literal for int() with base 10: 'beej'
+```
+
+## Exercises
+
+TODO show Exception first in catch order bug
