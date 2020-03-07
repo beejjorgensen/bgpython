@@ -22,7 +22,7 @@
 * CSV
 * Debugger, Debugging
 - Functions
-* Try/except
+- Try/except
 * Sorting
 * Unicode, character encoding
 * Bytes and binary data
