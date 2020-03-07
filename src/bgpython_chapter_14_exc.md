@@ -113,7 +113,6 @@ There! We successfully handled an error the classic way.
 
 But now let's learn another way.
 
-
 ## Error Handling with Exceptions
 
 Problem-solving step: **Understanding the Problem**
@@ -171,7 +170,6 @@ So, like using return values to indicate errors, exceptions also
 indicate that an error occurred.
 
 Now---how do we detect that and do something with it?
-
 
 ## Catching Exceptions
 
@@ -366,6 +364,18 @@ except ZeroDivisionError:
 So as you can see, you can handle as many different types of exceptions
 as you want in their own `except` clauses after the `try`.
 
+## Catching Multiple Exceptions II
+
+If you want to handle multiple exceptions with the same handler code,
+you can make a list of them:
+
+```
+except (FileNotFoundError, PermissionError):
+    print("File not found or insufficient permissions")
+```
+
+This isn't as frequently used, since often you want to take a different
+course of action for different exceptions.
 
 ## Getting More Exception Information {#exc-more-info}
 
@@ -397,6 +407,30 @@ different circumstances that could lead to it. We could use this
 technique to give the user more detailed information about the nature of
 the exception, should we choose.
 
+All exceptions have an attribute called `args` that is a list of the
+arguments that are passed to the exception when it was created. The
+first of these is often a human-readable error message.
+
+For instance, this code:
+
+``` {.py}
+try:
+    1 / 0
+except Exception as e:
+    print(e.args[0])
+```
+
+prints the helpful message:
+
+```
+division by zero
+```
+
+Furthermore, any exception that is based on `IOError` includes the
+string attribute `strerror` that contains a human-readable error message
+corresponding to the error. You can find the list of exceptions that are
+derived from `IOError` in the [fl[exceptions
+documentation|https://docs.python.org/3/library/exceptions.html]].
 
 ## Catching All Exceptions
 
@@ -1058,4 +1092,28 @@ planning.
 
 ## Exercises
 
-TODO show Exception first in catch order bug
+1. When we run this code, it prints out "Exception" instead of "Division
+   by Zero". Why? What can we do, without deleting any code, to get it
+   to print "Division by zero"?
+
+   ``` {.py}
+   try:
+       x = 3490 / 0
+   except Exception:
+       print("Exception")
+   except ZeroDivisionError:
+       print("Division by Zero")
+   ```
+
+   ([flx[Solution|ex_catchorder.py]].)
+
+2. Write a function that accepts a list of three numbers and returns the
+   sum. If the list does not contain three numbers, raise a
+   `InvalidListSize` exception. (Note that this exception doesn't
+   exist---you'll have to write it.)
+
+   Also write an exception handler that catches the exception if it is
+   thrown.
+
+   ([flx[Solution|ex_listadd.py]].)
+
