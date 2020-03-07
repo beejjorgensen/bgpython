@@ -1044,7 +1044,7 @@ One, we could use a while loop and test for the end of the file _or_
 reaching the required count, whichever comes first.
 
 That would be fine. But a more straightforward option might be to just
-bail on the loop when the counter gets high enough. The `break`
+jump out of the loop when the counter gets high enough. The `break`
 statement can be used to bail out of a loop partway through.
 
 ``` {.py .numberLines startFrom="19"}
