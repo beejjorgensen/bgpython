@@ -796,11 +796,11 @@ Here's what I can think of happening:
 * User enters a non-number for the second command line argument.
 * User enters a filename that doesn't exist.
 * User enters a non-positive number.
-* User enters a number that's larger than the number of lines in the
-  file.
 * The file isn't a regular file (e.g. it's a directory or other special
   file).
 * The user doesn't have permission to read the file.
+* User enters a number that's larger than the number of lines in the
+  file.
 
 Some of these you can handle with simple `if` statements. Others we'll
 have to catch with exceptions.
@@ -1136,7 +1136,11 @@ your skillset.
 
 We compared and contrasted error handling via return values with error
 handling with exceptions, wrote programs that could catch exceptions and
-handle them, and also wrote programs that generates our own, new exceptions.
+handle them, and also wrote programs that generates our own, new
+exceptions.
+
+Additionally, we learned how flow control works around exception
+handling, with the `else` and `finally` clauses.
 
 Any time you learn a new basic way of doing something, it's difficult to
 wrap your head around at first. But enough practice with it, and I
