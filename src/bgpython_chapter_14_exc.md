@@ -22,7 +22,23 @@ Problem-solving step: **Looking Back**
 
 ## Project {#exc-proj-spec}
 
-TODO head clone, catching all exceptions
+Write a program called `head.py` that returns the first few lines of a
+file. For example, if the user enters:
+
+```
+python head.py filename.txt 12
+```
+
+it should show the first 12 lines of `filename.txt`.
+
+Take extra care to error-check all the input. Catch any exceptions that
+might occur.
+
+Spend some time thinking about this; what are _all_ the things that can
+go wrong with _any_ user input?
+
+If there is some kind of error condition, the program should print an
+appropriate error message and exit.
 
 ## Errors in Programs
 
@@ -518,7 +534,6 @@ finally:
 Using `else` can give you more control over the flow of your program
 when exceptions occur.
 
-
 ## Exception Objects
 
 Problem-solving step: **Understanding the Problem**
@@ -607,7 +622,6 @@ and `Exception` matches most everything.
 But in the meantime, we can construct exceptions. But so what? What can
 we do with them?
 
-
 ## Raising Exceptions
 
 Problem-solving step: **Understanding the Problem**
@@ -689,7 +703,6 @@ So, hey! We now know how to:
 
 That's not bad so far!
 
-
 ## Re-raising Exceptions
 
 Sometimes you might be interested in seeing that an exception occurred,
@@ -727,6 +740,321 @@ Hey, I saw an exception!
 But I'll let someone else handle it.
 Exception: invalid literal for int() with base 10: 'beej'
 ```
+
+## Project Implementation
+
+Go ahead and [review the project specification from the beginning of the
+chapter](#exc-proj-spec) if you have to.
+
+Problem-solving step: **Understanding the Problem**
+
+The big challenge here is how to we provide complete error checking of
+all user inputs to make sure everything is sensible?
+
+What are all the things that could go wrong?
+
+Go ahead and make a list on your own, and then you can compare it to the
+list I have, below.
+
+Spoilers ahead!
+
+Here's what I can think of happening:
+
+* User doesn't enter the correct number of command line arguments.
+* User enters a non-number for the second command line argument.
+* User enters a filename that doesn't exist.
+* User enters a non-positive number.
+* User enters a number that's larger than the number of lines in the
+  file.
+* The file isn't a regular file (e.g. it's a directory or other special
+  file).
+* The user doesn't have permission to read the file.
+
+Some of these you can handle with simple `if` statements. Others we'll
+have to catch with exceptions.
+
+That last one, about what happens when you enter a number larger than
+the number of lines in the file, is a great question. The spec doesn't
+say. So we should ask the creator of the spec for clarification.
+
+"Hey, Beej! The spec doesn't say what to do if the number of lines
+specified is greater than the number of lines in the file. What do we do
+in that case?"
+
+Let's do this: we'll stop outputting lines at either the number of lines
+the user specifies, or the end of the file, whichever comes first. No
+message to the user is required in either case.
+
+Ok, let's plan!
+
+Problem-solving step: **Devising a Plan**
+
+Looking at the spec, the program can be broken down into a number of
+parts.
+
+* Read user input
+* Open the file for reading
+* Read the number of lines up to what the user specified (or EOF)
+
+For each of those parts, we'll have to do input validation and tell the
+user if anything went wrong.
+
+Problem-solving step: **Carrying Out the Plan**
+
+Some of this stuff we've seen before, so we'll skim over it a bit.
+
+First, let's get the user input from the command line, check that the
+right number of arguments was passed, and check the input to make sure
+it's sensible.
+
+``` {.py .numberLines}
+import sys
+
+if len(sys.argv) != 3:
+    print("usage: head.py filename count")
+    sys.exit(1)
+
+filename = sys.argv[1]
+total_count = int(sys.argv[2])
+
+if total_count < 1:
+    print("head.py: count must be a positive integer")
+    sys.exit(2)
+```
+
+That's partway there, but we're missing an error case. Do you see it?
+
+What if the user enters "`bananas`" for the count? If we try to run it
+to see what happens, sure enough, we get an exception.
+
+```
+Traceback (most recent call last):
+  File "foo.py", line 8, in <module>
+    total_count = int(sys.argv[2])
+ValueError: invalid literal for int() with base 10: 'bananas'
+```
+
+It's the `ValueError` exception that we've seen before. Let's modify our
+code to catch that exception and handle it.
+
+``` {.py .numberLines}
+import sys
+
+if len(sys.argv) != 3:
+    print("usage: head.py filename count")
+    sys.exit(1)
+
+filename = sys.argv[1]
+
+try:
+    total_count = int(sys.argv[2])
+except ValueError:
+    print("head.py: count must be a positive integer")
+    sys.exit(2)
+
+if total_count < 1:
+    print("head.py: count must be a positive integer")
+    sys.exit(2)
+```
+
+There! That fixes it. And that code works, but...
+
+Notice anything messy about it? That's right---we sure are repeating
+ourselves a lot. Let's refactor and see if we can get rid of those
+duplicate lines.
+
+One option would be to set a flag in either case to `True` if there was
+an error, and then print the message and exit. That would work, and
+wouldn't be a bad solution at all.
+
+But we can be a bit more clever and actually make the exception handler
+do all the work for us by simply raising a `ValueError` exception if the
+`total_count` is less than one. Then we'll get a `ValueError` in both
+cases, and we can handle it in one place.
+
+``` {.py .numberLines startFrom="9"}
+try:
+    total_count = int(sys.argv[2])
+
+    if total_count < 1:
+        raise ValueError()
+
+except ValueError:
+    print("head.py: count must be a positive integer")
+    sys.exit(2)
+```
+
+Check that out. If `int()` raises the exception, we catch it. And if we
+raise the exception ourselves, we also catch it. Plus all the logic for
+testing the input value for correctness is all in the same `try` block,
+nicely.
+
+OK! We have the code getting correct input. Let's go on to the next step
+and print lines from the file.
+
+We can start by simplifying the problem to just print all the lines and
+not worrying about the count for now.
+
+Let's take our code from before for printing out a file:
+
+``` {.py .numberLines startFrom="19"}
+with open(filename) as f:
+    for line in f:
+        print(line, end="")
+```
+
+If we run the program, passing in an existing file, we see all the lines
+of that file printed out.
+
+But what if we pass in the name of a non-existent file?
+
+Let's try it!
+
+```
+$ python head.py nosuchfile.txt 5
+Traceback (most recent call last):
+  File "foo.py", line 19, in <module>
+    with open(filename) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'nosuchfile.txt'
+```
+
+Bammo! Another exception! This time it's `FileNotFoundError`.
+
+Let's try it on a directory:
+
+```
+$ python head.py / 5
+Traceback (most recent call last):
+  File "foo.py", line 19, in <module>
+    with open(filename) as f:
+IsADirectoryError: [Errno 21] Is a directory: '/'
+```
+
+An `IsADirectoryError` exception!
+
+Let's try it on a file we don't have permission to read:
+
+```
+$ python head.py noperm.txt 5
+Traceback (most recent call last):
+  File "foo.py", line 19, in <module>
+    with open(filename) as f:
+PermissionError: [Errno 13] Permission denied: 'noperm.txt'
+```
+
+Yet another exception: `PermissionError`.
+
+One option we have here is to specifically catch all these exceptions:
+
+``` {.py .numberLines startFrom="19"}
+try:
+    with open(filename) as f:
+        for line in f:
+            print(line, end="")
+
+except (FileNotFoundError, IsADirectoryError, PermissionError):
+    print(f'head.py: error reading file {filename}')
+```
+
+And that works.
+
+But I have a bit of insider knowledge that we can use. All of those
+exceptions are derived from `IOError`. 
+We can see that in the [fl[list of built-in
+exceptions|https://docs.python.org/3/library/exceptions.html]].
+
+You can see, there are a lot of exceptions that are `IOError`s. Instead
+of catching them individually, an option is to just catch `IOError` and
+print out an appropriate error message. This has the benefit of catching
+_all_ those errors that `file()` might raise. It also has the drawback
+of not being able to easily differentiate between them. So how can we
+print an appropriate error for each one?
+
+Luckily, `IOError` has a handy attribute in it called `strerror` that
+gives a nice human-readable error message that describes what went
+wrong. We could print that.
+
+So let's just catch the `IOError` exception and print its error message
+out.
+
+``` {.py .numberLines startFrom="19"}
+try:
+    with open(filename) as f:
+        for line in f:
+            print(line, end="")
+
+except IOError as e:
+    print(f'head.py: {filename} {e.strerror}')
+```
+
+And when we run it, we get some nice error message for whatever error
+case we get:
+
+```
+$ python head.py noperm.txt 5
+head.py: noperm.txt Permission denied
+
+$ python head.py / 5
+head.py: / Is a directory
+
+$ python head.py nofile.txt 5
+head.py: nofile.txt No such file or directory
+```
+
+Pretty neat!
+
+What's left? Oh yeah---we have to actually implement the functionality
+to only show the first however-many lines of the file.
+
+There are a couple approaches to this.
+
+One, we could use a while loop and test for the end of the file _or_
+reaching the required count, whichever comes first.
+
+That would be fine. But a more straightforward option might be to just
+bail on the loop when the counter gets high enough. The `break`
+statement can be used to bail out of a loop partway through.
+
+``` {.py .numberLines startFrom="19"}
+line_count = 0  # Number of lines we've read so far
+
+try:
+    with open(filename) as f:
+        for line in f:
+
+            line_count += 1
+
+            if line_count > total_count:
+                break
+
+            print(line, end="")
+
+except IOError as e:
+    print(f'head.py: {filename} {e.strerror}')
+```
+
+As you see, we're keeping track of the number of lines read so far, and
+if that exceeds our magic target number, we just break straight out of
+the loop and we're done.
+
+And it works!
+
+```
+$ python head.py rocks.txt 3
+marble
+coal
+granite
+```
+
+Super-robust against bad input and errors. This is what we call
+_defensive coding_, when you prepare for the worst and handle those
+cases without crashing. It's a good strategy because not only does it
+make your program more capable of handling errors, but it also makes you
+stop and consider what the errors are that might occur in the first
+place. And, as we've said, hours of debugging can save you minutes of
+planning.
+
+([flx[Solution|head.py]].)
 
 ## Exercises
 
