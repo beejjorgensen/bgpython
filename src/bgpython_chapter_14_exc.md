@@ -11,8 +11,6 @@ Problem-solving step: **Looking Back**
 
 # Exceptions
 
-**WIP**
-
 ## Objective
 
 * Learn about different ways of handling errors
@@ -1107,7 +1105,20 @@ planning.
 
    ([flx[Solution|ex_catchorder.py]].)
 
-2. Write a function that accepts a list of three numbers and returns the
+2. Write a function that takes a list of numbers, and two integers as
+   index values. The function should return the sum of the two numbers
+   in the list at the two given indexes.
+
+   Catch the specific exception that is raised if the list indexes are
+   out of range. Print an appropriate error.
+
+   Hint: to see which exception is raised if the list indexes are out of
+   range, run the code _without_ a `try`-`except` block and see what it
+   prints when it bombs. Then add a `try`-`except` for that exception.
+
+   ([flx[Solution|ex_listadd2.py]].)
+
+3. Write a function that accepts a list of three numbers and returns the
    sum. If the list does not contain three numbers, raise a
    `InvalidListSize` exception. (Note that this exception doesn't
    exist---you'll have to write it.)
@@ -1117,3 +1128,16 @@ planning.
 
    ([flx[Solution|ex_listadd.py]].)
 
+## Summary
+
+New big concept in this chapter with exceptions. It's a technique we
+haven't used before to catch errors, but is a powerful one to add to
+your skillset.
+
+We compared and contrasted error handling via return values with error
+handling with exceptions, wrote programs that could catch exceptions and
+handle them, and also wrote programs that generates our own, new exceptions.
+
+Any time you learn a new basic way of doing something, it's difficult to
+wrap your head around at first. But enough practice with it, and I
+guarantee after a while it will become second nature.
