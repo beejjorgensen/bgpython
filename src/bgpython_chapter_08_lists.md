@@ -7,7 +7,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 ## Objective
 
 * Understand whats lists are
-* Understand references versus values
+* Understand how assignments with mutable types work
 * Access individual elements and slices in a list
 * Iterate over lists with `for`
 * Use common lists built-in functions
@@ -132,135 +132,86 @@ and then again later. This is a big source of confusion among new
 developers.
 
 
-## Reference Versus Value---Fight! {#ref-val}
+## List Assignments
 
-Not really a fight. They're best friends! They wouldn't do that.
+You remember [way back in the variables chapter when I was talking about
+how variable assignment worked](#var-assignment)? [Revisit it if you
+have to](#var-assignment).
 
-Let's go back to regular old variables that hold numbers:
+And you were wondering what that had to do with anything?
+
+Well, we're going to check it out again, but this time in the context of
+lists.
+
+We just mentioned that lists are different than integers in that lists
+are mutable. We can change them. This has some interesting
+repercussions.
+
+Let's look at strings versus lists.
 
 ``` {.py}
-x = 20
+x = "Hello"
 y = x
-
-print(x)   # prints 20
-print(y)   # prints 20
-
-y = 99
-
-print(x)   # prints 20
-print(y)   # prints 99
 ```
 
-Take a look at that code. We say that `y` is assigned the value in `x`,
-so they both become `20`.
+In that example, like we learned earlier, there is one string `"Hello"`
+in memory, and both `x` and `y` refer to it.
 
-But when we change `y` to `99`, `x` remains unchanged.
-
-It's like `y` got a _copy_ of `x`, so subsequent changes to `y` did
-_not_ affect `x`.
-
-> The under-the-hood details of how Python handles assignments like this
-> are rather more complex, and I'm really being hand-wavy here. But,
-> that said, you can still use this mental model about making copies and
-> have it work perfectly well. [See Appendix C for all the
-> details](#valref).
-
-And with strings, since they're immutable, we end up with the same
-situation, more or less.
+Strings are immutable. So you can't do something like this:
 
 ``` {.py}
 x = "Hello"
 y = x
 
-print(x)   # prints Hello
-print(y)   # prints Hello
-
-y = "world!"
-
-print(x)   # prints Hello
-print(y)   # prints world!
+# Change character at index 2 to 'Z'
+x[2] = "Z"  # ERROR! Strings are immutable--you can't change them
 ```
 
-What we have in this case is what we'll call _value types_. They
-have certain characteristics:
-
-* When you assign from a value type variable to another variable, a
-  _copy_ of that value gets made.
-
-Value types include (memorize this!):
-
-* Integers
-* Floating point numbers
-* Strings^[Effectively, since they're immutable. Again with the
-  hand-waving here.]
-
-Notably absent from the list are _lists_. Lists are a _reference type_.
-
-Reference types also have certain characteristics:
-
-* When you assign a reference type variable to another variable, both
-  variables _refer to the same thing_.
-
-Or, another way, when you assign with a value type, another one of those
-comes into existence.
-
-But when you assign with a reference type, there still is only one of
-those things. It just has two variables that refer to it. It has two
-names.
-
-Still confusing? Let's have an example with a list:
+But _lists are mutable_. We can change something that's in a list. Let's
+do an analogous example:
 
 ``` {.py}
-x = [11, 88, 33, 99]
+x = ["A", "B", "C", "D"]
+y = x
 
-# At this point, there's one list in memory. Just those 4 numbers.
+# Change string at index 2 to 'Z'
+x[2] = "Z"  # Works
 
-y = x  # Reference type assignment!
-
-# At this point, there is still only the one list. Both `x` and `y`
-# are names for that one list. They both refer to the same list.
-
-# And so:
-
-y[1] = 3490  
-print(x[1])  # `x` (yes, `x`!) prints 3490
+print(x[2])  # "Z"
+print(y[2])  # "Z" also!!!
 ```
 
-In that example, how can assigning to `y[1]` change the value in `x[1]`?
-But that very question is the wrong way of thinking about it. The right
-way: since the list is a reference type, both `x` and `y` point to the
-_exact same list_ after the assignment. It's not a copy of the list.
-It's _the_ list.
+Wait---what happened there? We changed the value in the second index of
+`x`, but it also changed it in `y`! How did that happen?
 
-After the assignment, it doesn't matter if we refer to the list with `x`
-or `y`. They're both names for the same list.
+Remember: it's because when we did:
 
-Reference types include the following (some of which we haven't talked
+``` {.py}
+x = ["A", "B", "C", "D"]
+y = x
+```
+
+both `x` and `y` came to point to to the _same list_. There is only one
+list. Both `x` and `y` refer to it. So if you change that one list, you
+see that change reflected in both `x` and `y`.
+
+(If you _could_ change a string, it would work the same way. But you
+can't because it's immutable.)
+
+Mutable types include the following (some of which we haven't talked
 about yet):
 
 * Lists
 * Dictionaries
 * Objects^[Technically, lists and dictionaries _are_ objects, so we're
   being a bit redundant.]
+* Sets
 
-In summary, there are two categories of data types to keep track of:
-value types (like integers and floats and strings), and reference types
-(list lists, dictionaries, and objects).
-
-On assignment:
-
-* Value types are copied
-* Reference types just refer to the same underlying object
-
-Another way to think of this that might (or might not) help: all
-assignments make a copy of a thing. But with value types, that thing
-that is copied is the object (the value) itself. With reference types,
-the thing that is copied is a _reference to the object_.
-
-A reference is like a street address written on a Post-It note. It's
-not the house itself, but it is a reference to it. Now, you can copy
-that Post-It note to another, but they still both refer to the same
-house. (And certainly the house itself hasn't been copied!)
+> In some languages, types that appear to get copied on assignment (like
+> strings and integers) are called _value_ types. Whereas types that can
+> be referred to by multiple variables through assignment (like lists)
+> are called _reference types_. Python doesn't make this distinction,
+> although you might hear this phraseology used in the wild.
 
 What if you _want_ a copy of a list, and not just a copy of the
 reference? You can force a list copy a number of ways, but these are
@@ -902,8 +853,13 @@ y = [4, 5, 6]
 z = [x, y]
 ```
 
-Remember that _lists are reference types_. So we have a list `x` and
-`y`, and both of these are _referred to_ in list `z`.
+> It's important to note that when we assign into `z`, we're not copying
+> lists `x` and `y`. What we're doing is making it so that the values in
+> list `z` refer to the same lists as `x` and `y` do.
+>
+> In other words, there's only one list in memory with the values
+> `[1,2,3]`. And is referred to by both `x` and `z[0]`. Both variables
+> reference the same list.
 
 In that example, how could we access elements of the lists-in-list?
 
@@ -1614,7 +1570,7 @@ out, look back to see what you could have done better.
 Look at all the stuff we've covered this chapter!
 
 * A brand new data structure to hold lists of information
-* Understanding _reference_ versus _value_ assignments
+* Understanding assignments with mutable types
 * How to access and change items in a list
 * How to modify and copy the list
 * How to create new lists of repeating values

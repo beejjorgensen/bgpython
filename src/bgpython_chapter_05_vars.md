@@ -62,12 +62,12 @@ x = 90      # Variable x is assigned value 90
 print(x)
 ```
 
-In Python, _variables hold values_^[More strictly speaking, values have
-variable _names_ associated with them. But we're going to go with the
-common _variables hold values_ model for now.]. We're saying on line 1 of
-the code, above, "Store the value `34` in the variable `x`." Think of
-`x` like a bucket that we can put something in, in this case the value
-`34`.
+In Python, _variables refer to values_^[More generally speaking,
+variables refer to objects, but since all we have for now is numeric
+values, let's just go with values.]. We're saying on line 1 of the code,
+above, "The variable `x` refers to the value `34`." Another way to think
+of this that might be more congruent with other languages is that `x` is
+a bucket that you can put a value in.
 
 Then Python moves to the next line of code and runs it, printing `34` to
 the screen. And then on line 3 we put something different in that
@@ -128,7 +128,7 @@ we did, above, on line 6:
 y = x + 40  # y is assigned 130
 ```
 
-When you do this, `y` stays at the value `130` even if `x` changes
+When you do this, `y` refers to the value `130` even if `x` changes
 later. The assignment happens once, when that line is executed, with the
 value in `x` at that snapshot in time, and that's it.
 
@@ -222,6 +222,63 @@ Python:
 
 These are very frequently used by devs. If you have `x = x + 2`, use `x
 += 2`, intead!
+
+
+## Assiging from One Variable to Another {#var-assignment}
+
+Let's check out this code:
+
+``` {.py}
+x = 1000
+y = x
+```
+
+Something interesting happens here that I want you to make note of. It's
+not going to be super useful right now, but it will be later when we get
+to more intermediate types of data.
+
+When you do this, both `x` and `y` refer to the same `1000`.
+
+That's a weird sentence.
+
+But think of it this way. Somewhere in the computer memory is the value
+1000. And both `x` and `y` refer to that single value.
+
+If you do this:
+
+``` {.py}
+x = 1000
+y = 1000
+```
+
+Now there are _two_ 1000 values. `x` points to one, and `y` points to
+the other.
+
+Finally, adding on to the original example:
+
+``` {.py}
+x = 1000
+y = x
+y = 1000
+```
+
+What happens there is that first there is one 1000, and `x` refers to
+it.
+
+Then we assign `x` into `y`, and now both `x` and `y` refer to the same
+1000.
+
+But then we assign a _different_ 1000 to `y`, so now there are two
+1000s, referred to by `x` and `y`, respectively.
+
+(The details of this are rather more nuanced than I've mentioned here.
+See [Appendix C](#assignment-behavior) if you're crazy enough.)
+
+Takeaway: variables are just names for items in memory. You can assign
+from one variable to another and have them both point to the same item.
+
+We're just putting that in your brain early so that we can revive it
+later.
 
 
 ## Your Mental Model of Computation

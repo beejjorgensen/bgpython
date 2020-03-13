@@ -14,7 +14,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 * Use common dictionaries built-in functions
 * Construct new dictionaries with dictionary comprehensions
 * Build Dictionaries of Dictionaries
-* Understand that Dictionaries are Reference Types
+* Understand that Dictionaries are Mutable
 
 ## Chapter Project Specification {#dicts-proj-spec}
 
@@ -405,15 +405,15 @@ print(d["a"]["b"]) # Mars! Ha!
 Nesting dictionaries like this can be a really powerful method of
 storing data.
 
-## Dictionaries are reference types
+## Dictionaries are Mutable
 
 Problem solving step: **Understanding the Problem**.
 
-Remember how we were talking about [references versus values](#ref-val)
-with lists? Turns out that dicts are the same.
+When you make an assignment copy of a dictionary, it's copying the
+_reference_ to the same dictionary, not making a new one. Just like with
+`lists` and anything else.
 
-When you make a copy of a dictionary, it's copying the _reference_ to
-the same dictionary, not making a new one.
+And this is important, because dictionaries are mutable, just like lists.
 
 ``` {.py}
 d = { "beej": 3490 }

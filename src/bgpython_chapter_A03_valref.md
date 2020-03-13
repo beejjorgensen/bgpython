@@ -1,149 +1,13 @@
-# Appendix C: Value versus Reference, for Realsies {#valref}
+# Appendix C: Assignment Behavior {#assignment-behavior}
 
-## The Big Lie
+In this book, we've talked about how Python variables work, but let's
+dig into it a little more here.
 
-In the book, I talk about reference versus value types. We've said:
+When we have data of some kind, like a number or a list or a string,
+that's stored in memory. And we can assign it to a variable name so that
+we can have a way to refer to it.
 
-* When you make an assignment with a value type, a _copy_ of the item
-  gets made. After that, there are two items.
-* When you make an assignment with a reference type, you get another
-  reference to the same entity. After that, there is still only one
-  entity, but with two references to it.
-* Numbers and strings are examples of value types.
-* Lists, dictionaries, and objects are examples of reference types.
-
-For example, with a value assignment:
-
-``` {.py}
-x = 5
-y = x  # y is a copy of x
-
-y = y + 1
-
-print(x)  # still prints 5, since y was a copy
-print(y)  # 6
-```
-
-But with a reference type assignment:
-
-``` {.py}
-x = [1, 2, 3]
-y = x   # x and y refer to the same list!
-
-y.append(4)
-
-print(x)  # [1, 2, 3, 4], since x and y point to the same list
-print(y)  # [1, 2, 3, 4], y is just another name for the same list
-```
-
-The reason I talk about Python variables in these terms is because:
-
-1. It's a mental model that works.
-2. A lot of other languages actually work this way.
-3. And if they don't work this way, the mental model probably still
-   works for them, anyway.
-
-But the way Python does variables under the hood is a little bit
-different.
-
-## Taking The Red Pill
-
-The truth is this: _all variables are reference types in Python_.
-
-Whaaaaaaa... `:mind-blown:`
-
-The real difference all about this: is the type of the data _mutable_ or
-_immutable_. Let's explore this a bit.
-
-If a data type is mutable, you can change it after it has been created.
-If immutable, you can't.
-
-Now, by "change it", I want to be clear that this refers to changing the
-value of a specific piece of data. It does _not_ refer to changing
-something that a variable name refers to. You can always change what a
-variable refers to, even if it referred to something immutable before.
-
-_It's not the variables that are mutable or immutable; it's the data
-they refer to that is mutable or immutable._
-
-Here are the mutable types:
-
-* Lists
-* Dictionaries
-* Sets
-* Objects from classes that you've created
-
-Here is the list of immutable types:
-
-* Everything else: integers, floats, strings, tuples, etc.
-
-A string is one of the easiest immutable types to consider. If you look
-through the documentation for strings, you'll see there's no way to
-change one.
-
-Let's try:
-
-``` {.py}
-s = "Beej!"
-
-s[2] = "X"  # Try to change the second "e" to an "X"
-```
-
-This throws the error:
-
-```
-TypeError: 'str' object does not support item assignment
-```
-
-It's immutable. You can't change it. You can only build new ones:
-
-``` {.py}
-s = "Beej!"
-
-t = s[:2] + "X" + s[3:]  # Make another string with pieces of the old one
-
-print(s)  # "Beej!"
-print(t)  # "BeXj!"
-```
-
-But remember that it's the string itself that is immutable, not the name
-`s`. (Again, variables are neither mutable nor immutable; it's the data
-they refer to that is or isn't.)
-
-So we could have written this:
-
-``` {.py}
-s = "Beej!"
-
-s = s[:2] + "X" + s[3:]  # Make another string with pieces of the old one
-
-print(s)  # "BeXj!"
-```
-
-In that case, we're just changing what `s` points to. It used to point
-to the string `"Beej!"`, but we made another string `"BeXj!"` and
-set `s` to point to that, instead^[What happens to the old string
-`"Beej!"` if no variables refer to it any longer? It get _garbage
-collected_, which means Python detects that the string will no longer be
-used, it frees up the memory, and the string is gone forever. Until
-you make another one just like it.].
-
-Let's contrast to a list, which is a mutable type:
-
-``` {.py}
-x = [1, 2, 3]
-
-x[1] = 99  # No error this time!
-
-print(x)  # [1, 99, 3]
-```
-
-Got it?
-
-Now, how does mutability fit in with the whole "everything is a
-reference" idea? Let's explore that now.
-
-## Back to Reference Versus Value
+That variable name is a reference to the data.
 
 So if everything's a reference, that must mean that if we do this,
 there's only one string, right? Just two names for the same string?
@@ -182,6 +46,40 @@ d = c
 Just like with strings and numbers, both variables `c` and `d` refer to
 the same thing in memory. But the difference is that the list _is_
 mutable! We _can_ change it, and we'd see the change in `c` and `d`.
+
+``` {.py}
+c = [1, 2, 3]
+d = c
+
+c[1] = 99
+print(d[1])   # 99
+```
+
+Of course, you can reassign a variable to point at anything else at any time.
+
+## How This Relates To Functions
+
+All this adds up to Python's call-by-sharing evaluation strategy.
+
+When you call a function, all the arguments passed to the function are
+assigned into the parameters in the parameter list.
+
+That assignment, even though it doesn't use the `=` assignment operator,
+behaves in the same way, nonetheless.
+
+In the following example, both `x` and `a` refer to the same object...
+right up to the moment we reassign `x` on line 4. At that point, `x`
+refers to a different list, but `a` still refers to the original.
+
+``` {.py .numberLines}
+def foo(x):
+    x[1] = 99  # x still refers to the same list as a
+
+    x = [4, 5, 6]  # x refers to a different list than a, now
+
+a = [1, 2, 3]
+foo(a)
+```
 
 ## Is Any of This True?
 
@@ -245,10 +143,11 @@ rightfully raise a bunch of "Beej is hand-waving" red flags.
 The actual details get a bit more gritty, but if you want to stop with
 what we've said up there, you're good.
 
+"No, keep going down the rabbit hole!"
 
-## No, Keep Going Down the Rabbit Hole!
+Okay then!
 
-Okay, first things first.
+## Python Compiler Optimizations
 
 If you take this example from the REPL, above:
 
@@ -275,15 +174,16 @@ $ python test.py
 True
 ```
 
-What gives? Well, in the latter case, the Python interpreter is getting
-a little clever. Before it even runs your code, it analyzes it. It sees
+What gives? Why is it `False` in the first case and `True` in the
+second? Well, in the latter case, the Python interpreter is getting a
+little clever. Before it even runs your code, it analyzes it. It sees
 that you have two `"Beej!"` strings in there, so it just makes them the
 same one to save you memory. Since strings are immutable, you can't tell
 the difference.
 
-And second things second.
+## Internment
 
-In that same example:
+In that same example, above:
 
 ``` {.py}
 >>> s = "Beej!"
@@ -301,7 +201,7 @@ what if we use a different string, like "Alice"?
 True
 ```
 
-`True`?? What's up with that?
+`True`?? What's up with that? Why does Alice get special treatment?
 
 Or look at this:
 

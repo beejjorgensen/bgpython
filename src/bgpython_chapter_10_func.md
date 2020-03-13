@@ -305,22 +305,26 @@ There's a lot of stuff to unpack here, so let's take it nice and slow.
 When we say `def do_the_math`, we're telling Python, "Hey, I'm making a
 brand new function from scratch called `do_the_math`.
 
-The part in the parentheses describes what _arguments_ can be passed to
-this function. In this case, we can pass a single argument to our
-function. It will be represented inside the function by the variable
-`x`.
+The part in the parentheses is a list of what we call _parameters_. This
+describes what can be passed to the function. The actual values we pass
+to the function are called _arguments_.
 
-When we call the function on line 6, `x` will be initialized with a
-_copy_ of the argument. So in this example, `x` will be assigned `30`,
-because that's the argument we passed to the function for that call.
+In this case, we can pass a single argument to our function. It will be
+represented inside the function by the variable `x`.
 
-Variables inside the parentheses have a special name. They are called
-_parameters_.
+When we call the function on line 6, `x` will be initialized with the
+argument, just as if it had been assigned to. So in this example, `x`
+will be assigned `30`, because that's the argument we passed to the
+function for that call.
 
-Remember: _you pass in arguments that get copied into parameters_.
+> In particular, whatever you pass as an argument will also be referred
+> to by the corresponding variable in the parameter list.
 
-A parameter is a special type of _local variable_. We'll get into their
-story on line 2.
+Remember: _you pass in arguments that get assigned into parameters_.
+
+A parameter is a special type of _local variable_, one that comes
+preinitialized with whatever value we passed in as an argument. We'll
+get into their story on line 2.
 
 ### Line 2: Compute the result {.unlisted .unnumbered}
 
@@ -519,6 +523,100 @@ tell it to end the line with some other string.
 
 For now, it's enough to know that these exist and how to call them.
 Later on, we'll talk about how to write our own.
+
+
+## Interlude: Evaluation Strategies
+
+If you don't want to read this section, it's OK to skip. But it's more
+fun if you read it.
+
+Different languages have different behaviors when it comes to passing
+arguments to functions.
+
+Some of them make copies of the values. Some of them just make it so the
+parameter name is an alias for the argument name. Some of them give you
+the option through some keyword.
+
+How the programming language does this is called its [flw[_evaluation
+strategy_|Evaluation_strategy]].
+
+Three very common ones are:
+
+* **Call by Sharing**: This is what Python does. When you call a
+  function, the parameters becomes references to the same objects as
+  their corresponding arguments. This means that if, inside the
+  function, you change the thing the parameter refers to, you'll see
+  that change reflected out in the caller. However, if you assign a new
+  value into a parameter, you will _not_ see the change.
+
+  ``` {.py}
+  def foo(x):
+      # Modify the passed-in object. Caller will see this change.
+      x[1] = 99
+
+      # Assign a new list into x. Caller will _not_ see this change.
+      x = [4, 5, 6]
+
+  a = [1, 2, 3]
+
+  foo(a)
+  print(a)   # [1, 99, 3]
+  ```
+
+* **Call by Value**: a _copy_ of the argument is made and stored in the
+  parameter. The [flw[C programming language|C_(programming_language)]],
+  among others, uses this one. (Sometimes people say Python uses Call by
+  Value, but this is technically not accurate since parameters are not
+  copied when they are passed in; only the reference to the argument is
+  copied. You can make Python simulate Call by Value by making a copy of
+  the parameter when calling the function.)
+
+  ``` {.py}
+  # Simulating call-by-value in Python
+
+  def foo(x):
+      # Modify the passed-in object. Caller would normally see this
+      # change, but if they called it with a copy, only the copy will
+      # be affected.
+      x[1] = 99
+
+  a = [1, 2, 3]
+
+  # Simulate call-by-value by making a copy
+  foo(a.copy())
+
+  print(a)   # [1, 2, 3]
+  ```
+
+  * **Call by Reference**: the parameter effectively becomes an alias for
+  the variable name passed in as the argument. Anything you do to the
+  parameter you effectively do to the argument, including assigning it
+  some other value. Example languages [flw[Fortran|Fortran]],
+  [flw[C++|C%2B%2B]] (usually by value, but can be made by reference).
+  (Sometimes people say Python uses Call by Reference, but this is
+  technically not accurate since you can't assign new values to
+  parameters and see that reflected in the argument.)
+
+Here's a quick summary between them.
+
+Note: In the following table, "Can modify item in caller" means that if
+you have a variable in the caller that refers to a thing, changes to the
+thing in the function will be reflected in the caller's variable.
+
+"Parameter reassignment affects caller" means that if you assign into a
+parameter variable (i.e. change the parameter to refer to a completely
+different thing) the argument variable will also change.
+
+||Can modify item in caller|Parameter reassignment affects caller|
+|-:|:-:|:-:|
+|**Call by Sharing**|Yes|No|
+|**Call by Value**|No|No|
+|**Call by Reference**|Yes|Yes|
+
+Now, I've seen people be fast and loose with these descriptions when it
+comes to Python, so don't hold them to it. In my opinion, from the above
+three items, Call by Sharing is the most accurate. Call by Reference is
+the second-most.
 
 
 ## The Chapter Project

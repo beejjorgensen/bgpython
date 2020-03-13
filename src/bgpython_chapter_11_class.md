@@ -17,7 +17,7 @@ Problem-solving step: **Looking Back**.
 * Understand the relationship between classes and objects
 * Be able to declare a class
 * Be able to use that class to instantiate objects
-* Understand that objects are reference types
+* Understand that objects are mutable
 * Understand the relationship between objects and `None`
 * How to test to see if an object has an attribute or not
 
@@ -515,7 +515,7 @@ USCSS Nostromo: [70, 80, 90]
 
 Perfect!
 
-## Objects are Mutable Reference Types
+## Objects are Mutable
 
 When you assign one object to another, you don't get a second object.
 You get another reference to the first object. Just like happens with
@@ -523,7 +523,7 @@ lists and dictionaries.
 
 Or, another way, doing an assignment with an object does _not_ result in
 a new object. Both variables are names for the same object. ([Check out
-Appendix C for details](#valref).)
+Appendix C for details](#assignment-behavior).)
 
 ``` {.py}
 class Forest:
@@ -554,6 +554,11 @@ set_antelopes_to_10(x)
 
 print(x.antelopes)  # 10!
 ```
+
+Remember that when you call a function, it is assigning the argument
+into the parameter name, so both of them refer to the same object. That
+is, in the code above, `o` refers to the same object `x` does, just as
+if we'd done an assignment with `o = x`.
 
 ## Objects and `None`
 
