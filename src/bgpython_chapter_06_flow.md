@@ -504,7 +504,7 @@ Let's print out only the even numbers between 4 and 18 (that is, print
 from 4 to 18, stepping by 2 each time):
 
 ``` {.py}
-for i in range(4, 20, 2):  # loop from 5 to 9, skipping by 2 each time
+for i in range(4, 20, 2):  # loop from 4 to 18, skipping by 2 each time
     print(i)
 ```
 
