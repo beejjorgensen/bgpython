@@ -601,9 +601,9 @@ Here are some common string methods:
 Here are some examples:
 
 ``` {.py}
-s = "hello, goats! ";
+s = "hello, goats! "
 
-s.split(",") # [ "hello" "goats! " ]
+s.split(",") # [ "hello", "goats! " ]
 s.strip()    # "hello, goats!"
 s.upper()    # "HELLO, GOATS! "
 s.lower()    # "hello, goats! "
