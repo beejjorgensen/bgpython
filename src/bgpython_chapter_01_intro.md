@@ -61,13 +61,14 @@ This official location of this document is:
 
 There you will also find example code.
 
+<!--
 To buy nicely bound print copies (some call them "books"), visit:
 
 * [`http://beej.us/guide/url/bgpbuy`](http://beej.us/guide/url/bgpbuy)
 
 I'll appreciate the purchase because it helps sustain my document-writing
 lifestyle!
-
+-->
 
 ## Email Policy
 
