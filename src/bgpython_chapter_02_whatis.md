@@ -36,7 +36,7 @@ piece of paper. By itself, it's definitely not cookies. But when you
 apply a number of kitchen implements and ingredients and an oven to it,
 pretty soon you have some cookies.
 
-Of course, in that case _you_ have to do the work. With programming, the
+Of course, in that case, _you_ have to do the work. With programming, the
 computer does the work for you. But you have to write down the recipe.
 
 The recipe _is_ the program. Programming is the act of writing down that
@@ -49,7 +49,7 @@ a breeze for the computer to do that.
 
 But others are more complicated. They can extend into millions of lines
 long, or even tens of millions, written by large teams over many years.
-Think triple-A video game titles, or the Linux operating system.
+Think triple-A video game titles or the Linux operating system.
 
 When you're first starting, large programs like that seem impossible.
 But here's the secret: each of those large programs is made up of
@@ -64,7 +64,7 @@ There are _always_ new things to learn, new technologies, new languages,
 new techniques. It's a craft to be developed and perfected over a
 lifetime. Sure, at first you won't have that many tools in your toolkit.
 But every moment you spend working on software gives you more experience
-solving problems, and gives you more methods to attack them.
+solving problems and gives you more methods to attack them.
 
 ## What's This Talk About Problem Solving?
 
@@ -104,7 +104,7 @@ dive right into coding before they've done some of the very important
 preliminary work, but since they love programming so much they don't
 seem to mind wasting time.
 
-(And it's not really a waste of time, because every second you're
+(And it's not a waste of time because every second you're
 programming, you're learning!)
 
 But lots of _bosses_ do consider unplanned development to be a waste of
@@ -127,7 +127,7 @@ It's the same with software.
 > _**Fun Programming Proverb:** Hours of debugging can save you minutes
 > of planning._
 
-There are a number of problem solving frameworks out there. These are
+There are several problem-solving frameworks out there. These are
 blueprints for how to approach a programming problem and solve it, even
 if you have no idea how to solve it when you first see it.
 
@@ -155,7 +155,7 @@ effective at solving just about anything. The Four Main Steps are:
    working.
 
    Often in this phase, you find that there was either something you
-   didn't understand, or something the plan didn't account for. Drop
+   didn't understand or something the plan didn't account for. Drop
    back a step or two until it's resolved, then come back here.
 
 4. **Looking Back**. Look back on the code you got working, and consider
@@ -164,11 +164,10 @@ effective at solving just about anything. The Four Main Steps are:
    there any place you could have structured things better, or anyplace
    you could have removed redundant code?
 
-What's neat about this is that developers apply the steps of problem
-solving to the _entire program_, and they also apply it to the smaller
+What's neat about this is that developers apply the steps of problem-solving to the _entire program_, and they also apply it to the smaller
 problems _within the program_. A big computing problem is always
-composed of a number of subproblems! The problem solving framework is
-used within the problem solving framework!
+composed of many subproblems! The problem-solving framework is
+used within the problem-solving framework!
 
 An example of a real-life problem might be "build a house". But that's
 made up of subproblems, like "build a foundation" and "frame the walls"
@@ -183,9 +182,9 @@ Being a developer is the same as being a problem solver. The problems
 ain't easy, but that's why it pays the big bucks. 
 
 So you should expect that any time you see a programming problem in this
-book, on a programming challenge website, at school, or at work, that
+book, on a programming challenge website, at school, or work, that
 the answer will not be obvious. You're going to have to work hard and
-spend a lot of time to get through the first problem solving steps
+spend a lot of time to get through the first problem-solving steps
 before you'll even be ready to start coding.
 
 ## What is Python?
@@ -216,4 +215,218 @@ Okay, gang! Let's get it... over with!
   computer to solve the problem.
 * The main problem-solving steps are: Understand the Problem, Devise a
   Plan, Carry out the Plan, Look Back.
+                               
+
+             
+
+                                           
+                                      
+                                                             
+
+                                   
+
+                                                                     
+                                                                     
+               
+
+                                                               
+
+                                              
+
+                                                              
+                                     
+
+                                                                  
+                              
+
+                                                                     
+                                            
+
+                                                         
+
+                                                                     
+                                                                    
+                                                                       
+                                  
+
+                                                                        
+                                                                      
+
+                                                                        
+                                                                   
+
+              
+
+                                                                       
+                                     
+
+                                                                       
+                                                                       
+                                                                
+
+                                                                     
+                                                                 
+                                                                  
+                                         
+
+                                                                  
+                                                         
+
+                                                                       
+                                                                        
+                                                                 
+                                                                        
+                                                                        
+                                                            
+
+                                          
+
+                                                                        
+             
+
+                                             
+                                                                       
+                                                                       
+                                                                     
+                                                                 
+                                                                
+                                                            
+
+                                                                       
+                                                                 
+                                                                    
+                                                                     
+                           
+
+                                                                      
+                                   
+
+                                                                      
+                                                                        
+                                      
+
+                                         
+
+                                                                  
+                                                            
+                            
+
+                                                                   
+                                                                      
+                                                                     
+                                                                    
+                          
+
+                                                                 
+                              
+
+                                                                       
+                                                                      
+                                                                   
+
+                                                                    
+                                                                  
+                                                                      
+                                                                       
+                                                                       
+                                                                   
+                            
+
+                                                                       
+                                        
+
+                            
+
+                                                                       
+               
+
+                                                                     
+                                                                       
+                                                          
+
+                                                                
+                                                                        
+                                                                   
+                                                                  
+
+                                                                 
+                                                                       
+                                                                       
+                                                                      
+                                                         
+
+                                                                       
+                                                                  
+                                                                    
+                  
+
+                                                                      
+                                                                       
+                                          
+
+                                                                   
+           
+
+                                                                    
+                                                                    
+                                                               
+
+                                                                        
+                                                                     
+                                                                       
+                                                                       
+                                         
+
+                                                                    
+                                                                      
+                                                                
+                                                                     
+                                          
+
+                                                                      
+                                                                       
+                                                                       
+                         
+
+                                                               
+                                                                        
+                                                                  
+
+                                                                     
+                                                  
+
+                                                                        
+                                                                     
+                                                                     
+                                                                  
+                                            
+
+                  
+
+                                                                       
+                                                                        
+                                                                      
+                                                                    
+                                                 
+
+                                                                       
+                                                                      
+                               
+
+                                                                      
+                                                                       
+                            
+
+                                      
+
+                                                                 
+
+          
+
+                                                                 
+                                       
+                                                                    
+                                
+                                                                      
+                                      
 

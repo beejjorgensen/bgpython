@@ -28,7 +28,7 @@ Let's use our problem-solving framework!
    4. Write code and save it to that file
    5. Run your program from the command line
 
-3. **Carry out the Plane**: This is where we execute on our plan. We'll
+3. **Carry out the Plane**: This is where we execute our plan. We'll
    do that in the following sections.
 
 4. **Look Back**: We'll do this, below, as well. In future chapters,
@@ -78,7 +78,7 @@ drwxr-xr-x    2 beej  staff    64 Nov 18 23:14 .
 drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
 ```
 
-This is showing you all the files you have. Namely there are two of
+This is showing you all the files you have. Namely, there are two of
 them: `.` and `..`. These mean "this directory" and "parent directory",
 respectively. (You know how folders can be inside other folders? The
 outer folder is called the "parent" folder, which is what the parent
@@ -119,8 +119,8 @@ vim hello.py
 > If you want to save and exit, hit `ESC` then type `ZZ` in caps. I'm
 > not going to talk about Vim any longer and will stick to VS Code._
 
-In any case, one you get your editor of choice launched, you should be
-faced with a largely-blank window and a cursor.
+In any case, once you get your editor of choice launched, you should be
+faced with a largely blank window and a cursor.
 
 This is your canvas! This is where the magic happens!
 
@@ -192,3 +192,4 @@ out, look back to see what you could have done better.
 * Move around the directory hierarchy using the shell
 * Edit some source code in an editor
 * Run that program from the command line
+

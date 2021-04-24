@@ -61,7 +61,7 @@ Tower Theater is showing:
 Note that multiple theaters might be showing the same movie title. Avoid
 duplicating the movie data as much as possible. (Remember: Don't Repeat Yourself!)
 
-Stretch goal: also store the per-theater show times for each movie at
+Stretch goal: also store the per-theater showtimes for each movie at
 that theater.
 
 ## What Problem Are We Even Trying To Solve?
@@ -154,7 +154,7 @@ this blueprint a _class_.
 So we're going to define a blueprint for a starship in a class, and then
 we're going to build multiple, different starships based on that class.
 
-Let's do this as simply as possible to start. It's not going to be a
+Let's do this as simple as possible to start. It's not going to be a
 common way of doing things, but it's a place to get your feet wet. We'll
 fix it soon.
 
@@ -184,7 +184,7 @@ indicate to Python that there's no body inside this class.
 > Constructing a new starship object is also referred to as
 > _instantiating_ the object from the class. 
 
-Let's go on to make a couple objects from the blueprint.
+Let's go on to make a couple of objects from the blueprint.
 
 ``` {.py}
 class StarShip:
@@ -197,7 +197,7 @@ s2 = StarShip()
 
 By putting parens after the class name, we're telling Python that we are
 creating a new starship object from the `StarShip` class. In fact, we
-made three of them, and saved a reference to each in `s0`, `s1`, and
+made three of them and saved a reference to each in `s0`, `s1`, and
 `s2`. Of course, none of them have names or locations, but we'll remedy
 that shortly.
 
@@ -250,7 +250,7 @@ means!
 
 Let's start with `self`^[A lot of other languages use the variable name
 `this` instead of `self`.]. This is one of the hardest concepts to grok
-about this chapter, so we'll spend some time on it.
+about in this chapter, so we'll spend some time on it.
 
 Remember how the class is the blueprint, and the objects are made from
 that blueprint?
@@ -260,7 +260,7 @@ newly-minted object? (These are the references we were storing in `s0`,
 `s1`, and `s2`.)
 
 Well, what about the object that's being constructed _right now_ inside
-the `__init__()` method? It already exists, but isn't fully initialized
+the `__init__()` method? It already exists but isn't fully initialized
 yet. But inside the constructor, we have a reference to that object that
 is being built right now. And that reference is in `self`.
 
@@ -287,7 +287,7 @@ When a method has been called for a particular object, Python
 automagically fills in the first parameter with the object that is being
 operated on. We don't have to worry about it.
 
-Python then takes the arguments we _did_ pass, and tacks them on after
+Python then takes the arguments we _did_ pass and tacks them on after
 that.
 
 Let's take a look at that constructor again:
@@ -338,10 +338,10 @@ We're saying "change the `name` attribute on this starship object to be
 the same as the `shipname` parameter that was passed into this method".
 
 This is how we take the ship name that was passed in as an argument and
-attach it to the newly-constructed object! We save a reference to the
+attach it to the newly constructed object! We save a reference to the
 name in an attribute on the object!
 
-Note that I named `shipname` different than `ship` deliberately. (I did
+Note that I named `shipname` differently than `ship` deliberately. (I did
 this to show that they _could_ be different, but also to avoid confusion
 when looking at the example.) But it's far more common to just name them
 the same thing. This is OK since `self.name`, the attribute on `self`,
@@ -372,7 +372,7 @@ class StarShip:
         self.location = [0, 0, 0]   # <-- Add this
 ```
 
-All ships will now start off at `[0,0,0]` because that's what the
+All ships will now start at `[0,0,0]` because that's what the
 blueprint says they'll do.
 
 And we can print it! We'll access the values in those attributes by
@@ -451,7 +451,7 @@ represent the object we're setting the location of. (That is, when we
 call `s0.set_location()`, `self` will be set to refer to `s0` inside
 `set_location()`.)
 
-> **Fun Debugging Fact**: If you get an error about incorrect number of
+> **Fun Debugging Fact**: If you get an error about the incorrect number of
 > arguments to your method, make sure you have `self` as the first
 > parameter!
 
@@ -612,7 +612,7 @@ if p is None:
 
 ## Testing for Attributes
 
-Sometimes at runtime you want to see if an object has an attribute or
+Sometimes at runtime, you want to see if an object has an attribute or
 not. Or maybe you have the attribute name as a string and you want to
 get or set that attribute on an object.
 
@@ -681,7 +681,7 @@ as well.
 
 Problem-solving step: **Carrying Out the Plan**
 
-Here's a theater class. We pass a name to the constructor, but
+Here's a theater class. We pass a name to the constructor but
 initialize the movies to an empty list. We can fill them in later.
 
 ``` {.py .numberLines}
@@ -711,7 +711,7 @@ So far so good.
 Now we need to instantiate a bunch of movies so that we can add them to
 the theaters' `.movie` lists.
 
-There are a couple things we could do.
+There are a couple of things we could do.
 
 We could use one variable per movie, but that's a bit unwieldy. Let's
 use some kind of collection, like a list! We'll make one for all the
@@ -773,10 +773,10 @@ that's _Star Wars_.
 So `theater[0]` is McMenamin's, and `movies[0]` is _Star Wars_.
 
 That means the first line, above, is saying, "Append 'Star Wars' to
-McMenamin's list of currently-showing movies."
+McMenamin's list of currently showing movies."
 
 And the line below that is saying, "Append 'Shaun of the Dead' to
-McMenamin's list of currently-showing movies."
+McMenamin's list of currently showing movies."
 
 Let's do some more. What do each of these lines do?
 
@@ -807,7 +807,7 @@ Think carefully!
 No, there's just one! The one we created back on line 15! Since it's an
 object, making a "copy" through assignment (or with `.append()`) just
 makes another reference to the same object. There's only one, but it's
-referred two by two `Theater` objects. And also referred to by the
+referred to by two `Theater` objects. And also referred to by the
 `movies` list. So many references to the same object for good memory
 savings.
 
@@ -857,7 +857,7 @@ And they refer to things like `movies[0]` instead of referring to them
 by name.
 
 It might be convenient to have some kind of helper function that could
-look up the movie object by name, similar to this:
+lookup the movie object by name, similar to this:
 
 ``` {.py}
 def find_movie_by_name(movies, name):
@@ -874,7 +874,7 @@ find one. A dictionary might be a faster data structure to use here.)
 
 But this approach doesn't handle the case where there are two movies or
 theaters of the same name. So another workaround would have to be found
-there---maybe a unique identifier number for each theater and movie that
+there---may be a unique identifier number for each theater and movie that
 we'd key off instead?
 
 Now... what about that stretch goal to add movie times to all this?
@@ -891,7 +891,7 @@ Yes, but... Different theaters are all showing the same movie. But at
 different times.
 
 If you think about it, the times a movie is showing is more data
-attached to the _theater_, and not really data attached to the the
+attached to the _theater_, and not really data attached to the 
 _movie_. It would make no sense for Disney to say, "Coming this Winter:
 Star Wars Episode 47, at 8 pm and 10 pm!" They don't know when theaters
 are going to show the movie!
@@ -944,7 +944,7 @@ class Theater:
 And now when we construct our lists of theater information, we need to
 add new `MovieTime` objects to the list in the theater. The `MovieTime`
 objects contain references to the movie being shown, as well as a list
-of show times.
+of showtimes.
 
 ``` {.py}
 # McMenamin's is showing Star Wars and Shaun of the Dead
@@ -1004,7 +1004,7 @@ Right now, we're storing the times in strings, but it would be better to
 store them as [fl[`datetime` objects from the Python standard
 library|https://docs.python.org/3/library/datetime.html]].
 
-This would enable us to do date math with the show times, e.g. to tell
+This would enable us to do date math with the showtimes, e.g. to tell
 the user how many minutes until the next showing.
 
 ## Exercises
@@ -1022,7 +1022,7 @@ out, look back to see what you could have done better.
 
 
 1. Write a class that describes a car. What are the attributes the class
-   would have? What methods? (There's no one right answer here---thing
+   would have? What methods? (There's no one right answer here---think
    freely.)
 
    ([flx[Potential Solution|ex_car.py]].)
@@ -1064,16 +1064,16 @@ out, look back to see what you could have done better.
    as it goes, until it reaches the end.
 
    This famous data structure is actually called a _linked list_. But I
-   disguised it as a subway train so as to be less intimidating.
+   disguised it as a subway train to be less intimidating.
 
    ([flx[Solution|ex_subway.py]].)
 
 3. Make a `Room` class that has a `name` attribute.
 
    Also give it `n_to`, `s_to`, `w_to`, and `e_to` attributes. These
-   will refer to the room that are north, south, west, and east of a
+   will refer to the rooms that are north, south, west, and east of a
    particular room. `None` in one of these attributes means there's no
-   exit that direction.
+   exit in that direction.
 
    For example, two rooms that are hooked up west to east (and vice
    versa) could be constructed like this:
@@ -1113,7 +1113,7 @@ world of classes and objects, which is the beginning of learning
 the world-famous Object-Oriented Programming (OOP).
 
 We saw how we could concisely bundle data and functionality into a
-single convenient class, and the make objects from the class, using the
+single convenient class and the make objects from the class, using the
 class as a blueprint.
 
 And, importantly, we learned that multiple variables can refer to the

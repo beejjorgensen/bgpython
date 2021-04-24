@@ -27,7 +27,7 @@ own features to explore and learn.
 
 ## Audience
 
-Beginning programmers. If you have limited experience, or no experience,
+Beginning programmers. If you have limited experience or no experience,
 this book is targeted at you!
 
 Attitude Prerequisite: be inquisitive, curious, have an eye for puzzles
@@ -55,7 +55,7 @@ Emacs, Sublime, Atom, PyCharm, etc.) feel free to use that. This book's
 
 ## Official Homepage and Books For Sale
 
-This official location of this document is:
+The official location of this document is:
 
 * [`http://beej.us/guide/bgpython/`](http://beej.us/guide/bgpython/)
 
@@ -89,7 +89,7 @@ Way|http://www.catb.org/~esr/faqs/smart-questions.html]].
 
 If you don't get a response, hack on it some more, try to find the
 answer, and if it's still elusive, then write me again with the
-information you've found and hopefully it will be enough for me to help
+information you've found, and hopefully, it will be enough for me to help
 out.
 
 Now that I've badgered you about how to write and not write me, I'd just
