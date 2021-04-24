@@ -74,7 +74,7 @@ programs.
 
 So what are they?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Functions are self-contained pieces of code that you can _call_ that do
 a specific thing.
@@ -128,7 +128,7 @@ that does everything
 
 ## Using Built-In Functions
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Python has a _lot_ of built-in functions that you can use. It's not
 necessary to memorize the usage in detail (you can always look up the
@@ -149,7 +149,7 @@ Here are some common ones, though this is not an exhaustive list:
 |`dir()`|Return a list of methods on this object.|
 |`enumerate()`|Return an iterator over a list of (index, value) pairs.|
 |`filter()`|Repeatedly run a function on items of a list filtering some out.|
-|`float()`|Convert a number or string to a floating point value.|
+|`float()`|Convert a number or string to a floating-point value.|
 |`help()`|Get help on a data type.|
 |`hex()`|Return the hexadecimal representation of a number.|
 |`input()`|Get input from the keyboard and return that string.|
@@ -185,7 +185,7 @@ These are all available for use at any time in your program.
 >
 > ---_Excerpt from Monty Python's Argument Clinic sketch_
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 When you call a function, the things you put in the parentheses are
 called the _arguments_ to the function. Arguments are separated by commas.
@@ -203,7 +203,7 @@ operate on that data to produce a result.
 We refer to them by number, as well. "Pass the number of goats in as the
 second argument to the function."
 
-Functions often take a specific number of arguments. But, like we see
+Functions often take a specific number of arguments. But, as we see
 above with `print()`, they can take variable numbers of arguments, too.
 
 ## Writing Your Own Functions
@@ -219,7 +219,7 @@ The power. This is where we fly. Writing your own functions. This is
 where we get to DRY our code, organize it better, and make it more
 readable overall.
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 All programmers use their own functions heavily, and to great effect.
 
@@ -256,7 +256,7 @@ And here we get a taste of why DRY code is good code. Since the spec
 changed^[This happens all the time in development.], we have to go back
 and modify all those lines of code to make them right.
 
-If only we hadn't repeated ourself, we might have been able to only
+If only we hadn't repeated ourselves, we might have been able to only
 change it in one place. This would also be better because we wouldn't be
 taking the risk of missing a place we should have changed the code.
 
@@ -323,7 +323,7 @@ function for that call.
 Remember: _you pass in arguments that get assigned into parameters_.
 
 A parameter is a special type of _local variable_, one that comes
-preinitialized with whatever value we passed in as an argument. We'll
+pre-initialized with whatever value we passed in as an argument. We'll
 get into their story on line 2.
 
 ### Line 2: Compute the result {.unlisted .unnumbered}
@@ -338,11 +338,11 @@ And then Python does that math and stores that into the variable
 Now that variable `result` is special. It's what we call a _local
 variable_. Because it's used inside the function, it's only visible
 inside the function. Once the function returns (more on that below), the
-valued in the local variables vanish forever.
+value in the local variables vanish forever.
 
 You can name the local variables anything you want, even if you've used
 that same name in another function! Each local variable is isolated from
-the rest of the world, and only exists within its own function.
+the rest of the world and only exists within its own function.
 
 And as I mentioned above, the parameters are also local variables. They
 just have the added property that they are assigned the values of the
@@ -364,7 +364,7 @@ We call our function, and we take the _return value_ from that function
 and assign it into the variable `answer`. Then we can do things with it,
 like print it out on line 7.
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 In the function as written, above, we use a lot of variables to help
 demonstrate a number of concepts and ideas surrounding functions.
@@ -383,7 +383,7 @@ Compare the two until you are convinced they are equivalent.
 
 ## Multiple Return Values
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 You can always return a list or a dict or anything from a function, but
 you can also return two values and assign them to different variables.
@@ -414,11 +414,11 @@ Magic!
 
 ## What Makes a Good Function
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 The biggest rule is "do one thing and do it well".
 
-It's more of a guideline than a rule, because you're the boss when it
+It's more of a guideline than a rule because you're the boss when it
 comes to programming.
 
 But it's a great guideline that should be followed when you can.
@@ -469,7 +469,7 @@ like it more, do it!
 
 ## Positional Arguments versus Keyword Arguments
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We'll talk more about this in detail later, but function arguments can
 be split into these two broad classes in Python: _positional_ and
@@ -537,13 +537,13 @@ Some of them make copies of the values. Some of them just make it so the
 parameter name is an alias for the argument name. Some of them give you
 the option through some keyword.
 
-How the programming language does this is called its [flw[_evaluation
+How the programming language does this is called it's [flw[_evaluation
 strategy_|Evaluation_strategy]].
 
 Three very common ones are:
 
 * **Call by Sharing**: This is what Python does. When you call a
-  function, the parameters becomes references to the same objects as
+  function, the parameters become references to the same objects as
   their corresponding arguments. This means that if, inside the
   function, you change the thing the parameter refers to, you'll see
   that change reflected out in the caller. However, if you assign a new
@@ -554,7 +554,7 @@ Three very common ones are:
       # Modify the passed-in object. Caller will see this change.
       x[1] = 99
 
-      # Assign a new list into x. Caller will _not_ see this change.
+      # Assign a new list into x. The caller will _not_ see this change.
       x = [4, 5, 6]
 
   a = [1, 2, 3]
@@ -575,7 +575,7 @@ Three very common ones are:
   # Simulating call-by-value in Python
 
   def foo(x):
-      # Modify the passed-in object. Caller would normally see this
+      # Modify the passed-in object. The caller would normally see this
       # change, but if they called it with a copy, only the copy will
       # be affected.
       x[1] = 99
@@ -621,17 +621,17 @@ the second-most.
 
 ## The Chapter Project
 
-Problem solving step: **Understanding the Problem**
+Problem-solving step: **Understanding the Problem**
 
 It's that time! If you need a refresher, [pop back up to the top and
 check out the spec](#func-proj-spec).
 
-So we want to do a couple things:
+So we want to do a couple of things:
 
 1. Read in a list of starship positions.
 2. Print out a grid of distances between each ship.
 
-The positions are entered as X,Y,Z coordinates (until the user enters
+The positions are entered as X, Y, Z coordinates (until the user enters
 "done").
 
 The distances are computed with the distance formula variation of the
@@ -640,7 +640,7 @@ Pythagorean Theorem.
 A grid of distances is printed. There should be ship numbers along the
 axes.
 
-Problem solving step: **Devising a Plan**
+Problem-solving step: **Devising a Plan**
 
 We already have a bit of a plan, don't we? We listed it right up there.
 
@@ -661,7 +661,7 @@ locations = get_ship_locations()
 print_grid(locations)
 ```
 
-We're taking a _top down_ approach, here. Starting with the big pieces
+We're taking a _ top-down_ approach, here. Starting with the big pieces
 of logic and then implementing them as we go down.
 
 In fact, let's simplify the problem, and just start like this:
@@ -677,22 +677,22 @@ That way we can just do one bit and make sure it's working.
 > **Fun Motto Fact**: Get something working as quickly as possible, no
 > matter how much a piece of the project it is.
 
-Problem solving step: **Understanding the Problem**
+Problem-solving step: **Understanding the Problem**
 
 For getting the ship locations, looks like we want to have the user
-enter an X,Y,Z coordinate. Then we want to split that into a list of
+enter an X, Y, Z coordinate. Then we want to split that into a list of
 numbers. And we need to make sure they are int type---remember that
 `input()` returns a string, so we'll have to convert them to int.
 
 And we repeat that until the user enters "done".
 
-Problem solving step: **Devising a Plan**
+Problem-solving step: **Devising a Plan**
 
 Looping until the user enters "done" is a solved problem. We've done
 that a few times now. Just make a variable for the `while()` condition,
 and then set it when the user enters "done".
 
-Otherwise we have to split the string up into a list of 3 numbers,
+Otherwise, we have to split the string up into a list of 3 numbers,
 splitting on the comma. Remember how to do that?
 
 Yes, that's right (or no, not right, if you don't remember), it's the
@@ -702,7 +702,7 @@ Yes, that's right (or no, not right, if you don't remember), it's the
 "1,2,3".split(',')  # produces list ["1","2","3"]
 ```
 
-But that's not enough. Like we noted, we need to convert that list from
+But that's not enough. As we noted, we need to convert that list from
 a list of strings to a list of numbers. Remember how to convert a string
 to a number? Yes, with the built-in `int()` function!
 
@@ -712,7 +712,7 @@ int("2") == 2  # True!
 
 So we can loop through our list of strings and convert them to ints.
 
-And then we'll have a list of 3 ints, representing the X,Y,Z coordinates
+And then we'll have a list of 3 ints, representing the X, Y, Z coordinates
 of a single ship. Of course, the user is going to enter any number of
 ships, and we'll have to keep all those lists of coordinates
 somewhere... where?
@@ -720,7 +720,7 @@ somewhere... where?
 It's almost like we'll need a list for all those lists. A list of lists!
 Why not? We made some of those in the lists chapter, right?
 
-So we add the new X,Y,Z list to the end of a master list that holds all
+So we add the new X, Y, Z list to the end of a master list that holds all
 the coordinates.
 
 Then we can return that master list to be used later when we print the
@@ -738,14 +738,14 @@ _completely independently_! In fact, if you have a programming pal, you
 could get them to write the `print_grid()` function at the same time you
 were writing the `get_ship_locations()` function!
 
-Problem solving step: **Carrying Out the Plan**
+Problem-solving step: **Carrying Out the Plan**
 
 Let's get coding!
 
 ``` {.py}
 def get_ship_locations():
     """
-    Ask the user to enter a number of X,Y,Z ships coordinates.
+    Ask the user to enter a number of X, Y, Z ships coordinates.
     Returns a list of all the coordinates.
     """
 
@@ -785,7 +785,7 @@ Enter ship location x,y,z (or "done"): done
 ```
 
 There's our list of lists holding the ships' coordinates! It's ready to
-feed into the `print_grid()` function. But first we'd better think about
+feed into the `print_grid()` function. But first, we'd better think about
 that for a bit.
 
 One more thing: if you were looking closely, you saw the big multiline
@@ -795,7 +795,7 @@ overall information about the function. Automatic documentation
 generators can extract these and build documentation for you, just like
 you can get with the `help()` function in the [REPL](#repl).
 
-Problem solving step: **Understanding the Problem**
+Problem-solving step: **Understanding the Problem**
 
 All righty. What do we need to do for this second part of printing out
 the grid of distances between the ships?
@@ -805,9 +805,9 @@ There are sort of three big pieces here.
 * We need to print out a grid.
 * We need the first row and first column to list out ship numbers so we
   can cross-reference.
-* We need to actually compute the distance and print that.
+* We need to compute the distance and print that.
 
-Problem solving step: **Devising a Plan**
+Problem-solving step: **Devising a Plan**
 
 Let's simplify a bit first. Instead of worrying about computing the
 distance, let's just concentrate on the grid. We'll just put the bogus
@@ -842,7 +842,7 @@ print(f'{distance:8.2f})   # prints "   99.99"
 
 All righty! Let's print some stuff!
 
-Problem solving step: **Carrying Out the Plan**
+Problem-solving step: **Carrying Out the Plan**
 
 ``` {.py}
 def print_grid(locations):
@@ -946,7 +946,7 @@ which is looking _right on_. Except that all the distances are listed as
 `99.99`. Let's get that out of there and replace it with the real
 distance between the ships.
 
-Problem solving step: **Devising a Plan**
+Problem-solving step: **Devising a Plan**
 
 Distance! We see the distance formula up there at the top, repeated here:
 
@@ -963,7 +963,7 @@ $x\times{x}=$x^2$).
 
 Let's code them both and then use the one you like best.
 
-Problem solving step: **Carrying Out the Plan**
+Problem-solving step: **Carrying Out the Plan**
 
 Here's computing the distance between points `p0` and `p1` (both of
 which are lists of X,Y,Z triples) using `math.pow()`:
@@ -1075,7 +1075,7 @@ out, look back to see what you could have done better.
    ```
 
    where `m1` is the mass of one planet, `m2` is the mass of the other
-   planet, and `r` is the distance between them.
+   planet and `r` is the distance between them.
 
    So far so good.
 

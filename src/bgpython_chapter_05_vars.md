@@ -21,7 +21,7 @@ from the keyboard and prints out the sum of the two numbers.**
 
 ## Data, Variables, and Math
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 _Data_ is the general term we use to describe information stored in the
 computer. In the case of programming, we're interested in values that we'll do
@@ -70,7 +70,7 @@ of this that might be more congruent with other languages is that `x` is
 a bucket that you can put a value in.
 
 Then Python moves to the next line of code and runs it, printing `34` to
-the screen. And then on line 3 we put something different in that
+the screen. And then on line 3, we put something different in that
 bucket. We store `90` in `x`. The `34` is gone--this type of bucket only
 holds one thing^[Later we'll learn that other types of buckets can hold
 more than one thing.].
@@ -209,7 +209,7 @@ x = x / 5
 x /= 10
 ```
 
-Here are few of the arithmetic assignment expressions available in
+Here are a few of the arithmetic assignment expressions available in
 Python:
 
 |Operator|Meaning|Usage|Longhand Equivalent|
@@ -221,10 +221,10 @@ Python:
 |`%=`|Modulo and assign|`x %= y`|`x = x % y`|
 
 These are very frequently used by devs. If you have `x = x + 2`, use `x
-+= 2`, intead!
++= 2`, instead!
 
 
-## Assiging from One Variable to Another {#var-assignment}
+## Assigning from One Variable to Another {#var-assignment}
 
 Let's check out this code:
 
@@ -283,7 +283,7 @@ later.
 
 ## Your Mental Model of Computation
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 This is a biggie, so listen up for it.
 
@@ -332,22 +332,22 @@ your bug is.
 
 ## User Input
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We want to get input from the user and store it in a variable so that we
 can do things with it.
 
-Remember that our goal this chapter is to write a program that inputs
+Remember that our goal in this chapter is to write a program that inputs
 two values from the user on the keyboard and prints the sum of those
 values.
 
-Python comes with a built in _function_ that allows us to get user
+Python comes with a built-in _function_ that allows us to get user
 input. It's called, not coincidentally, `input()`.
 
 But wait---what is a function?
 
 A function is a chunk of code that does something for you when you
-_call_ it (that is, when you ask it to). Functions accept _arguments_
+_call_ it (that is when you ask it to). Functions accept _arguments_
 that you can _pass in_ to cause the function to modify its behavior.
 Additionally, functions _return_ a value that you can get back from the
 function after it's done its work.
@@ -355,7 +355,7 @@ function after it's done its work.
 So here we have the `input()` function^[`input()` is what we call a
 _built-in_ in Python. It comes with the language and we get to make use
 of it. Later we'll learn to write our own functions from scratch!],
-which reads from the keyboard when you call it. As an argument, you an
+which reads from the keyboard when you call it. As an argument, you can
 pass in a _prompt_ to show the user when they are ready to type
 something in. And it returns whatever the user typed in.
 
@@ -398,7 +398,7 @@ data.
 
 ## Data Types
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We started with numbers, earlier. That was pretty straightforward. The
 variable was assigned a value and then we could do math on it.
@@ -419,7 +419,7 @@ track of whether a variable holds an integer, a _floating point_^[This
 is the way most computers represent numbers with a decimal point in
 them, such as $3.14159265358979$. When you see "floating point" or
 "float", think "number with a decimal point in it" as opposed to
-"integer".] number, or a string of characters.
+"integer".] number or a string of characters.
 
 Here are some examples and their associated types. When you store one of
 these values in a variable, the variable remembers the type of data
@@ -471,7 +471,7 @@ How can we solve this problem?
 
 ## Converting Between Data Types
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 If we can't add strings mathematically, can we convert the string
 `"3490"` into the integer `3490` and then do math on that?
@@ -501,7 +501,7 @@ Here are some of the conversion functions available to you in Python:
 |Function|Effect|
 |:-:|:-|
 |`int()`|Convert argument to an integer and return it|
-|`float()`|Convert argument to a floating point number and return it|
+|`float()`|Convert argument to a floating-point number and return it|
 |`str()`|Convert argument to a string and return it|
 
 
@@ -511,7 +511,7 @@ problem: input two numbers from the keyboard and print the sum?
 
 ## Input Two Numbers and Print the Sum
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 We know:
 
@@ -523,7 +523,7 @@ We know:
 Now---how do we put all that together to write a program that inputs two
 numbers from the keyboard and prints their sum?
 
-This is the _Devising a Plan_ portion of problem solving. We're not
+This is the _Devising a Plan_ portion of problem-solving. We're not
 going to write code to make this happen. We're just going to write an
 outline of the individual steps the program must describe in a language
 called _pseudocode_ (which is English that looks kinda like code).
@@ -554,7 +554,7 @@ print the sum of x + y
 If we're satisfied that our plan is solid, it's time to move to the next
 phase.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Now let's convert each of those lines to real Python. I'll throw in the
 pseudocode as comments so we can see how they compare. ([flx[Source
@@ -626,7 +626,7 @@ absolutely handle it. It's just a big sandbox for you to play in.
 
 ## Wrapping it Up
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 This grimly-named step is where we take a look at our code and decide if
 there was a better way to attack this problem. It's important to
@@ -642,7 +642,7 @@ What could be better?
 
 * We saw earlier that passing in floating point numbers (with a decimal
   point) bombed out. It would be nice if the program would add both
-  floating point.
+  floating-point.
 
 What else could we do?
 
@@ -667,8 +667,8 @@ going to get you there on its own.
 
 **Resist the urge to look at the solution until you've solved it!** Give
 yourself a time limit. "If I haven't solved this in 20 minutes, I can
-look at the solution." That 20 minutes isn't wasted---it's invaluable
-problem solving practice time. During that time, you're building a
+look at the solution." That 20 minute isn't wasted---it's invaluable
+problem-solving practice time. During that time, you're building a
 scaffold in your brain that can _hold_ the solution once you see it.
 
 If you just skip straight to the solution, look at it, and say, "Yup,
@@ -804,6 +804,7 @@ This chapter we covered:
   * String
   * Integer
   * Floating Point
-* Keeping the problem solving framework in mind the whole time!
+* Keeping the problem-solving framework in mind the whole time!
 
 It's a great start, but there's plenty more to come!
+

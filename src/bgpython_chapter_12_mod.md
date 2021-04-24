@@ -49,12 +49,12 @@ Keep this project in mind as we go through this chapter's material.
 Problem-solving step: **Understanding the Problem**.
 
 Modules are pieces of self-contained code that you can _import_ into
-your code and use. Think of them like prefabricated building blocks that
+your code and use. Think of them as prefabricated building blocks that
 you can put together in your project to accomplish tasks without needing
 to write out the details yourself.
 
 This is actually a really powerful concept that you have at your
-disposal. Tons of code has already been written, and you can just use it!
+disposal. Tons of code have already been written, and you can just use it!
 
 Do you want to compute anything to do with date and time? Python has a
 module for that.
@@ -71,7 +71,7 @@ are modules for that.
 There are [fl[_tons_ of modules built-in to
 Python_|https://docs.python.org/3/library/index.html]]. Give the list a
 skim so you know what's there, but you don't need to drill down at all
-unless you're dying ot curiosity over a particular module.
+unless you're dying of curiosity over a particular module.
 
 Are there are [fl[_zillions_ of third-party modules|https://pypi.org/]]
 you can use, as well.
@@ -82,7 +82,7 @@ You can import as many modules as you want into an individual project.
 
 Problem-solving step: **Understanding the Problem**.
 
-You declare your intent to us a module with the `import` keyword. We're
+You declare your intent to use a module with the `import` keyword. We're
 going to do an example with the built-in [fl[`sys`
 module|https://docs.python.org/3/library/sys.html]], which contains all
 kinds of useful information about the system.
@@ -131,7 +131,7 @@ prints "`win32`".
 
 Notice there was nothing we had to do ourselves to make this
 determination. (Which is good, because it would be a pain to write!)
-Fortunately the `sys` module had everything we needed right there.
+Fortunately, the `sys` module had everything we needed right there.
 
 ## Command Line Arguments
 
@@ -167,14 +167,14 @@ So you can control the behavior of the program from the command line!
 When you run it, it's nice to be able to influence behavior this way
 instead of having to call `input()` with prompts and everything else.
 
-But _how_ do you get those extra command line arguments?
+But _how_ do you get those extra command-line arguments?
 
-Our good friendly `sys` module can help us again here.
+Our good friend `sys` module can help us again here.
 
 The variable `sys.argv` is a list that contains the program name
 followed by all the command line arguments.
 
-Run this program with a variety of command line arguments and see what
+Run this program with a variety of command-line arguments and see what
 it outputs:
 
 ``` {.py}
@@ -206,7 +206,7 @@ Print a calendar for any month and year!
 Problem-solving step: **Understanding the Problem**.
 
 Your first thought should have been something like, "Holy cow,
-Beej---how am I supposed to figure all that out? Was November 12, 1955 a
+Beej---how am I supposed to figure all that out? Was November 12, 1955, a
 Friday or a Saturday? I don't know!"
 
 Luckily, we don't have to know! There's a module, `calendar`, that we
@@ -236,7 +236,7 @@ OK---so hopefully you got about halfway down the page and found the
 > This class can be used to generate plain text calendars.
 
 That sounds promising. In fact, just below that, it mentions there's a
-`prmonth()` method on the class that you can use to to print a calendar
+`prmonth()` method on the class that you can use to print a calendar
 for a given month and year.
 
 Perfect!
@@ -313,7 +313,7 @@ changing the code. Much more usable.
 Problem-solving step: **Devising a Plan**
 
 We saw in this section how to print a calendar, and we saw in the
-previous section how to get command line arguments into a list.
+previous section how to get command-line arguments into a list.
 
 Let's get the year and month from `sys.argv` and pass them into
 `calendar.prmonth()`.
@@ -415,7 +415,7 @@ print(type(month))   # <-- Add this
 calendar.prmonth(year, month)
 ```
 
-Running it again, we get the same error, but before that we see some
+Running it again, we get the same error, but before that, we see some
 output:
 
 ```
@@ -466,7 +466,7 @@ What about a negative month?
 That crashes with a big ugly stack trace.
 
 We could fix that by checking the values of `month` and making sure the
-user specified 1-12, or print an error otherwise. Something like this:
+user-specified 1-12, or print an error otherwise. Something like this:
 
 ``` {.py}
 if month < 1 or month > 12:
@@ -516,7 +516,7 @@ can bring that in to use directly, instead.
 
 Let's do an example.
 
-The `time` modules has a function called `ctime()` that prints the time
+The `time` modules have a function called `ctime()` that prints the time
 out in a classic format.
 
 ``` {.py}
@@ -564,7 +564,7 @@ some code that says:
 print(ctime())
 ```
 
-Is that a function that the programmer defined, or is it something that
+Is that a function that the programmer-defined, or is it something that
 we `from import`ed from somewhere? By putting the name of the module
 first, it helps mitigate that ambiguity:
 
@@ -591,8 +591,8 @@ language has its own way of doing things, and those ways are legion.
 
 Step one: give up now. You're not going to memorize all this.
 
-The best thing to do is skim it at the contents level. Just try to
-remember that this exists a module for dealing with times. And a module
+The best thing to do is skim it at the level of the contents. Just try to
+remember that there exists a module for dealing with times. And a module
 for dealing with calendars. And for dealing with network communication.
 And so on.
 
@@ -614,7 +614,7 @@ you want me to somehow gaze magically inside a ZIP file and extract the
 contents?"
 
 Well... yes. By "magically", though, I mean something in particular. As
-you might have guess, there's a [fl[module for opening ZIP
+you might have guessed, there's a [fl[module for opening ZIP
 files|https://docs.python.org/3/library/zipfile.html]]. We can import
 this and make it do the heavy lifting for us!
 
@@ -1041,9 +1041,9 @@ Modules make the world go around... a lot more easily than it would have
 if you had to write all that stuff yourself.
 
 In this chapter, we learned what modules were and how to find them in
-the offical Python docs.
+the official Python docs.
 
-Also, we learned how to import entire modules, and individual components
+Also, we learned how to import entire modules and individual components
 from within modules.
 
 Later we'll learn to write and import our own modules.

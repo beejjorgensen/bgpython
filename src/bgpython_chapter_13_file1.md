@@ -71,11 +71,11 @@ In order:
 
 The commands are:
 
-* `l`ist: list 10 lines (or up through the last line if there are fewer
-  than 10 lines remaining) starting from the line the user specifies. If
+* `l`ist: list 10 lines (or up through the last line if fewer
+  than 10 lines are remaining) starting from the line the user specifies. If
   the user specifies a number less than 1, assume they entered 1.
 
-* `a`ppend: append multiple lines after the line the user specified.
+* `a`ppend: append multiple lines after the line the user-specified.
   Read lines one at a time, storing them in turn, until the user enters
   a sole period ("`.`") on a blank line.
 
@@ -186,7 +186,7 @@ close it.
 Linux, Windows, MacOS, Unix, etc. It's a program that helps you, the
 user, interface with the hardware on the system, like keyboards,
 screens, and disks.] (OS) to give you access to the file. You can open
-for reading, for writing, or for both.
+for reading, for writing, or both.
 
 For this section, we'll want to ask the OS to open the file for reading.
 
@@ -276,11 +276,11 @@ with open("wargames.txt") as f:
 
 If you're looking closely, you'll notice that the `f.close()` is
 missing. That's because when you use `with` to open the file, that gets
-handled automatically for you! Not only that, but even if some error
+handled automatically for you! Not only that but even if some error
 occurs, the file will be properly closed.
 
 Although the pattern of open-read-close is really common in other
-languages, and Python supports it, the preferred way of doing things is
+languages and Python supports it, the preferred way of doing things is
 with the fantastic `with` statement.
 
 ## Reading Data a Line at a Time {#file1-line-at-a-time}
@@ -372,9 +372,9 @@ matter what system you're running the program on.
 Problem-solving step: **Understanding the Problem**.
 
 So far we've been dealing with getting data out of files, but now let's
-talk about creating new file and writing data to them.
+talk about creating a new file and writing data to them.
 
-This is a how programs permanently save data that they need to use
+This is how programs permanently save data that they need to use
 later. If you don't save the data to disk, then it all vanishes once the
 program exits.
 
@@ -383,7 +383,7 @@ to specify that we want to _write_. (If we don't tell `open()`
 otherwise, it assumes we're opening for reading.)
 
 > **WARNING**: if you open an existing file for writing, the contents of
-> that file are instantly lost!
+> that file is instantly lost!
 
 Let's open a file and write some data to it using the `write()` method.
 
@@ -406,7 +406,7 @@ chapter](#file1-proj-spec).
 This project is a bit bigger than the others, eh? I mean, writing an
 entire editor is kinda biting off a lot, isn't it?
 
-Sure! Yeah, it's a lot. But we can do it using the problem solving
+Sure! Yeah, it's a lot. But we can do it using the problem-solving
 framework just like always.
 
 Something else a little different here is that I'm not going to include
@@ -438,20 +438,20 @@ Problem-solving step: **Devising a Plan**
 
 We're going to do something a little different this time. We're going to
 make an overarching plan, and then jump back and forth between Planning
-and Carrying Out the subplans the larger plan is comprised of.
+and Carrying Out the sub plans the larger plan is comprised of.
 
-This is little more like how software dev actually works. You have a
+This is a little more like how software dev actually works. You have a
 general idea of where you're going, and you work out the details as you
 get to them.
 
 > This is a bit of a double-edged sword, and it takes practice and
-> experience to get it right. You don't want to overplan, because you're
+> experience to get it right. You don't want to over-plan, because you're
 > undoubtedly going to have to change things and you don't want to waste
-> your time. And you don't want to underplan, because then hidden
+> your time. And you don't want to under-plan, because then hidden
 > gotchas might... get you later. You want to plan _just the right
 > amount_. Whatever that is.
 >
-> In reality, devs consistently underplan. And they still make it work
+> In reality, devs consistently under-plan. And they still make it work
 > somehow, like _MAGIC_.
 >
 > And by "_MAGIC_", I mean tons of sweat, tears, and off-color language.
@@ -542,12 +542,12 @@ Problem-solving step: **Devising a Plan**
 Looks like the next reasonable step is to read the file into memory so
 that we can manipulate it later.
 
-So a couple questions:
+So a couple of questions:
 
 * How do we read a file?
 * What do we store it in?
 
-As for the first, hopefully you've been reading this chapter and know
+As for the first, hopefully, you've been reading this chapter and know
 about [how to open a file for reading and read individual lines from
 it](#file1-line-at-a-time).
 
@@ -626,7 +626,7 @@ Take a moment to digest what we did there: we made a _copy_ of the data
 that was on disk and stored that copy in memory.
 
 What's next in the big overall plan? Looks like it might be time for a
-user input loop.
+user-input loop.
 
 Problem-solving step: **Devising a Plan**
 
@@ -721,7 +721,7 @@ Since we have all these different kinds of functionality, let's put them
 in individual functions to keep the code well organized.
 
 We'll make a `handle_list()` function that is called when the user asks
-to list the file. It'll take a couple arguments: the arguments the user
+to list the file. It'll take a couple of arguments: the arguments the user
 typed after a command, as well as the list of lines we're going to
 manipulate.
 
@@ -762,7 +762,7 @@ takes all the same arguments and, if necessary, returns a sensible
 value. But it doesn't, in fact, do anything of use. It's a good way to
 test that your overall call flow is working right. And it gives you a
 nice, easy TODO spot to fill out.] of the function to handle it, just to
-see if its working:
+see if it's working:
 
 ``` {.py}
 def handle_list(args, lines):
@@ -856,11 +856,11 @@ We have two problems.
 Yes, off-by-one errors are famous enough to have their own Wikipedia
 page.
 
-As the name suggests, our computations are one off. But why? How?
+As the name suggests, our computations are one-off. But why? How?
 
 This is a really common disagreement between humans and computers. We
 humans like to have our lists start at index "1", and computers like
-them to start at index "0". It's the age old battle. Even the Romans
+them to start at index "0". It's the age-old battle. Even the Romans
 started with "I", but that was mainly because Roman numerals didn't have
 a character for zero until 725 AD---latecomers!
 
@@ -936,7 +936,7 @@ IndexError: list index out of range
 ```
 
 Same pukey error, but let's look at the lines before then. The good news
-is we're getting all the lines printed. The bad news is that line number
+is we're getting all the lines printed. The bad news is that the line number
 on the left is in computer 0-based land, and we need it in human 1-based
 land. Let's add another helper function:
 
@@ -1128,8 +1128,8 @@ For this, the user enters `e` for "edit", followed by a line number.
 Problem-solving step: **Devising a Plan**
 
 Let's do the same as with delete, except that instead of using `pop()`
-to remove a line, we'll just use `input()` to get another one, and store
-it directly in the list.
+to remove a line, we'll just use `input()` to get another one and store
+it directly on the list.
 
 Problem-solving step: **Carrying Out the Plan**
 
@@ -1234,12 +1234,12 @@ the top of the file.
 
 Problem-solving step: **Devising a Plan**
 
-So let's go ahead and do the usual command line parsing to see which
+So let's go ahead and do the usual command-line parsing to see which
 line we want to insert after.
 
 And then let's loop until the user enters a single period.
 
-Inside the loop we'll read a line and append it into the list in the
+Inside the loop, we'll read a line and append it into the list in the
 right place.
 
 Looking at the documentation, there is an `append()` method for lists,
@@ -1291,7 +1291,7 @@ that appends on the end:
 [99, 11, 999, 22, 33, 9999]
 ```
 
-Yes! It worked! We don't have to special case a call to `append()`.
+Yes! It worked! We don't have to special-case a call to `append()`.
 
 It is a little weird, but if you put _any_ index past the last one in
 for append, it'll put the value at the end of the list.
@@ -1329,7 +1329,7 @@ And you're right---it does nothing. We don't have to do that.
 But there's an argument to be made that it's clearer to a future reader
 of the code. We clearly subtract one to get to a 0-based indexing method
 as soon as possible. And we add one to get `insert()` to insert after a
-line instead of before it. Two different reasons to do the arithmetic,
+line instead of before it. Two different reasons to do the arithmetic
 clearly spelled out. If we were to just leave them both off, that
 information wouldn't be obvious to the next developer reading the code.
 
@@ -1485,7 +1485,7 @@ And:
 * Parse the argument from the "w" command to get the filename
 
 Since "write a bunch of lines to disk" is a good self-contained
-operation, I plan to write function that does just that and nothing
+operation, I plan to write a function that does just that and nothing
 more. I'll write a different function to get called when a write is
 requested which will make sure the args are correct and so on. Keep it
 modular!
@@ -1544,7 +1544,7 @@ Problem-solving step: **Looking Back**
 
 There are a lot of things we can do to improve the code here.
 
-* Add the option for the delete command to specify and ending as well as
+* Add the option for the delete command to specify an ending as well as
   a starting line to erase a block of lines at once.
 
 * Make it so that if the user specifies a filename on the command line
@@ -1552,7 +1552,7 @@ There are a lot of things we can do to improve the code here.
   same file specified on the command line.
 
 * Add an insert command that works like append, except it puts the new
-  material _before_ the line specified. How can you do this with a
+  material _before_ the line specified. How can you do this with 
   minimal addition of code? After all, append and insert are _very_
   similar.
 
@@ -1637,7 +1637,7 @@ out, look back to see what you could have done better.
 
 2. Write a program to read comma-separated values (CSV) files.
 
-   A CSV file is one that has a bunch of values separated by commas, one
+   A CSV file has a bunch of values separated by commas, one
    record per row.
 
    Here's [flx[the file we want to read|games.csv]]. Look through it and
@@ -1755,7 +1755,7 @@ out, look back to see what you could have done better.
 
 ## Summary
 
-What a chapter! That was like 50% project, eh?
+What a chapter! That was like a 50% project, eh?
 
 But look at what we learned!
 

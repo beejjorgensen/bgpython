@@ -6,7 +6,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Objective
 
-* Understand whats lists are
+* Understand what lists are
 * Understand how assignments with mutable types work
 * Access individual elements and slices in a list
 * Iterate over lists with `for`
@@ -47,7 +47,7 @@ Keep this project in mind as you read through the chapter.
 
 ## What Are Lists?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember how regular variables hold one thing? Well, _lists_ are
 variables that can hold a lot of things.
@@ -60,9 +60,9 @@ How do I tell Python that I want the second thing in the list? Or the
 fifth thing?
 
 Luckily it's easy enough; we just have to specify the _index_ into the
-list that hold the thing we want.
+list that holds the thing we want.
 
-Think of it like a row of postboxes, numbered starting from `0`, then
+Think of it as a row of postboxes, numbered starting from `0`, then
 `1`, then `2`, and going on up to however many postboxes we have. Each
 postbox can hold a thing, and you can refer to it by giving the postbox
 number.
@@ -77,7 +77,7 @@ There's a list. We know it's a list because of the square brackets
 around it. It's a list of four integers.
 
 Let's print out the zeroth element in the list. We do this by using
-square brackets after the list variable name, and giving the index
+square brackets after the list variable name and giving the index
 inside those brackets. Does this look familiar? It's the same syntax we
 used to get individual characters out of strings!
 
@@ -134,7 +134,7 @@ developers.
 
 ## List Assignments
 
-You remember [way back in the variables chapter when I was talking about
+Do you remember [way back in the variables chapter when I was talking about
 how variable assignment worked](#var-assignment)? [Revisit it if you
 have to](#var-assignment).
 
@@ -154,7 +154,7 @@ x = "Hello"
 y = x
 ```
 
-In that example, like we learned earlier, there is one string `"Hello"`
+In that example, as we learned earlier, there is one string `"Hello"`
 in memory, and both `x` and `y` refer to it.
 
 Strings are immutable. So you can't do something like this:
@@ -191,7 +191,7 @@ x = ["A", "B", "C", "D"]
 y = x
 ```
 
-both `x` and `y` came to point to to the _same list_. There is only one
+both `x` and `y` came to point to the _same list_. There is only one
 list. Both `x` and `y` refer to it. So if you change that one list, you
 see that change reflected in both `x` and `y`.
 
@@ -229,7 +229,7 @@ topic a few more times as we progress.
 
 ## `for` and Lists---Powerful Stuff
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember our good friend the `for` loop? We used it with `range` to loop
 a number of times, and we used it with strings to loop over each
@@ -299,7 +299,7 @@ And now that works for lists of any length---much better!
 
 ## `for` and `enumerate()`
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 In the examples above, we used `for` with the elements in the list
 themselves, and also with `range()` over the indexes of the elements in
@@ -330,7 +330,7 @@ The element at index 3 has value 99
 
 ## Midterm: Doubling The Values
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Let's write some code that takes a list and goes through all the
 elements in that list. If an element is _even_, we should multiply the
@@ -348,7 +348,7 @@ after processing and doubling all the even values, it will be:
 [1, 4, 3, 8, 5, 12]
 ```
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 We know we need to iterate over the list, so that sounds like a job for
 a `for`-loop. And we need to test if a number is even or odd, which
@@ -381,7 +381,7 @@ for each element in the list:
 
 Then maybe print it out at the end, just for fun.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Here's each line of the plan's pseudocode [flx[converted to
 Python|listdouble.py]]:
@@ -411,7 +411,7 @@ And the output:
 
 _Voila!_ There it is!
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 Anything you could make better about this?
 
@@ -430,7 +430,7 @@ version of whatever you pass in. More on that in the future.
 
 ## Built-in Functions for Lists
 
-There are a number of very useful built-in functions and
+There are several useful built-in functions and
 methods^[Remember that a method is a function that you call on a
 particular object with the dot (`.`) operator.] that you can use with
 lists. Some we've already seen.
@@ -528,7 +528,7 @@ Okay, maybe not, but at least you can do a thing or two with lists.
 "So I can become some kind of list ninja. What good does that do me?"
 
 When it comes to anything in programming, it's often helpful to try to
-think of physical, actual-real-life examples. What are some of the lists
+think of physical, actual real-life examples. What are some of the lists
 you have in real life? You can use Python lists to store those.
 
 Shopping lists, bowling scores, favorite rocks, employee names, numbers,
@@ -545,13 +545,13 @@ shopping_list = [
 ]
 ```
 
-Sometimes we know those lists up front, and other times we compute them
+Sometimes we know those lists upfront, and other times we compute them
 as we go.
 
 
 ## Midterm Challenge
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 More math! _[Groan!]_ Let's compute the Fibonacci Sequence! _[Yay!]_
 
@@ -580,7 +580,7 @@ What we want to do is write a program that builds and prints a list
 containing the first 100 Fibonacci numbers. We don't want to do any of
 the addition ourselves---we want the code to compute it for us.
 
-Problem solving step: **Make A Plan**.
+Problem-solving step: **Make A Plan**.
 
 We're going to need a list to hold all the numbers.
 
@@ -611,7 +611,7 @@ print the list
 
 Time to code it up!
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 [flx[`fiblist.py`|fiblist.py]]:
 
@@ -657,10 +657,10 @@ the output here---yours might not be so pretty):
 83621143489848422977, 135301852344706746049, 218922995834555169026]
 ```
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
-Notice how the list grows bigger and bigger each step of the loop. If
-we were to print out the list every iteration of the loop, we'd see
+Notice how the list grows bigger and bigger with each step of the loop. If
+we were to print out the list for every iteration of the loop, we'd see
 something like this:
 
 ```
@@ -688,11 +688,11 @@ elsewhere.
 
 You _must_ have a variable named in your `for` loop---no option not to.
 But using `_` for that name indicates to programmers that you are just
-using the loop to count, and you don't actuall care what the count is.
+using the loop to count, and you don't actually care what the count is.
 
 ## Building New Lists, Repeating and Empty
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We've already seen how to initialize a list with a few elements in it:
 
@@ -735,7 +735,7 @@ presumably to compute values for later.
 
 ## List Comprehensions {#list-comprehensions}
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 This is a really neat language feature of Python. It allows you to
 construct a new list from an old one, modifying and filtering elements
@@ -837,7 +837,7 @@ comprehensions are a great tool to us.
 
 ## Lists of Lists
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 You can have lists of just about anything in Python. Lists of numbers,
 lists of strings, lists of lists...
@@ -863,7 +863,7 @@ z = [x, y]
 
 In that example, how could we access elements of the lists-in-list?
 
-We're going to use square bracket notation again, but even more-so.
+We're going to use square bracket notation again, but even more so.
 
 ``` {.py}
 x = [1, 2, 3]
@@ -918,7 +918,7 @@ used?
 Spreadsheets! What else? See if any other ideas come to mind.
 
 For declaring lists of lists, it's really common to just declare them
-all at once, and not use intermediate variable to represent the
+all at once, and not use an intermediate variable to represent the
 sublists.
 
 For example, the previous list we were using, above, could be declared
@@ -948,18 +948,18 @@ Now let's see if we can put it all together for this chapter's project!
 This is the big one. This project is going to draw on multiple things
 we've learned so far and put them all together into a working solution.
 
-That makes this project more difficult that the previous ones. We're
+That makes this project more difficult than the previous ones. We're
 going to break down the problem and decide what tools we know that we
 can bring to bear to solve it.
 
 And this is what being a software developer is all about.
 
-I'm not expecting the answer to be obvious. It's rare you'll see a
+I'm not expecting the answer to be obvious. You'll rarely see a
 problem that has an obvious solution, even as a seasoned developer. But
-we do have our problem solving framework to break down the problem into
+we do have our problem-solving framework to break down the problem into
 workable parts. So let's do it!
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We want to do several things with this project:
 
@@ -1002,12 +1002,12 @@ You can't go that way.
 
 Anything else missing from the spec?
 
-Problem solving step: **Make A Plan**.
+Problem-solving step: **Make A Plan**.
 
 We're going to make use of two important techniques as we make this
 plan: _simplify the problem_ and _breaking down subproblems_.
 
-Simplifying the problem means to take our eventual goal and remove
+Simplifying the problem means taking our eventual goal and remove
 requirements to make it easier to code. Sure, eventually we'll have to
 add those requirements back in, but simplifying the problem makes the
 initial coding easier.
@@ -1043,7 +1043,7 @@ e.g. "print map and player indicator" immediately brings to mind the
 question, "How the heck can we do that?"
 
 If any steps are too complex or are unclear, it means you have to break
-them down farther. Let's do that for all the unclear sections:
+them down further. Let's do that for all the unclear sections:
 
 ```
 while not quit:
@@ -1080,7 +1080,7 @@ Now... how are we going to store the data we need for this project? And
 what data do we need, anyway?
 
 * The map representation
-* The player's current position, row and column
+* The player's current position, row, and column
 
 How are we going to store the map? In the spec, it's displayed as text,
 like so:
@@ -1097,7 +1097,7 @@ like so:
 #####################
 ```
 
-where `#` is a wall and `.` is empty floor (that we can move through).
+where `#` is a wall and `.` is an empty floor (that we can move through).
 
 We could store all that as a single string... but that might make our
 lives a little more difficult since we have to put an `@` in where
@@ -1137,10 +1137,10 @@ into the solution.
 And it's rarely an obvious one. We all have to work hard to come up with
 the answers.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Before we start this phase, I want you to notice how much time we've
-spend on the Understand and Plan phases without writing any code at all.
+spent on the Understand and Plan phases without writing any code at all.
 It's very tempting, especially for junior devs, to want to jump into the
 code without spending sufficient time on Understanding and Planning.
 Unfortunately, this practice causes one to waste productivity
@@ -1152,12 +1152,12 @@ questions about.
 You're not done making a plan until you know how to convert every step
 of the plan to code.
 
-If you spend enough time understanding an planning, coding almost
+If you spend enough time understanding and planning, coding almost
 becomes an afterthought.
 
 And here we are. Let's take our pseudocode and convert it into Python.
 
-Coming back to _simplify the problem_, let's start off by just storing
+Coming back to _simplify the problem_, let's start by just storing
 and printing the map. No player, no input, no loop. Let's just get that
 working.
 
@@ -1179,7 +1179,7 @@ map_data = [
 ]
 ```
 
-We've split the map list onto multiple lines to make it easier to read.
+We've split the map list into multiple lines to make it easier to read.
 
 Now we need to print it out. In our pseudocode, we used a nested `for`
 loop with `if` conditions.
@@ -1208,14 +1208,14 @@ for row in map_data:  # for each row
     print()
 ```
 
-There are a couple things to note there, so make sure to digest the
+There are a couple of things to note there, so make sure to digest the
 code. We're going through each row, and for each row, we're going
 through each column and printing the character.
 
 We want the characters to all print on the same line for a given row, so
 we use the `end=""` trick to keep Python from going to the next line.
 
-And at the end of each row we have an empty `print()` to get the cursor
+And at the end of each row, we have an empty `print()` to get the cursor
 down to the next line for starting to print the next row.
 
 And when we run that, we get the map printed out!
@@ -1256,8 +1256,8 @@ for row_index, row in enumerate(map_data):  # for each row
  
 ```
 
-So there we've added a couple variables to store where the player is,
-and then in the map printing loop we check to see if this location is
+So there we've added a couple of variables to store where the player is,
+and then in the map printing loop, we check to see if this location is
 where the player is. If it is, print an `@`, otherwise print the map
 character.
 
@@ -1321,7 +1321,7 @@ So now we have the player position being printed, and we have the user
 inputting a command. However, we still need to handle the directional
 commands and actually move the player around.
 
-Our plan is to compute the new position for the player based on the
+We plan to compute the new position for the player based on the
 current position and the user input. For example, if the user goes north
 (up) on the screen, the player's column stays the same, but the row
 number decreases by 1.
@@ -1406,9 +1406,9 @@ line numbers!)
 
 Woo! You've written your very own [flw[Roguelike|Roguelike]] game!
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
-For next steps, consider adding some of the following:
+For the next steps, consider adding some of the following:
 
 * Treasures
 * Monsters
@@ -1567,7 +1567,7 @@ out, look back to see what you could have done better.
 
 ## Summary
 
-Look at all the stuff we've covered this chapter!
+Look at all the stuff we've covered in this chapter!
 
 * A brand new data structure to hold lists of information
 * Understanding assignments with mutable types

@@ -6,7 +6,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Objective
 
-* Understand whats dictionaries are
+* Understand what dictionaries are
 * Initialize a dictionary
 * Access individual elements in a dictionary
 * Check to see if a key is in a dictionary
@@ -26,7 +26,7 @@ daughter’s son’s daughter’s son. For realsies! I'm willing to bet that
 you're related to Queen Elizabeth II, as well. That makes us cousins!]
 data!
 
-We'll have a number of data records associated with each person:
+We'll have several data records associated with each person:
 
 ```
 Beej Jorgensen:
@@ -76,7 +76,7 @@ This chapter is all about how we might store such data.
 
 ## What are Dictionaries?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember how with lists, we could key an index number into the list and
 get a value out, and how we could use that same index number to store
@@ -132,7 +132,7 @@ value can be any type.
 
 ## Initializing a Dictionary
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 As we saw above, you can initialize an empty dictionary like so:
 
@@ -167,7 +167,7 @@ format, though not exactly the same.
 
 ## Speed Demon
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Like lists, dicts are really fast at looking up information. In fact, on
 average, it takes the same amount of time to get a value out of a
@@ -181,7 +181,7 @@ quickly. _Vroom!_
 
 ## Does this `dict` have this key?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 If you have a dictionary, it's nice to be able to check to see if a key
 even exists.
@@ -222,10 +222,10 @@ for another time.
 
 ## Iterating over Dictionaries
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember how you could iterate over all the elements in a list with
-`for`? Well, we can do the same thing with dictionaries. Except in this
+`for`? Well, we can do the same thing with dictionaries. Except, in this
 case, we'll be looping over the _keys_ in the dictionary, not the
 values.
 
@@ -293,7 +293,7 @@ for k, v in d.items():
 
 ## Common Built-in Dictionary Functionality
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 You have a number of tools in your toolkit for working with dicts in
 Python:
@@ -309,7 +309,7 @@ Python:
 |`.pop(key)`|Return the value for the given key, and remove it from the dictionary|
 |`.popitem()`|Pop and return the most-recently-added `(key,value)` pair|
 
-We already saw a use of `.get()`, earlier, but it can also be modified
+We already saw use of `.get()`, earlier, but it can also be modified
 to return a default value if the key doesn't exist in the dictionary.
 
 ``` {.py}
@@ -344,7 +344,7 @@ for v in d.values():
 
 ## Dictionary Comprehensions
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember [list comprehensions](#list-comprehensions)? If you don't, pop
 over there for a quick refresher, because this is the same thing except
@@ -378,7 +378,7 @@ print(d) # {'alice': 20, 'beej': 30, 'chris': 40}
 
 ## Dictionaries of Dictionaries
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Here's the deal: the value that you store for a given key can be
 _anything_!
@@ -407,7 +407,7 @@ storing data.
 
 ## Dictionaries are Mutable
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 When you make an assignment copy of a dictionary, it's copying the
 _reference_ to the same dictionary, not making a new one. Just like with
@@ -442,14 +442,14 @@ read code is _Happy Code_™.
 Pop back up top and [refresh on the spec](#dicts-proj-spec) if you need
 to. Let's break it down!
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 The goal of the project is to, for a given person, print out their
 parents' names as well as their year of birth.
 
 Pretty straightforward, but the devil's in the details!
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 If we look at a sample record, we can see that a dict lends itself quite
 well to the data, with keys `born`, `mother`, `siblings`, etc.
@@ -494,7 +494,7 @@ extract that missing data.
 We'll come back to the "Understanding the Problem" step in a while to
 revisit that.
 
-Problem solving step: **Carrying out the Plan**
+Problem-solving step: **Carrying out the Plan**
 
 We'll start with a simple tree of just a single person. Let's keep it as
 simple as possible, and then go from there.
@@ -554,11 +554,11 @@ Parents:
 Enter a name (or q to quit): q
 ```
     
-We're still missing the parents' birth years, but, like I said, we'll
+We're still missing the parents' birth years, but, as I said, we'll
 tackle that later.
 
 What happens if we run it with an unknown name? Remember that when
-you're testing your code, you should think like a villian and enter the
+you're testing your code, you should think like a villain and enter the
 most unexpected things you can.
 
 Let's try it with someone it doesn't know.
@@ -583,7 +583,7 @@ is missing information!
 True, it is.
 
 Turns out, this is a really common thing when programming. Your boss
-asks you to implement a thing, but doesn't fully define what that thing
+asks you to implement a thing but doesn't fully define what that thing
 is. It's not that your boss is bad at this; it's just that writing down
 the exact spec and not leaving anything out is _hard_.
 
@@ -592,10 +592,10 @@ Tic-Tac-Toe^[That's Noughts and Crosses, to some of you.], I'd find
 something you left out. ("You never said my 'X' could only take up one
 grid square!")
 
-The right thing to do at this point is go back to the creator of the
+The right thing to do at this point is to go back to the creator of the
 specification and ask exactly what should happen in this case.
 
-Problem solving step: **Understanding the Problem** (again)
+Problem-solving step: **Understanding the Problem** (again)
 
 "Hey, specification writer! What do we do if the person doesn't exist in
 the data?"
@@ -608,7 +608,7 @@ No record for "Arch Stanton"
 
 All right!
 
-Problem solving step: **Devising a Plan** (again)
+Problem-solving step: **Devising a Plan** (again)
 
 We're using this code to get a person's record:
 
@@ -619,7 +619,7 @@ record = tree[name]  # Look up the record in the outer dict
 but as we see, that throws an exception if `name` isn't a valid key in
 the dict.
 
-How can we handle that? There are a couple ways. One of them involves
+How can we handle that? There are a couple of ways. One of them involves
 _catching_ the exception, but we'll talk more about that in a later
 chapter.
 
@@ -628,7 +628,7 @@ the `.get()` method on the dict. This will return the record, or `None`
 if the key doesn't exist in the dict. Then we can test for that and
 print out some error messages.
 
-Problem solving step: **Carrying out the Plan** (again)
+Problem-solving step: **Carrying out the Plan** (again)
 
 ``` {.py .numberLines startFrom=23}
     record = tree.get(name)  # Look up the record in the outer dict
@@ -653,9 +653,9 @@ person we're looking up. But their birth years aren't in there.
 
 How do we get them?
 
-Problem solving step: **Devising a Plan** (again)
+Problem-solving step: **Devising a Plan** (again)
 
-We have the names for the parents. That's it.
+We have the names of the parents. That's it.
 
 How do we go from a name to a birth year?
 
@@ -770,8 +770,8 @@ What could we do better? What are the shortcomings of this app?
 Look at the dictionary structure we used to store the data. How could
 that be better? Think of all the cases that exist in family trees. Sure,
 we covered the common case, but what about kids who were adopted? How do
-we model that? Divorces? Second marriages? It turns out that modelling a
-family tree is far more complex that you might originally anticipate.
+we model that? Divorces? Second marriages? It turns out that modeling a
+family tree is far more complex than you might originally anticipate.
 
 What if two people have the same name? In a real family tree, it's
 entirely likely there could be multiple Tom Jones^[It's not unusual.] in
@@ -873,7 +873,7 @@ determine if a key is in a dictionary, and how to iterate over
 dictionaries with `for`.
 
 Not only that, but dicts have a bunch of built-in functionality you can
-reference to manipulate and access the data stored within in them.
+reference to manipulate and access the data stored within them.
 
 Finally, we saw that since dictionary values can be any type of data,
 you can have dictionaries of dictionaries, even! The only limit is your
