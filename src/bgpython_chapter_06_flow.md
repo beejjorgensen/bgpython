@@ -43,7 +43,7 @@ Keep this program in mind as we learn the techniques to implement it.
 
 ## What is Flow Control?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 What is _flow control_? To understand, let's look at a simple program:
 
@@ -72,10 +72,10 @@ blindly going to the next instruction?
 
 This is where you get your first taste of what it means to be a
 developer. You can ask the computer to make smart decisions based on
-criteria you specify. Figuring out which criteria to specify is the job
+the criteria you specify. Figuring out which criteria to specify is the job
 of a programmer and where most of the hard work comes in.
 
-Eventually we're going to code up things that say "If some condition is
+Eventually, we're going to code up things that say "If some condition is
 true, do one thing" or "If some condition is false, do another thing".
 
 But before that, we have to meet someone: George Boole.
@@ -83,7 +83,7 @@ But before that, we have to meet someone: George Boole.
 
 ## Boolean Algebra and Expressions
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 [flw[George Boole|George_Boole]] was quite an interesting character.
 From humble beginnings in the early 1800s, he went on to develop the
@@ -106,7 +106,7 @@ Level: Easy. Are these expressions true or false for you?
 * It's raining right now.
 * Cats are superior to dogs.
 
-Hopefully that wasn't particularly challenging. Let's take it up a notch
+Hopefully, that wasn't particularly challenging. Let's take it up a notch
 by introducing the concept of _AND_. For these, the entire expression is
 true _only if all subexpressions are true_.
 
@@ -117,7 +117,7 @@ so the entire expression is false.
 By comparison, "I like dogs AND I like motorcycles" _is_ true, because
 both of those subexpressions are true.
 
-And if neither of them are true, the result is also false.
+And if neither of them is true, the result is also false.
 
 Level: Intermediate. Are these expressions true or false for you?
 
@@ -230,7 +230,7 @@ Now we're about ready to go. Let's learn how to do this in Python.
 
 ## Boolean Operations in Python
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 The comparison operators in Python are:
 
@@ -246,7 +246,7 @@ The comparison operators in Python are:
 So we can take a variable and convert it to a true or false value by
 comparing it to numbers or other variables.
 
-What are true and false in Python?
+What is true and false in Python?
 
 |Boolean|Python Keyword|
 |:-:|:-:|
@@ -301,7 +301,7 @@ Seems mundane, but we'll make good use of it in a minute.
 
 ## The Almighty `if` Statement
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 It's all well and good for Python to tell me that `1 < 5` is `True`, but
 how can we actually use that to make choices in a program?
@@ -352,7 +352,7 @@ is indented afterward.
 
 And then what's this pesky `else`? That's a super-handy feature of `if`.
 If the condition is `False`, then the block under the `else` is
-evaluated instead. Basically we're saying, "If the condition is true,
+evaluated instead. Basically, we're saying, "If the condition is true,
 then do this, otherwise do this."
 
 There's one more construct we can use in the `if`-`else` family: `elif`.
@@ -386,7 +386,7 @@ output for a given input.
 
 ## And Now: `while` Loops!
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We're going to divert ever-so-slightly, and talk about another important
 concept in programming: _loops_. A loop is what allows us to execute the
@@ -423,7 +423,7 @@ That's us _looping_. We're running the same piece of code while a
 condition is `True`. At the very least, this can save us a lot of
 typing!
 
-Python has a number of looping statements, but for this section, we'll
+Python has several looping statements, but for this section, we'll
 concentrate on what's called the `while`-loop. It does something while a
 condition is true.
 
@@ -463,10 +463,10 @@ come back to it later.
 
 ## Looping: `for` Loops
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 In addition to `while` loops, we also have a beast called a `for` loop.
-These are actually quite powerful as we'll find out later, but for now I
+These are quite powerful as we'll find out later, but for now, I
 just want to talk about looping for a certain number of times. (As
 opposed to looping while a condition is true.)
 
@@ -504,7 +504,7 @@ Let's print out only the even numbers between 4 and 18 (that is, print
 from 4 to 18, stepping by 2 each time):
 
 ``` {.py}
-for i in range(4, 20, 2):  # loop from 5 to 9, skipping by 2 each time
+for i in range(4, 20, 2):  # loop from 4 to 18, skipping by 2 each time
     print(i)
 ```
 
@@ -537,7 +537,7 @@ story for another time.
 
 ## When `while` and When `for`?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Which of these looping constructs should you use, and when?
 
@@ -559,9 +559,9 @@ you don't know when that'll be, use a `while` loop.
 Let's jump into that project from the beginning of the chapter. [Revisit
 the project spec](#loop-proj-spec) if you need a refresher.
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
-Let's break this program into to two parts, and tackle them
+Let's break this program into two parts, and tackle them
 individually.
 
 1. We want to get some valid user input in the range 5-50, inclusive.
@@ -572,7 +572,7 @@ even break down step 1 into more:
 
 ```
 While user input isn't valid:
-    Ask user for input
+    Ask the user for input
     If input invalid, print an error message
 ```
 
@@ -582,7 +582,7 @@ at this point.
 Let's go ahead and code up the user input portion. We'll do printing
 asterisks later.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Asking the user for input, we already know.
 
@@ -600,7 +600,7 @@ while not input_valid:   # While not input valid ("while input invalid")
         input_valid = True   # We got a good number!
 ```
 
-Let's study that pattern, because it's a common use of `while`.
+Let's study that pattern because it's a common use of `while`.
 
 We start by assuming that the success condition _isn't_ met. And then we
 check every iteration of the loop, with `if`, to see if it is met. And
@@ -636,7 +636,7 @@ continuation condition is `not input_valid`).
 Once you're satisfied it's working correctly, let's move back to the
 spec and concentrate on printing out the asterisks.
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 If the user enters `x`, we want to print out `x` count of characters,
 total. The first 30 of these will be `#`, and any after that will be
@@ -646,7 +646,7 @@ Before we start things out, let's use a different planning technique:
 _simplify the problem_.
 
 Let's forget about the `*` for now and just print out `#` characters,
-however many the user specified. Later we'll add the code for `*`.
+however many the user-specified. Later we'll add the code for `*`.
 
 > _Simplifying the problem allows you to more easily tackle it, and
 > leads you to see ways to add the missing features later._
@@ -658,7 +658,7 @@ For however many numbers the user inputs:
    Print a `#`.
 ```
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Since we know how many `#`s we want to print (the user entered the
 number!) this would be a great place for a `for` loop. Let's print
@@ -687,7 +687,7 @@ print()  # Add a newline to the end of the line
 
 We did a bit of magic there. We passed another argument to `print()`
 that told it we wanted it to put nothing (an empty string, `""`) at the
-end of the line instead of the newline character it noramlly tacks on.
+end of the line instead of the newline character it normally tacks on.
 
 You could go crazy and say `end="Beej"` and it would put the word "Beej"
 after every hashmark. Do it. Go crazy.
@@ -696,10 +696,10 @@ Getting there! But we're not out of the woods yet. We need to make it so
 that for character more than 30 characters out, we print a `*` instead
 of a `#`.
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 This is like the plan for printing the line from before, but we
-simplified that, remember? So we have to add some complexity in to mett
+simplified that, remember? So we have to add some complexity to meet
 the spec.
 
 ```
@@ -712,7 +712,7 @@ For however many numbers the user inputs:
 
 And that's looking like a good case for `if` _inside_ our `for` loop!
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Let's add that `if` logic to the `for` loop at the end:
 
@@ -757,7 +757,7 @@ _Testing the edge cases_ is an all-powerful programming technique that
 all devs use to great effect.
 
 And, while you're at it, test a bunch of other numbers to make sure it
-behaves like you'd expect.
+behaves as you'd expect.
 
 **Bonus Question:** Can you think of another way to draw the line of
 characters without using an `if` inside the loop? (There's a hint at
@@ -805,7 +805,7 @@ out, look back to see what you could have done better.
 
 ## Summary
 
-We covered all kinds of super-important things this chapter.
+We covered all kinds of super-important things in this chapter.
 
 * Flow Control
 * Boolean algebra, conditional expressions, `True`, `False`
@@ -823,5 +823,4 @@ That said, we haven't learned enough Python syntax to necessarily make
 solving every computing problem _easy_. In the upcoming chapters, we'll
 learn more tools that Python gives you to increase the size of your
 problem-solving toolkit.
-
 

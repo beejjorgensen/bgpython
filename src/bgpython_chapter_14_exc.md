@@ -48,7 +48,7 @@ minute.
 Normally, a program produces data in the way you've asked for it. Unless
 something goes wrong. In which case, it produces "bad" data.
 
-Now, computers don't really have much of sense of right and wrong, as
+Now, computers don't really have much sense of right and wrong, as
 you've seen in the documentary _The Terminator_. So how can we
 differentiate between good and bad data?
 
@@ -337,7 +337,7 @@ exceptions. What's the fourth?
 
 _Mathematics hat on_. Do you see it?
 
-That's right, we're doing a division in there... and you can't divide by
+That's right, we're dividing there... and you can't divide by
 zero. What happens when we do?
 
 We already saw, above, that we get a `ZeroDivisionError`. So let's add
@@ -381,7 +381,7 @@ Each exception is actually an instance of a class. And the class name is
 the name you use in your `except` clauses.
 
 Because it's an instance, it has some additional information attached to
-it we can grab, but first we have to bind it (assign it) to a variable
+it we can grab, but first, we have to bind it (assign it) to a variable
 name. We can do that with the `as` statement.
 
 ``` {.py}
@@ -522,7 +522,7 @@ All done!
 ```
 
 If we modified that first line to `print(1/0)`, we'd get a divide by
-zero exception, and the output would be:
+zero exception and the output would be:
 
 ```
 Divide by zero!
@@ -531,7 +531,7 @@ All done!
 
 In all cases, the `finally` block will run.
 
-You can use this block to execute finalization or cleanup code, if you
+You can use this block to execute finalization or cleanup code if you
 need to.
 
 `try`-`except` is really common. `finally` is less so, but not entirely
@@ -546,7 +546,7 @@ Just when you thought `try`-`except`-`finally` was all she wrote, turns
 out we can add an `else` in there for `try`-`except`-`else`-`finally`.
 
 It's entirely possible that you won't ever see this, but I wanted to
-quickly touch on it here. Just give it a glance:
+quickly touch on it here. Just glance at it:
 
 ``` {.py}
 try:
@@ -575,7 +575,7 @@ need to know 99% of the time you're using Python.
 
 But that doesn't mean we should stop there. Part of being a good dev is
 having a good mental model of _how_ these things work, not just to
-memorize some patterns to use. Having deeper understanding will serve
+memorize some patterns to use. Having a deeper understanding will serve
 you well.
 
 So let's talk about how exceptions in Python are represented by objects.
@@ -780,7 +780,7 @@ chapter](#exc-proj-spec) if you have to.
 
 Problem-solving step: **Understanding the Problem**
 
-The big challenge here is how to we provide complete error checking of
+The big challenge here is how do we provide complete error checking of
 all user inputs to make sure everything is sensible?
 
 What are all the things that could go wrong?
@@ -792,8 +792,8 @@ Spoilers ahead!
 
 Here's what I can think of happening:
 
-* User doesn't enter the correct number of command line arguments.
-* User enters a non-number for the second command line argument.
+* User doesn't enter the correct number of command-line arguments.
+* User enters a non-number for the second command-line argument.
 * User enters a filename that doesn't exist.
 * User enters a non-positive number.
 * The file isn't a regular file (e.g. it's a directory or other special
@@ -814,7 +814,7 @@ specified is greater than the number of lines in the file. What do we do
 in that case?"
 
 Let's do this: we'll stop outputting lines at either the number of lines
-the user specifies, or the end of the file, whichever comes first. No
+the user specifies or the end of the file, whichever comes first. No
 message to the user is required in either case.
 
 Ok, let's plan!
@@ -826,7 +826,7 @@ parts.
 
 * Read user input
 * Open the file for reading
-* Read the number of lines up to what the user specified (or EOF)
+* Read the number of lines up to what the user-specified (or EOF)
 
 For each of those parts, we'll have to do input validation and tell the
 user if anything went wrong.
@@ -921,7 +921,7 @@ raise the exception ourselves, we also catch it. Plus all the logic for
 testing the input value for correctness is all in the same `try` block,
 nicely.
 
-OK! We have the code getting correct input. Let's go on to the next step
+OK! We have the code getting the correct input. Let's go on to the next step
 and print lines from the file.
 
 We can start by simplifying the problem to just print all the lines and
@@ -1038,7 +1038,7 @@ Pretty neat!
 What's left? Oh yeah---we have to actually implement the functionality
 to only show the first however-many lines of the file.
 
-There are a couple approaches to this.
+There are a couple of approaches to this.
 
 One, we could use a while loop and test for the end of the file _or_
 reaching the required count, whichever comes first.
@@ -1130,13 +1130,13 @@ planning.
 
 ## Summary
 
-New big concept in this chapter with exceptions. It's a technique we
-haven't used before to catch errors, but is a powerful one to add to
+A new big concept in this chapter with exceptions. It's a technique we
+haven't used it before to catch errors, but is a powerful one to add to
 your skillset.
 
 We compared and contrasted error handling via return values with error
-handling with exceptions, wrote programs that could catch exceptions and
-handle them, and also wrote programs that generates our own, new
+handling with exceptions, writing programs that could catch exceptions and
+handle them, and also wrote programs that generate our own, new
 exceptions.
 
 Additionally, we learned how flow control works around exception

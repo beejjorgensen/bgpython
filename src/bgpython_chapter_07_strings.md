@@ -38,11 +38,11 @@ need in the largest product.
 
 ## What is a String?
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 A string in Python is a sequence of characters (letters, punctuation,
 numbers, foreign characters, etc.). You enclose it in either single
-quotes (`'`) or double quotes (`"`), you choice, as long as they match
+quotes (`'`) or double quotes (`"`), your choice, as long as they match
 on either side.
 
 Here are some strings:
@@ -58,7 +58,7 @@ Here are some strings:
 ```
 
 You can also embed double quotes in double-quoted strings (or single
-quotes in single quoted strings by putting a backslash character in
+quotes in single-quoted strings by putting a backslash character in
 front of them (`\`) <!-- ` fix syntax highlighting in vim -->. This is
 called _escaping_ the character, which means "Hey, Python, treat this
 like a literal quote mark---just print a quote mark out," as opposed to
@@ -79,7 +79,7 @@ Strings are commonly used when:
 
 ## Creating Strings
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Strings are generally created one of two ways:
 
@@ -110,7 +110,7 @@ strings and other data types. But for now, we'll stick to some basics.
 
 ## Converting Other Types To Strings and Vice Versa
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 We've already mentioned this in a previous chapter, but it's worth
 covering again as a review.
@@ -140,7 +140,7 @@ it to a numeric value so that you can perform math on it.
 
 ## String Concatenation with `+`
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 You're used to using `+` to add two numbers, but did you know you could
 also "add" strings? It doesn't do it arithmetically, but it will glue
@@ -175,12 +175,12 @@ print(x)   # Beej!
 Use what we've learned so far to concatenate a string `"Hello"` with the
 number `3490` (an integer, not a string).
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 OK, so let's use `+` to concatenate the number onto the end of the
 string.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 ``` {.py}
 x = "Hello"
@@ -207,14 +207,14 @@ TypeError: can only concatenate str (not "int") to str
 `y` is an `int`, but `x` is a `str`. This error is telling us that we
 can't concatenate an `int` onto a `str`. What to do now?
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 Since we can't concatenate an `int` to a `str`, can we turn the `int`
 into a `str`? Sure! New plan: convert the `int` to a `str` with the
 `str()` function, and then concatenate it onto the first string with
 `+`.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 ``` {.py}
 x = "Hello"
@@ -224,7 +224,7 @@ print(x + y)    # Hello3490
 
 Success!
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 Any other ways to solve this? We could have done the `str()` call later:
 
@@ -244,7 +244,7 @@ have to do?
 
 ## Getting Individual Characters From Strings
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 What if we want to extract a single character from a string?
 
@@ -298,7 +298,7 @@ We're going to use these next when we talk about slices.
 
 ## Slices
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 A _slice_ is part of a string. You specify them by knowing the
 _starting index_ and _ending index_ into a string, and separating them
@@ -310,7 +310,7 @@ x = "Beej!"
 print(x[1:4])   # "eej"
 ```
 
-The slice starts at the first index number, and stops _just before_ the
+The slice starts at the first index number and stops _just before_ the
 second index number. (Remind you of anything? Yes---just like
 `range()`!)
 
@@ -318,7 +318,7 @@ In this way, you can pull out any _substring_ from a string.
 
 ## Midterm Challenge
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Write a program that will allow the user to input a string, then will
 print out the entire string _except_ the first and last characters. You
@@ -327,7 +327,7 @@ can assume the string will be at least 3 characters long.
 So if the user enters `Beej!`, we want to print out `eej`. If they enter
 `Python`, we want to print out `ytho`.
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 We need to:
 
@@ -336,7 +336,7 @@ We need to:
    characters.
 3. Print the slice.
 
-Steps 1 and 3 are pretty straightforward. But what about that step 2?
+Steps 1 and 3 are pretty straightforward. But what about step 2?
 
 Since we don't know how long the string will be (other than it's three
 or more characters), we can't just get a slice from `1` to, say, `5`. We
@@ -347,7 +347,7 @@ Fortunately, we know how to index to the second from the end: index
 including, the second index! So we need to end the slice at index `-1`
 to cause it to not include the last character.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 ``` {.py .numberLines}
 x = input("Enter a string of at least 3 characters: ")
@@ -357,7 +357,7 @@ print(y)
 
 Easy peasy!
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 What could we have done better?
 
@@ -368,12 +368,12 @@ x = input("Enter a string of at least 3 characters: ")
 print(x[1:-1])  # all but the first and last
 ```
 
-Also, we're not actually enforcing the user enter at least 3 characters.
+Also, we're not actually enforcing the user to enter at least 3 characters.
 How would we do that? Remember how we used a `while` loop before to
 verify input? We could do the same.
 
 But how can we tell if a string is at least a certain length? There are
-a couple ways. Turns out, your slice will be an empty string (`""`) if
+a couple of ways. Turns out, your slice will be an empty string (`""`) if
 the length of the string is less than 3, and you could use that to
 detect.
 
@@ -383,7 +383,7 @@ length of any string you pass in.
 
 ## Interlude: Mutable versus Immutable Types
 
-Problem solving step: **Understanding the Problem**. 
+Problem-solving step: **Understanding the Problem**. 
 
 So far we've learned about three data types: integer, float, and string.
 All of these share a common characteristic: they're all _immutable_.
@@ -457,7 +457,7 @@ as we progress.
 
 ## `for`-loops with Strings
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Remember how we used `for` with `range()` earlier to count up to a
 certain number? Turns out `for` is far more capable than just doing
@@ -517,7 +517,7 @@ the `enumerate()` function later.
 
 ## String Functions and Methods
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Python has a lot of built-in functions to help you manipulate and use
 strings.
@@ -564,7 +564,7 @@ The upper method converts a string to uppercase.
 Now, conversationally, I said "converts to", but remember that strings are
 _immutable_, so it really doesn't change the string in `a` at all. It
 makes a new uppercase version of the string and returns it, and we refer
-that to new string by `b`.
+that to the new string by `b`.
 
 As for methods, there are a whole bunch of them attached to strings. So
 you can take any string, add a dot (`.`), and then put the method name
@@ -574,14 +574,14 @@ have this different notation.
 > _**Fun Objected-Oriented Programming Fact**: all this talk about
 > methods and objects has its roots in a_ programming paradigm _called_
 > Object-Oriented Programming _(OOP). A programming paradigm is a way of
-> modelling problems so that you can solve them. So far, we've been
+> modeling problems so that you can solve them. So far, we've been
 > using the_ imperative _programming paradigm, which means we think of a
 > problem as a sequence of steps and conditions. But with OOP, you think
 > of a problem as a collection of objects that you can do things with._
 >
 > _Python is "multiparadigm", which means it can do OOP or imperative
 > as we see fit. We'll use a mix of them from now on, and we'll cover
-> OOP is more detail in its own chapter._
+> OOP in more detail in its own chapter._
 
 Here are some common string methods:
 
@@ -601,9 +601,9 @@ Here are some common string methods:
 Here are some examples:
 
 ``` {.py}
-s = "hello, goats! ";
+s = "hello, goats! "
 
-s.split(",") # [ "hello" "goats! " ]
+s.split(",") # [ "hello", "goats! " ]
 s.strip()    # "hello, goats!"
 s.upper()    # "HELLO, GOATS! "
 s.lower()    # "hello, goats! "
@@ -635,7 +635,7 @@ them just so you have an idea of what you have at your disposal.
 
 ## Formatted Output with F-Strings
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 So far we've just been using `print()` like so:
 
@@ -644,13 +644,13 @@ x = 10
 print("x is", 10)
 ```
 
-which works, but doesn't offer us much control over the output.
+which works, but doesn't offer as much control over the output.
 
 Let's take a look at something called _F-strings_ which are new in
 Python 3.6. ("Formatting strings".)
 
 These offer us a really powerful method of formatting output. So
-powerful, in fact, we'll only be scratching the surface here.
+powerful we'll only be scratching the surface here.
 
 The gist is that we can make a new string where we inject the value of
 variables (or expressions) into a string at a specific spot.
@@ -662,14 +662,14 @@ x = 10
 print(f"x is {x}")  # x is 10
 ```
 
-Notice a couple things:
+Notice a couple of things:
 
 1. There's an `f` in front of the quotes. This signifies that this is an
    F-string, as opposed to a regular string.
 2. We inject the expression to evaluate inside _curly braces_^[Also
    called _squirrely braces_.] `{` and `}`. 
 
-Python automagically evalutes that expression and puts the result into
+Python automagically evaluates that expression and puts the result into
 the F-string at that point.
 
 Here's another:
@@ -721,14 +721,14 @@ gives us a great way to make columns align on subsequent rows, like if
 you were printing out a spreadsheet.
 
 Another thing it can do is specify a number of decimal places to print
-out floating point numbers.
+out floating-point numbers.
 
 ``` {.py}
 x = 3.1415926
 print(f"Pi is {x:.2f}")  # Pi is 3.14
 ```
 
-That format string says "print `x` as a `f`loating point number, with
+That format string says "print `x` as a floating-point number, with
 `2` decimal places".
 
 F-strings are _really_ powerful when it comes to controlling your
@@ -781,7 +781,7 @@ We're going to print a times table. This will use knowledge from this
 chapter, as well as from previous chapters. Use any means you know to
 solve the problem.
 
-Problem solving step: **Understanding the Problem**.
+Problem-solving step: **Understanding the Problem**.
 
 Let's take another look at the sample output when the user enters `4`:
 
@@ -797,7 +797,7 @@ $3\times4$ is to look up `3` along the top edge, then look up `4` along the
 left edge, and then look in the table where they cross. There you'll
 find `12`, the answer.)
 
-How can do we attack this? Let's look at a couple things.
+How can do we attack this? Let's look at a couple of things.
 
 First, look for patterns. See any?
 
@@ -858,7 +858,7 @@ But of course, we don't just want to print rows three times... the end
 result is going to have the number of rows that the user input. We need
 to loop to make it happen. A loop of loops! A _nested loop_!
 
-Problem solving step: **Devising a Plan**.
+Problem-solving step: **Devising a Plan**.
 
 Before we jump into this, I'd like you to take the time to think about
 this. Set a timer and work on it for 3 minutes.
@@ -887,7 +887,7 @@ _outer_ loop that is responsible for printing out a bunch of rows.
 And then inside there, we have to compute what values to print for each
 row, based on which row we're on.
 
-First we have to get user input. Let's do that, and validate that it's
+First, we have to get user input. Let's do that, and validate that it's
 between 1 and 19 similar to the last project.
 
 ```
@@ -914,10 +914,10 @@ for i in range(3, 15, 3): print(...)
 ```
 
 See any patterns in there? 1 2 3 is a pretty easy one. But what about
-that 5 10 15? Clearly it's multiples of 5, but where does "5" come from?
+that 5 10 15? Clearly, it's multiples of 5, but where does "5" come from?
 
 In that example, we were printing rows and columns from 1 to 4. (That
-is, the user input the number 4.) And 5 is one more than 4. That's _a_
+is, the user inputs the number 4.) And 5 is one more than 4. That's _a_
 pattern. Is it the right one? Let's try!
 
 If we take the first 3 numbers in the ranges (that is, 1 2 3), and
@@ -935,12 +935,12 @@ and the first and last numbers in the range would simply be the row
 number!
 
 The last thing we need to do is make sure we have the times table all
-formatted correctly so that that columns line up. The biggest number
+formatted correctly so that the columns line up. The biggest number
 we'll print is `361` ($19\times19$) so we'll need a space between
 columns and three spaces for the number. We can use an F-string with a
 field width of `4` to make this happen.
 
-Problem solving step: **Carrying out the Plan**.
+Problem-solving step: **Carrying out the Plan**.
 
 Let's start by entering a number and make sure this works:
 
@@ -958,7 +958,7 @@ while not valid_input:
 
 We just loop until we get valid input, just like in the last project.
 
-Now for the times table part. We want to go from `1` to the number
+Now for the times' table part. We want to go from `1` to the number
 entered, so we'll start at `1` and go to `x + 1`.
 
 And then we'll compute the max number for each row, just like we
@@ -994,7 +994,7 @@ Woot!
 
 Did you have another solution that worked? There are plenty others!
 
-Problem solving step: **Looking Back**.
+Problem-solving step: **Looking Back**.
 
 What are the corner cases that you should test? (Look for the `if`
 statements, and test on either side of those. `0` and `1` and `19` and
@@ -1065,19 +1065,19 @@ out, look back to see what you could have done better.
    a twist on checking for valid input.)
 
 5. Allow the user to input a string, and also two numbers. Print out the
-   slice from those index number in the string. Don't allow the user to
+   slice from those index numbers in the string. Don't allow the user to
    enter numbers that are out of range.
 
    (In the [flx[solution|ex_sliceat.py]], there's duplicated code to
    enter two numbers. Later, when we get to _functions_, we'll learn how
    to remove this duplicated code.)
 
-6. Make up two more exercises and code them up.
+6. Makeup two more exercises and code them up.
 
 
 ## Summary
 
-In this chapter we did _all kinds_ of crazy things with strings.
+In this chapter, we did _all kinds_ of crazy things with strings.
 
 * Conversions from other types
 * How to concatenate strings with `+`

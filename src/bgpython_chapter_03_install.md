@@ -14,7 +14,7 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 Writing code strays away from the GUI that you might be used to. It's
 definitely possible to use a GUI to do everything (almost... maybe) but
-devs use a couple other tools to keep their speed up.
+devs use a couple of other tools to keep their speed up.
 
 One of these _is_ a GUI: the _code editor_. This is where you write the
 instructions (code) that the computer will run.
@@ -22,13 +22,13 @@ instructions (code) that the computer will run.
 The other is the _terminal_. This is a window that allows you to type
 computer commands in a program called a _shell_. The shell executes the
 commands you type on the _command line_ (i.e. where the cursor is). The
-commands aren't Python, but are shell-specific commands.
+commands aren't Python but are shell-specific commands.
 
 Developers use these tools to write code. A typical cycle is:
 
 1. Edit code in your editor
 2. Run the code from the command line
-3. Check output, prepare to debug
+3. Check the output, prepare to debug
 4. Repeat!
 
 > _**Note!** Technology changes quickly---this book might already be out
@@ -85,7 +85,7 @@ can use.
 
 If you have Windows 10, there's a great new app for running multiple
 shells at once in tabs: Terminal. You don't _need_ this, but it allows
-you to run different terminal types in different tabs, if you want to do
+you to run different terminal types in different tabs if you want to do
 that.
 
 1. Update Windows 10 to the latest version
@@ -127,7 +127,7 @@ too, if you prefer it.)
 
 **Windows 10 or later required!**
 
-The Windows Subsystem for Linux is a really awesome piece of kit. It
+The Windows Subsystem for Linux is an awesome piece of kit. It
 unobtrusively puts a little Linux install on your Windows machine. And
 then you can use the Linux command line.
 
@@ -159,7 +159,7 @@ When running VS Code, you can just run it from the bash prompt:
 code
 ```
 
-You can also open a file Explorer window with:
+You can also open a File Explorer window with:
 
 ```
 iexplore.exe .
@@ -169,7 +169,7 @@ iexplore.exe .
 
 ### Mac
 
-Macs come with a terminal built in. Run the `Terminal` app and you'll be
+Macs come with a terminal built-in. Run the `Terminal` app and you'll be
 presented with a bash shell prompt.
 
 ### Linux/Unix-likes
@@ -207,7 +207,7 @@ with
 code
 ```
 
-click the icon on the left bar of VS Code to manage extensions.
+Click the icon on the left bar of VS Code to manage extensions.
 
 * Install Python extension
 * Install Pylint extension
@@ -242,7 +242,7 @@ updated.
 
 After only 37,600 years^[I always exaggerate.], the old Python2 code was
 dragged kicking and screaming into the glorious future of Python3 and
-now Python3 is finally the go-to version for all Python developers.
+now, Python3 is finally the go-to version for all Python developers.
 
 Not to say there's not tons of Python2 code out there, because there is,
 but everything we'll be doing here will be in Python 3.6 and later.
@@ -251,9 +251,9 @@ if you happen to cruelly find yourself in a Python2 environment.
 
 ### Checking to see if you already have Python installed
 
-There are a number of different ways on different platforms.
+There are several different ways on different platforms.
 
-As long as you can bring up a terminal and type on of the following on
+As long as you can bring up a terminal and type one of the following on
 your terminal and get it to report version 3.6 or higher, you're set:
 
 ```
@@ -302,7 +302,7 @@ straightaway.
 
 ### Mac
 
-There are a few third-party package managers for command line tools for
+There are a few third-party package managers for command-line tools for
 the Mac, including [fl[Homebrew|https://brew.sh/]] and
 [fl[MacPorts|https://www.macports.org/]]. We're only going to cover
 Homebrew here.
