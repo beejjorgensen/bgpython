@@ -284,11 +284,20 @@ vim hello.py
 
 But in any case, you're in the editor and ready to type code.
 
+This is your canvas! This is where the magic happens!
+
 > If you get in Vim and have no idea how to get out, hit the `ESC` key
 > and then type `:q!` and hit `RETURN`---this will exit without saving.
 > If you want to save and exit, hit `ESC` then type `ZZ` in caps.
-
-This is your canvas! This is where the magic happens!
+>
+> Vim is a complex editor that is hard to learn. But after you learn it,
+> I maintain it's the fastest editor on the planet. I'm using it to type
+> this very sentence right now.
+>
+> To learn it, I recommend OpenVim's [interactive Vim
+> tutorial](https://www.openvim.com/) and this reference of [Vim
+> commands from beginner to
+> expert](https://thevaluable.dev/vim-commands-beginner/).
 
 Type [flx[the following|hello.py]] into your editor (the line numbers,
 below, are for reference only and shouldn't be typed in):
