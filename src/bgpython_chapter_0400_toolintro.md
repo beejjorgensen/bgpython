@@ -6,9 +6,8 @@ vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 
 ## Objectives
 
-* Move around the directory hierarchy using the shell
-* Edit some source code in an editor
-* Run that program from the command line
+* Edit some source code in the IDLE editor.
+* Run that program.
 
 ## The Problem That Needs Solving
 
@@ -28,7 +27,7 @@ Let's use our problem-solving framework!
    4. Write code and save it to that file
    5. Run your program from the command line
 
-3. **Carry out the Plane**: This is where we execute our plan. We'll
+3. **Carry out the Plan**: This is where we execute our plan. We'll
    do that in the following sections.
 
 4. **Look Back**: We'll do this, below, as well. In future chapters,
@@ -36,8 +35,6 @@ Let's use our problem-solving framework!
    subsequent sections.
 
 Let's go!
-
-## Start with the Terminal
 
 We're going to do this old-school. Later on, if you find procedures you
 like more, you can use those. But programmers have been using the

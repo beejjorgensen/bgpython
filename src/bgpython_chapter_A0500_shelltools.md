@@ -264,7 +264,7 @@ can worry about that later.)
 Other than those there are no other files. We'll soon fix that! Let's
 add a Python program and run it!
 
-## Launching your code editor
+## Launching Your Code Editor
 
 Usually launching an editor to edit a file is as simple as typing the
 editor name directly followed by the filename on the command line.
