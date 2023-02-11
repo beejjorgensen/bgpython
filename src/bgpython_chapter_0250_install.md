@@ -89,7 +89,7 @@ code in it.
 Running IDLE depends on the platform:
 
 |Platform|Commands|
-|-|-|
+|--------|------------------------------------------------------------|
 |Windows|Hit the Start menu and type "idle". It should show up in the pick list and you can click to open it.|
 |Mac|Hit CMD-SPACE and type "idle". It should show up in the pick list and you can click to open it.|
 |Unix-like|Type `idle` in the terminal or find it in your desktop pulldown menu.|
@@ -114,7 +114,7 @@ world!".
 
 ```python
 >>> print("Hello, world!")
-Hello, world!
+    Hello, world!
 ```
 
 And it did!
