@@ -361,7 +361,7 @@ number 20 in the list, just for fun.
 
 ``` {.py}
 a = [10, 20, 30]
-d = { x: x*10 for x in l if x != 20 }
+d = { x: x*10 for x in a if x != 20 }
 
 print(d)  # {10: 100, 30: 300}
 ```
