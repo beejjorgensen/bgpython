@@ -94,8 +94,23 @@ Running IDLE depends on the platform:
 |Mac|Hit CMD-SPACE and type "idle". It should show up in the pick list and you can click to open it.|
 |Unix-like|Type `idle` in the terminal or find it in your desktop pulldown menu.|
 
-If you get an error, cut and paste that error into your favorite search
-engine to see what other people say about how to solve it.
+If you run `idle` on the command line and it says something about the command not being
+found, try running `idle3`.
+
+If you get an error on the command line that looks like this:
+
+``` {.default}
+** IDLE can't import Tkinter.
+Your Python may not be configured for Tk. **
+```
+
+you'll have to install the Tk graphical toolkit. This might be a package
+called `tk` or maybe `python-tk`. If you're on a Unix-like, search for
+how to install on your system. On a Mac with Homebrew, you can `brew
+install python-tk`.
+
+If you get another error, cut and paste that error into your favorite
+search engine to see what other people say about how to solve it.
 
 Once IDLE is up, you should see a window that looks vaguely like this:
 
