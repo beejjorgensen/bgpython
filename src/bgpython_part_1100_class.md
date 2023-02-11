@@ -45,7 +45,7 @@ Each theater has:
 The output should look similar to this, depending on your theater names
 and movies:
 
-```
+``` {.default}
 McMenamin's Old St. Francis Theater is showing:
     Star Wars (scifi, 125 minutes)
     Shaun of the Dead (romzomcom, 100 minutes)
@@ -399,7 +399,7 @@ print(s0.name)   # Rocinante
 
 And we could modify the location of the ship this way, as well:
 
-```
+``` {.default}
 s0.location[1] = 99
 
 print(s0.location)  # [0, 99, 0]
@@ -471,7 +471,7 @@ Attributes!
 Right now when we print one of our starship objects, Python prints
 something like this on the screen:
 
-```
+``` {.default}
 <__main__.StarShip object at 0x7fa11828c8e0>
 ```
 
@@ -507,7 +507,7 @@ print(s2)
 
 We get some nice output, like this:
 
-```
+``` {.default}
 Rocinante: [10, 20, 30]
 Red Dwarf: [40, 50, 60]
 USCSS Nostromo: [70, 80, 90]
@@ -654,7 +654,7 @@ they're a powerful thing to add to your toolkit.
 ## Chapter Project
 
 In case you've forgotten, [review the chapter project specification at
-the beginning of this chapter](#class-chap-proj).
+the beginning of this chapter](#class-proj-spec).
 
 Problem-solving step: **Understanding the Problem**.
 
@@ -980,7 +980,7 @@ And that's that!
 
 Output now looks like this:
 
-```
+``` {.default}
 McMenamin's Old St. Francis Theater is showing:
     Star Wars (scifi, 125 minutes): 7pm 9pm 10pm
     Shaun of the Dead (romzomcom, 100 minutes): 5pm 8pm

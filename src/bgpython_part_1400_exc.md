@@ -23,7 +23,7 @@ Problem-solving step: **Looking Back**
 Write a program called `head.py` that returns the first few lines of a
 file. For example, if the user enters:
 
-```
+``` {.default}
 python head.py filename.txt 12
 ```
 
@@ -127,7 +127,7 @@ int("Hello!")   # Convert Hello! to integer
 Python's going to be upset. `"Hello!"` isn't a number it's ever heard
 of. And when we run it, we get this message, and the program exits:
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: invalid literal for int() with base 10: 'Hello!'
@@ -141,7 +141,7 @@ kinds of things in Python.
 
 Try to open a nonexistent file for reading:
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 FileNotFoundError: [Errno 2] No such file or directory: 'keyser_soze.txt'
@@ -149,7 +149,7 @@ FileNotFoundError: [Errno 2] No such file or directory: 'keyser_soze.txt'
 
 Try to divide a number by zero:
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ZeroDivisionError: division by zero
@@ -158,7 +158,7 @@ ZeroDivisionError: division by zero
 Those first condensed words on the last line of the exception you see
 there? That's the name of the exception that occurred.
 
-```
+``` {.default}
 ValueError
 FileNotFoundError
 ZeroDivisionError
@@ -212,14 +212,14 @@ stop immediately, and Python will transfer control to the matching
 
 So for example, here's a successful run:
 
-```
+``` {.default}
 Enter a number: 3490
 3490000
 ```
 
 and here's a run where an exception is thrown:
 
-```
+``` {.default}
 Enter a number: beans
 error converting "beans" to integer
 ```
@@ -239,7 +239,7 @@ Turns out you can catch multiple exceptions just by having multiple
 
 Let's try a program that divides a number by another:
 
-```
+``` {.default}
 x, y = input('Enter two numbers separated by a space: ').split()
 
 x = int(x)
@@ -308,7 +308,7 @@ except ValueError:
 
 And that will catch it. Here's a run:
 
-```
+``` {.default}
 Enter two numbers separated by a space: 1 2 3
 That's not two numbers separated by a space!
 ```
@@ -367,7 +367,7 @@ as you want in their own `except` clauses after the `try`.
 If you want to handle multiple exceptions with the same handler code,
 you can make a list of them:
 
-```
+``` {.default}
 except (FileNotFoundError, PermissionError):
     print("File not found or insufficient permissions")
 ```
@@ -394,7 +394,7 @@ except ZeroDivisionError as e:  # e is a reference to the exception
 
 results in:
 
-```
+``` {.default}
 division by zero
 ZeroDivisionError('division by zero')
 ```
@@ -420,7 +420,7 @@ except Exception as e:
 
 prints the helpful message:
 
-```
+``` {.default}
 division by zero
 ```
 
@@ -467,19 +467,19 @@ except:
 
 Here are some sample runs:
 
-```
+``` {.default}
 Enter two numbers separated by a space: 1
 (<class 'ValueError'>, ValueError('not enough values to unpack (expected
 2, got 1)'), <traceback object at 0x7f7899794f80>)
 ```
 
-```
+``` {.default}
 Enter two numbers separated by a space: a b
 (<class 'ValueError'>, ValueError("invalid literal for int() with base
 10: 'a'"), <traceback object at 0x7f6d0c9732c0>)
 ```
 
-```
+``` {.default}
 Enter two numbers separated by a space: 1 0 (<class
 'ZeroDivisionError'>, ZeroDivisionError('division by zero'), <traceback
 object at 0x7fe2ea373040>)
@@ -516,7 +516,7 @@ finally:
 
 The above code will print:
 
-```
+``` {.default}
 1
 All done!
 ```
@@ -524,7 +524,7 @@ All done!
 If we modified that first line to `print(1/0)`, we'd get a divide by
 zero exception and the output would be:
 
-```
+``` {.default}
 Divide by zero!
 All done!
 ```
@@ -698,14 +698,14 @@ except ValueError as v:
 
 If we give it a run with a valid value:
 
-```
+``` {.default}
 Enter a number 0-9: 4
 4 * 15 == 60
 ```
 
 But if we specify something out of range, we get:
 
-```
+``` {.default}
 Enter a number 0-9: -1
 Exception: out of range
 ```
@@ -719,7 +719,7 @@ code, above.
 
 Let's try it:
 
-```
+``` {.default}
 Enter a number 0-9: a
 Exception: invalid literal for int() with base 10: 'a'
 ```
@@ -767,7 +767,7 @@ except ValueError as v:
 
 This outputs:
 
-```
+``` {.default}
 Hey, I saw an exception!
 But I'll let someone else handle it.
 Exception: invalid literal for int() with base 10: 'beej'
@@ -859,7 +859,7 @@ That's partway there, but we're missing an error case. Do you see it?
 What if the user enters "`bananas`" for the count? If we try to run it
 to see what happens, sure enough, we get an exception.
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "foo.py", line 8, in <module>
     total_count = int(sys.argv[2])
@@ -942,7 +942,7 @@ But what if we pass in the name of a non-existent file?
 
 Let's try it!
 
-```
+``` {.default}
 $ python head.py nosuchfile.txt 5
 Traceback (most recent call last):
   File "foo.py", line 19, in <module>
@@ -954,7 +954,7 @@ Bammo! Another exception! This time it's `FileNotFoundError`.
 
 Let's try it on a directory:
 
-```
+``` {.default}
 $ python head.py / 5
 Traceback (most recent call last):
   File "foo.py", line 19, in <module>
@@ -966,7 +966,7 @@ An `IsADirectoryError` exception!
 
 Let's try it on a file we don't have permission to read:
 
-```
+``` {.default}
 $ python head.py noperm.txt 5
 Traceback (most recent call last):
   File "foo.py", line 19, in <module>
@@ -1022,7 +1022,7 @@ except IOError as e:
 And when we run it, we get some nice error message for whatever error
 case we get:
 
-```
+``` {.default}
 $ python head.py noperm.txt 5
 head.py: noperm.txt Permission denied
 
@@ -1071,7 +1071,7 @@ the loop and we're done.
 
 And it works!
 
-```
+``` {.default}
 $ python head.py rocks.txt 3
 marble
 coal

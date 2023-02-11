@@ -21,7 +21,7 @@ Allow the user to enter the locations of several starships in 3D space.
 These should be entered as _x_,_y_,_z_ triplets when prompted. When the
 user enters "done", stop entering ship locations.
 
-```
+``` {.default}
 Enter ship location x,y,z (or "done"): 10,20,30
 Enter ship location x,y,z (or "done"): -17,16,50
 Enter ship location x,y,z (or "done"): 0,13,30
@@ -51,7 +51,7 @@ points.
 
 Example output (corresponding to the example input, above):
 
-```
+``` {.default}
                0       1       2       3
        0    0.00   33.84   12.21   70.18
        1   33.84    0.00   26.42   92.74
@@ -777,7 +777,7 @@ print(locations)
 
 If we give that a run, we see something like this:
 
-```
+``` {.default}
 Enter ship location x,y,z (or "done"): 1,2,3
 Enter ship location x,y,z (or "done"): 4,5,6
 Enter ship location x,y,z (or "done"): done
@@ -862,7 +862,7 @@ print_grid(locations)
 
 Running that gives:
 
-```
+``` {.default}
 Enter ship location x,y,z (or "done"): 1,2,3
 Enter ship location x,y,z (or "done"): 4,5,6
 Enter ship location x,y,z (or "done"): 7,8,9
@@ -889,7 +889,7 @@ editing the `for`-loop here:
 We printed it in field width 8 just for consistency with the distance
 numbers. Output is now:
 
-```
+``` {.default}
        0   99.99   99.99   99.99
        1   99.99   99.99   99.99
        2   99.99   99.99   99.99
@@ -914,7 +914,7 @@ before everything else to print out that row?
 
 And we get this:
 
-```
+``` {.default}
        0       1       2
        0   99.99   99.99   99.99
        1   99.99   99.99   99.99
@@ -935,7 +935,7 @@ just do it, using string multiplication to make us 8 spaces:
 
 And now we have this:
 
-```
+``` {.default}
                0       1       2
        0   99.99   99.99   99.99
        1   99.99   99.99   99.99

@@ -25,7 +25,7 @@ to that value.
 
 For example, if the user enters `4`, the output should be:
 
-```
+``` {.default}
   1   2   3   4
   2   4   6   8
   3   6   9  12
@@ -190,7 +190,7 @@ print(x + y)
 
 But running it, we get this output:
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "foo.py", line 3, in <module>
     print(x + y)
@@ -200,7 +200,7 @@ TypeError: can only concatenate str (not "int") to str
 Let's take a close look at that. It's telling us that on line 3 of
 `foo.py`, where we have `print(x + y)` we're getting this error:
 
-```
+``` {.default}
 TypeError: can only concatenate str (not "int") to str
 ```
 
@@ -475,7 +475,7 @@ for c in s:
 
 If you run this, you'll see it prints each of the characters in turn:
 
-```
+``` {.default}
 character: H
 character: e
 character: l
@@ -502,7 +502,7 @@ for i, c in enumerate(s):
 
 outputs:
 
-```
+``` {.default}
 character at index 0 is: H
 character at index 1 is: e
 character at index 2 is: l
@@ -694,7 +694,7 @@ print(f"a number: {250}")
 
 which outputs:
 
-```
+``` {.default}
 a number: 1000
 a number: 50
 a number: 250
@@ -710,7 +710,7 @@ print(f"another number: {250:4}")
 
 which outputs:
 
-```
+``` {.default}
 another number: 1000
 another number:   50
 another number:  250
@@ -785,7 +785,7 @@ Problem-solving step: **Understanding the Problem**.
 
 Let's take another look at the sample output when the user enters `4`:
 
-```
+``` {.default}
   1   2   3   4
   2   4   6   8
   3   6   9  12
@@ -817,7 +817,7 @@ Second, let's try to simplify the problem.
 
 What if the problem were to print:
 
-```
+``` {.default}
   1   2   3   4
 ```
 
@@ -825,7 +825,7 @@ and that's all. How would you solve that?
 
 What if it were to print only this:
 
-```
+``` {.default}
   3   6   9  12
 ```
 
@@ -840,7 +840,7 @@ How would you solve that?
 Problem just some simple `for` loops, right? We could do this with three
 `for` loops:
 
-```
+``` {.default}
   1   2   3   4
   2   4   6   8
   3   6   9  12
@@ -890,14 +890,14 @@ row, based on which row we're on.
 First, we have to get user input. Let's do that, and validate that it's
 between 1 and 19 similar to the last project.
 
-```
+``` {.default}
 while input isn't between 1 and 19:
     ask the user for input
 ```
 
 After that, we'll print the table:
 
-```
+``` {.default}
 outer loop over rows:
     inner loop over columns:
         print value for column
@@ -980,7 +980,7 @@ for row in range(1, x + 1):
 
 Let's try it!
 
-```
+``` {.default}
 Enter a number between 1 and 19: 6
    1   2   3   4   5   6
    2   4   6   8  10  12

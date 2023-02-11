@@ -1,2 +1,15 @@
-bgpython_lulu.*
+bgpython.epub
+bgpython*.pdf
+
+bgpython_temp*
+
+bg-css*.html
+
+bgpython.html
+bgpython-wide.html
+
+split/
+split-wide/
+
 bgpython_amazon.*
+bgpython_lulu.*

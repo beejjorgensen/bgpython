@@ -33,7 +33,7 @@ directory|example.zip]].
 
 Output should be:
 
-```
+``` {.default}
 File Name                         Modified             Size
 hello.txt                  2020-02-09 15:12:20            6
 world.txt                  2020-02-09 15:12:24            7
@@ -148,13 +148,13 @@ Say what?
 Let's say you have a program called `foo.py`. You can run it like this,
 of course:
 
-```
+``` {.default}
 python foo.py
 ```
 
 You can also run it like this:
 
-```
+``` {.default}
 python foo.py something another antelopes
 ```
 
@@ -185,11 +185,12 @@ print(sys.argv)
 
 Example output:
 
-```
+``` {.default}
 $ python foo.py
 ['foo.py']
 ```
-```
+
+``` {.default}
 $ python foo.py aa bb cc
 ['foo.py', 'aa', 'bb', 'cc']
 ```
@@ -255,7 +256,7 @@ tc.prmonth(1970, 1)  # Print January 1970
 
 and this will present us with a nice text calendar that looks like this:
 
-```
+``` {.default}
     January 1970
 Mo Tu We Th Fr Sa Su
           1  2  3  4
@@ -295,13 +296,13 @@ Let's mod this. Right now, it's hardcoded to print out a January, 1970
 calendar. Let's change it so that you could run it from the command line
 and pass in the arguments you need, like this:
 
-```
+``` {.default}
 python cal.py 1970 1
 ```
 
 or
 
-```
+``` {.default}
 python cal.py 1955 11
 ```
 
@@ -334,13 +335,13 @@ calendar.prmonth(year, month)
 
 When we run it with:
 
-```
+``` {.default}
 python cal.py 1970 1
 ```
 
 though, something bad happens:
 
-```
+``` {.default}
 Traceback (most recent call last):
   File "cal.py", line 7, in <module>
     calendar.prmonth(year, month)
@@ -378,7 +379,7 @@ way, we're not using it right.
 Finally, at the bottom, we see the error itself: `TypeError`. And the
 description:
 
-```
+``` {.default}
 TypeError: list indices must be integers or slices, not str
 ```
 
@@ -418,7 +419,7 @@ calendar.prmonth(year, month)
 Running it again, we get the same error, but before that, we see some
 output:
 
-```
+``` {.default}
 <class 'str'>
 <class 'str'>
 ```
@@ -439,7 +440,7 @@ calendar.prmonth(year, month)
 
 And now when we run it:
 
-```
+``` {.default}
 $ python cal.py 2038 1
     January 2038
 Mo Tu We Th Fr Sa Su
@@ -730,7 +731,7 @@ So... How do we use it? Let's read the docs again.
 
 > ``` {.py}
 > ZipFile.printdir()
-> ```
+> ``` <!-- ` fix vim syntax highlighting -->
 > 
 > Print a table of contents for the archive to `sys.stdout`.
 
@@ -758,7 +759,7 @@ And a bit farther down, we have:
 > class zipfile.ZipFile(file, mode='r', compression=ZIP_STORED,
 >                      allowZip64=True, compresslevel=None, *,
 >                      strict_timestamps=True)
-> ```
+> ``` <!-- ` -->
 > Open a ZIP file, where `file` can be a path to a file (a string), a
 > file-like object or a path-like object.
 
@@ -818,7 +819,7 @@ zf.printdir()
 
 And that gives us this output:
 
-```
+``` {.default}
 File Name                         Modified             Size
 hello.txt                  2020-02-09 15:12:20            6
 world.txt                  2020-02-09 15:12:24            7
@@ -881,7 +882,7 @@ out, look back to see what you could have done better.
    "YOU-id") is a random string of letters and digits that looks like
    this:
 
-   ```
+   ``` {.default}
    54c3bfab-fd9f-4f4a-96db-8f9fccff88cd
    ```
 
@@ -900,7 +901,7 @@ out, look back to see what you could have done better.
 
    For example:
 
-   ```
+   ``` {.default}
    $ python ex_uuidgen.py 5
    8a8128fb-941a-4a2f-8982-75273d7c0048
    5fd7d64e-8491-4b61-82b0-f9438e7195dc
@@ -959,7 +960,7 @@ out, look back to see what you could have done better.
    I want you to print it out, but reformat it so that it's only 40
    columns wide, maximum:
 
-   ```
+   ``` {.default}
    The Matrix is everywhere. It is all
    around us. Even now, in this very room.
    You can see it when you look out your
@@ -980,7 +981,7 @@ out, look back to see what you could have done better.
 
    It should print a different number every run, for example:
 
-   ```
+   ``` {.default}
    $ python ex_rand1000.py 
    601
    $ python ex_rand1000.py 
@@ -997,7 +998,7 @@ out, look back to see what you could have done better.
 
 5. Print out the current date in the form:
 
-   ```
+   ``` {.default}
    Mon Feb 10
    ```
 
@@ -1022,13 +1023,13 @@ out, look back to see what you could have done better.
 
    To extract all files:
 
-   ```
+   ``` {.default}
    python zipextract.py example.zip
    ```
 
    To extract a specific file, run:
 
-   ```
+   ``` {.default}
    python zipextract.py example.zip hello.txt
    ```
 

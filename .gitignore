@@ -5,8 +5,6 @@
 # Build products
 
 stage/
-src/bgpython.html
-src/bgpython*.pdf
 
 __pycache__
 

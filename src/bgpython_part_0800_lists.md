@@ -29,7 +29,7 @@ player's current position.
 
 Every move, the map should be displayed:
 
-```
+``` {.default}
 #####################
 #...#...............#
 #...#..........#....#
@@ -250,7 +250,7 @@ for i in x:
 
 and this will output:
 
-```
+``` {.default}
 element is: 11
 element is: 55
 element is: 33
@@ -321,7 +321,7 @@ for i, v in enumerate(x):
 
 This results in:
 
-```
+``` {.default}
 The element at index 0 has value 11
 The element at index 1 has value 55
 The element at index 2 has value 33
@@ -373,7 +373,7 @@ sounds like a job for a `if` statement.
 
 So our plan is shaping up like this:
 
-```
+``` {.default}
 for each element in the list:
     if that element is even:
         double the value and store it at the same place in the list
@@ -405,7 +405,7 @@ print(x)  # Print it out, just for fun
 
 And the output:
 
-```
+``` {.default}
 [1, 4, 3, 8, 5, 12]
 ```
 
@@ -599,7 +599,7 @@ We can append with the `.append()` method.
 We can get the last and previous-to-last elements in the list with
 negative list indexes.
 
-```
+``` {.default}
 initialize the list with [0, 1]
 
 for 98 times:
@@ -635,7 +635,7 @@ print(fib)
 And you'll get some output that looks vaguely like this (I've rewrapped
 the output here---yours might not be so pretty):
 
-```
+``` {.default}
 [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418,
 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465,
@@ -663,7 +663,7 @@ Notice how the list grows bigger and bigger with each step of the loop. If
 we were to print out the list for every iteration of the loop, we'd see
 something like this:
 
-```
+``` {.default}
 [0, 1]
 [0, 1, 1]
 [0, 1, 1, 2]
@@ -973,7 +973,7 @@ What's missing from [the spec](#lists-proj-spec) that we need to know?
 
 Remember your compass directions?
 
-```
+``` {.default}
     N
     |
 W --+-- E
@@ -987,7 +987,7 @@ do it now than after you've coded up the wrong thing!
 What if the user provides invalid input? What happens then is missing
 from the spec. For that, let's print an error message:
 
-```
+``` {.default}
 Unknown command: {x}
 ```
 
@@ -996,7 +996,7 @@ Where `x` is whatever the user entered.
 What if the player tries to move through a wall? Let's use this error
 message:
 
-```
+``` {.default}
 You can't go that way.
 ```
 
@@ -1029,7 +1029,7 @@ we've been doing already.
 Let's start with high-level pseudocode, and then break it down where
 required.
 
-```
+``` {.default}
 while not quit:
     print map and player indicator
     get input
@@ -1045,7 +1045,7 @@ question, "How the heck can we do that?"
 If any steps are too complex or are unclear, it means you have to break
 them down further. Let's do that for all the unclear sections:
 
-```
+``` {.default}
 while not quit:
     print map and player indicator
     for each row of the map:
@@ -1085,7 +1085,7 @@ what data do we need, anyway?
 How are we going to store the map? In the spec, it's displayed as text,
 like so:
 
-```
+``` {.default}
 #####################
 #...#...............#
 #...#..........#....#
@@ -1547,7 +1547,7 @@ out, look back to see what you could have done better.
 
    Sample output:
 
-   ```
+   ``` {.default}
    ['BEEJ', 'CHRIS', 'DAVE', 'FRANK'] 
    ```
 

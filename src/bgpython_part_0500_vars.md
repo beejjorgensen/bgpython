@@ -77,7 +77,7 @@ more than one thing.].
 
 So the output will be:
 
-```
+``` {.default}
 34
 90
 ```
@@ -373,7 +373,7 @@ print("You entered", value)
 
 We can run it like this:
 
-```
+``` {.default}
 $ python3 inputtest.py
 Enter a value: 3490
 You entered 3490
@@ -384,7 +384,7 @@ Check it out! We entered the value `3490`, stored it in the variable
 
 But you can also call it like this:
 
-```
+``` {.default}
 $ python3 inputtest.py
 Enter a value: Goats rock!
 You entered Goats rock!
@@ -543,7 +543,7 @@ puzzle?
 
 Here's some pseudocode that would get the job done, it looks like:
 
-```
+``` {.default}
 read string from keyboard into variable x
 convert x to int and store it back in x again
 read string from keyboard into variable y
@@ -579,7 +579,7 @@ print("The sum of the two numbers is:", x + y)
 
 Save that file as `twosum.py` and run it:
 
-```
+``` {.default}
 $ python3 twosum.py
 Enter a number: 9
 Enter another number: 8
@@ -588,7 +588,7 @@ The sum of the two numbers is: 17
 
 Too easy! Let's challenge it:
 
-```
+``` {.default}
 $ python3 twosum.py
 Enter a number: 235896423496865928659832536289
 Enter another number: 94673984675289643982463929238

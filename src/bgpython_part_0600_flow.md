@@ -28,13 +28,13 @@ a `#`.)
 
 For example, an input of 10 would result in:
 
-```
+``` {.default}
 ##########
 ```
 
 whereas an input of 37 would result in:
 
-```
+``` {.default}
 ##############################*******
 ```
 
@@ -570,7 +570,7 @@ individually.
 By _breaking down the problem_, we make it more approachable. We can
 even break down step 1 into more:
 
-```
+``` {.default}
 While user input isn't valid:
     Ask the user for input
     If input invalid, print an error message
@@ -653,7 +653,7 @@ however many the user-specified. Later we'll add the code for `*`.
 
 The plan for this simplified phase isn't that tough:
 
-```
+``` {.default}
 For however many numbers the user inputs:
    Print a `#`.
 ```
@@ -702,7 +702,7 @@ This is like the plan for printing the line from before, but we
 simplified that, remember? So we have to add some complexity to meet
 the spec.
 
-```
+``` {.default}
 For however many numbers the user inputs:
     If we're at the 30th character or earlier:
         Print a `#`.

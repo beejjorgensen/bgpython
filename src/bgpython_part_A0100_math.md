@@ -151,7 +151,7 @@ for i in range(10):
 
 outputs:
 
-```
+``` {.default}
 0
 1
 2

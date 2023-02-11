@@ -28,9 +28,9 @@ data!
 
 We'll have several data records associated with each person:
 
-```
+``` {.default}
 Beej Jorgensen:
-    Born: 1990 [yes, I'm 29, is my story I'm sticking to]
+    Born: 1993 [yes, I'm 29, is my story I'm sticking to]
     Mother: Mom Jorgensen
     Father: Dad Jorgensen
     Siblings: [Brother Jorgensen, Sister Jorgensen, Little Sister Jorgensen]
@@ -58,7 +58,7 @@ of the parents of any given person.
 
 Example:
 
-```
+``` {.default}
 Enter a name (or q to quit): Beej Jorgensen
 Parents:
     Mom Jorgensen (1970)
@@ -244,7 +244,7 @@ for k in d:
 
 This gives us the output:
 
-```
+``` {.default}
 key c has value 10
 key b has value 20
 key a has value 30
@@ -271,7 +271,7 @@ what we call _lexicographically sorted_. It's like alphabetical, but on
 steroids so that it can handle letters, numbers, punctuation and so on,
 all of which are all numbers deep down.].
 
-```
+``` {.default}
 key a has value 30
 key b has value 20
 key c has value 10
@@ -454,7 +454,7 @@ Problem-solving step: **Devising a Plan**.
 If we look at a sample record, we can see that a dict lends itself quite
 well to the data, with keys `born`, `mother`, `siblings`, etc.
 
-```
+``` {.default}
 Beej Jorgensen:
     Born: 1990 [yes, I'm 29, is my story I'm sticking to]
     Mother: Mom Jorgensen
@@ -545,7 +545,7 @@ And, finally, let's print out the person's name and their parents' names:
 
 Giving this a run, we get some good output!
 
-```
+``` {.default}
 $ python3 familytree.py
 Enter a name (or q to quit): Beej Jorgensen
 Parents:
@@ -563,7 +563,7 @@ most unexpected things you can.
 
 Let's try it with someone it doesn't know.
 
-```
+``` {.default}
 $ python3 familytree.py
 Enter a name (or q to quit): Arch Stanton
 Traceback (most recent call last):
@@ -602,7 +602,7 @@ the data?"
 
 Answer: print out an error message like this:
 
-```
+``` {.default}
 No record for "Arch Stanton"
 ```
 

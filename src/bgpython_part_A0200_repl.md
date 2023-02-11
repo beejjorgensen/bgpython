@@ -12,7 +12,7 @@ But what does any of that mean?!
 Check this out. If you run `python` on the command line (or whatever
 your OS's variant is), you'll end up with a prompt that looks like this:
 
-```
+``` {.default}
 $ python
 Python 3.8.0 (default, Oct 23 2019, 18:51:26) 
 [GCC 9.2.0] on linux
@@ -106,7 +106,7 @@ help on what we can do with that variable:
 
 This will output all kinds of stuff.
 
-```
+``` {.default}
 Help on class str in module builtins:
 
 class str(object)
@@ -126,7 +126,7 @@ pager and return to normal.
 The first thing you might notice are a bunch of functions that have
 double underscores around them, like this:
 
-```
+``` {.default}
  |  __add__(self, value, /)
  |      Return self+value.
 ```
@@ -140,7 +140,7 @@ So hit `SPACE` a bunch of times until you're past the dunders. After
 that, you start getting to the documentation for the more common
 functions, like this one:
 
-```
+``` {.default}
  |  count(...)
  |      S.count(sub[, start[, end]]) -> int
  |      
@@ -153,7 +153,7 @@ We see there's a description there of what the method does, as well as
 an important description of what each parameter to the function means.
 But let's look at this line in particular:
 
-```
+``` {.default}
  |      S.count(sub[, start[, end]]) -> int
 ```
 

@@ -169,7 +169,7 @@ print(s is t)
 and run it from the command line, you'd think you'd get `False`, just
 like in the REPL. Wrong!
 
-```
+``` {.default}
 $ python test.py
 True
 ```

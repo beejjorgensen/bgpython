@@ -27,7 +27,7 @@ were bare-bones file editors that used simple commands to edit files.
 
 For example:
 
-```
+``` {.default}
 $ python lineedit.py foo.txt
 > l 1
 1: This is some text that was already in the file.
@@ -314,7 +314,7 @@ with open("wargames.txt") as f:
 
 And we get this output:
 
-```
+``` {.default}
 1: What he did was great! He designed his computer so that it could learn
 
 2: from its own mistakes. So, they'd be better the next time they played.
@@ -524,7 +524,7 @@ print(filename)
 
 That last line is only there temporarily. This lets us test things out.
 
-```
+``` {.default}
 $ python lineedit.py
 None
 
@@ -613,7 +613,7 @@ directory|lines.txt]].
 
 Running it, we get our list, just like we wanted!
 
-```
+``` {.default}
 $ python lineedit.py lines.txt 
 ['This is line 1\n', 'This is line 2\n', 'This is line 3\n',
 'This is line 4\n', 'This is line 5']
@@ -677,7 +677,7 @@ input something we didn't recognize:
 OK! Now if we run it, we should be able to handle blank lines, unknown
 commands, and `q` for quit.
 
-```
+``` {.default}
 $ python lineedit.py lines.txt 
 > x
 unknown command
@@ -771,7 +771,7 @@ def handle_list(args, lines):
 
 Running, we get this:
 
-```
+``` {.default}
 $ python lineedit.py lines.txt
 > l
 Handle list: [], ['This is line 1\n', 'This is line 2\n',
@@ -817,7 +817,7 @@ def handle_list(args, lines):
 
 Now, if we run this, we see a problem:
 
-```
+``` {.default}
 $ python lineedit.py lines.txt
 > l 1
 1: This is line 2
@@ -919,7 +919,7 @@ out.
 
 Now running it gives:
 
-```
+``` {.default}
 $ python lineedit.py lines.txt
 > l 1 
 0: This is line 1
@@ -954,7 +954,7 @@ And then let's call that in our print output line:
 
 Now a run gives:
 
-```
+``` {.default}
 $ python lineedit.py lines.txt
 > l 1
 1: This is line 1
@@ -992,7 +992,7 @@ Before our `for`-loop, let's just add some code that makes sure the
 
 And then you can run the `for`-loop after that with impunity!
 
-```
+``` {.default}
 $ python lineedit.py lines.txt
 > l 1
 1: This is line 1
@@ -1093,7 +1093,7 @@ def handle_delete(args, lines):
 
 And that's all there is to it. Let's try it:
 
-```
+``` {.default}
 > l 1
 1: This is line 1
 2: This is line 2
@@ -1169,7 +1169,7 @@ is returned by `input()`.
 
 Let's try it!
 
-```
+``` {.default}
 > l 1
 1: This is line 1
 2: This is line 2
@@ -1387,7 +1387,7 @@ list.
 
 All right, let's test it. Let's insert lines at the beginning:
 
-```
+``` {.default}
 > l 1
 1: This is line 1
 2: This is line 2
@@ -1412,7 +1412,7 @@ Works!
 
 Let's insert lines in the middle:
 
-```
+``` {.default}
 > a 4 
 NEW line in the middle
 .
@@ -1431,7 +1431,7 @@ Works!
 
 Let's insert some lines at the end:
 
-```
+``` {.default}
 > a 8
 NEW end line 1
 NEW end line 2
@@ -1559,7 +1559,7 @@ There are a lot of things we can do to improve the code here.
 What's crazy is that you can use this to write Python programs. Let's do
 one!
 
-```
+``` {.default}
 $ python lineedit.py
 > a 0
 print("Hello, world!")
@@ -1615,13 +1615,13 @@ out, look back to see what you could have done better.
 
    For example:
 
-   ```
+   ``` {.default}
    python writelines.py outfile.txt 500 I will not talk in class.
    ```
 
    would generate a file `outfile.txt` with the line
    
-   ```
+   ``` {.default}
    I will not talk in class.
    ```
 
@@ -1659,7 +1659,7 @@ out, look back to see what you could have done better.
 
    Then print out the data, like so:
 
-   ```
+   ``` {.default}
    M.U.L.E.                  1983   Ozark Softscape        Activision            
    Populous                  1989   Bullfrog Productions   Electronic Arts       
    Lemmings                  1991   DMA Design             Psygnosis             
@@ -1701,7 +1701,7 @@ out, look back to see what you could have done better.
    The program should accept both the dimension of the table and the
    output filename on the command line, e.g.:
 
-   ```
+   ``` {.default}
    python multtablefile.py 12 table12x12.txt
    ```
 
@@ -1719,7 +1719,7 @@ out, look back to see what you could have done better.
    Example ([flx[`wargames.txt` is in the examples
    directory|wargames.txt]]):
 
-   ```
+   ``` {.default}
    $ python ex_wc.py wargames.txt 
    38
    ```
@@ -1735,7 +1735,7 @@ out, look back to see what you could have done better.
 
    Example run:
 
-   ```
+   ``` {.default}
    $ python ex_sort.py rocks.txt
    amphibolite
    andesite
