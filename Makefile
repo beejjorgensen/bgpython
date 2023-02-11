@@ -14,6 +14,7 @@ stage:
 	cp -v src/$(PACKAGE)*.pdf $(BUILDDIR)/pdf
 	cp -v src/$(PACKAGE).html $(BUILDDIR)/html/index.html
 	#cp -v src/{cs,dataencap}.svg $(BUILDDIR)/html/
+	cp -v src/idle.png $(BUILDDIR)/html/
 	#cp -v translations/*.{pdf,html} $(BUILDDIR)/translations 2>/dev/null || : 
 	cp -v examples/{*,.htaccess} $(BUILDDIR)/examples
 	mkdir -p $(BUILDTMP)/$(PACKAGE)_examples
