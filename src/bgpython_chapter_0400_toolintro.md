@@ -16,16 +16,12 @@ Let's use our problem-solving framework!
 1. **Understand the Problem**: We want to write a program that prints a
    neat little message to the screen.
 
-   In the process, we want to get used to using the command line and our
-   code editor.
-
 2. **Devise a plan**
 
-   1. Open a terminal
-   2. Make a directory and change to it
-   3. Open a new file in your code editor
-   4. Write code and save it to that file
-   5. Run your program from the command line
+   1. Run IDLE.
+   2. Open a new file from the File pulldown.
+   4. Write code and save it to that file.
+   5. Run your program from within the IDE.
 
 3. **Carry out the Plan**: This is where we execute our plan. We'll
    do that in the following sections.
@@ -36,92 +32,44 @@ Let's use our problem-solving framework!
 
 Let's go!
 
-We're going to do this old-school. Later on, if you find procedures you
-like more, you can use those. But programmers have been using the
-command line for over 10,000 years, and it has staying power for a
-reason.
+## Launching your IDE and Opening a File
 
-Launch a terminal and bring up a bash shell. You can use another shell
-if you want, but I'll be talking bash here.
+Run IDLE as discussed in the previous chapter.
 
-At the `$` prompt, type the following commands, one per line:
+Once in there, we're going to make a new file.
 
-```
-cd
-mkdir bgpython
-cd bgpython
-ls -la
-```
+> It used to be that everyone who used computers knew what a file was.
+> But these days, many people use computers for years without
+> encountering the concept.
+>
+> So! A _file_ is a collection of data with a name. Examples of files
+> would be images, movies, PDF documents, music files, and so on.
+>
+> The name indicates something about the contents of the file.
+> Generally. It really can be anything, but that would be misleading,
+> like labeling a box of raisins as "Chocolate".
+>
+> The name is split into two parts, commonly, separated by a period. The
+> first part is the name, and the second part is the _extension_.
+> Confusingly sometimes people refer to the name and extension together
+> as the "name", so you'll have to rely on context.
+>
+> Sometimes, depending on the system, the extension is optional.
+>
+> As an example, here's a complete file name and extension:
+>
+> ``` {.default}
+> hello.py
+> ```  <!-- ` This fixes vim syntax highlighting yay -->
+>
+> There we have a file named `hello` and an extension `.py`. This is a
+> common extension that means "this is a Python source code file".
 
-These commands do four amazing things:
+Pull down "File→New" and that'll bring up a blank window.
 
-1. `cd` means _change directory_. (A directory is the same as a folder.)
-   On a line by itself, it means "change to my _home directory_".
+And let's enter some code!
 
-2. `mkdir` means _make directory_. We're creating a new folder called
-   `bgpython`.
-
-3. `cd bgpython` to change into that directory.
-
-4. `ls -la` to get a long directory listing (i.e. all the files in that
-   folder.)
-
-At this point you should see something like this:
-
-```
-$ ls -la
-total 0
-drwxr-xr-x    2 beej  staff    64 Nov 18 23:14 .
-drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
-```
-
-This is showing you all the files you have. Namely, there are two of
-them: `.` and `..`. These mean "this directory" and "parent directory",
-respectively. (You know how folders can be inside other folders? The
-outer folder is called the "parent" folder, which is what the parent
-directory is. If you want to get back to your home directory from here,
-you can type `cd ..`.)
-
-> _You should think of the shell as "being" in a certain directory at
-> any particular time. You can `cd` into directories, or `cd ..` back
-> into the parent, or `cd` to get to your home directory from anywhere.
-> It's like the folder you have open that has focus in a GUI._
-
-(The remaining information on each line tells you the permissions on the
-file, who owns it, how big it is, when it was modified, and so on. We
-can worry about that later.)
-
-Other than those there are no other files. We'll soon fix that! Let's
-add a Python program and run it!
-
-## Launching your code editor
-
-Usually launching an editor to edit a file is as simple as typing the
-editor name directly followed by the filename on the command line.
-
-For example, to launch VS Code to edit the file `hello.py`:
-
-```
-code hello.py
-```
-
-or to launch Vim to do the same thing:
-
-```
-vim hello.py
-```
-
-> _If you get in Vim and have no idea how to get out, hit the `ESC` key
-> and then type `:q!` and hit `RETURN`---this will exit without saving.
-> If you want to save and exit, hit `ESC` then type `ZZ` in caps. I'm
-> not going to talk about Vim any longer and will stick to VS Code._
-
-In any case, once you get your editor of choice launched, you should be
-faced with a largely blank window and a cursor.
-
-This is your canvas! This is where the magic happens!
-
-Type [flx[the following|hello.py]] into your editor (the line numbers,
+Type [flx[the following|hello.py]] into the editor (the line numbers,
 below, are for reference only and shouldn't be typed in):
 
 ``` {.py .numberLines}
@@ -129,42 +77,29 @@ print("Hello, world!")
 print("My name's Beej and this is (possibly) my first program!")
 ```
 
-Pull down `File`→`Save` to save the file.
-
+We're (almost) ready to run!
 
 ## Running the Program!
 
-Pop back into your terminal window and type `ls -la` to get a directory
-listing:
+Hit `F5` from the editor window (you might have to hit `fn-F5` on the
+Mac) to run the code. Alternately, you can pull down the "Run" menu and
+select "Run Module".
 
-```
-$ ls -la
-total 8
-drwxr-xr-x    3 beej  staff    96 Nov 18 23:27 .
-drwxr-xr-x+ 123 beej  staff  3936 Nov 18 23:14 ..
--rw-r--r--    1 beej  staff    87 Nov 18 23:27 hello.py
-```
+If you haven't saved the file, it will prompt you to save the file.
+(You can pull down "File→Save", or hit `COMMAND-S` or `CTRL-S` to do
+this preemptively.)
 
-There it is! `hello.py` clocking in at 87 bytes (characters, roughly) in
-size.
+Give it a good name, like `hello.py`.
 
-Let's run this puppy. Remember how the program is just a recipe for
-doing a thing---what do you think our `hello.py` program does? Guess!
+And then, in the console window, you'll see the output appear! _[Angelic
+Chorus!]_
 
-Then type this to run it (if `python3` doesn't work, try `python` or
-`py` depending on your system):
-
-```
-python3 hello.py
-```
-
-and hit `RETURN`! _[Angelic Chorus!]_
-
-```
-$ python3 hello.py
+``` {.default}
 Hello, world!
 My name's Beej and this is (possibly) my first program!
 ```
+
+Did you miss it? Hit `F5` again and you'll see it appear again.
 
 You just wrote some instructions and the computer carried it out!
 
@@ -186,7 +121,7 @@ out, look back to see what you could have done better.
 
 ## Summary
 
-* Move around the directory hierarchy using the shell
-* Edit some source code in an editor
-* Run that program from the command line
+* Use the problem solving framework!
+* Edit some source code in the IDLE editor.
+* Run that program from within IDLE.
 
