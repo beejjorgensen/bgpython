@@ -234,6 +234,7 @@ They are:
 * Integers between -5 and 256 inclusive.
 * Strings that contain only letters, numbers, or underscores.
 * The `None` object.
+* The `True` and `False` objects.
 
 This is why `"Beej!"` isn't interned (because it contains punctuation),
 and why `"Alice"` _is_ interned.
