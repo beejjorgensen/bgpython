@@ -1113,7 +1113,7 @@ world of classes and objects, which is the beginning of learning
 the world-famous Object-Oriented Programming (OOP).
 
 We saw how we could concisely bundle data and functionality into a
-single convenient class and the make objects from the class, using the
+single convenient class and then make objects from the class, using the
 class as a blueprint.
 
 And, importantly, we learned that multiple variables can refer to the
