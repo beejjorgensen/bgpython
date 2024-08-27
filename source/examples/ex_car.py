@@ -12,7 +12,7 @@ class Car:
     def honk(self):
         print("Beep beep!")
 
-    def drive_to(self, destintation):
+    def drive_to(self, destination):
         print(f'Welcome to {destination}!')
         self.location = destination
 
