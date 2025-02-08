@@ -597,6 +597,7 @@ Here are some common string methods:
 |`.startswith()`| Return `True` if the string starts with the given string.
 |`.endswith()`  | Return `True` if the string ends with the given string.
 |`.capitalize()`| Capitalize the first character of the string, if possible.
+|`.title()`     | Capitalize the first character in each word of the string.
 
 Here are some examples:
 
