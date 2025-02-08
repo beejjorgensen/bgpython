@@ -491,7 +491,7 @@ print(b + 5)  # 3495
 How did that work? We called the built-in `int()` function and passed it
 a string `"3490"`. `int()` did all the hard work and converted that
 string to an integer and returned it. We then stored the returned value
-in `y`. And finally, we printed the value of `b+5` just to show that we
+in `b`. And finally, we printed the value of `b+5` just to show that we
 could do math on it.
 
 Perfect!

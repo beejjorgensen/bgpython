@@ -60,7 +60,8 @@ Once in there, we're going to make a new file.
 >
 > ``` {.default}
 > hello.py
-> ```  <!-- ` This fixes vim syntax highlighting yay -->
+> ```
+> <!-- ` -->
 >
 > There we have a file named `hello` and an extension `.py`. This is a
 > common extension that means "this is a Python source code file".
