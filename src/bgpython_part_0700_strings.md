@@ -596,7 +596,7 @@ Here are some common string methods:
 |`.count()`     | Count the number of occurrences of the substring.
 |`.startswith()`| Return `True` if the string starts with the given string.
 |`.endswith()`  | Return `True` if the string ends with the given string.
-|`.capitalize()`| Capitalize the first letter of each word in the string.
+|`.capitalize()`| Capitalize the first character of the string, if possible.
 
 Here are some examples:
 
