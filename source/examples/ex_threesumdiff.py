@@ -10,14 +10,14 @@ y = input("Enter another number: ")
 # convert y to int and store it back in y again
 y = int(y)
 
-# read string from kezboard into variable z
+# read string from keyboard into variable z
 z = input("Enter another number: ")
 
 # convert z to int and store it back in z again
 z = int(z)
 
 # print the sum of x + y + z
-print("The sum of the two numbers is:", x + y + z)
+print("The sum of the three numbers is:", x + y + z)
 
 # print the difference of x - y - z
-print("The difference of the two numbers is:", x - y - z)
+print("The difference of the three numbers is:", x - y - z)
