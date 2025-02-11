@@ -1,10 +1,8 @@
+# Intro
 <!-- 
 Beej's Guide to Python book source
-
 vim: ts=4:sw=4:nosi:et:tw=72:spell:nojs
 -->
-
-# Intro
 
 _**This is an alpha-quality book. There are mistakes, oh yes. When you
 find them, please drop an issue in GitHub, or a pull request, or email
