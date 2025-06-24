@@ -141,7 +141,7 @@ reprinted in its entirety. The same license restrictions apply to the
 translation as to the original guide. The translation may also include
 the name and contact information for the translator.
 
-The C source code presented in this document is hereby granted to the
+The source code presented in this document is hereby granted to the
 public domain, and is completely free of any license restriction.
 
 Educators are freely encouraged to recommend or supply copies of this
