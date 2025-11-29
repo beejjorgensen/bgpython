@@ -690,7 +690,7 @@ Here they are:
    ([flx[Solution|ex_twosumfloat.py]].)
 
 2. Have the program print out the sum and the difference between two
-   numbers. ([flx[Solution|ex_twosumdiff.py]].)
+   integers. ([flx[Solution|ex_twosumdiff.py]].)
 
 3. Allow the user to enter 3 numbers and perform the math on those.
    ([flx[Solution|ex_threesumdiff.py]].)
