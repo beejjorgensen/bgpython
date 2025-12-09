@@ -1474,7 +1474,7 @@ out, look back to see what you could have done better.
 
    b[0] = 99
 
-   print a[0]
+   print(a[0])
    ```
 
    How can we change only line 2 so that `b` is a copy of `a`, causing
