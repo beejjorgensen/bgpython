@@ -467,7 +467,7 @@ container dict which uses the person's name as the key!
 
 ``` {.py}
 tree = { # Outer dict holds records for all the people
-    "Beej Jorgensen: {  # Inner dict holds details for each person
+    "Beej Jorgensen": {  # Inner dict holds details for each person
         "born": 1990,
         "mother": "Mom Jorgensen",
         "father": "Dad Jorgensen",
