@@ -1061,7 +1061,7 @@ out, look back to see what you could have done better.
 
    Use Newton's Universal Law of Gravitation to calculate the force $F$:
 
-   $F=G\cfrac{m_1 m_2}{r^2}$
+   $F=G\dfrac{m_1 m_2}{r^2}$
 
    In mathematical notation, to variables next to each other like $m_1
    m_2$, above, indicate multiplication.

@@ -709,7 +709,7 @@ Here they are:
 
    you can solve for $x$ with the quadratic formula:
 
-   $x=\cfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
+   $x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
 
    This all looks terrifying! <!-- Especially if you're reading it in
    Markdown. That's LaTeX math markup and isn't particularly fit for
@@ -739,7 +739,7 @@ Here they are:
    minus". It means there are actually two equations, one with $+$ and
    one with $-$:
 
-   $x_{plus}=\cfrac{-b+\sqrt{b^2-4ac}}{2a}$\ \ \ \ \ \ $x_{minus}=\cfrac{-b-\sqrt{b^2-4ac}}{2a}$
+   $x_{plus}=\dfrac{-b+\sqrt{b^2-4ac}}{2a}$\ \ \ \ \ \ $x_{minus}=\dfrac{-b-\sqrt{b^2-4ac}}{2a}$
 
    Solve them both and print out both answers for a given $a$, $b$, and
    $c$.

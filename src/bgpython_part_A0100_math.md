@@ -302,14 +302,14 @@ also decided that there was such a thing as _negative exponents_.
 If you have a negative exponent, you need to invert the fraction before
 applying the exponent. The following is true:
 
-$4^{-3}=\left(\cfrac{1}{4}\right)^3$
+$4^{-3}=\left(\dfrac{1}{4}\right)^3$
 
-$\left(\cfrac{3}{4}\right)^{-8}=\left(\cfrac{4}{3}\right)^8$
+$\left(\dfrac{3}{4}\right)^{-8}=\left(\dfrac{4}{3}\right)^8$
 
 And in case you're wondering how to raise a fraction to an exponent, you
 just apply the exponent to the numerator and denominator:
 
-$\left(\cfrac{4}{3}\right)^8=\cfrac{4^8}{3^8}=\cfrac{65536}{6561}$
+$\left(\dfrac{4}{3}\right)^8=\dfrac{4^8}{3^8}=\dfrac{65536}{6561}$
 
 We also have some shorthand names for certain exponents.
 
